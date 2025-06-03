@@ -1,18 +1,28 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class RandomObjectSpawner : MonoBehaviour
 {
-    [SerializeField] RandomMovingObject objectPrefab;
+    [SerializeField] RandomMovingObject _objectPrefab;
 
-    [SerializeField] float objectsPerSecond;
+    [SerializeField] int _objectsPerSecond;
 
-    float timer;
+    float _timer;
 
     private void Update()
     {
-        timer -= Time.deltaTime;
+        _timer -= Time.deltaTime;
 
-        if (timer < 0)
+        if (_timer < 0)
+        {
+            _timer = 1;
+            SpawnObjects(_objectsPerSecond);
+        }
+    }
+
+    private void SpawnObjects(int objectsPerSecond)
+    {
+        for (int i = 0; i < objectsPerSecond; i++)
         {
             SpawnObject();
         }
@@ -20,9 +30,9 @@ public class RandomObjectSpawner : MonoBehaviour
 
     void SpawnObject()
     {
-        if (objectPrefab != null)
+        if (_objectPrefab != null)
         {
-            Instantiate(objectPrefab);
+            Instantiate(_objectPrefab);
         }
     }
 }

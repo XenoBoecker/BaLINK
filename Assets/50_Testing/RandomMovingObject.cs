@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class RandomMovingObject : MonoBehaviour, TimeAffected
+public class RandomMovingObject : MonoBehaviour, ITimeAffected
 {
     [SerializeField] private Vector3 speedMinValues, speedMaxValues;
     [SerializeField] private float spawnDist = 30;
