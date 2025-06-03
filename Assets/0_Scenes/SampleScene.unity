@@ -135,7 +135,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &46254936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -315,10 +315,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e1793f8ee7580346b3c5f5ef20ec810, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1761034200}
-  pitchLimits: {x: -40, y: 75}
-  distance: 4
-  lookSensitivity: 0.2
+  _orbitCenter: {fileID: 1761034200}
+  _pitchLimits: {x: -40, y: 75}
+  _useCameraDistanceAdjustment: 0
+  _distance: 5
+  _lookSensitivity: 0.2
 --- !u!1 &382050791
 GameObject:
   m_ObjectHideFlags: 0
@@ -845,10 +846,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95bb017eb2e0715469cf6a4e055e9b2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraTransform: {fileID: 330585546}
-  moveSpeed: 5
-  lookSensitivity: 0.5
-  rotationSmoothTime: 0.1
+  _cameraTransform: {fileID: 330585546}
+  _maxSpeed: 5
+  _acceleration: 10
+  _deceleration: 0.85
+  _lookSensitivity: 5
+  _rotationSmoothTime: 0.1
 --- !u!54 &1248698334
 Rigidbody:
   m_ObjectHideFlags: 0
