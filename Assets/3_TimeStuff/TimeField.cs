@@ -1,83 +1,62 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
 public class TimeField : MonoBehaviour
 {
-    [SerializeField] float timeScale = 0.5f;
+    [SerializeField] float _slowSpeed;
+    float _currentTimeScale => GetCurrentTimeScale();
+    List<ITimeAffected> _timeObjectsInRadius = new List<ITimeAffected>();
+    bool _timeSlowActive;
 
-    List<TimeAffected> timeObjectsInRadius = new List<TimeAffected>();
-
-    bool timeSlowActive;
-
-    public void Toggle()
+    public void SetTimeScaleState(bool timeSlowActive)
     {
-        if (timeSlowActive)
-        {
-            BackToNormalSpeed();
-        }
-        else
-        {
-            SlowDownTime();
-        }
-
-        Debug.Log("Toggle Time");
+        Debug.Log("set time scale");
+        _timeSlowActive = timeSlowActive;
+        UpdateTimeScale(_currentTimeScale);
     }
 
-    void SlowDownTime()
+    void UpdateTimeScale(float timeScale)
     {
-        foreach (TimeAffected timeObject in timeObjectsInRadius)
+        Debug.Log(timeScale);
+        Debug.Log(_timeObjectsInRadius.Count);
+        foreach (ITimeAffected timeObject in _timeObjectsInRadius)
         {
             timeObject.SetTimeScale(timeScale);
         }
-        timeSlowActive = true;
     }
 
-    void BackToNormalSpeed()
+    private float GetCurrentTimeScale()
     {
-        foreach (TimeAffected timeObject in timeObjectsInRadius)
-        {
-            timeObject.SetTimeScale(1);
-        }
-        timeSlowActive = false;
+        return _timeSlowActive ? _slowSpeed : 1.0f;
     }
-
-    void AddObject(TimeAffected timeObject)
-    {
-        timeObjectsInRadius.Add(timeObject);
-    }
-
-    void RemoveObject(TimeAffected timeObject)
-    {
-        timeObjectsInRadius.Remove(timeObject);
-    }
-
 
     private void OnTriggerEnter(Collider collision)
     {
-        TimeAffected timeObject = collision.GetComponent<TimeAffected>();
-
-        if (timeObject == null) return;
-
-        if (timeSlowActive)
+        if (collision.TryGetComponent(out ITimeAffected timeObject))
         {
-            timeObject.SetTimeScale(timeScale);
+            timeObject.SetTimeScale(_currentTimeScale);
+            AddObject(timeObject);
         }
-
-        AddObject(timeObject);
     }
 
     private void OnTriggerExit(Collider collision)
     {
-        TimeAffected timeObject = collision.GetComponent<TimeAffected>();
-
-        if (timeObject == null) return;
-
-        if (timeSlowActive)
+        if (collision.TryGetComponent(out ITimeAffected timeObject))
         {
             timeObject.SetTimeScale(1);
+            RemoveObject(timeObject);
         }
+    }
+   
+    void AddObject(ITimeAffected timeObject)
+    {
+        _timeObjectsInRadius.Add(timeObject);
+    }
 
-        RemoveObject(timeObject);
+    void RemoveObject(ITimeAffected timeObject)
+    {
+        _timeObjectsInRadius.Remove(timeObject);
     }
 }

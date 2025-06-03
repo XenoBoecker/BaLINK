@@ -1,39 +1,46 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(TimeField))]
 public class TimeController : MonoBehaviour
 {
-    [SerializeField] TimeField timeField;
-
-    InputSystem_Actions playerInput;
+    TimeField _timeField;
+    InputSystem_Actions _playerInput;
 
     private void Awake()
     {
-        playerInput = new InputSystem_Actions();
-        playerInput.Enable();
+        _timeField = GetComponent<TimeField>();
+
+        _playerInput = new InputSystem_Actions();
+        _playerInput.Enable();
     }
 
     private void OnEnable()
     {
         // Register input event
-        playerInput.Player.ToggleTime.performed += ctx => ToggleTime();
+        //playerInput.Player.ToggleTime.performed += ctx => ToggleTime();
+        _playerInput.Player.ToggleTime.started += TimeSlow;
+        _playerInput.Player.ToggleTime.canceled += TimeSlow;
     }
 
     private void OnDisable()
     {
         // Unregister input event
-        playerInput.Player.ToggleTime.performed -= ctx => ToggleTime();
+        //playerInput.Player.ToggleTime.performed -= ctx => ToggleTime();
+        _playerInput.Player.ToggleTime.started -= TimeSlow;
+        _playerInput.Player.ToggleTime.canceled -= TimeSlow;
     }
 
-    private void ToggleTime()
+    private void TimeSlow(InputAction.CallbackContext ctx)
     {
-        // Example logic to toggle time (assuming TimeField has something like a bool IsPaused)
-        if (timeField != null)
+        if (ctx.started)
         {
-            timeField.Toggle(); // Replace with your own method
+            _timeField.SetTimeScaleState(true);
         }
-        else
+
+        if (ctx.canceled)
         {
-            Debug.LogWarning("TimeField is not assigned.");
+            _timeField.SetTimeScaleState(false);
         }
     }
 }
