@@ -1,3 +1,4 @@
+using GameEvents;
 using Mediapipe.Tasks.Components.Containers;
 using Mediapipe.Tasks.Vision.FaceLandmarker;
 using Mediapipe.Unity.Sample.FaceLandmarkDetection;
@@ -43,6 +44,7 @@ public class BlinkDetection : MonoBehaviour
             {
                 _eyesClosed = true;
                 Debug.Log("Blinked");
+                InputEvent.PlayerBlinked();
             }
         }
     }
