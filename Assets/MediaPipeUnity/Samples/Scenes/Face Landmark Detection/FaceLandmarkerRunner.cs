@@ -4,6 +4,7 @@
 // license that can be found in the LICENSE file or at
 // https://opensource.org/licenses/MIT.
 
+using System;
 using System.Collections;
 using Mediapipe.Tasks.Vision.FaceLandmarker;
 using UnityEngine;
@@ -156,6 +157,15 @@ namespace Mediapipe.Unity.Sample.FaceLandmarkDetection
     private void OnFaceLandmarkDetectionOutput(FaceLandmarkerResult result, Image image, long timestamp)
     {
       _faceLandmarkerResultAnnotationController.DrawLater(result);
+      _result = result;
     }
-  }
+
+    private FaceLandmarkerResult _result;
+
+    internal FaceLandmarkerResult GetResult()
+    {
+      return _result;
+    }
+
+    }
 }
