@@ -44,7 +44,7 @@ public class BlinkDetection : MonoBehaviour
             {
                 _eyesClosed = true;
                 Debug.Log("Blinked");
-                InputEvent.PlayerBlinked();
+                InputEvents.PlayerBlinked();
             }
         }
     }

@@ -5,12 +5,12 @@ public class TEST_MovingObject : MonoBehaviour
 {
     private void OnEnable()
     {
-        InputEvent.onPlayerBlinked += PlayerBlinked;
+        InputEvents.onPlayerBlinked += PlayerBlinked;
     }
 
     private void OnDisable()
     {
-        InputEvent.onPlayerBlinked -= PlayerBlinked;
+        InputEvents.onPlayerBlinked -= PlayerBlinked;
     }
 
     private void PlayerBlinked()
