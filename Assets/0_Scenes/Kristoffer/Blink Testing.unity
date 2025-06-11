@@ -841,6 +841,7 @@ GameObject:
   - component: {fileID: 1505683858}
   - component: {fileID: 1505683857}
   - component: {fileID: 1505683861}
+  - component: {fileID: 1505683862}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -936,7 +937,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -21.1, y: 0, z: 0}
 --- !u!114 &1505683861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -949,6 +950,82 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9bbb79ea37591f49bdf261ed02745c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1505683862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1505683856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2db971e3e08809c40b62487cb89d128c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentFrame: 0
+  _loopAnimation: 1
+  _animation:
+    _animationFrames:
+    - Position:
+        Value: {x: 0, y: 0, z: 0}
+        IsActive: 1
+      Rotation:
+        Value: {x: 0, y: 0, z: 0, w: 1}
+        IsActive: 1
+      Scale:
+        Value: {x: 0, y: 0, z: 0}
+        IsActive: 0
+      Material:
+        Value: {fileID: 0}
+        IsActive: 0
+      Mesh:
+        Value: {fileID: 0}
+        IsActive: 0
+    - Position:
+        Value: {x: 2.65, y: 1.41, z: 0}
+        IsActive: 1
+      Rotation:
+        Value: {x: 0.18309352, y: 0, z: 0, w: -0.9830955}
+        IsActive: 1
+      Scale:
+        Value: {x: 1, y: 1, z: 1}
+        IsActive: 1
+      Material:
+        Value: {fileID: 0}
+        IsActive: 0
+      Mesh:
+        Value: {fileID: 0}
+        IsActive: 0
+    - Position:
+        Value: {x: 2.65, y: 1.41, z: -3.97}
+        IsActive: 1
+      Rotation:
+        Value: {x: 0, y: 0, z: 0, w: 1}
+        IsActive: 0
+      Scale:
+        Value: {x: 0, y: 0, z: 0}
+        IsActive: 0
+      Material:
+        Value: {fileID: 0}
+        IsActive: 0
+      Mesh:
+        Value: {fileID: 0}
+        IsActive: 0
+    - Position:
+        Value: {x: 0.57, y: -0.06, z: -3.97}
+        IsActive: 1
+      Rotation:
+        Value: {x: 0, y: 0.22359031, z: 0, w: 0.9746832}
+        IsActive: 1
+      Scale:
+        Value: {x: 2.72, y: 1, z: 1}
+        IsActive: 1
+      Material:
+        Value: {fileID: 0}
+        IsActive: 0
+      Mesh:
+        Value: {fileID: 0}
+        IsActive: 0
 --- !u!1001 &2036761355
 PrefabInstance:
   m_ObjectHideFlags: 0
