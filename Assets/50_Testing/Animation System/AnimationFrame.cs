@@ -6,6 +6,8 @@ namespace Custom
     [System.Serializable]
     public class AnimationFrame
     {
+        public bool AnimateOnlyIfInView = false;
+
         public ToggleableField<Vector3> Position = new ToggleableField<Vector3>(default); 
         public ToggleableField<Quaternion> Rotation = new ToggleableField<Quaternion>(default);
         public ToggleableField<Vector3> Scale = new ToggleableField<Vector3>(default);
