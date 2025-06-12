@@ -6,6 +6,10 @@ public class BlinkUIVisualizer : MonoBehaviour
     [SerializeField] GameObject blinkUI;
     [SerializeField] float blinkDuration = 0.5f;
 
+    [SerializeField] private AudioClip blinkSound;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private bool playSoundOnBlink = true;
+
     float blinkTimer = 0f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -32,5 +36,10 @@ public class BlinkUIVisualizer : MonoBehaviour
     {
         blinkUI.SetActive(true);
         blinkTimer = blinkDuration;
+
+        if (playSoundOnBlink && audioSource != null && blinkSound != null)
+        {
+            audioSource.PlayOneShot(blinkSound);
+        }
     }
 }
