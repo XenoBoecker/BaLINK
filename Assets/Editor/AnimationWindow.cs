@@ -38,82 +38,29 @@ namespace Custom
                 if (GUILayout.Button("Create Animation"))
                 {
                     if (!_animator.InitializeAnimation()) { return; }
-                } 
+                }
                 else
                 {
                     return;
                 }
             }
 
-            Rect frameSelectionRect = GUILayoutUtility.GetRect(position.width, 50);
-
-            Handles.color = new Color(0.125f, 0.125f, 0.125f, 1f);
-            Handles.DrawAAPolyLine
-                (2, 
-                frameSelectionRect.position + new Vector2(GetXPosFromIndex(animation, ref frameSelectionRect, 0), frameSelectionRect.height * 0.5f), 
-                frameSelectionRect.position + new Vector2(GetXPosFromIndex(animation, ref frameSelectionRect, animation.AnimationLength - 1), frameSelectionRect.height * 0.5f)
-                );
-
-            for (int i = 0; i < animation.AnimationLength; i++)
-            {
-                float positionX = GetXPosFromIndex(animation, ref frameSelectionRect, i);
-
-                Handles.DrawAAPolyLine
-                (2,
-                frameSelectionRect.position + new Vector2(positionX, frameSelectionRect.height * 0.25f),
-                frameSelectionRect.position + new Vector2(positionX, frameSelectionRect.height * 0.75f));
-
-                Handles.color = new Color(0.15f, 0.15f, 0.15f, 1f);
-                Handles.DrawSolidDisc((frameSelectionRect.position + new Vector2(positionX, frameSelectionRect.height * 0.5f)), Vector3.forward, 3);
-            }
-
-            Handles.color = new Color(0.8f, 0.8f, 0.8f, 1f);
-            Handles.DrawSolidDisc((frameSelectionRect.position + new Vector2(GetXPosFromIndex(animation, ref frameSelectionRect, _currentFrame), frameSelectionRect.height * 0.5f)), Vector3.forward, 4);
-
-            Rect handleRect = new Rect(
-                new Vector2(
-                    GetXPosFromIndex(animation, ref frameSelectionRect, _currentFrame) - SLIDER_HANDLE_RECT_SIZE * 0.5f, 
-                    frameSelectionRect.y + frameSelectionRect.height * 0.5f - SLIDER_HANDLE_RECT_SIZE * 0.5f), 
-                new Vector2(SLIDER_HANDLE_RECT_SIZE, SLIDER_HANDLE_RECT_SIZE));
-
-            if (Event.current.type == EventType.MouseDown)
-            {
-                isDraggingSlider = handleRect.Contains(Event.current.mousePosition);
-            } 
-
-            if (Event.current.type == EventType.MouseDrag && isDraggingSlider)
-            {
-                float xSpacing = GetXPosFromIndex(animation, ref frameSelectionRect, 0) - GetXPosFromIndex(animation, ref frameSelectionRect, 1);
-                float xCurrent = GetXPosFromIndex(animation, ref frameSelectionRect, _currentFrame);
-                float xDifference = Event.current.mousePosition.x - xCurrent;
-                if (Mathf.Abs(xDifference) > Mathf.Abs(xSpacing) * 0.5f)
-                {
-                    int newSelectedFrameIndex = _currentFrame + (xDifference < 0 ? -1 : 1);
-                    if (newSelectedFrameIndex >= 0 && newSelectedFrameIndex <= animation.AnimationLength - 1)
-                    {
-                        _currentFrame = newSelectedFrameIndex;
-
-                        _animator.SetAnimationStateToFrame(_currentFrame);
-                    }
-                }
-            }
-
-            if (Event.current.type == EventType.MouseUp && isDraggingSlider)
-            {
-                isDraggingSlider = false;
-            }
+            DrawFrameSelectionSlider(animation);
 
             AnimationFrame frame = animation.GetAnimationFrameFromIndex(_currentFrame);
 
             GUILayoutUtility.GetRect(position.width, 10);
-            
-            Rect frameSettingsRect = EditorGUILayout.GetControlRect();
-            int newNumberOfFrames = EditorGUI.IntField(frameSettingsRect, "Number Of Frames", animation.AnimationLength);
+
+            Rect numberOfFramesRect = EditorGUILayout.GetControlRect();
+            int newNumberOfFrames = EditorGUI.IntField(numberOfFramesRect, "Number Of Frames", animation.AnimationLength);
             if (newNumberOfFrames > 1)
             {
                 animation.SetNumberOfFrames(newNumberOfFrames);
                 if (_currentFrame > animation.AnimationLength - 1) { _currentFrame = animation.AnimationLength - 1; }
             }
+
+            Rect isViewRequiredToggleRect = EditorGUILayout.GetControlRect();
+            animation.GetAnimationFrameFromIndex(_currentFrame).AnimateOnlyIfInView = EditorGUI.Toggle(isViewRequiredToggleRect, "Animate Only If In View", animation.GetAnimationFrameFromIndex(_currentFrame).AnimateOnlyIfInView);
 
             GUILayoutUtility.GetRect(position.width, 10);
 
@@ -137,7 +84,7 @@ namespace Custom
 
             if (Event.current.type == EventType.Repaint)
             {
-                if(!_positionPrevious.Equals(Vector3.negativeInfinity) && _positionPrevious != obj.transform.position)
+                if (!_positionPrevious.Equals(Vector3.negativeInfinity) && _positionPrevious != obj.transform.position)
                 {
                     frame.Position.IsActive = true;
                     frame.Position.Value = obj.transform.position;
@@ -170,6 +117,67 @@ namespace Custom
             }
 
             HandleUtility.Repaint();
+        }
+
+        private void DrawFrameSelectionSlider(Animation animation)
+        {
+            Rect frameSelectionRect = GUILayoutUtility.GetRect(position.width, 50);
+
+            Handles.color = new Color(0.125f, 0.125f, 0.125f, 1f);
+            Handles.DrawAAPolyLine
+                (2,
+                frameSelectionRect.position + new Vector2(GetXPosFromIndex(animation, ref frameSelectionRect, 0), frameSelectionRect.height * 0.5f),
+                frameSelectionRect.position + new Vector2(GetXPosFromIndex(animation, ref frameSelectionRect, animation.AnimationLength - 1), frameSelectionRect.height * 0.5f)
+                );
+
+            for (int i = 0; i < animation.AnimationLength; i++)
+            {
+                float positionX = GetXPosFromIndex(animation, ref frameSelectionRect, i);
+
+                Handles.DrawAAPolyLine
+                (2,
+                frameSelectionRect.position + new Vector2(positionX, frameSelectionRect.height * 0.25f),
+                frameSelectionRect.position + new Vector2(positionX, frameSelectionRect.height * 0.75f));
+
+                Handles.color = new Color(0.15f, 0.15f, 0.15f, 1f);
+                Handles.DrawSolidDisc((frameSelectionRect.position + new Vector2(positionX, frameSelectionRect.height * 0.5f)), Vector3.forward, 3);
+            }
+
+            Handles.color = new Color(0.8f, 0.8f, 0.8f, 1f);
+            Handles.DrawSolidDisc((frameSelectionRect.position + new Vector2(GetXPosFromIndex(animation, ref frameSelectionRect, _currentFrame), frameSelectionRect.height * 0.5f)), Vector3.forward, 4);
+
+            Rect handleRect = new Rect(
+                new Vector2(
+                    GetXPosFromIndex(animation, ref frameSelectionRect, _currentFrame) - SLIDER_HANDLE_RECT_SIZE * 0.5f,
+                    frameSelectionRect.y + frameSelectionRect.height * 0.5f - SLIDER_HANDLE_RECT_SIZE * 0.5f),
+                new Vector2(SLIDER_HANDLE_RECT_SIZE, SLIDER_HANDLE_RECT_SIZE));
+
+            if (Event.current.type == EventType.MouseDown)
+            {
+                isDraggingSlider = handleRect.Contains(Event.current.mousePosition);
+            }
+
+            if (Event.current.type == EventType.MouseDrag && isDraggingSlider)
+            {
+                float xSpacing = GetXPosFromIndex(animation, ref frameSelectionRect, 0) - GetXPosFromIndex(animation, ref frameSelectionRect, 1);
+                float xCurrent = GetXPosFromIndex(animation, ref frameSelectionRect, _currentFrame);
+                float xDifference = Event.current.mousePosition.x - xCurrent;
+                if (Mathf.Abs(xDifference) > Mathf.Abs(xSpacing) * 0.5f)
+                {
+                    int newSelectedFrameIndex = _currentFrame + (xDifference < 0 ? -1 : 1);
+                    if (newSelectedFrameIndex >= 0 && newSelectedFrameIndex <= animation.AnimationLength - 1)
+                    {
+                        _currentFrame = newSelectedFrameIndex;
+
+                        _animator.SetAnimationStateToFrame(_currentFrame);
+                    }
+                }
+            }
+
+            if (Event.current.type == EventType.MouseUp && isDraggingSlider)
+            {
+                isDraggingSlider = false;
+            }
         }
 
         private static float GetXPosFromIndex(Animation animation, ref Rect frameSelectionRect, int i)
