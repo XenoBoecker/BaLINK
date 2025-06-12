@@ -43,7 +43,6 @@ public class BlinkDetection : MonoBehaviour
             if (eyeLeft < _eyesClosedThreshold && eyeRight < _eyesClosedThreshold)
             {
                 _eyesClosed = true;
-                Debug.Log("Blinked");
                 InputEvents.PlayerBlinked();
             }
         }
