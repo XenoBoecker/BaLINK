@@ -9,7 +9,6 @@ namespace Custom
         [SerializeField] private int _startingFrame;
         [SerializeField] private bool _loopAnimation;
         [SerializeField] private Animation _animation;
-        [SerializeField] private bool _animateOnlyIfInView = false;
 
         private int _currentFrame;
         private MeshRenderer _renderer;
@@ -37,7 +36,7 @@ namespace Custom
 
         public void NextFrame()
         {
-            if (!IsVisible(_renderer) && _animateOnlyIfInView) { return; }
+            if (!IsVisible(_renderer) && _animation.GetAnimationFrameFromIndex(_currentFrame).AnimateOnlyIfInView) { return; }
 
             _currentFrame++;
             if (_currentFrame >= _animation.AnimationLength)
