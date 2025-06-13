@@ -12,6 +12,7 @@ public class FirstPersonMovementController : MonoBehaviour
     [SerializeField] float _acceleration = 0.1f;
     [Tooltip("Percentage speed reduction of the player when not moving")]
     [SerializeField] float _deceleration = 0.95f;
+    [SerializeField] private float wallDetectionRange = 0.51f;
     Vector3 _moveDir;
 
     [Header("Jump Settings")]
@@ -90,6 +91,14 @@ public class FirstPersonMovementController : MonoBehaviour
         {
             move = move.normalized;
             _moveDir = transform.forward * move.y + transform.right * move.x;
+            _moveDir.y = 0f;
+
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, _moveDir.normalized, out hit, wallDetectionRange, _groundLayer))
+            {
+                _moveDir = Vector3.ProjectOnPlane(_moveDir, hit.normal);
+            }
+
             horizontalVelocity += _moveDir * _acceleration * Time.fixedDeltaTime;
         }
         else
@@ -108,20 +117,20 @@ public class FirstPersonMovementController : MonoBehaviour
     }
 
     private void Look()
-{
-    Vector2 lookInput = _input.Player.Look.ReadValue<Vector2>();
+    {
+        Vector2 lookInput = _input.Player.Look.ReadValue<Vector2>();
 
-    float mouseX = lookInput.x * _lookSensitivity;
-    float mouseY = lookInput.y * _lookSensitivity;
+        float mouseX = lookInput.x * _lookSensitivity;
+        float mouseY = lookInput.y * _lookSensitivity;
 
-    // Rotate player left/right (yaw)
-    transform.Rotate(Vector3.up * mouseX);
+        // Rotate player left/right (yaw)
+        transform.Rotate(Vector3.up * mouseX);
 
-    // Rotate camera up/down (pitch)
-    _cameraPitch -= mouseY;
-    _cameraPitch = Mathf.Clamp(_cameraPitch, -89f, 89f); // Prevent flipping
+        // Rotate camera up/down (pitch)
+        _cameraPitch -= mouseY;
+        _cameraPitch = Mathf.Clamp(_cameraPitch, -89f, 89f); // Prevent flipping
 
-    _cameraTransform.localEulerAngles = new Vector3(_cameraPitch, 0f, 0f);
-}
+        _cameraTransform.localEulerAngles = new Vector3(_cameraPitch, 0f, 0f);
+    }
 
 }
