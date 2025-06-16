@@ -5,9 +5,9 @@ using UnityEngine;
 [CustomEditor(typeof(TrainCarGenerator))]
 public class TrainCarGeneratorEditor : Editor
 {
-    int[] _handleIds;
-    int _selectedHandleId = -1;
-    Vector2 _mousePosPrev;
+    private int[] _handleIds;
+    private int _selectedHandleId = -1;
+    private Vector2 _mousePosPrev;
 
     private void OnSceneGUI()
     {
@@ -48,7 +48,7 @@ public class TrainCarGeneratorEditor : Editor
             }
         }
 
-        if (Event.current.type == EventType.MouseDown)
+        if (Event.current.type == EventType.MouseDown && Event.current.button == 0)
         {
             _selectedHandleId = HandleUtility.nearestControl;
             _mousePosPrev = Event.current.mousePosition;
@@ -57,6 +57,29 @@ public class TrainCarGeneratorEditor : Editor
             {
                 if (_handleIds[i] != _selectedHandleId) { continue; }
                 if (i == _handleIds.Length - 1) { continue; }
+
+                if (Event.current.control)
+                {
+                    //toggle locked state
+                    gen.SegmentLayout[i].SetIsLocked(!gen.SegmentLayout[i].IsLocked);
+                    break;
+                }
+
+                if (gen.SegmentLayout[i].IsLocked) { continue; }
+
+                if (Event.current.shift)
+                {
+                    //rotate
+                    foreach (Transform child in gen.transform)
+                    {
+                        if (child.TryGetComponent(out TrainCarSegment segment))
+                        {
+                            if (segment.Index != i) { continue; }
+                            segment.FlipSegmentContents();
+                        }
+                    }
+                    break;
+                }
 
                 SetNextValidSegmentIndex(gen, i);
                 Regenerate(gen);
@@ -104,9 +127,9 @@ public class TrainCarGeneratorEditor : Editor
         //is section handle
         TryResetIndecies(gen, i);
 
-        int nextSegmentIndex = gen.SegmentLayout[i] + 1;
+        int nextSegmentIndex = gen.SegmentLayout[i].SegmentIndex + 1;
         int indexer = 0;
-        while ((i + gen.DefinedSegments[(nextSegmentIndex % gen.DefinedSegments.Length)].Length) >= gen.RequiredSegmentCount && indexer < 100)
+        while (indexer > 100 || (i + gen.DefinedSegments[(nextSegmentIndex % gen.DefinedSegments.Length)].Length) >= gen.RequiredSegmentCount || IsInvalidSelection(gen, i, nextSegmentIndex))
         {
             nextSegmentIndex++;
             indexer++;
@@ -114,24 +137,37 @@ public class TrainCarGeneratorEditor : Editor
 
         nextSegmentIndex %= gen.DefinedSegments.Length;
 
-        gen.SegmentLayout[i] = nextSegmentIndex;
+        gen.SegmentLayout[i].SetIndex(nextSegmentIndex);
         for (int j = 1; j < gen.DefinedSegments[nextSegmentIndex].Length; j++)
         {
             TryResetIndecies(gen, i + j);
-            gen.SegmentLayout[i + j] = int.MinValue;
+            gen.SegmentLayout[i + j].SetIndex(int.MinValue);
         }
+    }
+
+    private bool IsInvalidSelection(TrainCarGenerator gen, int i, int nextSegmentIndex)
+    {
+        for (int j = 1; j < gen.DefinedSegments[(nextSegmentIndex % gen.DefinedSegments.Length)].Length; j++)
+        {
+            if (gen.SegmentLayout[i + j].IsLocked)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private static void TryResetIndecies(TrainCarGenerator gen, int i)
     {
-        for (int j = 1; j < gen.DefinedSegments[gen.SegmentLayout[i]].Length; j++)
+        for (int j = 1; j < gen.DefinedSegments[gen.SegmentLayout[i].SegmentIndex].Length; j++)
         {
-            if (!gen.SegmentLayout[i + j].Equals(int.MinValue))
+            if (!gen.SegmentLayout[i + j].SegmentIndex.Equals(int.MinValue))
             {
                 TryResetIndecies(gen, i + j);
             }
 
-            gen.SegmentLayout[i + j] = 0;
+            gen.SegmentLayout[i + j].SetIndex(0);
         }
     }
 
@@ -140,6 +176,7 @@ public class TrainCarGeneratorEditor : Editor
         Vector3 handlePosition = PositionFromHandleIndex(gen, startPosition, i);
 
         Color handleColor = Color.white;
+        if (i != _handleIds.Length - 1 && gen.SegmentLayout[i].IsLocked) { handleColor = Color.red; }
         if (nearestHandleId == _handleIds[i]) { handleColor = Color.yellow; }
         Handles.color = handleColor;
 
@@ -147,7 +184,7 @@ public class TrainCarGeneratorEditor : Editor
         {
             Handles.ConeHandleCap(_handleIds[i], handlePosition, Quaternion.Euler(0, 0, 0), 0.25f, eventType);
         }
-        else if (!gen.SegmentLayout[i].Equals(int.MinValue))
+        else if (!gen.SegmentLayout[i].SegmentIndex.Equals(int.MinValue))
         {
             Handles.RectangleHandleCap(_handleIds[i], handlePosition, Quaternion.Euler(0, 90, 0), 0.1f, eventType);
         }

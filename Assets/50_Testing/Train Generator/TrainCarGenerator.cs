@@ -5,28 +5,40 @@ using UnityEngine;
 public class TrainCarGenerator : MonoBehaviour
 {
     public float MinimumSegementLength;
-    public TrainCarSegement[] DefinedSegments;
-    [HideInInspector] public int[] SegmentLayout;
+    public TrainCarSegmentSetup[] DefinedSegments;
+    [HideInInspector] public TrainCarSegmentSetting[] SegmentLayout;
     public float TrainCarLength = 3;
 
     [SerializeField] GameObject _carEndSegment;
+
 
     public int RequiredSegmentCount { get { return Mathf.CeilToInt(TrainCarLength / MinimumSegementLength); } }
     
     public void RegenerateCar()
     {
+        if (SegmentLayout == null)
+        {
+            SegmentLayout = new TrainCarSegmentSetting[0];
+        }
+
         int difference = (RequiredSegmentCount - 1) - SegmentLayout.Length;
         if (difference != 0)
         {
-            List<int> tempSegments = new List<int>(SegmentLayout);
+            List<TrainCarSegmentSetting> tempSegments = new List<TrainCarSegmentSetting>(SegmentLayout);
             for (int i = 0; i < Mathf.Abs(difference); i++)
             {
                 if (difference > 0)
                 {
-                    tempSegments.Add(0);
+                    tempSegments.Add(new TrainCarSegmentSetting(0));
                 } 
                 else
                 {
+                    if (tempSegments[tempSegments.Count - 1].IsLocked)
+                    {
+                        TrainCarLength += Mathf.Abs(difference) - i;
+                        break;
+                    }
+
                     tempSegments.RemoveAt(tempSegments.Count - 1);
                 }
             }
@@ -35,6 +47,14 @@ public class TrainCarGenerator : MonoBehaviour
 
         for (int i = transform.childCount - 1; i >= 0; i--)
         {
+            if (transform.GetChild(i).TryGetComponent(out TrainCarSegment segment))
+            {
+                if (SegmentLayout.Length > segment.Index && SegmentLayout[segment.Index].IsLocked)
+                {
+                    continue;
+                }
+            }
+
             DestroyImmediate(transform.GetChild(i).gameObject);
         }
 
@@ -50,11 +70,17 @@ public class TrainCarGenerator : MonoBehaviour
                     endSegment.transform.localScale = Vector3.Scale(endSegment.transform.localScale, new Vector3(1, 1, -1));
                 }
                 continue;
-            } 
+            }
+            
+            if (SegmentLayout[i-1].IsLocked) { continue; }
 
-            if (!SegmentLayout[i - 1].Equals(int.MinValue))
+            if (!SegmentLayout[i - 1].SegmentIndex.Equals(int.MinValue))
             {
-                Instantiate(DefinedSegments[SegmentLayout[i - 1]].SegmentPrefab, position, Quaternion.identity, transform);
+                GameObject obj = Instantiate(DefinedSegments[SegmentLayout[i - 1].SegmentIndex].SegmentPrefab, position, Quaternion.identity, transform);
+                if (obj.TryGetComponent(out TrainCarSegment segment))
+                {
+                    segment.SetIndex(i - 1);
+                }
                 continue;
             }
         }
