@@ -102,18 +102,6 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
-    "com.unity.probuilder": {
-      "version": "6.0.5",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {
-        "com.unity.shadergraph": "17.0.3",
-        "com.unity.modules.imgui": "1.0.0",
-        "com.unity.modules.physics": "1.0.0",
-        "com.unity.settings-manager": "1.0.3"
-      },
-      "url": "https://packages.unity.com"
-    },
     "com.unity.render-pipelines.core": {
       "version": "17.1.0",
       "depth": 1,
@@ -160,13 +148,6 @@
     "com.unity.searcher": {
       "version": "4.9.3",
       "depth": 2,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://packages.unity.com"
-    },
-    "com.unity.settings-manager": {
-      "version": "2.1.0",
-      "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
@@ -230,6 +211,15 @@
         "com.unity.modules.jsonserialize": "1.0.0"
       },
       "url": "https://packages.unity.com"
+    },
+    "com.yeaulian.shadergraph-utilities": {
+      "version": "https://github.com/Overworked-Collective/Shader-Graph-Utilities.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.shadergraph": "14.0.11"
+      },
+      "hash": "59d17d575013b2e05b9b9296f5d7e41860e74bb2"
     },
     "com.unity.modules.accessibility": {
       "version": "1.0.0",
