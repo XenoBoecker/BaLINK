@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -16,6 +17,7 @@ namespace Custom
 
         private const float SLIDER_PADDING_PERCENTAGE = 0.05f;
         private const float SLIDER_HANDLE_RECT_SIZE = 15;
+        private const float FRAME_SELECTOR_HANDLE_RECT_SIZE = 20;
 
         private bool isDraggingSlider = false;
 
@@ -130,6 +132,8 @@ namespace Custom
                 frameSelectionRect.position + new Vector2(GetXPosFromIndex(animation, ref frameSelectionRect, animation.AnimationLength - 1), frameSelectionRect.height * 0.5f)
                 );
 
+            List<Rect> frameSelectionRects = new List<Rect>();
+
             for (int i = 0; i < animation.AnimationLength; i++)
             {
                 float positionX = GetXPosFromIndex(animation, ref frameSelectionRect, i);
@@ -140,6 +144,15 @@ namespace Custom
                 frameSelectionRect.position + new Vector2(positionX, frameSelectionRect.height * 0.75f));
 
                 Handles.color = new Color(0.15f, 0.15f, 0.15f, 1f);
+
+                Rect frameSelectorRect = new Rect(
+                new Vector2(
+                    GetXPosFromIndex(animation, ref frameSelectionRect, i) - FRAME_SELECTOR_HANDLE_RECT_SIZE * 0.5f,
+                    frameSelectionRect.y + frameSelectionRect.height * 0.5f - FRAME_SELECTOR_HANDLE_RECT_SIZE * 0.5f),
+                new Vector2(FRAME_SELECTOR_HANDLE_RECT_SIZE, FRAME_SELECTOR_HANDLE_RECT_SIZE));
+
+                frameSelectionRects.Add(frameSelectorRect);
+
                 Handles.DrawSolidDisc((frameSelectionRect.position + new Vector2(positionX, frameSelectionRect.height * 0.5f)), Vector3.forward, 3);
             }
 
@@ -155,6 +168,16 @@ namespace Custom
             if (Event.current.type == EventType.MouseDown)
             {
                 isDraggingSlider = handleRect.Contains(Event.current.mousePosition);
+
+                for (int i = 0; i < frameSelectionRects.Count; i++)
+                {
+                    if (frameSelectionRects[i].Contains(Event.current.mousePosition))
+                    {
+                        _currentFrame = i;
+                        _animator.SetAnimationStateToFrame(_currentFrame);
+                        break;
+                    }
+                }
             }
 
             if (Event.current.type == EventType.MouseDrag && isDraggingSlider)
@@ -226,6 +249,11 @@ namespace Custom
         private bool ShouldBeDrawn<T>(ToggleableField<T> field)
         {
             return field != null;
+        }
+
+        public void DoEffect()
+        {
+            throw new NotImplementedException();
         }
     }
 }

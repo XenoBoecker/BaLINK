@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Custom
 {
     [AddComponentMenu("Custom/Animator")]
-    public class Animator : MonoBehaviour
+    public class Animator : MonoBehaviour, IGraphEffectable
     {
         [SerializeField] private int _startingFrame;
         [SerializeField] private bool _loopAnimation;
@@ -64,6 +64,19 @@ namespace Custom
 
             bool hit = Physics.Raycast(new Ray(transform.position, direction), distance, _visibilityMask);
             return !hit;
+        }
+
+        public void DoEffect()
+        {
+            Debug.Log(gameObject.name);
+
+            //NextFrame();
+            //throw new NotImplementedException();
+        }
+
+        public string GetEffectName()
+        {
+            return "Move to Next Frame";
         }
     }
 }
