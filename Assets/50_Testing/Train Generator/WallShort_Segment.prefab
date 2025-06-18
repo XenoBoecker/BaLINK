@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 8623581512123039731}
   - component: {fileID: 6404597318240175737}
   - component: {fileID: 7854230620323985641}
+  - component: {fileID: 4669408912524591757}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Untagged
@@ -172,6 +173,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &4669408912524591757
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5737821262723269858}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4352602704719719870, guid: 38b8490f426e5af48b9ababd7b0ee31a, type: 3}
 --- !u!1 &7081214072802238462
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,4 +415,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbca44eb03f96464ea3beeca439032f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Index: 0
+  _index: 0
+  _flipableObjects: {fileID: 0}
