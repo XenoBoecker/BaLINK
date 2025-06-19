@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 
 public class SelectionMenu<T>
@@ -10,10 +11,10 @@ public class SelectionMenu<T>
     public Vector2 SingleSelectionSize => _singleSelectionSize;
     public T[] Options => _options;
 
-    public SelectionMenu(Vector2 position, Vector2 singleSelectionSize, T[] options)
+    public SelectionMenu(Vector2 position, T[] options)
     {
         _position = position;
-        _singleSelectionSize = singleSelectionSize;
+        _singleSelectionSize = new Vector2(200, EditorGUIUtility.singleLineHeight);
         _options = options;
     }
 }

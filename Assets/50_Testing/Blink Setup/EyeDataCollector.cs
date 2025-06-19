@@ -20,7 +20,7 @@ public class EyeDataCollector : MonoBehaviour
     {
         List<NormalizedLandmarks> faces = _faceLandmarkerRunner.GetResult().faceLandmarks;
 
-        if (faces.Count == 0) { return default; }
+        if (faces == null || faces.Count == 0) { return default; }
 
         List<NormalizedLandmark> landmarks = faces[0].landmarks;
 

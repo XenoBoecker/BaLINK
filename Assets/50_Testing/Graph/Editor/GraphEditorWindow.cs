@@ -75,8 +75,24 @@ public class GraphEditorWindow : EditorWindow
 
         if (Event.current.type == EventType.MouseUp)
         {
-            //_isDraggingNode = false;
+            _isDraggingNode = false;
             _isDraggingWindow = false;
+        }
+
+        if (Event.current.type == EventType.MouseDown && Event.current.button == 1)
+        {
+            if (_selectedNodeId != -1)
+            {
+                //try add element to node
+                /*_newElementTargetNodeId = _selectedNodeId;
+                _newElementSelectionMenu = new SelectionMenu<Type>(Event.current.mousePosition);*/
+            }
+            else
+            {
+                _newNodeSelectionMenu = new SelectionMenu<NodeType>(Event.current.mousePosition,
+                    new NodeType[] { NodeType.Entry, NodeType.Condition, NodeType.Effect });
+                HandleUtility.Repaint();
+            }
         }
 
         if (Event.current.type == EventType.MouseDown && Event.current.button == 2 && _window.IsFocused())
@@ -118,13 +134,6 @@ public class GraphEditorWindow : EditorWindow
                     NodeSelectionMade((NodeType)selection);
                     break;
             }
-        }
-
-        if (Event.current.type == EventType.MouseDown && Event.current.button == 1)
-        {
-            _newNodeSelectionMenu = new SelectionMenu<NodeType>(Event.current.mousePosition, new Vector2(200, PROPERTY_HEIGHT), 
-                new NodeType[] { NodeType.Entry, NodeType.Condition, NodeType.Effect });
-            HandleUtility.Repaint();
         }
     }
     private void NodeSelectionMade(NodeType selection)
@@ -181,7 +190,14 @@ public class GraphEditorWindow : EditorWindow
                 menu.SingleSelectionSize);
 
             Handles.DrawSolidRectangleWithOutline(optionRect, BODY_COLOR, OUTLINE_COLOR);
-            EditorGUI.LabelField(optionRect, menu.Options[i].ToString());
+
+            string text = menu.Options[i].ToString();
+/*            if (typeof(T) == typeof(Type))
+            {
+                text = ((Type)(object)menu.Options[i]).Name;
+            }*/
+
+            EditorGUI.LabelField(optionRect, text);
 
             if (Event.current.type == EventType.MouseDown && Event.current.button == 0 && optionRect.Contains(Event.current.mousePosition))
             {
@@ -209,7 +225,8 @@ public class GraphEditorWindow : EditorWindow
         EditorGUI.indentLevel = 0;
 
         int cursorHeight = 0;
-        float nodeHeight = PROPERTY_HEIGHT * (GetNodeHeight(node) + 1);
+        float nodeHeight = PROPERTY_HEIGHT * (GetNodeHeight(node) + 2);
+
         nodeHeight += (node.IsUnfolded ? ELEMENT_PADDING * 0.5f : 0.0f);
         Rect nodeRect = new Rect(node.Position + _graph.Center, new Vector2(PROPERTY_WIDTH, nodeHeight));
 
@@ -221,11 +238,13 @@ public class GraphEditorWindow : EditorWindow
         }
 
         Rect headerRect = ReserveRect(node, nodeRect, ref cursorHeight);
-        HandleSelectNode(node, headerRect);
+        HandleSelectNode(node, nodeRect);
         HandleNodeDragged(node, headerRect);
-
         DrawNodeHeader(headerRect, node);
 
+        Rect useBlinkingSettingRect = ReserveRect(node, nodeRect, ref cursorHeight);
+        node.SetWaitForBlink(EditorGUI.Toggle(useBlinkingSettingRect, "Use Blinking",node.WaitForBlink));
+        
         if (node.Type != NodeType.Entry)
         {
             Rect connectorInRect = new Rect(nodeRect.position + new Vector2(-CONNECTOR_RECT_SIZE, 0), Vector2.one * CONNECTOR_RECT_SIZE);
@@ -500,7 +519,7 @@ public class GraphEditorWindow : EditorWindow
 
         _draggedInObject = draggedInObject;
         _newElementTargetNodeId = node.Id;
-        _newElementSelectionMenu = new SelectionMenu<Type>(Event.current.mousePosition, new Vector2(200, PROPERTY_HEIGHT), selectedNodeElementTypes.ToArray());
+        _newElementSelectionMenu = new SelectionMenu<Type>(Event.current.mousePosition, selectedNodeElementTypes.ToArray());
         HandleUtility.Repaint();
     }
     private bool HandleDeleteNode(GraphNode node)

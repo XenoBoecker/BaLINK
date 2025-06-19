@@ -3,22 +3,23 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteInEditMode]
 public class Graph : MonoBehaviour
 {
     [SerializeField, HideInInspector] private int _entryNodeId;
-    [SerializeField, HideInInspector] private GraphNode[] _nodes = new GraphNode[0];
+    [SerializeField] private GraphNode[] _nodes = new GraphNode[0];
     [SerializeField, HideInInspector] private Vector2 _center;
 
     public Vector2 Center => _center;
     public int EntryNodeId => _entryNodeId;
     public GraphNode[] Nodes => _nodes;
 
+    private GraphNode _currentNode;
+    private bool _usingWaitForBlink = true;
+
     private void OnEnable()
     {
         InputEvents.onPlayerBlinked += OnPlayerBlinked;
     }
-
     private void OnDisable()
     {
         InputEvents.onPlayerBlinked -= OnPlayerBlinked;   
@@ -29,43 +30,56 @@ public class Graph : MonoBehaviour
         EnterGraph();
     }
 
-    private void OnPlayerBlinked()
+    private void Update()
     {
-        throw new NotImplementedException();
+        if (!_usingWaitForBlink)
+        {
+            //do node always returns true when node is of type effect so it will trigger the effect once and then move to the next node.
+            //if it's a condition node then DoNode will return true when conditons are met 
+            if (_currentNode.ConditionElementConditionsMet())
+            {
+                MoveToNextNode();
+            }
+        }
     }
 
     private void EnterGraph()
     {
-        int nextNodeId = -1;
+        //get the endtry node
         if (!TryGetNodeFromId(_entryNodeId, out GraphNode entryNode)) { return; }
-        nextNodeId = entryNode.NextNodeId;
+        _currentNode = entryNode;
+        _usingWaitForBlink = _currentNode.WaitForBlink;
+    }
 
-        if (TryGetNodeFromId(nextNodeId, out GraphNode foundNode))
+    private void MoveToNextNode()
+    {
+        if (TryGetNodeFromId(_currentNode.NextNodeId, out GraphNode foundNode))
         {
-            StarGraphExecution(foundNode);
-        } 
-        else
-        {
-            Debug.LogWarning($"Entry node of graph({gameObject.name}) does not connect to a node so the graph will not execute");
+            _currentNode = foundNode;
+            _usingWaitForBlink = _currentNode.WaitForBlink;
+            foundNode.TriggerAllEffectElements();
+
+            if (foundNode.Type == NodeType.Effect)
+            {
+                if (TryGetNodeFromId(_currentNode.NextNodeId, out GraphNode nextNode))
+                {
+                    if (nextNode.Type != NodeType.Effect)
+                    {
+                        MoveToNextNode();
+                        return;
+                    }
+                }
+            }
         }
     }
 
-    private void StarGraphExecution(GraphNode node)
+    private void OnPlayerBlinked()
     {
-        switch (node.Type)
+        if (!_usingWaitForBlink) { return; }
+
+        if (_currentNode.ConditionElementConditionsMet())
         {
-            case NodeType.Effect:
-                foreach (NodeElement element in node.Elements)
-                {
-                    element.TriggerEffect();
-                }
-                break;
-
-            case NodeType.Condition:
-                break;
-
-            default:
-                throw new Exception($"Node type({node.Type}) is not defined");
+            MoveToNextNode();
         }
     }
 

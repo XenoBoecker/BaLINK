@@ -3,7 +3,7 @@ using UnityEngine;
 
 [NodeElement(NodeType.Effect)]
 [RequireComponent(typeof(Custom.Animator))]
-public class MoveToFrame : Effect
+public class MoveToSpecificFrame : Effect
 {
     [SerializeField] int _targetFrame;
     public float TargetFrame => _targetFrame;
@@ -18,7 +18,6 @@ public class MoveToFrame : Effect
 
     public override string GetName()
     {
-        return "Move to Frame";
-
+        return "Move to Specific Frame";
     }
 }

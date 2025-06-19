@@ -61,9 +61,6 @@ namespace Custom
                 if (_currentFrame > animation.AnimationLength - 1) { _currentFrame = animation.AnimationLength - 1; }
             }
 
-            Rect isViewRequiredToggleRect = EditorGUILayout.GetControlRect();
-            animation.GetAnimationFrameFromIndex(_currentFrame).AnimateOnlyIfInView = EditorGUI.Toggle(isViewRequiredToggleRect, "Animate Only If In View", animation.GetAnimationFrameFromIndex(_currentFrame).AnimateOnlyIfInView);
-
             GUILayoutUtility.GetRect(position.width, 10);
 
             if (ShouldBeDrawn(frame.Position))

@@ -9,13 +9,15 @@ public class GraphNode
     [SerializeField] private NodeType _type;
     [SerializeField] private Vector2 _position;
     [SerializeReference] private int _nextNodeId;
+    [SerializeField] private bool _waitForBlink = true;
     [SerializeReference] private NodeElement[] _elements;
-    [SerializeReference] private bool _isUnfolded;
+    [SerializeReference] private bool _isUnfolded = true;
 
     public int Id => _id;
     public NodeType Type => _type;
     public Vector2 Position => _position;
     public int NextNodeId => _nextNodeId;
+    public bool WaitForBlink => _waitForBlink;
     public NodeElement[] Elements => _elements;
     public bool IsUnfolded => _isUnfolded;
 
@@ -59,5 +61,32 @@ public class GraphNode
     public void SetUnfolded(bool value)
     {
         _isUnfolded = value;
+    }
+
+    public void SetWaitForBlink(bool value)
+    {
+        _waitForBlink = value;
+    }
+
+    public void TriggerAllEffectElements()
+    {
+        if (Type != NodeType.Effect) { return; }
+        foreach (NodeElement element in Elements)
+        {
+            element.TriggerEffect();
+        }
+    }
+
+    public bool ConditionElementConditionsMet()
+    {
+        if (Type != NodeType.Condition) { return true; }
+        foreach (NodeElement element in Elements)
+        {
+            if (!element.ConditionIsMet())
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }

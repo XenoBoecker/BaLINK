@@ -30,14 +30,11 @@ namespace Custom
         public bool InitializeAnimation()
         {
             _animation = new Animation(4);
-
             return true;
         }
 
         public void NextFrame()
         {
-            if (!IsVisible(_renderer) && _animation.GetAnimationFrameFromIndex(_currentFrame).AnimateOnlyIfInView) { return; }
-
             _currentFrame++;
             if (_currentFrame >= _animation.AnimationLength)
             {
