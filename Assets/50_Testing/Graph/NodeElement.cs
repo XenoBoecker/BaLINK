@@ -13,12 +13,12 @@ public abstract class NodeElement : ScriptableObject
     {
         _referencedObject = referencedObject;
     }
-
-    public abstract bool ConditionIsMet();
-    public abstract string GetName();
-
     public void SetUnfolded(bool value)
     {
         _isUnfolded = value;
     }
+
+    public abstract bool ConditionIsMet();
+    public abstract void TriggerEffect();
+    public abstract string GetName();
 }

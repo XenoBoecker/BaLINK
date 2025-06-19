@@ -10,12 +10,14 @@ public class GraphNode
     [SerializeField] private Vector2 _position;
     [SerializeReference] private int _nextNodeId;
     [SerializeReference] private NodeElement[] _elements;
+    [SerializeReference] private bool _isUnfolded;
 
     public int Id => _id;
     public NodeType Type => _type;
     public Vector2 Position => _position;
     public int NextNodeId => _nextNodeId;
     public NodeElement[] Elements => _elements;
+    public bool IsUnfolded => _isUnfolded;
 
     public GraphNode(NodeType type, int id)
     {
@@ -42,8 +44,20 @@ public class GraphNode
         _elements = tempElement.ToArray();
     }
 
+    public void RemoveElement(NodeElement element)
+    {
+        List<NodeElement> tempElement = new List<NodeElement>(Elements);
+        tempElement.Remove(element);
+        _elements = tempElement.ToArray();
+    }
+
     public void SetNextNodeId(int nodeId)
     {
         _nextNodeId = nodeId;
+    }
+
+    public void SetUnfolded(bool value)
+    {
+        _isUnfolded = value;
     }
 }

@@ -1,3 +1,4 @@
+using GameEvents;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,18 +6,87 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class Graph : MonoBehaviour
 {
-    [SerializeField] private GraphNode[] _nodes = new GraphNode[0];
+    [SerializeField, HideInInspector] private int _entryNodeId;
+    [SerializeField, HideInInspector] private GraphNode[] _nodes = new GraphNode[0];
+    [SerializeField, HideInInspector] private Vector2 _center;
+
+    public Vector2 Center => _center;
+    public int EntryNodeId => _entryNodeId;
     public GraphNode[] Nodes => _nodes;
 
-    public void AddNewNode(NodeType selection, Vector2 position)
+    private void OnEnable()
     {
-        List<GraphNode> tempNodes = new List<GraphNode>(_nodes);
+        InputEvents.onPlayerBlinked += OnPlayerBlinked;
+    }
 
+    private void OnDisable()
+    {
+        InputEvents.onPlayerBlinked -= OnPlayerBlinked;   
+    }
+
+    private void Start()
+    {
+        EnterGraph();
+    }
+
+    private void OnPlayerBlinked()
+    {
+        throw new NotImplementedException();
+    }
+
+    private void EnterGraph()
+    {
+        int nextNodeId = -1;
+        if (!TryGetNodeFromId(_entryNodeId, out GraphNode entryNode)) { return; }
+        nextNodeId = entryNode.NextNodeId;
+
+        if (TryGetNodeFromId(nextNodeId, out GraphNode foundNode))
+        {
+            StarGraphExecution(foundNode);
+        } 
+        else
+        {
+            Debug.LogWarning($"Entry node of graph({gameObject.name}) does not connect to a node so the graph will not execute");
+        }
+    }
+
+    private void StarGraphExecution(GraphNode node)
+    {
+        switch (node.Type)
+        {
+            case NodeType.Effect:
+                foreach (NodeElement element in node.Elements)
+                {
+                    element.TriggerEffect();
+                }
+                break;
+
+            case NodeType.Condition:
+                break;
+
+            default:
+                throw new Exception($"Node type({node.Type}) is not defined");
+        }
+    }
+
+    public void AddNewNode(NodeType nodeType, Vector2 position)
+    {
         int id = GetUniqueNodeId();
-        GraphNode node = new GraphNode(selection, id, position);
+        GraphNode node = new GraphNode(nodeType, id, position);
 
+        List<GraphNode> tempNodes = new List<GraphNode>(_nodes);
         tempNodes.Add(node);
         _nodes = tempNodes.ToArray();
+
+        if (nodeType == NodeType.Entry)
+        {
+            if (_entryNodeId != -1)
+            {
+                RemoveNodeById(_entryNodeId);
+            }
+
+            _entryNodeId = node.Id;
+        } 
     }
 
     private int GetUniqueNodeId()
@@ -48,5 +118,25 @@ public class Graph : MonoBehaviour
             }
         }
         return false;
+    }
+
+    public void RemoveNodeById(int id)
+    {
+        List<GraphNode> tempNodes = new List<GraphNode>(Nodes);
+        for (int i = 0; i < Nodes.Length; i++)
+        {
+            if (Nodes[i].Id == id)
+            {
+                tempNodes.Remove(Nodes[i]);
+                break;
+            }
+        }
+
+        _nodes = tempNodes.ToArray();
+    }
+
+    public void ChangeGraphCenter(Vector2 change)
+    {
+        _center += change;
     }
 }

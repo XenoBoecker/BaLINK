@@ -1,11 +1,12 @@
 using UnityEngine;
 
 [NodeElement(NodeType.Effect)]
-public class TestEffect : NodeElement
+public class TestEffect : Effect
 {
-    public override bool ConditionIsMet()
+
+    public override void TriggerEffect()
     {
-        return true;
+        throw new System.NotImplementedException();
     }
 
     public override string GetName()

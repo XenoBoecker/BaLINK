@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [NodeElement(NodeType.Condition)]
-public class TestCondition : NodeElement
+public class TestCondition : Condition
 {
     [SerializeField] bool _value;
 
