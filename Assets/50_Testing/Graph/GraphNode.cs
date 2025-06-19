@@ -5,19 +5,29 @@ using UnityEngine;
 [System.Serializable]
 public class GraphNode
 {
-    [SerializeField] private Vector2 _position;
+    [SerializeReference] private int _id;
     [SerializeField] private NodeType _type;
-    [SerializeReference] private GraphNode _nextNode;
+    [SerializeField] private Vector2 _position;
+    [SerializeReference] private int _nextNodeId;
+    [SerializeReference] private NodeElement[] _elements;
 
+    public int Id => _id;
     public NodeType Type => _type;
     public Vector2 Position => _position;
-    public Component[] NodeComponents;
-    [SerializeReference] public List<Condition> conditions = new List<Condition>();
+    public int NextNodeId => _nextNodeId;
+    public NodeElement[] Elements => _elements;
 
-    public GraphNode(NodeType type) 
+    public GraphNode(NodeType type, int id)
     {
         _type = type;
-        NodeComponents = new Component[0];
+        _id = id;
+        _elements = new NodeElement[0];
+        _nextNodeId = -1;
+    }
+
+    public GraphNode(NodeType type, int id, Vector2 position) : this(type, id)
+    {
+        _position = position;
     }
 
     public void ChangePosition(Vector2 change)
@@ -25,16 +35,15 @@ public class GraphNode
         _position += change;
     }
 
-    public void AddComponent(Component component)
+    public void AddElement(NodeElement element)
     {
-        List<Component> tempComponents = new List<Component>(NodeComponents);
-        tempComponents.Add(component);
-        NodeComponents = tempComponents.ToArray();
+        List<NodeElement> tempElement = new List<NodeElement>(Elements);
+        tempElement.Add(element);
+        _elements = tempElement.ToArray();
     }
 
-    public enum NodeType
+    public void SetNextNodeId(int nodeId)
     {
-        EFFECT,
-        CONDITION,
+        _nextNodeId = nodeId;
     }
 }

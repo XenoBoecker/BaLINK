@@ -1,22 +1,23 @@
 using System;
 using UnityEngine;
 
-public class TestCondition2 : Condition
+[NodeElement(NodeType.Condition)]
+public class RangeCondition : NodeElement
 {
-    [SerializeField] float _floatValue;
+    [SerializeField] float _range;
 
     public override void Initialize(GameObject referencedObject)
     {
         base.Initialize(referencedObject);
     }
-
+    
     public override bool ConditionIsMet()
     {
         throw new NotImplementedException();
     }
 
-    public override string GetConditionName()
+    public override string GetName()
     {
-        return "Test Condition";
+        return "Range Condition";
     }
 }

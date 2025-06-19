@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Custom
 {
     [AddComponentMenu("Custom/Animator")]
-    public class Animator : MonoBehaviour, IGraphEffectable
+    public class Animator : MonoBehaviour
     {
         [SerializeField] private int _startingFrame;
         [SerializeField] private bool _loopAnimation;

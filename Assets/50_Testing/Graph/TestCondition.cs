@@ -1,7 +1,8 @@
 using System;
 using UnityEngine;
 
-public class TestCondition : Condition
+[NodeElement(NodeType.Condition)]
+public class TestCondition : NodeElement
 {
     [SerializeField] bool _value;
 
@@ -15,7 +16,7 @@ public class TestCondition : Condition
         throw new NotImplementedException();
     }
 
-    public override string GetConditionName()
+    public override string GetName()
     {
         return "Test Condition";
     }
