@@ -10,8 +10,8 @@ using UnityEngine.Events;
 [RequireComponent(typeof(EyeDataCollector))]
 public class BlinkDetection : MonoBehaviour
 {
-    [SerializeField] float _eyesClosedThreshold = 0.2f;
-    [SerializeField] float _eyesOpenedThreshold = 0.35f;
+    [SerializeField] float _eyesClosedThreshold = -100f;
+    [SerializeField] float _eyesOpenedThreshold = 100f;
     
     private bool _eyesClosed = false;
 

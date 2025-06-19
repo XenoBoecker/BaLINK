@@ -30,14 +30,11 @@ namespace Custom
         public bool InitializeAnimation()
         {
             _animation = new Animation(4);
-
             return true;
         }
 
         public void NextFrame()
         {
-            if (!IsVisible(_renderer) && _animation.GetAnimationFrameFromIndex(_currentFrame).AnimateOnlyIfInView) { return; }
-
             _currentFrame++;
             if (_currentFrame >= _animation.AnimationLength)
             {
@@ -64,6 +61,19 @@ namespace Custom
 
             bool hit = Physics.Raycast(new Ray(transform.position, direction), distance, _visibilityMask);
             return !hit;
+        }
+
+        public void DoEffect()
+        {
+            Debug.Log(gameObject.name);
+
+            //NextFrame();
+            //throw new NotImplementedException();
+        }
+
+        public string GetEffectName()
+        {
+            return "Move to Next Frame";
         }
     }
 }
