@@ -11,7 +11,7 @@ PrefabInstance:
     - target: {fileID: 6524144738298428595, guid: b02f31635bf682544961725d17913d86, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 5434389919555824592, guid: 25b79177545bb4b4184df2a2f130dacd, type: 3}
+      objectReference: {fileID: -6118516203650336899, guid: 25b79177545bb4b4184df2a2f130dacd, type: 3}
     - target: {fileID: 7380942578872330668, guid: b02f31635bf682544961725d17913d86, type: 3}
       propertyPath: m_Name
       value: SuitcaseGreen
@@ -19,7 +19,7 @@ PrefabInstance:
     - target: {fileID: 7456571829660669713, guid: b02f31635bf682544961725d17913d86, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 5434389919555824592, guid: 25b79177545bb4b4184df2a2f130dacd, type: 3}
+      objectReference: {fileID: -6118516203650336899, guid: 25b79177545bb4b4184df2a2f130dacd, type: 3}
     - target: {fileID: 7864886422225679126, guid: b02f31635bf682544961725d17913d86, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9038333418438527097, guid: b02f31635bf682544961725d17913d86, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b7772aa093621dd49af186250189f641, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
