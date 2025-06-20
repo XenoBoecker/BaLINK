@@ -14,7 +14,7 @@ public class PlayerInteractor : MonoBehaviour
     InputSystem_Actions _inputActions;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private void Start()
+    private void Awake()
     {
         _inputActions = new InputSystem_Actions();
         _inputActions.Player.Enable(); // Enable the player input actions
