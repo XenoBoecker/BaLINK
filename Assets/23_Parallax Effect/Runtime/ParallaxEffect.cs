@@ -29,7 +29,7 @@ public class ParallaxEffect : MonoBehaviour
             for (int j = 0; j < numberOfObjects; j++)
             {
                 objects.Add(Instantiate(_paralaxElements[i].Object, holder.transform));
-                objects[j].transform.localPosition = new Vector3(_paralaxElements[i].ObjectLength * j, 0, _paralaxElements[i].Depth);
+                objects[j].transform.localPosition = new Vector3(_paralaxElements[i].ObjectLength * j, _paralaxElements[i].HeightOffset, _paralaxElements[i].DepthOffset);
             }
 
             _paralaxGroups[i] = new ParallaxGroup(objects.ToArray(), _paralaxElements[i]);
