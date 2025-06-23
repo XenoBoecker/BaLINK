@@ -1,9 +1,24 @@
 fileFormatVersion: 2
-guid: 3fcc0e7dfe520c340aaeec881b412287
+guid: e334dc7ca07702f4bb9acc89a205bbd4
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M-TrainCap
+    second: {fileID: 2100000, guid: fd24e19a6b536e546939486595cc7dd1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M-TrainCeilingsWalls
+    second: {fileID: 2100000, guid: 530495778d679694a9ab31319b3cdc77, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M-TrainWallWindow
+    second: {fileID: 2100000, guid: 2f62c4700d87c0f43a14d2d94fc1d150, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
