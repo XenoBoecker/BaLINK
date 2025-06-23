@@ -10,8 +10,8 @@ public class ReplaceObjectInteractable : Interactable
         // Ensure the initial state is set correctly
         if (startObject != null && objectAfterInteraction != null)
         {
-            startObject.SetActive(true); // Ensure the original object is active at the start
-            objectAfterInteraction.SetActive(false); // Ensure the new object is inactive at the start
+            startObject.SetActive(true);
+            objectAfterInteraction.SetActive(false);
         }
         else
         {
@@ -20,11 +20,12 @@ public class ReplaceObjectInteractable : Interactable
     }
     public override void Interact()
     {
-        base.Interact();
         if (startObject != null && objectAfterInteraction != null)
         {
-            startObject.SetActive(false); // Deactivate the original object
-            objectAfterInteraction.SetActive(true); // Activate the new object
+            startObject.SetActive(false);
+            objectAfterInteraction.SetActive(true);
+
+            _interactedCount++;
         }
         else
         {
