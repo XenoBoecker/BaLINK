@@ -17,7 +17,7 @@ public class DoorButton : Interactable
 
             door.SetActive(!door.activeSelf);
 
-            _interactedCount++;
+            InteractedSuccessfully();
         }
         else
         {

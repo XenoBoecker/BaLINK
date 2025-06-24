@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Interactable : MonoBehaviour
@@ -6,8 +7,17 @@ public class Interactable : MonoBehaviour
     public int interactedCount => _interactedCount;
     public bool HasBeenInteractedWithThisGame => _interactedCount > 0;
 
+    public event Action OnInteracted;
+
     public virtual void Interact()
     {
 
+    }
+
+    protected void InteractedSuccessfully()
+    {
+        _interactedCount++;
+
+        OnInteracted?.Invoke();
     }
 }

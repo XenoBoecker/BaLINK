@@ -25,7 +25,7 @@ public class ReplaceObjectInteractable : Interactable
             startObject.SetActive(false);
             objectAfterInteraction.SetActive(true);
 
-            _interactedCount++;
+            InteractedSuccessfully();
         }
         else
         {

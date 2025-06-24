@@ -11,7 +11,7 @@ public class Pickup : Interactable
             playerInteractor.EquipItem(GetComponent<EquippedItem>());
             this.enabled = false;
 
-            _interactedCount++;
+            InteractedSuccessfully();
         }
         else
         {
