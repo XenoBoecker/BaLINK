@@ -4,17 +4,7 @@ public class DoorButton : Interactable
 {
     [SerializeField] private GameObject door; // Reference to the door GameObject
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    [SerializeField] private bool onlyInteractableOnce;
 
     public override void Interact()
     {
@@ -22,6 +12,11 @@ public class DoorButton : Interactable
 
         if (door != null)
         {
+            if(onlyInteractableOnce && HasBeenInteractedWithThisGame)
+            {
+                return; // Exit if the button can only be interacted with once
+            }
+
             // Toggle the door's active state when the button is pressed
             door.SetActive(!door.activeSelf);
         }
