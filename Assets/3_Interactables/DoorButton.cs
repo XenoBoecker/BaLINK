@@ -2,28 +2,22 @@ using UnityEngine;
 
 public class DoorButton : Interactable
 {
-    [SerializeField] private GameObject door; // Reference to the door GameObject
+    [SerializeField] private GameObject door;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    [SerializeField] private bool onlyInteractableOnce;
 
     public override void Interact()
     {
-        base.Interact();
-
         if (door != null)
         {
-            // Toggle the door's active state when the button is pressed
+            if(onlyInteractableOnce && HasBeenInteractedWithThisGame)
+            {
+                return;
+            }
+
             door.SetActive(!door.activeSelf);
+
+            InteractedSuccessfully();
         }
         else
         {
