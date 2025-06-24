@@ -46,7 +46,7 @@ public class UIVersionNumber : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Version text component is not assigned.");
+            Debug.LogWarning("Version text component is not assigned.", this);
         }
     }
 
