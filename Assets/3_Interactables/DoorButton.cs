@@ -2,23 +2,22 @@ using UnityEngine;
 
 public class DoorButton : Interactable
 {
-    [SerializeField] private GameObject door; // Reference to the door GameObject
+    [SerializeField] private GameObject door;
 
     [SerializeField] private bool onlyInteractableOnce;
 
     public override void Interact()
     {
-        base.Interact();
-
         if (door != null)
         {
             if(onlyInteractableOnce && HasBeenInteractedWithThisGame)
             {
-                return; // Exit if the button can only be interacted with once
+                return;
             }
 
-            // Toggle the door's active state when the button is pressed
             door.SetActive(!door.activeSelf);
+
+            InteractedSuccessfully();
         }
         else
         {

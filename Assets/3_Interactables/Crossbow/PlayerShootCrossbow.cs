@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class PlayerShootCrossbow : EquippedItem
 {
-    [SerializeField] private float shootRange = 10f; // Range within which the player can shoot
     [SerializeField] private ArrowDestroyObjectOnCollision crossbowBoltPrefab; // Prefab for the crossbow bolt
     [SerializeField] private Transform shootPoint; // Point from which the crossbow bolt is shot
     [SerializeField] private float boltSpeed = 20f; // Speed of the crossbow bolt
