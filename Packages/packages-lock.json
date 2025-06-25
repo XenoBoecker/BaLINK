@@ -1,5 +1,22 @@
 {
   "dependencies": {
+    "com.bouncypantaloons.better-attributes": {
+      "version": "https://github.com/Overworked-Collective/Better-Attributes.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.bouncypantaloons.editor-tooling": "1.0.0",
+        "com.unity.visualscripting": "1.0.0"
+      },
+      "hash": "65c443e4a926d161e12fcb635753e7f357544054"
+    },
+    "com.bouncypantaloons.editor-tooling": {
+      "version": "https://github.com/Overworked-Collective/Editor-Tooling.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "a401ff1538b63b51e266c234348eb41bc2025855"
+    },
     "com.github.homuler.mediapipe": {
       "version": "file:com.github.homuler.mediapipe",
       "depth": 0,
