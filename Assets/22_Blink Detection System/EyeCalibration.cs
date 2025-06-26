@@ -26,11 +26,13 @@ public class EyeCalibration : MonoBehaviour
         {
             _eyesOpenCalibrated = true;
             _openedData = _eyeDataCollector.GetEyeData();
+            Debug.Log("Eyes Opened Calibrated: " + _openedData.EyeAspectRatioLeft + ", " + _openedData.EyeAspectRatioRight);
         } 
         else if (!_eyesClosedCalibrated && Input.GetKeyDown(KeyCode.Space))
         {
             _eyesClosedCalibrated = true;
             _closedData = _eyeDataCollector.GetEyeData();
+            Debug.Log("Eyes Closed Calibrated: " + _closedData.EyeAspectRatioLeft + ", " + _closedData.EyeAspectRatioRight);
         } 
         else if (_eyesOpenCalibrated && _eyesClosedCalibrated && !_finishedCalibrating)
         {

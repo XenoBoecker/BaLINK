@@ -34,7 +34,17 @@ public class BombUI : MonoBehaviour
     void LateUpdate()
     {
         float timeLeft = bomb.GetCurrentTimeLeft();
-        timerText.text = timeLeft > 0 ? timeLeft.ToString("F2") : "0.00";
+
+        // timer text in minutes and seconds
+        if (timeLeft <= 0)
+        {
+            timerText.text = "0.00"; // Display 0.00 when time is up
+            return;
+        }
+        int minutes = Mathf.FloorToInt(timeLeft / 60);
+        int seconds = Mathf.FloorToInt(timeLeft % 60);
+
+        timerText.text = $"{minutes:00}:{seconds:00}"; // Format as MM:SS.MS
     }
 
     public void SetBomb(Bomb newBomb)
