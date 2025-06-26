@@ -7,45 +7,47 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M-Mountain2
-  m_Shader: {fileID: -6465566751694194690, guid: fb5780ebcb7cffe448cde92e0ca95061, type: 3}
-  m_Parent: {fileID: -876546973899608171, guid: fb5780ebcb7cffe448cde92e0ca95061, type: 3}
-  m_ModifiedSerializedProperties: 18
+  m_Name: m_Tube
+  m_Shader: {fileID: -6465566751694194690, guid: 0cf1e838f4a33e641ada913d2345e88b, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2000
-  stringTagMap:
-    RenderType: Opaque
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
   disabledShaderPasses:
   - MOTIONVECTORS
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _BaseColor:
-        m_Texture: {fileID: 2800000, guid: 403b3511f3f756b468258f3012e611c9, type: 3}
+    - _SampleTexture2D_50ab1b541e5043b894876b1c98707ae3_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 771ccd44e92e71249b04277482db2376, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _MetallicSmoothness:
-        m_Texture: {fileID: 2800000, guid: 21ef1af2452cc60498e97319861b1690, type: 3}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _Normal:
-        m_Texture: {fileID: 2800000, guid: 61042d1891f5d9744b6c9f54b78ede1a, type: 3}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AlphaClip: 0
-    - _AlphaToMask: 0
-    - _QueueControl: 1
+    - _QueueControl: 0
+    - _QueueOffset: 0
     m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &4928932510895006225
+--- !u!114 &3492298954355839112
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
