@@ -3,9 +3,9 @@
 [System.Serializable]
 public class TrainCarSegmentSetting
 {
-    private int _segmentIndex;
-    private bool _isFlipped;
-    private bool _isLocked;
+    [SerializeField] private int _segmentIndex;
+    [SerializeField] private bool _isFlipped;
+    [SerializeField] private bool _isLocked;
 
     public int SegmentIndex => _segmentIndex;
     public bool IsFlipped => _isFlipped;

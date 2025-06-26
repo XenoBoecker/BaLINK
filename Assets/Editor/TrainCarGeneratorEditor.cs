@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEngine;
 
 [CustomEditor(typeof(TrainCarGenerator))]
-public class TrainCarGeneratorEditor : Editor
+public class TrainCarGeneratorEditor : OverrideInspector
 {
     private int[] _handleIds;
     private int _selectedHandleId = -1;
@@ -98,13 +98,7 @@ public class TrainCarGeneratorEditor : Editor
                     Vector3 position = startPosition + Vector3.forward * gen.TrainCarLength;
 
                     float change = HandleUtility.CalcLineTranslation(_mousePosPrev, Event.current.mousePosition, position, Vector3.forward);
-                    gen.TrainCarLength += change;
-
-                    if (gen.TrainCarLength < 1)
-                    {
-                        gen.TrainCarLength = 1;
-                    }
-
+                    gen.SetTrainCarLength(gen.TrainCarLength + change);
                     Regenerate(gen);
                     continue;
                 }

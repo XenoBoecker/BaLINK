@@ -1,23 +1,32 @@
+using BetterAttributes;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 [SelectionBase]
 public class TrainCarGenerator : MonoBehaviour
 {
-    [HideInInspector] public TrainCarSegmentSetting[] SegmentLayout;
-    public float MinimumSegementLength;
-    public TrainCarSegmentSetup[] DefinedSegments;
-    public float TrainCarLength = 3;
 
-    [SerializeField] GameObject _carEndSegment;
+    [SerializeField, HideInInspector] private TrainCarSegmentSetting[] _segmentLayout;
+    [SerializeField] private float _trainCarLength = 1;
+    [SerializeField] private float _minimumSegementLength = 1;
+    [SerializeField] private TrainCarSegmentSetup[] _definedSegments;
+    [SerializeField] private GameObject _carEndSegment;
+
+    public TrainCarSegmentSetting[] SegmentLayout => _segmentLayout;
+    public float MinimumSegementLength => _minimumSegementLength;
+    public TrainCarSegmentSetup[] DefinedSegments => _definedSegments;
+    public float TrainCarLength => _trainCarLength;
+
 
     public int RequiredSegmentCount { get { return Mathf.CeilToInt(TrainCarLength / MinimumSegementLength); } }
-    
+
+    [Button("Regenerate Car")]
     public void RegenerateCar()
     {
         if (SegmentLayout == null)
         {
-            SegmentLayout = new TrainCarSegmentSetting[0];
+            _segmentLayout = new TrainCarSegmentSetting[0];
         }
 
         int difference = (RequiredSegmentCount - 1) - SegmentLayout.Length;
@@ -34,14 +43,14 @@ public class TrainCarGenerator : MonoBehaviour
                 {
                     if (tempSegments[tempSegments.Count - 1].IsLocked)
                     {
-                        TrainCarLength += Mathf.Abs(difference) - i;
+                        _trainCarLength += Mathf.Abs(difference) - i;
                         break;
                     }
 
                     tempSegments.RemoveAt(tempSegments.Count - 1);
                 }
             }
-            SegmentLayout = tempSegments.ToArray();
+            _segmentLayout = tempSegments.ToArray();
         }
 
         for (int i = transform.childCount - 1; i >= 0; i--)
@@ -83,6 +92,18 @@ public class TrainCarGenerator : MonoBehaviour
                 }
                 continue;
             }
+        }
+    }
+
+    public void SetTrainCarLength(float newLength)
+    {
+        if (newLength < 1)
+        {
+            _trainCarLength = 1;
+        } 
+        else
+        {
+            _trainCarLength = newLength;
         }
     }
 }
