@@ -5,6 +5,8 @@ public class Hacks : MonoBehaviour
 {
     [SerializeField] private bool _enableHacks = false;
 
+    [SerializeField] KeyCode blinkKey = KeyCode.E;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -16,7 +18,7 @@ public class Hacks : MonoBehaviour
     {
         if(!_enableHacks) return;
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(blinkKey))
         {
             InputEvents.PlayerBlinked();
         }
