@@ -86,7 +86,7 @@ public class TrainCarGeneratorEditor : OverrideInspector
             }
         }
 
-        if (Event.current.type == EventType.MouseDrag)
+        if (Event.current.type == EventType.MouseDrag && Event.current.button == 0)
         {
             for (int i = 0; i < _handleIds.Length; i++)
             {
@@ -105,6 +105,11 @@ public class TrainCarGeneratorEditor : OverrideInspector
             }
 
             _mousePosPrev = Event.current.mousePosition;
+        }
+
+        if (Event.current.type == EventType.MouseUp && Event.current.button == 0)
+        {
+            _selectedHandleId = -1;
         }
 
         HandleUtility.Repaint();

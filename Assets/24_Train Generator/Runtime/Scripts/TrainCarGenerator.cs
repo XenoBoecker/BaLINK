@@ -4,19 +4,31 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [SelectionBase]
+[AddComponentMenu("Custom/Train Generator")]
 public class TrainCarGenerator : MonoBehaviour
 {
-
     [SerializeField, HideInInspector] private TrainCarSegmentSetting[] _segmentLayout;
     [SerializeField] private float _trainCarLength = 1;
     [SerializeField] private float _minimumSegementLength = 1;
-    [SerializeField] private TrainCarSegmentSetup[] _definedSegments;
+
+    [Header("Setgment Settings")]
     [SerializeField] private GameObject _carEndSegment;
+    [SerializeField] private TrainCarSegmentSetup[] _definedSegments;
+
+    [Header("Reflection Probe Settings")]
+    [SerializeField] private int _numberOfReflectionProbes = 1;
+    [SerializeField] private float _probeWidth = 5;
+    [SerializeField] private float _probeHeight = 5;
+    [SerializeField] private GameObject _reflectionProbePrefab;
+    [SerializeField, HideInInspector] private ReflectionProbeSetup[] _reflectionProbes;
 
     public TrainCarSegmentSetting[] SegmentLayout => _segmentLayout;
     public float MinimumSegementLength => _minimumSegementLength;
+    public float ProbeWidth => _probeWidth;
+    public float ProbeHeight => _probeHeight;
     public TrainCarSegmentSetup[] DefinedSegments => _definedSegments;
     public float TrainCarLength => _trainCarLength;
+    public int NumberOfReflectionProbes => _numberOfReflectionProbes;
 
 
     public int RequiredSegmentCount { get { return Mathf.CeilToInt(TrainCarLength / MinimumSegementLength); } }
@@ -46,11 +58,36 @@ public class TrainCarGenerator : MonoBehaviour
                         _trainCarLength += Mathf.Abs(difference) - i;
                         break;
                     }
-
                     tempSegments.RemoveAt(tempSegments.Count - 1);
                 }
             }
             _segmentLayout = tempSegments.ToArray();
+        }
+
+        if (NumberOfReflectionProbes != _reflectionProbes.Length)
+        {
+            int differenceInRelfectionProbeCount = NumberOfReflectionProbes - _reflectionProbes.Length;
+            List<ReflectionProbeSetup> tempProbes = new List<ReflectionProbeSetup>(_reflectionProbes);
+
+            for (int i = 0; i < Mathf.Abs(differenceInRelfectionProbeCount); i++)
+            {
+                if (differenceInRelfectionProbeCount > 0)
+                {
+                    tempProbes.Add(Instantiate(_reflectionProbePrefab, transform).GetComponent<ReflectionProbeSetup>());
+                } 
+                else
+                {
+                    DestroyImmediate(tempProbes[tempProbes.Count - 1].gameObject);
+                    tempProbes.RemoveAt(tempProbes.Count - 1);
+                }
+            }
+
+            _reflectionProbes = tempProbes.ToArray();
+
+            for (int i = 0; i < _reflectionProbes.Length; i++)
+            {
+                _reflectionProbes[i].SetProbeBounds(this, i);
+            }
         }
 
         for (int i = transform.childCount - 1; i >= 0; i--)
@@ -61,6 +98,10 @@ public class TrainCarGenerator : MonoBehaviour
                 {
                     continue;
                 }
+            }
+            if (transform.GetChild(i).TryGetComponent(out ReflectionProbeSetup probe))
+            {
+                continue;
             }
 
             DestroyImmediate(transform.GetChild(i).gameObject);
