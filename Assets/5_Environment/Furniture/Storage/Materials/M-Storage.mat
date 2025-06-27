@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M-SleepingSeat
+  m_Name: M-Storage
   m_Shader: {fileID: -6465566751694194690, guid: fb5780ebcb7cffe448cde92e0ca95061, type: 3}
   m_Parent: {fileID: -876546973899608171, guid: fb5780ebcb7cffe448cde92e0ca95061, type: 3}
   m_ModifiedSerializedProperties: 16
@@ -26,27 +26,26 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseColor:
-        m_Texture: {fileID: 2800000, guid: 73d8a43d199896a47901131c21d007df, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0949da0ee1266844d8f378cd4ce605d6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicSmoothness:
-        m_Texture: {fileID: 2800000, guid: df3549d5364e26e4eb22fc90ea9eb608, type: 3}
+        m_Texture: {fileID: 2800000, guid: 41607083ed5330541a87daf511d5767f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal:
-        m_Texture: {fileID: 2800000, guid: 7f5a62ff7320b574f96489b6abab700c, type: 3}
+        m_Texture: {fileID: 2800000, guid: efa427e7a1a8b7445a7d8ff081fa7aa3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
     - _AlphaClip: 0
     - _AlphaToMask: 0
-    - _QueueControl: 1
     - _Smoothness: 0.5
     m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &174536868301235124
+--- !u!114 &6373536375185958170
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
