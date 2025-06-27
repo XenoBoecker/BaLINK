@@ -1,10 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
-<<<<<<<< HEAD:Assets/5_Environment/TrainSegments/Textures/M-TrainCeilingsWalls.mat
---- !u!114 &-6095191393405449425
-========
---- !u!114 &-3970517245248019668
->>>>>>>> c7bed18 (added bar and Storage shelves):Assets/5_Environment/Furniture/BarSegments/Material/M-Bar.mat
+--- !u!114 &-8858628790974825936
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -24,11 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<<< HEAD:Assets/5_Environment/TrainSegments/Textures/M-TrainCeilingsWalls.mat
-  m_Name: M-TrainCeilingsWalls
-========
-  m_Name: M-Bar
->>>>>>>> c7bed18 (added bar and Storage shelves):Assets/5_Environment/Furniture/BarSegments/Material/M-Bar.mat
+  m_Name: M-Storage
   m_Shader: {fileID: -6465566751694194690, guid: fb5780ebcb7cffe448cde92e0ca95061, type: 3}
   m_Parent: {fileID: -876546973899608171, guid: fb5780ebcb7cffe448cde92e0ca95061, type: 3}
   m_ModifiedSerializedProperties: 16
@@ -47,34 +39,22 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseColor:
-<<<<<<<< HEAD:Assets/5_Environment/TrainSegments/Textures/M-TrainCeilingsWalls.mat
-        m_Texture: {fileID: 2800000, guid: db76b237af3b53147ad2d6917174015e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 871057e7cd390d64ea3a009106f40e58, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicSmoothness:
-        m_Texture: {fileID: 2800000, guid: 5b13cded4f6336740926520b187b47d7, type: 3}
+        m_Texture: {fileID: 2800000, guid: 437880c181fc2eb47a6dc502b48d7532, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal:
-        m_Texture: {fileID: 2800000, guid: 472b30c224a44e14fa77eb2f59830488, type: 3}
-========
-        m_Texture: {fileID: 2800000, guid: 39ed1e18869243446889a3d29b94e72e, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MetallicSmoothness:
-        m_Texture: {fileID: 2800000, guid: fda0eec3c0c6c8542b7793fa084bdef7, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Normal:
-        m_Texture: {fileID: 2800000, guid: f0888149fd2ef144bb090fef110deb2b, type: 3}
->>>>>>>> c7bed18 (added bar and Storage shelves):Assets/5_Environment/Furniture/BarSegments/Material/M-Bar.mat
+        m_Texture: {fileID: 2800000, guid: d9ab7dd5ed9170b4b87bd20d6ce2addb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
     - _AlphaClip: 0
     - _AlphaToMask: 0
-    - _QueueControl: 1
+    - _Smoothness: 0.5
     m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &2095001875692562630
+--- !u!1001 &768710961811265758
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -9,44 +9,36 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 109548330735278114, guid: b02f31635bf682544961725d17913d86, type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 109548330735278114, guid: b02f31635bf682544961725d17913d86, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-<<<<<<<< HEAD:Assets/5_Environment/Decoration/Cutlery/Glass Wine.prefab
-      objectReference: {fileID: 2100000, guid: c419d5b6539beaf4a8b06dea5578b926, type: 2}
-    - target: {fileID: 109548330735278114, guid: b02f31635bf682544961725d17913d86, type: 3}
-      propertyPath: 'm_Materials.Array.data[1]'
-      value: 
-      objectReference: {fileID: 2100000, guid: c88ea4f2c87f76d4da4b98151aa9b520, type: 2}
+<<<<<<<< HEAD:Assets/5_Environment/Exterior/Mountain 2.prefab
+      objectReference: {fileID: 2100000, guid: b1ce028174a87af4d8aa286c781c6f9a, type: 2}
     - target: {fileID: 2440847855154656317, guid: b02f31635bf682544961725d17913d86, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 7217865798264933982, guid: aae158aaed5220a41bc8a8c56d98f074, type: 3}
+      objectReference: {fileID: 1130899797529701635, guid: 5972f626736f5014f960378ae9cd0e42, type: 3}
     - target: {fileID: 3455845720114481512, guid: b02f31635bf682544961725d17913d86, type: 3}
       propertyPath: m_Name
-      value: Glass Wine
+      value: Mountain 2
 ========
       objectReference: {fileID: 2100000, guid: 8894ae1d6f7efce4289b0fb3be46c009, type: 2}
     - target: {fileID: 2440847855154656317, guid: b02f31635bf682544961725d17913d86, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 3346592938441212785, guid: 3ef95a4ee8aa3f344b67c16f6b2654ec, type: 3}
+      objectReference: {fileID: 9216332681551751006, guid: 3ef95a4ee8aa3f344b67c16f6b2654ec, type: 3}
     - target: {fileID: 3455845720114481512, guid: b02f31635bf682544961725d17913d86, type: 3}
       propertyPath: m_Name
-      value: Bar End L Segment
->>>>>>>> c7bed18 (added bar and Storage shelves):Assets/5_Environment/Furniture/BarSegments/Bar End L Segment.prefab
+      value: Bar Middle Segment
+>>>>>>>> c7bed18 (added bar and Storage shelves):Assets/5_Environment/Furniture/BarSegments/Bar Middle Segment.prefab
       objectReference: {fileID: 0}
     - target: {fileID: 5928173999153272178, guid: b02f31635bf682544961725d17913d86, type: 3}
       propertyPath: m_Mesh
       value: 
-<<<<<<<< HEAD:Assets/5_Environment/Decoration/Cutlery/Glass Wine.prefab
-      objectReference: {fileID: 7217865798264933982, guid: aae158aaed5220a41bc8a8c56d98f074, type: 3}
+<<<<<<<< HEAD:Assets/5_Environment/Exterior/Mountain 2.prefab
+      objectReference: {fileID: 1130899797529701635, guid: 5972f626736f5014f960378ae9cd0e42, type: 3}
 ========
-      objectReference: {fileID: 3346592938441212785, guid: 3ef95a4ee8aa3f344b67c16f6b2654ec, type: 3}
->>>>>>>> c7bed18 (added bar and Storage shelves):Assets/5_Environment/Furniture/BarSegments/Bar End L Segment.prefab
+      objectReference: {fileID: 9216332681551751006, guid: 3ef95a4ee8aa3f344b67c16f6b2654ec, type: 3}
+>>>>>>>> c7bed18 (added bar and Storage shelves):Assets/5_Environment/Furniture/BarSegments/Bar Middle Segment.prefab
     - target: {fileID: 6143730791746583328, guid: b02f31635bf682544961725d17913d86, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -61,11 +53,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6143730791746583328, guid: b02f31635bf682544961725d17913d86, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 6143730791746583328, guid: b02f31635bf682544961725d17913d86, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 6143730791746583328, guid: b02f31635bf682544961725d17913d86, type: 3}
       propertyPath: m_LocalRotation.y
@@ -77,7 +69,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6143730791746583328, guid: b02f31635bf682544961725d17913d86, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 6143730791746583328, guid: b02f31635bf682544961725d17913d86, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
