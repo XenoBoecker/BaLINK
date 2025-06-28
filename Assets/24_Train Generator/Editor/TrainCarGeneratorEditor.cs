@@ -62,6 +62,7 @@ public class TrainCarGeneratorEditor : OverrideInspector
                 {
                     //toggle locked state
                     gen.SegmentLayout[i].SetIsLocked(!gen.SegmentLayout[i].IsLocked);
+                    EditorUtility.SetDirty(gen);
                     break;
                 }
 
@@ -77,6 +78,7 @@ public class TrainCarGeneratorEditor : OverrideInspector
                             if (segment.Index != i) { continue; }
                             segment.FlipSegmentContents();
                         }
+                        EditorUtility.SetDirty(gen);
                     }
                     break;
                 }

@@ -83,11 +83,6 @@ public class TrainCarGenerator : MonoBehaviour
             }
 
             _reflectionProbes = tempProbes.ToArray();
-
-            for (int i = 0; i < _reflectionProbes.Length; i++)
-            {
-                _reflectionProbes[i].SetProbeBounds(this, i);
-            }
         }
 
         for (int i = transform.childCount - 1; i >= 0; i--)
@@ -133,6 +128,12 @@ public class TrainCarGenerator : MonoBehaviour
                 }
                 continue;
             }
+        }
+
+        for (int i = 0; i < _reflectionProbes.Length; i++)
+        {
+            if (_reflectionProbes[i] == null) { continue; }
+            _reflectionProbes[i].SetProbeBounds(this, i);
         }
     }
 
