@@ -13,8 +13,7 @@ public class PlayerHasInteractedWithObject : Condition
             _interactable = ReferencedObject.GetComponent<Interactable>();
         }
 
-        //return _invertCondition != _interactable.HasBeenInteractedWithThisGame;
-        return true;
+        return _invertCondition != _interactable.HasBeenInteractedWithThisGame;
     }
 
     public override string GetName()
