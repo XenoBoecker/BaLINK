@@ -229,8 +229,9 @@ public class GraphEditorWindow : EditorWindow
 
         nodeHeight += (node.IsUnfolded ? ELEMENT_PADDING * 0.5f : 0.0f);
         Rect nodeRect = new Rect(node.Position + _graph.Center, new Vector2(PROPERTY_WIDTH, nodeHeight));
-
-        Handles.DrawSolidRectangleWithOutline(nodeRect, BODY_COLOR, (node.Id == _selectedNodeId ? SELECTED_COLOR : OUTLINE_COLOR));
+        
+        Color _outlineColor = GetOutlineColor(node);
+        Handles.DrawSolidRectangleWithOutline(nodeRect, BODY_COLOR, _outlineColor);
 
         if (OnObjectDraggedIn(nodeRect, out GameObject draggedInObject))
         {
@@ -243,8 +244,8 @@ public class GraphEditorWindow : EditorWindow
         DrawNodeHeader(headerRect, node);
 
         Rect useBlinkingSettingRect = ReserveRect(node, nodeRect, ref cursorHeight);
-        node.SetWaitForBlink(EditorGUI.Toggle(useBlinkingSettingRect, "Use Blinking",node.WaitForBlink));
-        
+        node.SetWaitForBlink(EditorGUI.Toggle(useBlinkingSettingRect, "Use Blinking", node.WaitForBlink));
+
         if (node.Type != NodeType.Entry)
         {
             Rect connectorInRect = new Rect(nodeRect.position + new Vector2(-CONNECTOR_RECT_SIZE, 0), Vector2.one * CONNECTOR_RECT_SIZE);
@@ -265,6 +266,22 @@ public class GraphEditorWindow : EditorWindow
             DrawElement(node, node.Elements[i], nodeRect, ref cursorHeight);
         }
     }
+
+    private Color GetOutlineColor(GraphNode node)
+    {
+        Color _outlineColor = OUTLINE_COLOR;
+        if (_graph.CurrentNode == node)
+        {
+            _outlineColor = Color.yellow;
+        }
+        else if (node.Id == _selectedNodeId)
+        {
+            _outlineColor = SELECTED_COLOR;
+        }
+
+        return _outlineColor;
+    }
+
     private void DrawElement(GraphNode node, NodeElement element, Rect nodeRect, ref int cursorHeight)
     {
         EditorGUI.indentLevel = 0;
@@ -272,7 +289,21 @@ public class GraphEditorWindow : EditorWindow
 
         Rect elementRect = ReserveRect(node, nodeRect, ref cursorHeight, ELEMENT_PADDING);
         elementRect.height *= GetElementHeight(element);
-        Handles.DrawSolidRectangleWithOutline(elementRect, BODY_COLOR, OUTLINE_COLOR);
+
+        Color _outlineColor = OUTLINE_COLOR;
+        if (node == _graph.CurrentNode && node.Type == NodeType.Condition)
+        {
+            if (element.ConditionIsMet())
+            {
+                _outlineColor = Color.green;
+            } 
+            else
+            {
+                _outlineColor = Color.red;
+            }
+        }
+
+        Handles.DrawSolidRectangleWithOutline(elementRect, BODY_COLOR, _outlineColor);
 
         Rect foldoutRect = new Rect(elementRect.position, new Vector2(elementRect.width, PROPERTY_HEIGHT));
         string name = $"({element.ReferencedObject.name}) {element.ToString()}";

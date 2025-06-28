@@ -13,6 +13,7 @@ public class Graph : MonoBehaviour
     public Vector2 Center => _center;
     public int EntryNodeId => _entryNodeId;
     public GraphNode[] Nodes => _nodes;
+    public GraphNode CurrentNode => _currentNode;
 
     private GraphNode _currentNode;
     private bool _usingWaitForBlink = true;
