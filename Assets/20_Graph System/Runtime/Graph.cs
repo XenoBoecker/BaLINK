@@ -53,12 +53,13 @@ public class Graph : MonoBehaviour
 
     private void MoveToNextNode(int nextNodeIdIndex)
     {
+        _currentNode.ExitNode();
         if (TryGetNodeFromId(_currentNode.NextNodeIds[nextNodeIdIndex], out GraphNode foundNode))
         {
             _currentNode = foundNode;
             _usingWaitForBlink = _currentNode.WaitForBlink;
             foundNode.TriggerAllEffectElements();
-
+/*
             if (foundNode.Type == NodeType.Effect)
             {
                 if (TryGetNodeFromId(_currentNode.NextNodeIds[0], out GraphNode nextNode))
@@ -70,7 +71,7 @@ public class Graph : MonoBehaviour
                         return;
                     }
                 }
-            }
+            }*/
         }
     }
 

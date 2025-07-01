@@ -17,6 +17,11 @@ public class WaitForXSeconds : Condition
         return _invertCondition != (Mathf.Abs(_startTime - Time.time) >= _delay);
     }
 
+    public override void OnExitNode()
+    {
+        _startTime = -1;
+    }
+
     public override string GetName()
     {
         return "Wait For X Seconds";

@@ -6,4 +6,6 @@ public abstract class Effect : NodeElement
     {
         throw new System.NotImplementedException();
     }
+
+    public override void OnExitNode() {}
 }
