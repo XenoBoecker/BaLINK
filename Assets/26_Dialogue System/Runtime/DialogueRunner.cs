@@ -18,9 +18,8 @@ public class DialogueRunner : MonoBehaviour
     {
         if (sequence.TryGetDialogueLine(dialogueLineIndex, out DialogueLine line))
         {
-            ShowDialogueText(line.Text);
+            ShowDialogueText(line, 0);
             StartCoroutine(ClearDialogueText(line.Clip.length));
-
             _source.clip = line.Clip;
             _source.Play();
         }
@@ -32,8 +31,16 @@ public class DialogueRunner : MonoBehaviour
         _text.text = "";
     }
 
-    private void ShowDialogueText(string text)
+    private void ShowDialogueText(DialogueLine line, int index)
     {
-        _text.text = text;
+        _text.text = line.Segments[index].Text;
+        StartCoroutine(WaitForNextDialogueSegment(line, index));
+    }
+
+    IEnumerator WaitForNextDialogueSegment(DialogueLine line, int currentIndex)
+    {
+        if (currentIndex + 1 >= line.Segments.Length) { yield break; }
+        yield return new WaitUntil(() => { return (_source.time/line.Clip.length >= line.Segments[currentIndex + 1].PercentAlongAudioToShow); });
+        ShowDialogueText(line, currentIndex + 1);
     }
 }

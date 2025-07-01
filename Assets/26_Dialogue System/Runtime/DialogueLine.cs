@@ -3,10 +3,9 @@ using UnityEngine;
 [System.Serializable]
 public class DialogueLine
 {
-    [TextArea(1, 6)]
-    [SerializeField] private string _text;
     [SerializeField] private AudioClip _clip;
+    [SerializeField] private DialogueLineTextSegment[] _segments;
 
-    public string Text => _text;
+    public DialogueLineTextSegment[] Segments => _segments;
     public AudioClip Clip => _clip;
 }
