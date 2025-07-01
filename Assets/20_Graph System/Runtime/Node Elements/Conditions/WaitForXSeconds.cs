@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[NodeElement(NodeType.Condition)]
+[NodeElement(NodeType.Condition, NodeType.IfElse)]
 public class WaitForXSeconds : Condition
 {
     [SerializeField] private float _delay;

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[NodeElement(NodeType.Condition)]
+[NodeElement(NodeType.Condition, NodeType.IfElse)]
 [RequireComponent(typeof(PlayerDetectionRegion))]
 public class PlayerInRegion : Condition
 {

@@ -1,7 +1,7 @@
 using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
-[NodeElement(NodeType.Condition)]
+[NodeElement(NodeType.Condition, NodeType.IfElse)]
 public class PlayerInRange : Condition
 {
     [SerializeField] private float _distance;
