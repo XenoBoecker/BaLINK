@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-[NodeElement(NodeType.Condition)]
+[NodeElement(NodeType.Condition, NodeType.IfElse)]
 [RequireComponent(typeof(MeshRenderer))]
 public class PlayerLookingAtObject : Condition
 {
