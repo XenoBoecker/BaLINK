@@ -24,6 +24,11 @@ public class ParallaxGroup
             {
                 _objectsInGroup[i].transform.localPosition = Vector3.Scale(_objectsInGroup[i].transform.localPosition, new Vector3(0, 1, 1));
             }
+
+            if (_objectsInGroup[i].transform.localPosition.x < 0)
+            {
+                _objectsInGroup[i].transform.localPosition = new Vector3(_totalLength, _objectsInGroup[i].transform.localPosition.y, _objectsInGroup[i].transform.localPosition.z);
+            }
         }
     }
 }
