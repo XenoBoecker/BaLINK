@@ -40,7 +40,10 @@ public class Target : MonoBehaviour
             transform.Translate(Vector3.up * UnityEngine.Random.Range(-1f, 1f));
         }
 
-        path = new Transform[pathParent.childCount];
+        if(pathParent != null)
+        {
+            path = new Transform[pathParent.childCount];
+        }
 
         for (int i = 0; i < pathParent.childCount; i++)
         {
