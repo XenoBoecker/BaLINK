@@ -89,7 +89,6 @@ public class Target : MonoBehaviour
         Vector3 noHeightCurrentPathPoint = new Vector3(currentPathPoint.position.x, 0, currentPathPoint.position.z);
 
         float distPercentage = Vector3.Distance(noHeightPos, noHeightLastPathPoint) / Vector3.Distance(noHeightLastPathPoint, noHeightCurrentPathPoint);
-        print(distPercentage);
         float moveSpeed = targetManager.MoveSpeedCurve.Evaluate(distPercentage) * targetManager.MoveSpeed;
         if(moveSpeed < 0.1f)
         {
