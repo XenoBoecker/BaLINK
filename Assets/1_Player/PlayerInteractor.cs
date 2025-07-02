@@ -36,7 +36,8 @@ public class PlayerInteractor : MonoBehaviour
         {
             if(_equippedItem != null)
             {
-                DropEquippedItem();
+                print("Using equipped item...");
+                _equippedItem.UseItem(); // Use the currently equipped item
                 return; // Exit early if an item is used
             }
             else
@@ -47,16 +48,6 @@ public class PlayerInteractor : MonoBehaviour
                 {
                     interactable.Interact();
                 }
-            }
-        }
-
-        if (_inputActions.Player.Shoot.WasPressedThisFrame())
-        {
-            if (_equippedItem != null)
-            {
-                print("Using equipped item...");
-                _equippedItem.UseItem(); // Use the currently equipped item
-                return; // Exit early if an item is used
             }
         }
     }
@@ -80,18 +71,18 @@ public class PlayerInteractor : MonoBehaviour
 
     internal void EquipItem(EquippedItem item)
     {
+        if (_equippedItem != null)
+        {
+            Debug.LogWarning("Already equipped item");
+            return;
+        }
         StartCoroutine(EquipItemCoroutine(item));
     }
 
     private System.Collections.IEnumerator EquipItemCoroutine(EquippedItem item)
     {
-        if (_equippedItem != null)
-        {
-            DropEquippedItem();
-        }
 
         item.GetComponent<Collider>().enabled = false;
-        item.GetComponent<Rigidbody>().isKinematic = true;
 
         for (float i = 0; i < equipDuration; i+= Time.deltaTime)
         {
@@ -112,15 +103,10 @@ public class PlayerInteractor : MonoBehaviour
         Debug.Log("Equipped new item: " + _equippedItem.gameObject.name);
     }
 
-    void DropEquippedItem()
+    public void TakeAwayEquippedItem()
     {
-        if (_equippedItem != null)
-        {
-            Debug.Log("Dropping equipped item: " + _equippedItem.gameObject.name);
-            _equippedItem.GetComponent<Collider>().enabled = true; // Re-enable the collider
-            _equippedItem.GetComponent<Rigidbody>().isKinematic = false;
-            _equippedItem.transform.parent = null; // Unparent the item
-            _equippedItem = null; // Clear the equipped item reference
-        }
+        Destroy(_equippedItem.gameObject, 0.1f); // Destroy the equipped item
+        _equippedItem.transform.parent = null; // Unparent the item
+        _equippedItem = null; // Clear the equipped item reference
     }
 }
