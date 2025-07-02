@@ -3,15 +3,33 @@ using UnityEditor;
 using UnityEngine;
 
 [CustomEditor(typeof(TrainCarGenerator))]
-public class TrainCarGeneratorEditor : OverrideInspector
+public class TrainCarGeneratorEditor : Editor
 {
     private int[] _handleIds;
     private int _selectedHandleId = -1;
     private Vector2 _mousePosPrev;
 
+    private void OnEnable()
+    {
+        Undo.undoRedoPerformed += PostUndo;
+    }
+
+    private void OnDisable()
+    {
+        Undo.undoRedoPerformed -= PostUndo;
+    }
+    
+    private void PostUndo()
+    {
+        TrainCarGenerator gen = (target as TrainCarGenerator);
+        Regenerate(gen);
+    }
+
     private void OnSceneGUI()
     {
         TrainCarGenerator gen = (target as TrainCarGenerator);
+
+        Undo.RecordObject(gen, "Train Gen Edited");
 
         Vector3 lengthVector = Vector3.forward * gen.RequiredSegmentCount * gen.MinimumSegementLength;
         Vector3 startPosition = gen.transform.position;
