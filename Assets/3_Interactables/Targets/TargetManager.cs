@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class TargetManager : MonoBehaviour
 {
+    public static TargetManager Instance { get; private set; }
+
     [SerializeField] private bool debug_enable_spawning_from_start;
 
     [SerializeField] private Hitable targetPrefab;
@@ -34,8 +36,8 @@ public class TargetManager : MonoBehaviour
     [SerializeField] private float fastHoverSpeed = 2f;
 
 
-    public float MoveSpeed => isMovingFast? fastMoveSpeed : slowMoveSpeed;
-    public float HoverSpeed => isMovingFast? fastHoverSpeed : slowHoverSpeed;
+    public float MoveSpeed => isMovingFast ? fastMoveSpeed : slowMoveSpeed;
+    public float HoverSpeed => isMovingFast ? fastHoverSpeed : slowHoverSpeed;
 
     [SerializeField] private Vector3 moveDirection = Vector3.right;
     public Vector3 MoveDirection => moveDirection; // Expose the move direction to other scripts
@@ -50,21 +52,35 @@ public class TargetManager : MonoBehaviour
     bool isMovingFast = true;
     public bool IsMovingFast => isMovingFast; // Expose the moving speed to other scripts
 
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Debug.LogError("Multiple instances of TargetManager detected. Destroying this instance.", this);
+            Destroy(gameObject);
+            return;
+        }
+    }
+
     private void Update()
     {
-        if(!isSpawning && !debug_enable_spawning_from_start) 
-        { 
-            return; 
+        if (!isSpawning && !debug_enable_spawning_from_start)
+        {
+            return;
         }
 
-        if(targetsSpawnedCount >= targetCount)
+        if (targetsSpawnedCount >= targetCount)
         {
             return;
         }
 
         spawnTimer -= Time.deltaTime;
 
-        if(spawnTimer < 0 )
+        if (spawnTimer < 0)
         {
             spawnTimer = spawnTimeDelay;
 
