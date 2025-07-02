@@ -36,8 +36,7 @@ public class PlayerInteractor : MonoBehaviour
         {
             if(_equippedItem != null)
             {
-                print("Using equipped item...");
-                _equippedItem.UseItem(); // Use the currently equipped item
+                DropEquippedItem();
                 return; // Exit early if an item is used
             }
             else
@@ -48,6 +47,16 @@ public class PlayerInteractor : MonoBehaviour
                 {
                     interactable.Interact();
                 }
+            }
+        }
+
+        if (_inputActions.Player.Shoot.WasPressedThisFrame())
+        {
+            if (_equippedItem != null)
+            {
+                print("Using equipped item...");
+                _equippedItem.UseItem(); // Use the currently equipped item
+                return; // Exit early if an item is used
             }
         }
     }
@@ -78,12 +87,11 @@ public class PlayerInteractor : MonoBehaviour
     {
         if (_equippedItem != null)
         {
-            // Optionally, you can add logic to unequip the current item
-            Debug.Log("Unequipping current item: " + _equippedItem.gameObject.name);
-            _equippedItem = null; // Clear the currently equipped item
+            DropEquippedItem();
         }
 
         item.GetComponent<Collider>().enabled = false;
+        item.GetComponent<Rigidbody>().isKinematic = true;
 
         for (float i = 0; i < equipDuration; i+= Time.deltaTime)
         {
@@ -102,5 +110,17 @@ public class PlayerInteractor : MonoBehaviour
 
         _equippedItem = item; // Set the new equipped item
         Debug.Log("Equipped new item: " + _equippedItem.gameObject.name);
+    }
+
+    void DropEquippedItem()
+    {
+        if (_equippedItem != null)
+        {
+            Debug.Log("Dropping equipped item: " + _equippedItem.gameObject.name);
+            _equippedItem.GetComponent<Collider>().enabled = true; // Re-enable the collider
+            _equippedItem.GetComponent<Rigidbody>().isKinematic = false;
+            _equippedItem.transform.parent = null; // Unparent the item
+            _equippedItem = null; // Clear the equipped item reference
+        }
     }
 }

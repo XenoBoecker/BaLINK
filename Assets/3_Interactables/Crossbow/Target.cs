@@ -53,6 +53,8 @@ public class Target : MonoBehaviour
             return;
         }
 
+        if (targetManager == null) print("Noqweonioinw");
+
         float moveSpeed = targetManager.IsMovingFast ? targetManager.FastMoveSpeed : targetManager.SlowMoveSpeed;
 
         transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
