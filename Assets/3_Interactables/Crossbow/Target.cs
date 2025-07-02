@@ -20,10 +20,10 @@ public class Target : MonoBehaviour
 
     private void Awake()
     {
-        TargetManager targetManager = FindAnyObjectByType<TargetManager>();
+        targetManager = FindAnyObjectByType<TargetManager>();
         if (targetManager == null)
         {
-            Debug.LogError("TargetManager not found in the scene. Please ensure it is present.");
+            Debug.LogError("TargetManager not found in the scene. Please ensure it is present.", this);
             return;
         }
 
@@ -52,8 +52,6 @@ public class Target : MonoBehaviour
         {
             return;
         }
-
-        if (targetManager == null) print("Noqweonioinw");
 
         float moveSpeed = targetManager.IsMovingFast ? targetManager.FastMoveSpeed : targetManager.SlowMoveSpeed;
 
