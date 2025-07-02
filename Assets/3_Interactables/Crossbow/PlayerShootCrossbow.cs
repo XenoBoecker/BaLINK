@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerShootCrossbow : EquippedItem
 {
-    [SerializeField] private ArrowDestroyObjectOnCollision crossbowBoltPrefab; // Prefab for the crossbow bolt
+    [SerializeField] private CrossbowBolt crossbowBoltPrefab; // Prefab for the crossbow bolt
     [SerializeField] private Transform shootPoint; // Point from which the crossbow bolt is shot
     [SerializeField] private float boltSpeed = 20f; // Speed of the crossbow bolt
     [SerializeField] private float boltLifetime = 1f; // Lifetime of the crossbow bolt before it is destroyed
@@ -15,7 +15,7 @@ public class PlayerShootCrossbow : EquippedItem
     private void Shoot()
     {
         // Instantiate the crossbow bolt at the shoot point
-        ArrowDestroyObjectOnCollision bolt = Instantiate(crossbowBoltPrefab, shootPoint.position, shootPoint.rotation);
+        CrossbowBolt bolt = Instantiate(crossbowBoltPrefab, shootPoint.position, shootPoint.rotation);
 
         // Get the Rigidbody component of the bolt and set its velocity
         Rigidbody rb = bolt.GetComponent<Rigidbody>();

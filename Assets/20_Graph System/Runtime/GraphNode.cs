@@ -127,4 +127,12 @@ public class GraphNode
             return true;
         }
     }
+
+    internal void ExitNode()
+    {
+        foreach (NodeElement element in Elements)
+        {
+            element.OnExitNode();
+        }
+    }
 }
