@@ -1470,7 +1470,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1259208427
 Transform:
   m_ObjectHideFlags: 0
@@ -1493,7 +1493,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1259208426}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f3e63afaed05014da3a2de9dea8f0ad, type: 3}
   m_Name: 
@@ -1516,6 +1516,7 @@ MonoBehaviour:
     _elements:
     - {fileID: 1734650487}
     - {fileID: 1098835287}
+    - {fileID: 1847308668}
     _isUnfolded: 1
     _outputCount: 0
   - _id: 1685
@@ -1885,6 +1886,23 @@ MonoBehaviour:
   _connectedOutputIndex: 0
   _invertCondition: 0
   _delay: 4
+--- !u!114 &1847308668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4b8625fd2e6bb343a11b10c5a9fa17b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _referencedObject: {fileID: 5085141095151849037}
+  _player: {fileID: 0}
+  _isUnfolded: 1
+  _connectedOutputIndex: 0
+  _invertCondition: 0
 --- !u!1001 &1853431321
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2006,7 +2024,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1510799489097889037, guid: be00d13559e85e949b69ae3be80ecfb6, type: 3}
   m_PrefabInstance: {fileID: 5085141095151849036}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 5085141095151849037}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 70560a29b5693394a88b7fcd87169b3e, type: 3}
@@ -2748,6 +2766,11 @@ PrefabInstance:
       addedObject: {fileID: 1538468979}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be00d13559e85e949b69ae3be80ecfb6, type: 3}
+--- !u!1 &5085141095151849037 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1396480748163410017, guid: be00d13559e85e949b69ae3be80ecfb6, type: 3}
+  m_PrefabInstance: {fileID: 5085141095151849036}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9169268913471520710
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2758,7 +2781,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2823448077429819155, guid: fc1fba70240918c4aa3bb39962b1118d, type: 3}
       propertyPath: m_Name
-      value: ' TargetCounter Canvas'
+      value: TargetCounter Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 3567849582602468339, guid: fc1fba70240918c4aa3bb39962b1118d, type: 3}
       propertyPath: m_Pivot.x

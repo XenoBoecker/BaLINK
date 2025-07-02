@@ -71,17 +71,16 @@ public class PlayerInteractor : MonoBehaviour
 
     internal void EquipItem(EquippedItem item)
     {
+        if (_equippedItem != null)
+        {
+            Debug.LogWarning("Already equipped item");
+            return;
+        }
         StartCoroutine(EquipItemCoroutine(item));
     }
 
     private System.Collections.IEnumerator EquipItemCoroutine(EquippedItem item)
     {
-        if (_equippedItem != null)
-        {
-            // Optionally, you can add logic to unequip the current item
-            Debug.Log("Unequipping current item: " + _equippedItem.gameObject.name);
-            _equippedItem = null; // Clear the currently equipped item
-        }
 
         item.GetComponent<Collider>().enabled = false;
 
@@ -102,5 +101,12 @@ public class PlayerInteractor : MonoBehaviour
 
         _equippedItem = item; // Set the new equipped item
         Debug.Log("Equipped new item: " + _equippedItem.gameObject.name);
+    }
+
+    public void TakeAwayEquippedItem()
+    {
+        Destroy(_equippedItem.gameObject, 0.1f); // Destroy the equipped item
+        _equippedItem.transform.parent = null; // Unparent the item
+        _equippedItem = null; // Clear the equipped item reference
     }
 }

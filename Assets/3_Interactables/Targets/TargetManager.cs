@@ -9,6 +9,12 @@ public class TargetManager : MonoBehaviour
 
     [SerializeField] private float spawnTimeDelay = 2f;
     [SerializeField] private int targetsToBeKilledCount = 6;
+
+    [SerializeField] private float slowMoveSpeed = 0.5f;
+    public float SlowMoveSpeed => slowMoveSpeed; // Expose the slow move speed to other scripts
+    [SerializeField] private float fastMoveSpeed = 2f;
+    public float FastMoveSpeed => fastMoveSpeed; // Expose the fast move speed to other scripts
+
     public int TargetsToBeKilledCount => targetsToBeKilledCount; // Expose the count of targets to
     [SerializeField] private int targetCount = 10;
 
@@ -18,6 +24,8 @@ public class TargetManager : MonoBehaviour
     float spawnTimer;
 
     bool isSpawning;
+    bool isMovingFast = true;
+    public bool IsMovingFast => isMovingFast; // Expose the moving speed to other scripts
 
     private void Update()
     {
@@ -57,5 +65,10 @@ public class TargetManager : MonoBehaviour
     public void StartSpawningTargets()
     {
         isSpawning = true;
+    }
+
+    public void ToggleTargetMoveSpeed()
+    {
+        isMovingFast = !isMovingFast; // Toggle the moving speed between fast and slow
     }
 }
