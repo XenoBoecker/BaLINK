@@ -40,7 +40,7 @@ public class Target : MonoBehaviour
             transform.Translate(Vector3.up * UnityEngine.Random.Range(-1f, 1f));
         }
 
-        if(pathParent != null)
+        if (pathParent != null)
         {
             path = new Transform[pathParent.childCount];
         }
@@ -67,12 +67,12 @@ public class Target : MonoBehaviour
 
     private void Update()
     {
-        if(movementDisabled)
+        if (movementDisabled)
         {
             return;
         }
 
-        if(path.Length == 0)
+        if (path.Length == 0)
         {
             transform.Translate(targetManager.MoveDirection * targetManager.MoveSpeed * Time.deltaTime);
         }
@@ -95,14 +95,14 @@ public class Target : MonoBehaviour
 
         float distPercentage = Vector3.Distance(noHeightPos, noHeightLastPathPoint) / Vector3.Distance(noHeightLastPathPoint, noHeightCurrentPathPoint);
         float moveSpeed = targetManager.MoveSpeedCurve.Evaluate(distPercentage) * targetManager.MoveSpeed;
-        if(moveSpeed < 0.1f)
+        if (moveSpeed < 0.1f)
         {
             moveSpeed = 0.1f; // Ensure a minimum speed to avoid getting stuck
         }
         Vector3 moveDir = (noHeightCurrentPathPoint - noHeightPos).normalized;
         transform.Translate(moveSpeed * Time.deltaTime * moveDir);
 
-        if(Vector3.Distance(noHeightPos, currentPathPoint.position) < 0.2f)
+        if (distPercentage > 0.95f)
         {
             GetNextPathPoint();
         }
@@ -110,11 +110,11 @@ public class Target : MonoBehaviour
 
     private void GetNextPathPoint()
     {
-        lastPathPointIndex = currentPathPointIndex;
+        int previousPathPointIndex = currentPathPointIndex;
 
         if (returnPathBackwards)
         {
-            if((currentPathPointIndex < lastPathPointIndex && currentPathPointIndex != 0) || currentPathPointIndex == path.Length - 1)
+            if ((currentPathPointIndex < lastPathPointIndex && currentPathPointIndex != 0) || currentPathPointIndex == path.Length - 1)
             {
                 currentPathPointIndex--;
             }
@@ -132,19 +132,21 @@ public class Target : MonoBehaviour
                 currentPathPointIndex = 0;
             }
         }
+
+        lastPathPointIndex = previousPathPointIndex;
     }
 
     private void HoverUpAndDown()
     {
         float distPercentage = Mathf.Abs(transform.position.y - lastHoverGoalHeight) / Mathf.Abs(lastHoverGoalHeight - currentHoverGoalHeight);
         float hoverSpeed = targetManager.HoverSpeedCurve.Evaluate(distPercentage) * targetManager.HoverSpeed;
-        if(hoverSpeed < 0.1f)
+        if (hoverSpeed < 0.1f)
         {
             hoverSpeed = 0.1f; // Ensure a minimum speed to avoid getting stuck
         }
         transform.Translate(Vector3.up * Mathf.Sign(currentHoverGoalHeight - lastHoverGoalHeight) * hoverSpeed * Time.deltaTime);
 
-        if (Mathf.Abs(transform.position.y - currentHoverGoalHeight) < 0.2f)
+        if (distPercentage > 0.95f)
         {
             GetNextHoverPoint();
         }
