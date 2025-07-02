@@ -102,6 +102,8 @@ public class NumberLockCameraZoom : Interactable
             return;
         }
 
+        InteractedSuccessfully();
+
         StartCoroutine(ZoomInRoutine());
     }
 
