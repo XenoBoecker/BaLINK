@@ -67,6 +67,7 @@ public class WireGeneratorEditor : Editor
         if (Event.current.type == EventType.MouseDown && Event.current.button == 0)
         {
             _mouseHit = GetMouseHit();
+            Undo.RecordObject(generator, "Added Control Points");
             _addedControlPoint = generator.AddControlPoint(_mouseHit.point, _mouseHit.normal, Vector3.zero, Vector3.zero);
             _previousMouseActionPoint = _mouseHit.point;
 
@@ -83,6 +84,7 @@ public class WireGeneratorEditor : Editor
             Vector3 tangentFront = (_mouseHit.point - _addedControlPoint.Position);
             Vector3 tangentBack = tangentFront * -1;
 
+            Undo.RecordObject(generator, "Modified Tangents");
             _addedControlPoint.SetTangents(tangentFront, tangentBack);
             EditorUtility.SetDirty(generator);
             HandleUtility.Repaint();
@@ -123,14 +125,15 @@ public class WireGeneratorEditor : Editor
 
             Handles.DrawLine(controlPosition, tangentFrontPosition);
             Handles.DrawLine(controlPosition, tangentBackPosition);
-
-            generator.ControlPoints[i].ChangePointAndTangents(positionChange, tangentBackChange, tangentFrontChange);
             
             if(positionChange != Vector3.zero || tangentBackChange != Vector3.zero || tangentFrontChange != Vector3.zero)
             {
                 HandleUtility.Repaint();
                 _selectedControlIndex = i;
+                Undo.RecordObject(generator, "Control Edited");
             }
+
+            generator.ControlPoints[i].ChangePointAndTangents(positionChange, tangentBackChange, tangentFrontChange);
         }
     }
 
