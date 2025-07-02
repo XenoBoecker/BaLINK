@@ -10,11 +10,13 @@ public class Target : MonoBehaviour
 
     [SerializeField] private float hoverSpeed = 1f; // Speed of the up and down movement
     [SerializeField] private float hoverHeight = 0.5f; // Height of the hover movement
+    [SerializeField] private bool hoverRandomizeStartTime = true;
 
     [SerializeField] private Vector3 moveDirection = Vector3.right;
 
     Hitable hitable;
 
+    float hoverRandomStartTime;
     float baseHeight;
     bool isMovingFast = false;
 
@@ -24,6 +26,11 @@ public class Target : MonoBehaviour
     {
         hitable = GetComponent<Hitable>();
         hitable.OnHit += DisableMovement;
+
+        if (hoverRandomizeStartTime)
+        {
+            hoverRandomStartTime = UnityEngine.Random.Range(0f, 10f); // Randomize the start time for hovering
+        }
     }
 
     private void DisableMovement()
@@ -52,7 +59,7 @@ public class Target : MonoBehaviour
 
     private void HoverUpAndDown()
     {
-        float newY = baseHeight + Mathf.Sin(Time.time * hoverSpeed) * hoverHeight;
+        float newY = baseHeight + Mathf.Sin(hoverRandomStartTime + Time.time * hoverSpeed) * hoverHeight;
         Vector3 newPosition = transform.position;
         newPosition.y = newY;
         transform.position = newPosition;
