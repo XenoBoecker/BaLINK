@@ -60,6 +60,7 @@ public class TargetManager : MonoBehaviour
         }
         else
         {
+            Debug.LogError("Multiple instances of TargetManager detected. Destroying this instance.", this);
             Destroy(gameObject);
             return;
         }
