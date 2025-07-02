@@ -16,6 +16,7 @@ public abstract class NodeElement : ScriptableObject
     public abstract bool ConditionIsMet();
     public abstract void TriggerEffect();
     public abstract string GetName();
+    public abstract void OnExitNode();
 
     public override string ToString()
     {

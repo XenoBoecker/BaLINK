@@ -1,9 +1,11 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Door : MonoBehaviour
 {
     Animator animator;
+
+    bool isOpen;
+    public bool IsOpen => isOpen; // Expose the open state of the door
 
     private void Awake()
     {
@@ -16,6 +18,7 @@ public class Door : MonoBehaviour
 
     public void OpenDoor()
     {
+        isOpen = true; // Set the door state to open
         animator.SetTrigger("Open");
     }
 
@@ -26,6 +29,7 @@ public class Door : MonoBehaviour
 
     public void CloseDoor()
     {
+        isOpen = false; // Set the door state to closed
         animator.SetTrigger("Close");
     }
 }
