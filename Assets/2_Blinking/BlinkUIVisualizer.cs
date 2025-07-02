@@ -36,7 +36,8 @@ public class BlinkUIVisualizer : MonoBehaviour
     {
         if (blinkUI != null) blinkUI.SetActive(true);
         else Debug.Log("No blinkUI", this);
-            blinkTimer = blinkDuration;
+
+        blinkTimer = blinkDuration;
 
         if (playSoundOnBlink && audioSource != null && blinkSound != null)
         {
