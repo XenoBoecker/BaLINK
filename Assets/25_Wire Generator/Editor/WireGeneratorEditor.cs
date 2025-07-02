@@ -133,6 +133,19 @@ public class WireGeneratorEditor : Editor
                 Undo.RecordObject(generator, "Control Edited");
             }
 
+            if (Event.current.shift)
+            {
+                if (tangentBackChange != Vector3.zero)
+                {
+                    tangentFrontChange = Vector3.Scale(tangentBackChange, Vector3.one * -1);
+                }
+
+                if (tangentFrontChange != Vector3.zero)
+                {
+                    tangentBackChange = Vector3.Scale(tangentFrontChange, Vector3.one * -1);
+                }
+            }
+
             generator.ControlPoints[i].ChangePointAndTangents(positionChange, tangentBackChange, tangentFrontChange);
         }
     }
