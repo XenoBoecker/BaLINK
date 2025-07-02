@@ -16,6 +16,8 @@ public class Hitable : MonoBehaviour
 
     public event Action OnHit; // Event to notify when the object is hit
 
+    public event Action<Hitable> OnDestroyed;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -67,5 +69,7 @@ public class Hitable : MonoBehaviour
         }
 
         Debug.Log($"{gameObject.name} has been destroyed!");
+
+        OnDestroyed?.Invoke(this);
     }
 }

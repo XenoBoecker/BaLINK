@@ -7,6 +7,8 @@ public class BombUI : MonoBehaviour
 
     Bomb bomb;
 
+    bool timerNegative;
+
     private void Awake()
     {
        bomb = FindAnyObjectByType<Bomb>();
@@ -38,13 +40,20 @@ public class BombUI : MonoBehaviour
         // timer text in minutes and seconds
         if (timeLeft <= 0)
         {
-            timerText.text = "0.00"; // Display 0.00 when time is up
-            return;
+            timerNegative = true;
+            timeLeft = -timeLeft;
         }
         int minutes = Mathf.FloorToInt(timeLeft / 60);
         int seconds = Mathf.FloorToInt(timeLeft % 60);
 
-        timerText.text = $"{minutes:00}:{seconds:00}"; // Format as MM:SS.MS
+        if (timerNegative)
+        {
+            timerText.text = $"-{minutes:00}:{seconds:00}";
+        }
+        else
+        {
+            timerText.text = $"{minutes:00}:{seconds:00}"; // Format as MM:SS.MS
+        }
     }
 
     public void SetBomb(Bomb newBomb)
