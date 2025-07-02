@@ -7,4 +7,6 @@ public abstract class Condition : NodeElement
     {
         throw new System.NotImplementedException();
     }
+
+    public override void OnExitNode() { }
 }

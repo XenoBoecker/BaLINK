@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[AddComponentMenu("Custom/Paralax Effect")]
+[AddComponentMenu("Custom/Parallax Effect")]
 public class ParallaxEffect : MonoBehaviour
 {
     [SerializeField] ParallaxElement[] _paralaxElements;
@@ -23,6 +23,9 @@ public class ParallaxEffect : MonoBehaviour
         {
             GameObject holder = new GameObject(_paralaxElements[i].Object.name + " Holder");
             holder.transform.SetParent(transform);
+            holder.transform.localRotation = Quaternion.identity;
+            holder.transform.localPosition = Vector3.zero;
+            holder.transform.localScale = Vector3.one;
 
             int numberOfObjects = Mathf.RoundToInt(_length/_paralaxElements[i].ObjectLength);
             List<GameObject> objects = new List<GameObject>();

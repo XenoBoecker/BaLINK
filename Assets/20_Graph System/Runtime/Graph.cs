@@ -13,6 +13,7 @@ public class Graph : MonoBehaviour
     public Vector2 Center => _center;
     public int EntryNodeId => _entryNodeId;
     public GraphNode[] Nodes => _nodes;
+    public GraphNode CurrentNode => _currentNode;
 
     private GraphNode _currentNode;
     private bool _usingWaitForBlink = true;
@@ -35,11 +36,9 @@ public class Graph : MonoBehaviour
     {
         if (!_usingWaitForBlink)
         {
-            //do node always returns true when node is of type effect so it will trigger the effect once and then move to the next node.
-            //if it's a condition node then DoNode will return true when conditons are met 
-            if (_currentNode.ConditionElementConditionsMet())
+            if (_currentNode.ConditionElementConditionsMet(out int outputIndexTrue))
             {
-                MoveToNextNode();
+                MoveToNextNode(outputIndexTrue);
             }
         }
     }
@@ -52,25 +51,27 @@ public class Graph : MonoBehaviour
         _usingWaitForBlink = _currentNode.WaitForBlink;
     }
 
-    private void MoveToNextNode()
+    private void MoveToNextNode(int nextNodeIdIndex)
     {
-        if (TryGetNodeFromId(_currentNode.NextNodeId, out GraphNode foundNode))
+        _currentNode.ExitNode();
+        if (TryGetNodeFromId(_currentNode.NextNodeIds[nextNodeIdIndex], out GraphNode foundNode))
         {
             _currentNode = foundNode;
             _usingWaitForBlink = _currentNode.WaitForBlink;
             foundNode.TriggerAllEffectElements();
-
+/*
             if (foundNode.Type == NodeType.Effect)
             {
-                if (TryGetNodeFromId(_currentNode.NextNodeId, out GraphNode nextNode))
+                if (TryGetNodeFromId(_currentNode.NextNodeIds[0], out GraphNode nextNode))
                 {
                     if (nextNode.Type != NodeType.Effect)
                     {
-                        MoveToNextNode();
+                        //to get here prev node must be Effect which means there is always only one output from it to the next node i.e. index 0
+                        MoveToNextNode(0);
                         return;
                     }
                 }
-            }
+            }*/
         }
     }
 
@@ -78,16 +79,20 @@ public class Graph : MonoBehaviour
     {
         if (!_usingWaitForBlink) { return; }
 
-        if (_currentNode.ConditionElementConditionsMet())
+        if (_currentNode.ConditionElementConditionsMet(out int outputIndexTrue))
         {
-            MoveToNextNode();
+            MoveToNextNode(outputIndexTrue);
         }
     }
 
     public void AddNewNode(NodeType nodeType, Vector2 position)
     {
         int id = GetUniqueNodeId();
-        GraphNode node = new GraphNode(nodeType, id, position);
+
+        int outputCount = 1;
+        if (nodeType == NodeType.IfElse) { outputCount = 2; }
+
+        GraphNode node = new GraphNode(nodeType, id, position, outputCount);
 
         List<GraphNode> tempNodes = new List<GraphNode>(_nodes);
         tempNodes.Add(node);

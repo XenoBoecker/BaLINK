@@ -16,9 +16,9 @@ GameObject:
   - component: {fileID: 114854918141282102}
   - component: {fileID: 114272575589405250}
   - component: {fileID: 7322707358008542355}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -175,19 +175,19 @@ MonoBehaviour:
   _airControl: 0.2
   _canCrouch: 1
   _standingHeight: 2
-  _crouchingHeight: 1
-  _baseJumpHeight: 1.5
-  _extraJumpTime: 0.5
-  _extraJumpPower: 25
+  _crouchingHeight: 1.4
+  _baseJumpHeight: 1
+  _extraJumpTime: 0
+  _extraJumpPower: 0
   _jumpPreGroundedToleranceTime: 0.15
   _jumpPostGroundedToleranceTime: 0.15
-  _maxMidAirJumps: 1
+  _maxMidAirJumps: 0
   _useRootMotion: 0
   _rootMotionRotation: 0
   _forwardSpeed: 5
   _backwardSpeed: 3
-  _strafeSpeed: 4
-  _runSpeedMultiplier: 2
+  _strafeSpeed: 3.5
+  _runSpeedMultiplier: 1.6
 --- !u!114 &7322707358008542355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,8 +248,8 @@ GameObject:
   - component: {fileID: 124605105257414180}
   - component: {fileID: 668805892395880054}
   m_Layer: 0
-  m_Name: Camera
-  m_TagString: Untagged
+  m_Name: Main Camera
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -302,7 +302,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.15
   far clip plane: 1000
   field of view: 60
   orthographic: 0
