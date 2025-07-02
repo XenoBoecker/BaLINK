@@ -40,7 +40,10 @@ public class Target : MonoBehaviour
             transform.Translate(Vector3.up * UnityEngine.Random.Range(-1f, 1f));
         }
 
-        path = new Transform[pathParent.childCount];
+        if(pathParent != null)
+        {
+            path = new Transform[pathParent.childCount];
+        }
 
         for (int i = 0; i < pathParent.childCount; i++)
         {
@@ -55,6 +58,8 @@ public class Target : MonoBehaviour
 
     private void Start()
     {
+        targetManager.RegisterTarget(GetComponent<Hitable>());
+
         spawnHeight = transform.position.y; // Store the initial height of the target
         lastHoverGoalHeight = spawnHeight;
         GetNextHoverPoint();
@@ -89,7 +94,6 @@ public class Target : MonoBehaviour
         Vector3 noHeightCurrentPathPoint = new Vector3(currentPathPoint.position.x, 0, currentPathPoint.position.z);
 
         float distPercentage = Vector3.Distance(noHeightPos, noHeightLastPathPoint) / Vector3.Distance(noHeightLastPathPoint, noHeightCurrentPathPoint);
-        print(distPercentage);
         float moveSpeed = targetManager.MoveSpeedCurve.Evaluate(distPercentage) * targetManager.MoveSpeed;
         if(moveSpeed < 0.1f)
         {
