@@ -72,11 +72,15 @@ public class TargetManager : MonoBehaviour
         }
     }
 
+    public void RegisterTarget(Hitable target)
+    {
+        target.OnDestroyed += IncreaseDestroyedTargetCount;
+    }
+
     private void SpawnTarget()
     {
         Hitable newTarget = Instantiate(targetPrefab, spawnPoint);
-
-        newTarget.OnDestroyed += IncreaseDestroyedTargetCount;
+        targetsSpawnedCount++;
     }
 
     private void IncreaseDestroyedTargetCount(Hitable hitable)

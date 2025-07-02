@@ -55,6 +55,8 @@ public class Target : MonoBehaviour
 
     private void Start()
     {
+        targetManager.RegisterTarget(GetComponent<Hitable>());
+
         spawnHeight = transform.position.y; // Store the initial height of the target
         lastHoverGoalHeight = spawnHeight;
         GetNextHoverPoint();
