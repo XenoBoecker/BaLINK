@@ -38,16 +38,13 @@ public class PlayerInteractor : MonoBehaviour
             {
                 print("Using equipped item...");
                 _equippedItem.UseItem(); // Use the currently equipped item
-                return; // Exit early if an item is used
             }
-            else
+
+            print("Trying to interact...");
+            Interactable interactable = GetInteractable();
+            if (interactable != null)
             {
-                print("Trying to interact...");
-                Interactable interactable = GetInteractable();
-                if (interactable != null)
-                {
-                    interactable.Interact();
-                }
+                interactable.Interact();
             }
         }
     }
@@ -83,6 +80,7 @@ public class PlayerInteractor : MonoBehaviour
     {
 
         item.GetComponent<Collider>().enabled = false;
+        item.gameObject.layer = LayerMask.NameToLayer("Default"); // Ensure the item is on the default layer to avoid interaction issues
 
         for (float i = 0; i < equipDuration; i+= Time.deltaTime)
         {

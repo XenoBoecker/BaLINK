@@ -23,13 +23,13 @@ public class CrossbowItem : EquippedItem
     private void OnEnable()
     {
         _input.Enable();
-        _input.Player.Attack.canceled += Released;
+        _input.Player.Interact.canceled += Released;
     }
 
     private void OnDisable()
     {
         _input.Disable();
-        _input.Player.Attack.canceled -= Released;
+        _input.Player.Interact.canceled -= Released;
     }
 
     public override void UseItem()
