@@ -4,26 +4,29 @@ using UnityEngine;
 [RequireComponent(typeof(Hitable))]
 public class Target : MonoBehaviour
 {
-    [SerializeField] private float slowMoveSpeed = 0.5f;
-    [SerializeField] private float fastMoveSpeed = 2f;
-
-
     [SerializeField] private float hoverSpeed = 1f; // Speed of the up and down movement
     [SerializeField] private float hoverHeight = 0.5f; // Height of the hover movement
     [SerializeField] private bool hoverRandomizeStartTime = true;
 
     [SerializeField] private Vector3 moveDirection = Vector3.right;
 
+    TargetManager targetManager;
     Hitable hitable;
 
     float hoverRandomStartTime;
     float baseHeight;
-    bool isMovingFast = false;
 
     bool movementDisabled;
 
     private void Awake()
     {
+        TargetManager targetManager = FindAnyObjectByType<TargetManager>();
+        if (targetManager == null)
+        {
+            Debug.LogError("TargetManager not found in the scene. Please ensure it is present.");
+            return;
+        }
+
         hitable = GetComponent<Hitable>();
         hitable.OnHit += DisableMovement;
 
@@ -50,7 +53,7 @@ public class Target : MonoBehaviour
             return;
         }
 
-        float moveSpeed = isMovingFast ? fastMoveSpeed : slowMoveSpeed;
+        float moveSpeed = targetManager.IsMovingFast ? targetManager.FastMoveSpeed : targetManager.SlowMoveSpeed;
 
         transform.Translate(moveDirection * moveSpeed * Time.deltaTime);
 
@@ -63,11 +66,5 @@ public class Target : MonoBehaviour
         Vector3 newPosition = transform.position;
         newPosition.y = newY;
         transform.position = newPosition;
-    }
-
-    public void ToggleMovementSpeed()
-    {
-        isMovingFast = !isMovingFast; // Toggle between slow and fast movement
-        Debug.Log($"Target speed toggled to {(isMovingFast ? "fast" : "slow")}.");
     }
 }
