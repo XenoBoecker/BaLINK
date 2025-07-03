@@ -10,8 +10,10 @@ public class TargetManager : MonoBehaviour
     [SerializeField] private Transform spawnPoint;
 
     [SerializeField] private float spawnTimeDelay = 2f;
-    [SerializeField] private bool hoverRandomizeStartTime = true;
-    public bool HoverRandomizeStartPosition => hoverRandomizeStartTime;
+    [SerializeField] private bool hoverRandomizeStartHeight = true;
+    public bool HoverRandomizeStartPosition => hoverRandomizeStartHeight;
+    [SerializeField] private float maxRandomSpawnDist = 1f;
+    public float MaxRandomSpawnDist => maxRandomSpawnDist;
 
     [SerializeField] private int targetCount = 10;
     [SerializeField] private int targetsToBeKilledCount = 6;
