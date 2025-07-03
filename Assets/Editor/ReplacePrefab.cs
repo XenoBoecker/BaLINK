@@ -53,7 +53,7 @@ public class ReplacePrefab
 
         for (int i = 0; i < _selectedTransforms.Length; i++)
         {
-            if (!PrefabUtility.IsAnyPrefabInstanceRoot(_selectedTransforms[i].gameObject)) { continue; }
+            //if (!PrefabUtility.IsAnyPrefabInstanceRoot(_selectedTransforms[i].gameObject)) { continue; }
 
             Vector3 tempPosition = _selectedTransforms[i].position;
             Quaternion tempRotation = _selectedTransforms[i].rotation;
