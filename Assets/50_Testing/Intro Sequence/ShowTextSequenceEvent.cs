@@ -22,10 +22,17 @@ public class ShowTextSequenceEvent : IntroSequenceEvent
     {
         _textIndex = 0;
         _originalTextColor = _textObject.color;
+        _sequenceOver = false;
+
         if (_overrideTextColor)
         {
             _originalTextColor = _textColor;
         }
+        if (_originalTextColor.a < 0.001f)
+        {
+            _originalTextColor = new Color(_originalTextColor.r, _originalTextColor.g, _originalTextColor.b, 1);
+        }
+
         StartCoroutine(ShowText());
     }
 

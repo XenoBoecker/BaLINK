@@ -14,6 +14,7 @@ public class LerpBackgroundColorSequenceEvent : IntroSequenceEvent
     {
         _initialColor = _backgroundImage.color;
         StartCoroutine(ShowText());
+        _sequenceOver = false;
     }
 
     private IEnumerator ShowText()
