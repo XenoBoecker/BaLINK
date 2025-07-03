@@ -10,7 +10,6 @@ public class WireGenerator : MonoBehaviour
     [SerializeField, Min(3)] private int _wireResolution = 6;
     [SerializeField, Min(3)] private int _perCurveResolution = 30;
     [SerializeField] private ControlPoint[] _controlPoints;
-    [SerializeField] private Material _material;
     [SerializeField, Range(0.001f, 0.5f)] private float _wireThickness;
 
     private Mesh _mesh;
@@ -19,13 +18,16 @@ public class WireGenerator : MonoBehaviour
     public int WireResolution => _wireResolution;
     public ControlPoint[] ControlPoints => _controlPoints;
 
+    public Material Material;
+
+
     private void Update()
     {
         if (_mesh == null)
         {
         }
         _mesh = GenerateWireMesh(_controlPoints);
-        Graphics.RenderMesh(new RenderParams(_material), _mesh, 0, transform.localToWorldMatrix);
+        Graphics.RenderMesh(new RenderParams(Material), _mesh, 0, transform.localToWorldMatrix);
     }
 
     private Mesh GenerateWireMesh(ControlPoint[] controlPoints)

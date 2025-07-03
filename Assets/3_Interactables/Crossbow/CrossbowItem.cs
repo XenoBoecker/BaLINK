@@ -67,6 +67,11 @@ public class CrossbowItem : EquippedItem
 
     private void Released(InputAction.CallbackContext context)
     {
+        if (!_isEquipped)
+        {
+            return;
+        }
+
         _animator.SetTrigger("Fire");
         if (!_readyToFire) 
         {
