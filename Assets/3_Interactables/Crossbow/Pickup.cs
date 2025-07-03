@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(EquippedItem))]
 public class Pickup : Interactable
 {
-    public override void Interact()
+    protected override void Interact()
     {
         PlayerInteractor playerInteractor = FindAnyObjectByType<PlayerInteractor>();
         if (playerInteractor != null)
