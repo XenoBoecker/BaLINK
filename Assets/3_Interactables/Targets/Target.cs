@@ -166,7 +166,5 @@ public class Target : MonoBehaviour
         }
 
         currentHoverGoalHeight = newHoverGoalHeight;
-
-        Debug.Log("Next hover goal height: " + currentHoverGoalHeight, this);
     }
 }
