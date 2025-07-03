@@ -22,6 +22,12 @@ public class BlinkDetection : MonoBehaviour
         _eyeDataCollector = GetComponent<EyeDataCollector>();
     }
 
+    private void Start()
+    {
+        _eyesClosedThreshold = PlayerPrefs.GetFloat("_eyesClosedThreshold");
+        _eyesOpenedThreshold = PlayerPrefs.GetFloat("_eyesOpenedThreshold");
+    }
+
     void Update()
     {
         EyeData eyeData = _eyeDataCollector.GetEyeData();
@@ -52,5 +58,8 @@ public class BlinkDetection : MonoBehaviour
     {
         _eyesOpenedThreshold = openThreshold;
         _eyesClosedThreshold = closedThreshold;
+
+        PlayerPrefs.SetFloat("_eyesOpenedThreshold", _eyesOpenedThreshold);
+        PlayerPrefs.SetFloat("_eyesClosedThreshold", _eyesClosedThreshold);
     }
 }
