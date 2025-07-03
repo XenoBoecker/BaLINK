@@ -26,7 +26,11 @@ PrefabInstance:
       objectReference: {fileID: 6279497362413907897, guid: 7e4f18b5b5f0f364e87038d17765f9f5, type: 3}
     - target: {fileID: 3455845720114481512, guid: b02f31635bf682544961725d17913d86, type: 3}
       propertyPath: m_Name
-      value: Target
+      value: TargetModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 3455845720114481512, guid: b02f31635bf682544961725d17913d86, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5928173999153272178, guid: b02f31635bf682544961725d17913d86, type: 3}
       propertyPath: m_Mesh
@@ -70,6 +74,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6143730791746583328, guid: b02f31635bf682544961725d17913d86, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6774550951662865641, guid: b02f31635bf682544961725d17913d86, type: 3}
+      propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

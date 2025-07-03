@@ -8,7 +8,7 @@ public class Hitable : MonoBehaviour
     public bool ShootThroughObject => shootThroughObject; // Expose the property to other scripts
     [SerializeField] private GameObject objectBeforeExplosion;
     [SerializeField] private Rigidbody[] destructionParts;
-    [SerializeField] private float destructionForce = 10f; // Force applied to destruction parts when hit
+    [SerializeField] private float destructionForce = 200f; // Force applied to destruction parts when hit
     [SerializeField] private int hitPoints = 1; // Number of hits the object can take before being destroyed
     int currentHitPoints;
 
@@ -56,7 +56,9 @@ public class Hitable : MonoBehaviour
             for (int i = 0; i < destructionParts.Length; i++)
             {
                 destructionParts[i].gameObject.SetActive(true); // Activate the destruction parts
-                destructionParts[i].AddExplosionForce(destructionForce, transform.position, 5f); // Apply explosion force to each part
+                //destructionParts[i].AddExplosionForce(destructionForce, transform.position, 5f); // Apply explosion force to each part
+                Vector3 forceDir = (transform.position - FindAnyObjectByType<PlayerInteractor>().transform.position).normalized;
+                destructionParts[i].AddForce(destructionForce * forceDir, ForceMode.Impulse);
             }
         }
         else
@@ -64,7 +66,9 @@ public class Hitable : MonoBehaviour
             if (rb != null)
             {
                 rb.isKinematic = false; // Make the Rigidbody non-kinematic to allow physics interactions
-                rb.AddExplosionForce(destructionForce, projectile.position, 5f); // Apply explosion force to the object
+                //rb.AddExplosionForce(destructionForce, projectile.position, 5f); // Apply explosion force to the object
+                Vector3 forceDir = (transform.position - FindAnyObjectByType<PlayerInteractor>().transform.position).normalized;
+                rb.AddForce(destructionForce * forceDir, ForceMode.Impulse);
             }
         }
 
