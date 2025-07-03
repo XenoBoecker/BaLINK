@@ -18,7 +18,7 @@ public class ReplaceObjectInteractable : Interactable
             Debug.LogWarning("Start or after interaction objects are not set in the ReplaceObjectInteractable script.");
         }
     }
-    public override void Interact()
+    protected override void Interact()
     {
         if (startObject != null && objectAfterInteraction != null)
         {

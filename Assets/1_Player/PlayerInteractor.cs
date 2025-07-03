@@ -44,7 +44,7 @@ public class PlayerInteractor : MonoBehaviour
             Interactable interactable = GetInteractable();
             if (interactable != null)
             {
-                interactable.Interact();
+                interactable.TryInteract();
             }
         }
     }

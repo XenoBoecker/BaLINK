@@ -9,7 +9,7 @@ public class ChangeMaterialInteractable : Interactable
 
     private Material oldMaterial;
 
-    public override void Interact()
+    protected override void Interact()
     {
         InteractedSuccessfully();
 
