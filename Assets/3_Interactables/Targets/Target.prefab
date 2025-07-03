@@ -86,10 +86,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed81b794f4c41543bf2cdcf070179a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hoverSpeed: 1
-  hoverHeight: 0.5
-  hoverRandomizeStartTime: 1
-  moveDirection: {x: 1, y: 0, z: 0}
+  pathParent: {fileID: 0}
+  returnPathBackwards: 1
 --- !u!54 &1748391532791077695
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -169,7 +167,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1479593555616805185, guid: eb673ccc9cf27084bad969a7178a69d1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

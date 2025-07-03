@@ -290,7 +290,7 @@ public class GraphEditorWindow : EditorWindow
         Handles.DrawSolidRectangleWithOutline(elementRect, BODY_COLOR, _outlineColor);
 
         Rect foldoutRect = new Rect(elementRect.position, new Vector2(elementRect.width, PROPERTY_HEIGHT));
-        string name = $"({element.ReferencedObject.name}) {element.ToString()}";
+        string name = $"({(element.ReferencedObject == null ? "Null Obj" : element.ReferencedObject.name)}) {element.ToString()}";
         element.SetUnfolded(EditorGUI.Foldout(foldoutRect, element.IsUnfolded, new GUIContent(name)));
 
         if (node.OutputCount > 1)
@@ -482,6 +482,7 @@ public class GraphEditorWindow : EditorWindow
     {
         warning = "";
         if (requiredComponentType == null) { return false; }
+        if (element.ReferencedObject == null) { return false; }
         if (element.ReferencedObject.GetComponent(requiredComponentType) == null)
         {
             warning = $"Selcted Object({element.ReferencedObject.name}) does not have {requiredComponentType.ToString()} attached!";
