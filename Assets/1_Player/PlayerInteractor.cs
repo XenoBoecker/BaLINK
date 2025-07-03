@@ -104,6 +104,7 @@ public class PlayerInteractor : MonoBehaviour
     public void TakeAwayEquippedItem()
     {
         Destroy(_equippedItem.gameObject, 0.1f); // Destroy the equipped item
+        _equippedItem.SetIsEquipped(false);
         _equippedItem.transform.parent = null; // Unparent the item
         _equippedItem = null; // Clear the equipped item reference
     }
