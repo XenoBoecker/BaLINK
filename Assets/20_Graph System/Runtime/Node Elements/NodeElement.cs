@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 
+[System.Serializable]
 public abstract class NodeElement : ScriptableObject
 {
     [SerializeField] private GameObject _referencedObject;
