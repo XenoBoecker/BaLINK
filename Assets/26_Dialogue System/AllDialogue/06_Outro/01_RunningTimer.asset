@@ -12,4 +12,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3a9ef48355cb440936a05a37111157, type: 3}
   m_Name: 01_RunningTimer
   m_EditorClassIdentifier: 
-  _lines: []
+  _lines:
+  - _clip: {fileID: 8300000, guid: 88f85a2e6db5dba49aac018183756810, type: 3}
+    _segments:
+    - _text: 'Hey Dave, I know the game is already over '
+      _percentAlongAudioToShow: 0
+    - _text: but why is the timer still running?
+      _percentAlongAudioToShow: 0
+  - _clip: {fileID: 8300000, guid: 63cb5ed7520a91d43959d66d589a0ceb, type: 3}
+    _segments:
+    - _text: "Huh that's odd\u2026 "
+      _percentAlongAudioToShow: 0
+    - _text: "Can\u2019t find anything in the Sceneview, "
+      _percentAlongAudioToShow: 0
+    - _text: Can you check the code?
+      _percentAlongAudioToShow: 0
+  - _clip: {fileID: 8300000, guid: 9582b0555cde6604fbb1d2226bceb38d, type: 3}
+    _segments:
+    - _text: "Sure, I\u2019m on it\u2026 "
+      _percentAlongAudioToShow: 0
+    - _text: "Nope, code seems fine too.  Weird\u2026\r"
+      _percentAlongAudioToShow: 0
+    - _text: And you are sure you checked everything in the Scene?
+      _percentAlongAudioToShow: 0
+  - _clip: {fileID: 8300000, guid: b2fb1afa521cd224e9a660429c028ac7, type: 3}
+    _segments:
+    - _text: "Pretty sure I have, but feel free to double check\r"
+      _percentAlongAudioToShow: 0
+  - _clip: {fileID: 8300000, guid: 16a47e5c01b9ddd43b880c1191a4671e, type: 3}
+    _segments:
+    - _text: "Hmm nope, also seeing nothing\u2026\r"
+      _percentAlongAudioToShow: 0
+    - _text: "Let\u2019s check reddit\r"
+      _percentAlongAudioToShow: 0
+  - _clip: {fileID: 8300000, guid: 2443e0c472a6f2041b2d53d7a6068170, type: 3}
+    _segments:
+    - _text: 'Hmm they say to just do this thing  '
+      _percentAlongAudioToShow: 0
+    - _text: and replace the coroutine by TimeRemaining -= Time.deltaTime
+      _percentAlongAudioToShow: 0
+    - _text: and call that in the update
+      _percentAlongAudioToShow: 0

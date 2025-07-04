@@ -10,16 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a3a9ef48355cb440936a05a37111157, type: 3}
-  m_Name: 01_EnterWagon
+  m_Name: 03_IgnoredCrossbow
   m_EditorClassIdentifier: 
   _lines:
-  - _clip: {fileID: 8300000, guid: b908aa4f34c33754b8850a6d18803ac0, type: 3}
+  - _clip: {fileID: 8300000, guid: cd36960d6dd3e1d4691d9ef39adfdaaa, type: 3}
     _segments:
-    - _text: 'Time for the Grand Finale! '
+    - _text: "Ah man, why are they not picking it up?\r"
       _percentAlongAudioToShow: 0
-    - _text: All they need to do now is find the Bomb and activate the diffuse buttons.
-      _percentAlongAudioToShow: 0
-  - _clip: {fileID: 8300000, guid: 96e0dd646f41b24438ded0c918df78b7, type: 3}
+  - _clip: {fileID: 8300000, guid: ddb25b0405e747a468d5f5f6aa2f76f1, type: 3}
     _segments:
-    - _text: "Hell yeah, I\u2019m so excited to see if they\u2019ll make it in time!\r"
+    - _text: "I\u2019ve told you so\u2026\r"
+      _percentAlongAudioToShow: 0
+  - _clip: {fileID: 8300000, guid: e8f8a8937278b4d4fba2658206fea59f, type: 3}
+    _segments:
+    - _text: "No! I\u2019m not giving up, I\u2019m sure they\u2019ll pick it up eventually!\r"
       _percentAlongAudioToShow: 0

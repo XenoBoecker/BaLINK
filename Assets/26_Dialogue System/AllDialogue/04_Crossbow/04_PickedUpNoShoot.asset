@@ -10,16 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8a3a9ef48355cb440936a05a37111157, type: 3}
-  m_Name: 01_EnterWagon
+  m_Name: 04_PickedUpNoShoot
   m_EditorClassIdentifier: 
   _lines:
-  - _clip: {fileID: 8300000, guid: b908aa4f34c33754b8850a6d18803ac0, type: 3}
+  - _clip: {fileID: 8300000, guid: 210aa3295a3ce164c984c44bf0078acd, type: 3}
     _segments:
-    - _text: 'Time for the Grand Finale! '
+    - _text: "What? Why are they not shooting?\r"
       _percentAlongAudioToShow: 0
-    - _text: All they need to do now is find the Bomb and activate the diffuse buttons.
+    - _text: 'Do they not know how to?
+
+'
       _percentAlongAudioToShow: 0
-  - _clip: {fileID: 8300000, guid: 96e0dd646f41b24438ded0c918df78b7, type: 3}
+  - _clip: {fileID: 8300000, guid: 0f5be02a12097d44ba846809d0b3678b, type: 3}
     _segments:
-    - _text: "Hell yeah, I\u2019m so excited to see if they\u2019ll make it in time!\r"
+    - _text: "Or they just don\u2019t want to, "
+      _percentAlongAudioToShow: 0
+    - _text: "maybe a crossbow isn\u2019t as fun as you\u2019ve thought"
       _percentAlongAudioToShow: 0
