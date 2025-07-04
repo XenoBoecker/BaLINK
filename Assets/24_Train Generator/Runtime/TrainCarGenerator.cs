@@ -1,4 +1,3 @@
-using BetterAttributes;
 using System;
 using System.Collections.Generic;
 using UnityEditor;
@@ -34,7 +33,6 @@ public class TrainCarGenerator : MonoBehaviour
 
     public int RequiredSegmentCount { get { return Mathf.CeilToInt(TrainCarLength / MinimumSegementLength); } }
 
-    [Button("Regenerate Car")]
     public void RegenerateCar()
     {
         if (SegmentLayout == null)
