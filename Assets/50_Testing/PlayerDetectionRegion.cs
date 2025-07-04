@@ -1,10 +1,9 @@
 using UnityEngine;
-using BetterAttributes;
 
 public class PlayerDetectionRegion : MonoBehaviour
 {
-    [SerializeField, ReadOnly] private float _playerContainedDuration;
-    [SerializeField, ReadOnly] private bool _playerInRegion;
+    [SerializeField] private float _playerContainedDuration;
+    [SerializeField] private bool _playerInRegion;
     public float PlayerContainedDuration => _playerContainedDuration;
     public bool PlayerInRegion => _playerInRegion;
 
