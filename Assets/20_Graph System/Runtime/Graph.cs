@@ -1,9 +1,11 @@
 using GameEvents;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [AddComponentMenu("Custom/Graph")]
+[System.Serializable]
 public class Graph : MonoBehaviour
 {
     [SerializeField, HideInInspector] private int _entryNodeId;
@@ -158,5 +160,11 @@ public class Graph : MonoBehaviour
     public void ChangeGraphCenter(Vector2 change)
     {
         _center += change;
+    }
+
+    public void SetData(Graph graph)
+    {
+        Debug.Log(graph.Nodes.Length);
+        _nodes = graph.Nodes;
     }
 }
