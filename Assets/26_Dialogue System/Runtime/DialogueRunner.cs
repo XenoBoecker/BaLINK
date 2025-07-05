@@ -8,6 +8,7 @@ public class DialogueRunner : MonoBehaviour
 {
     [SerializeField] private TMP_Text _text;
     private AudioSource _source;
+    public bool IsPlaying => _source.isPlaying;
 
     private void Awake()
     {
@@ -42,5 +43,19 @@ public class DialogueRunner : MonoBehaviour
         if (currentIndex + 1 >= line.Segments.Length) { yield break; }
         yield return new WaitUntil(() => { return (_source.time/line.Clip.length >= line.Segments[currentIndex + 1].PercentAlongAudioToShow); });
         ShowDialogueText(line, currentIndex + 1);
+    }
+
+    internal void PlayDialogueSequence(DialogueSequence sequence)
+    {
+        StartCoroutine(PlayFullSequence(sequence));
+    }
+
+    private IEnumerator PlayFullSequence(DialogueSequence sequence)
+    {
+        for (int i = 0; i < sequence.Lines.Length; i++)
+        {
+            PlayDialogueLine(sequence, i);
+            yield return new WaitForSeconds(sequence.DelayBetweenLines);
+        }
     }
 }

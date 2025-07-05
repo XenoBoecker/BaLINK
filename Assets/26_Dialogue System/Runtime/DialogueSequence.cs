@@ -4,8 +4,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Dialogue Sequence", menuName = "Dialogue Sequence", order = -1000)]
 public class DialogueSequence : ScriptableObject
 {
+    [SerializeField] private float _delayBetweenLines;
     [SerializeField] DialogueLine[] _lines;
 
+    public float DelayBetweenLines => _delayBetweenLines;
     public DialogueLine[] Lines => _lines;
 
     internal bool TryGetDialogueLine(int dialogueLineIndex, out DialogueLine line)
