@@ -29222,8 +29222,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 770540326}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -82753,10 +82753,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 273544357}
     m_Modifications:
-    - target: {fileID: 1587880089184945613, guid: deab562a447834e4795074016272feea, type: 3}
-      propertyPath: m_CameraType
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2126023276637488493, guid: deab562a447834e4795074016272feea, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.03400034
@@ -82800,10 +82796,6 @@ PrefabInstance:
     - target: {fileID: 3428015715211563441, guid: deab562a447834e4795074016272feea, type: 3}
       propertyPath: m_Name
       value: Number Lock
-      objectReference: {fileID: 0}
-    - target: {fileID: 5382879114372402550, guid: deab562a447834e4795074016272feea, type: 3}
-      propertyPath: m_ClearFlags
-      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6163968840539323353, guid: deab562a447834e4795074016272feea, type: 3}
       propertyPath: door

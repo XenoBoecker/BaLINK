@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3a9ef48355cb440936a05a37111157, type: 3}
   m_Name: 04_LongNote
   m_EditorClassIdentifier: 
+  _defaultDelayBetweenLines: 0
   _lines:
   - _clip: {fileID: 8300000, guid: 2f03b15b106e685428b8449ed2a8c1af, type: 3}
-    _segments: []
+    _delayAfterPlayingLine: 0
+    _segments:
+    - _text: "That's better, it has way more flavor to it\r"
+      _percentAlongAudioToShow: 0
