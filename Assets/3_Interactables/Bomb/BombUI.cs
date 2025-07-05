@@ -9,9 +9,9 @@ public class BombUI : MonoBehaviour
 
     bool timerNegative;
 
-    private void Awake()
+    void Start()
     {
-       bomb = FindAnyObjectByType<Bomb>();
+        bomb = FindAnyObjectByType<Bomb>();
 
         if (timerText == null)
         {
@@ -21,15 +21,6 @@ public class BombUI : MonoBehaviour
         if (bomb == null)
         {
             Debug.LogError("Bomb is not found.", this);
-        }
-    }
-
-    void Start()
-    {
-        if (bomb == null)
-        {
-            Debug.LogError("Bomb reference is not set in BombUI.");
-            return;
         }
     }
 
