@@ -10,6 +10,22 @@ public class NumberLock : MonoBehaviour
 
     public event Action OnNumberLockOpened; // Event to notify when the lock is opened
 
+    private void OnEnable()
+    {
+        for (int i = 0; i < numberSelectors.Length; i++)
+        {
+            numberSelectors[i].OnNumberChanged += CheckNumber;
+        }
+    }
+
+    private void OnDisable()
+    {
+        for (int i = 0; i < numberSelectors.Length; i++)
+        {
+            numberSelectors[i].OnNumberChanged -= CheckNumber;
+        }
+    }
+
     public void CheckNumber()
     {
         if (numberSelectors.Length == 0)
@@ -17,22 +33,21 @@ public class NumberLock : MonoBehaviour
             Debug.LogError("No NumberSelectors assigned to the NumberLock.");
             return;
         }
+
         string enteredNumber = "";
         for (int i = 0; i < numberSelectors.Length; i++)
         {
             enteredNumber += numberSelectors[i].CurrentNumber.ToString();
         }
+
         if (enteredNumber == correctNumber)
         {
-            Debug.Log("Correct number entered: " + enteredNumber);
-
             OnNumberLockOpened?.Invoke();
 
             OpenDoor();
         }
         else
         {
-            Debug.Log("Incorrect number entered: " + enteredNumber);
             // Optionally, trigger a failure response
             WrongCodeEntered();
         }

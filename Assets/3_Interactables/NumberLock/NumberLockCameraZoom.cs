@@ -186,5 +186,4 @@ public class NumberLockCameraZoom : Interactable
         isZoomedIn = false;
         isZooming = false;
     }
-
 }

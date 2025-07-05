@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    Animator animator;
+    Animator _animator;
 
-    bool isOpen;
-    public bool IsOpen => isOpen; // Expose the open state of the door
+    bool _isOpen;
+    public bool IsOpen => _isOpen; // Expose the open state of the door
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
-        if (animator == null)
+        _animator = GetComponent<Animator>();
+        if (_animator == null)
         {
             Debug.LogError("Animator component not found on the Door object.");
         }
@@ -18,18 +18,30 @@ public class Door : MonoBehaviour
 
     public void OpenDoor()
     {
-        isOpen = true; // Set the door state to open
-        animator.SetTrigger("Open");
+        _isOpen = true; // Set the door state to open
+        _animator.SetTrigger("Open");
     }
 
     public void DoorIsLockedAnimation()
     {
-        animator.SetTrigger("Locked");
+        _animator.SetTrigger("Locked");
     }
 
     public void CloseDoor()
     {
-        isOpen = false; // Set the door state to closed
-        animator.SetTrigger("Close");
+        _isOpen = false; // Set the door state to closed
+        _animator.SetTrigger("Close");
+    }
+
+    public void ToggleDoor()
+    {
+        if (_isOpen)
+        {
+            CloseDoor();
+        } 
+        else
+        {
+            OpenDoor();
+        }
     }
 }
