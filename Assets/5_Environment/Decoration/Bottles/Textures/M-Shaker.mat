@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8057802640938434153
+--- !u!114 &-6840012201214697159
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,19 +20,18 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_WallLamp
+  m_Name: M-Shaker
   m_Shader: {fileID: -6465566751694194690, guid: fb5780ebcb7cffe448cde92e0ca95061, type: 3}
   m_Parent: {fileID: -876546973899608171, guid: fb5780ebcb7cffe448cde92e0ca95061, type: 3}
-  m_ModifiedSerializedProperties: 2
-  m_ValidKeywords:
-  - _ALPHATEST_ON
+  m_ModifiedSerializedProperties: 16
+  m_ValidKeywords: []
   m_InvalidKeywords: []
-  m_LightmapFlags: 2
+  m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2000
   stringTagMap:
-    RenderType: TransparentCutout
+    RenderType: Opaque
   disabledShaderPasses:
   - MOTIONVECTORS
   m_LockedProperties: 
@@ -40,25 +39,22 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseColor:
-        m_Texture: {fileID: 2800000, guid: 630f65b0fe442f643ac0e10105c004dd, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Emission:
-        m_Texture: {fileID: 2800000, guid: 3c1874d19c7aeb349ba8f13576726381, type: 3}
+        m_Texture: {fileID: 2800000, guid: 4a0814c8e632c704cb12c9b47783f500, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicSmoothness:
-        m_Texture: {fileID: 2800000, guid: 31ae096b4d51c5540a37f7d3b7882772, type: 3}
+        m_Texture: {fileID: 2800000, guid: 235c16f6d84530543b0d8e71a1e8b6ec, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal:
-        m_Texture: {fileID: 2800000, guid: 817ba2e8c8fb84c479a4f3d41ccf9f49, type: 3}
+        m_Texture: {fileID: 2800000, guid: 1656a00a16e4dca4faf2e07cf2b65607, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _QueueControl: 0
-    m_Colors:
-    - _Emission_Tint: {r: 1.8388816, g: 1.4218639, b: 0.7546354, a: 1}
+    - _AlphaClip: 0
+    - _AlphaToMask: 0
+    - _Smoothness: 0.5
+    m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1
