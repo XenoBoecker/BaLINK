@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[NodeElement(NodeType.Condition)]
+[NodeElement(NodeType.Condition, NodeType.IfElse)]
 [RequireComponent(typeof(Interactable))]
 public class PlayerHasInteractedWithObject : Condition
 {

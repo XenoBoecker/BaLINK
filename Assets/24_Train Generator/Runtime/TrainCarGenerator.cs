@@ -1,6 +1,6 @@
-using BetterAttributes;
 using System;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 [SelectionBase]
@@ -33,7 +33,6 @@ public class TrainCarGenerator : MonoBehaviour
 
     public int RequiredSegmentCount { get { return Mathf.CeilToInt(TrainCarLength / MinimumSegementLength); } }
 
-    [Button("Regenerate Car")]
     public void RegenerateCar()
     {
         if (SegmentLayout == null)
@@ -121,7 +120,8 @@ public class TrainCarGenerator : MonoBehaviour
             if (!SegmentLayout[i - 1].SegmentIndex.Equals(int.MinValue))
             {
                 position += Vector3.forward * MinimumSegementLength * (0.5f * (DefinedSegments[SegmentLayout[i - 1].SegmentIndex].Length - 1));
-                GameObject obj = Instantiate(DefinedSegments[SegmentLayout[i - 1].SegmentIndex].SegmentPrefab, position, Quaternion.identity, transform);
+                GameObject obj = (GameObject) PrefabUtility.InstantiatePrefab(DefinedSegments[SegmentLayout[i - 1].SegmentIndex].SegmentPrefab, transform);
+                obj.transform.position = position;
                 if (obj.TryGetComponent(out TrainCarSegment segment))
                 {
                     segment.SetIndex(i - 1);

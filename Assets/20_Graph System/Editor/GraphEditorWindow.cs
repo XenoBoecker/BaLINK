@@ -34,6 +34,7 @@ public class GraphEditorWindow : EditorWindow
     bool _nodeSelectedThisFrame = false;
 
     int _sourceNodeId = -1;
+    int _sourceNodeOutputIndex = -1;
     int _targetNodeId = -1;
 
     bool _isDraggingWindow = false;
@@ -90,7 +91,7 @@ public class GraphEditorWindow : EditorWindow
             else
             {
                 _newNodeSelectionMenu = new SelectionMenu<NodeType>(Event.current.mousePosition,
-                    new NodeType[] { NodeType.Entry, NodeType.Condition, NodeType.Effect });
+                    new NodeType[] { NodeType.Entry, NodeType.Condition, NodeType.Effect, NodeType.IfElse });
                 HandleUtility.Repaint();
             }
         }
@@ -136,12 +137,14 @@ public class GraphEditorWindow : EditorWindow
             }
         }
     }
+    
     private void NodeSelectionMade(NodeType selection)
     {
         _graph.AddNewNode(selection, _newNodeSelectionMenu.Position - _graph.Center);
 
         _newNodeSelectionMenu = null;
     }
+    
     private void HandleAddElementToNode()
     {
         if (_newElementTargetNodeId != -1 && _newElementSelectionMenu != null && _newElementSelectionMenu.Options.Length != 0)
@@ -160,10 +163,11 @@ public class GraphEditorWindow : EditorWindow
             }
         }
     }
+    
     void ElementSelectionMade(Type selectedType)
     {
         NodeElement condition = (NodeElement)CreateInstance(selectedType);
-        condition.Initialize(_draggedInObject);
+        condition.Initialize(_draggedInObject, 0);
         
         if (_graph.TryGetNodeFromId(_newElementTargetNodeId ,out GraphNode node)) 
         {
@@ -192,10 +196,6 @@ public class GraphEditorWindow : EditorWindow
             Handles.DrawSolidRectangleWithOutline(optionRect, BODY_COLOR, OUTLINE_COLOR);
 
             string text = menu.Options[i].ToString();
-/*            if (typeof(T) == typeof(Type))
-            {
-                text = ((Type)(object)menu.Options[i]).Name;
-            }*/
 
             EditorGUI.LabelField(optionRect, text);
 
@@ -217,7 +217,6 @@ public class GraphEditorWindow : EditorWindow
     }
 
     #region Node
-
     private void DrawNode(GraphNode node)
     {
         if (HandleDeleteNode(node)) { return; }
@@ -225,11 +224,11 @@ public class GraphEditorWindow : EditorWindow
         EditorGUI.indentLevel = 0;
 
         int cursorHeight = 0;
-        float nodeHeight = PROPERTY_HEIGHT * (GetNodeHeight(node) + 2);
+        float nodeHeight = PROPERTY_HEIGHT * (GetNodeHeight(node, GetFieldsToSkip(node)) + 2);
 
         nodeHeight += (node.IsUnfolded ? ELEMENT_PADDING * 0.5f : 0.0f);
         Rect nodeRect = new Rect(node.Position + _graph.Center, new Vector2(PROPERTY_WIDTH, nodeHeight));
-        
+
         Color _outlineColor = GetOutlineColor(node);
         Handles.DrawSolidRectangleWithOutline(nodeRect, BODY_COLOR, _outlineColor);
 
@@ -246,18 +245,18 @@ public class GraphEditorWindow : EditorWindow
         Rect useBlinkingSettingRect = ReserveRect(node, nodeRect, ref cursorHeight);
         node.SetWaitForBlink(EditorGUI.Toggle(useBlinkingSettingRect, "Use Blinking", node.WaitForBlink));
 
+        for (int i = 0; i < node.OutputCount; i++)
+        {
+            DrawNodeConnection(node, nodeRect, i);
+            Rect connectorOutRect = new Rect(nodeRect.position + new Vector2(PROPERTY_WIDTH, 0) + new Vector2(0, i) * CONNECTOR_RECT_SIZE, Vector2.one * CONNECTOR_RECT_SIZE);
+            HandleAddNodeConnection(node, connectorOutRect, NodeConnectionType.Out, i);
+        }
+        
         if (node.Type != NodeType.Entry)
         {
             Rect connectorInRect = new Rect(nodeRect.position + new Vector2(-CONNECTOR_RECT_SIZE, 0), Vector2.one * CONNECTOR_RECT_SIZE);
-            EditorGUI.DrawRect(connectorInRect, new Color(0.2f, 1.0f, 1.0f, 1));
-            HandleAddNodeConnection(node, connectorInRect, NodeConnectionType.In);
+            HandleAddNodeConnection(node, connectorInRect, NodeConnectionType.In, 0);
         }
-
-        Rect connectorOutRect = new Rect(nodeRect.position + new Vector2(PROPERTY_WIDTH, 0), Vector2.one * CONNECTOR_RECT_SIZE);
-        EditorGUI.DrawRect(connectorOutRect, new Color(1.0f, 1.0f, 0.2f, 1));
-        HandleAddNodeConnection(node, connectorOutRect, NodeConnectionType.Out);
-
-        DrawNodeConnection(node, nodeRect);
 
         if (!node.IsUnfolded) { return; }
 
@@ -266,32 +265,17 @@ public class GraphEditorWindow : EditorWindow
             DrawElement(node, node.Elements[i], nodeRect, ref cursorHeight);
         }
     }
-
-    private Color GetOutlineColor(GraphNode node)
-    {
-        Color _outlineColor = OUTLINE_COLOR;
-        if (_graph.CurrentNode == node)
-        {
-            _outlineColor = Color.yellow;
-        }
-        else if (node.Id == _selectedNodeId)
-        {
-            _outlineColor = SELECTED_COLOR;
-        }
-
-        return _outlineColor;
-    }
-
+    
     private void DrawElement(GraphNode node, NodeElement element, Rect nodeRect, ref int cursorHeight)
     {
         EditorGUI.indentLevel = 0;
         SerializedObject serializedObject = new SerializedObject(element);
 
         Rect elementRect = ReserveRect(node, nodeRect, ref cursorHeight, ELEMENT_PADDING);
-        elementRect.height *= GetElementHeight(element);
+        elementRect.height *= GetElementHeight(element, GetFieldsToSkip(node));
 
         Color _outlineColor = OUTLINE_COLOR;
-        if (node == _graph.CurrentNode && node.Type == NodeType.Condition)
+        if (node == _graph.CurrentNode && (node.Type == NodeType.Condition || node.Type == NodeType.IfElse))
         {
             if (element.ConditionIsMet())
             {
@@ -306,8 +290,13 @@ public class GraphEditorWindow : EditorWindow
         Handles.DrawSolidRectangleWithOutline(elementRect, BODY_COLOR, _outlineColor);
 
         Rect foldoutRect = new Rect(elementRect.position, new Vector2(elementRect.width, PROPERTY_HEIGHT));
-        string name = $"({element.ReferencedObject.name}) {element.ToString()}";
+        string name = $"({(element.ReferencedObject == null ? "Null Obj" : element.ReferencedObject.name)}) {element.ToString()}";
         element.SetUnfolded(EditorGUI.Foldout(foldoutRect, element.IsUnfolded, new GUIContent(name)));
+
+        if (node.OutputCount > 1)
+        {
+            HandleOutputSelectionButtons(node, element, foldoutRect);
+        }
 
         if (HandleRemoveElementButton(foldoutRect))
         {
@@ -324,6 +313,8 @@ public class GraphEditorWindow : EditorWindow
 
         if (!element.IsUnfolded) { return; }
 
+        string[] fieldsToSkip = GetFieldsToSkip(node);
+
         SerializedProperty iterator = serializedObject.GetIterator();
 
         //skips to the next variable (skips the "script" field)
@@ -333,6 +324,7 @@ public class GraphEditorWindow : EditorWindow
 
         while (iterator.NextVisible(true))
         {
+            if (fieldsToSkip.Contains(iterator.name)) { continue; }
             Rect propertyRect = ReserveRect(node, nodeRect, ref cursorHeight, ELEMENT_PADDING);
             EditorGUI.PropertyField(propertyRect, iterator);
         }
@@ -341,21 +333,49 @@ public class GraphEditorWindow : EditorWindow
     }
 
     #region Draw
-    private void DrawNodeConnection(GraphNode node, Rect nodeRect)
+    private void DrawOutputSelectButton(Rect outputSelectionButtonRect, string label, bool highlighted)
     {
-        if (_graph.TryGetNodeFromId(node.NextNodeId, out GraphNode foundNode))
+        GUIStyle outputSelectionButtonStyle = new GUIStyle();
+        outputSelectionButtonStyle.normal.background = highlighted ? Texture2D.grayTexture : Texture2D.blackTexture;
+
+        outputSelectionButtonStyle.normal.textColor = Color.lightGray;
+        outputSelectionButtonStyle.alignment = TextAnchor.MiddleCenter;
+
+        EditorGUI.LabelField(outputSelectionButtonRect, new GUIContent(label), outputSelectionButtonStyle);
+    }
+    
+    private void DrawNodeConnectionPoints(Rect connectorRect, NodeConnectionType connectorType, int nodeOutputIndex)
+    {
+        Handles.DrawSolidRectangleWithOutline(connectorRect, BODY_COLOR, OUTLINE_COLOR);
+        GUIStyle style = new GUIStyle();
+
+        style.alignment = TextAnchor.MiddleCenter;
+
+        EditorGUI.LabelField(connectorRect, "➔", style);
+
+        if (connectorType == NodeConnectionType.Out)
+        {
+            connectorRect.x -= connectorRect.width;
+            EditorGUI.LabelField(connectorRect, (nodeOutputIndex + 1).ToString(), style);
+        }
+    }
+
+    private void DrawNodeConnection(GraphNode node, Rect nodeRect, int outputIndex)
+    {
+        if (_graph.TryGetNodeFromId(node.NextNodeIds[outputIndex], out GraphNode foundNode))
         {
             Handles.DrawAAPolyLine(
                 4, 
-                node.Position + _graph.Center + new Vector2(nodeRect.width, 0) + Vector2.one * 0.5f * CONNECTOR_RECT_SIZE, 
+                node.Position + _graph.Center + new Vector2(nodeRect.width, 0) + Vector2.one * 0.5f * CONNECTOR_RECT_SIZE + new Vector2(0, outputIndex) * CONNECTOR_RECT_SIZE, 
                 foundNode.Position + _graph.Center + new Vector2(-1, 1) * 0.5f * CONNECTOR_RECT_SIZE);
         } 
         else
         {
-            node.SetNextNodeId(-1);
+            node.SetNextNodeId(-1, outputIndex);
             HandleUtility.Repaint();
         }
     }
+
     private void DrawNodeHeader(Rect rect, GraphNode node)
     {
         GUIStyle headerStyle = new GUIStyle();
@@ -364,6 +384,7 @@ public class GraphEditorWindow : EditorWindow
 
         node.SetUnfolded(EditorGUI.Foldout(rect, node.IsUnfolded ,node.Type.ToString()));
     }
+
     private void DrawElementRemoveButton(Rect removeButtonRect, bool highlighted)
     {
         GUIStyle removeButtonStyle = new GUIStyle();
@@ -372,7 +393,8 @@ public class GraphEditorWindow : EditorWindow
 
         EditorGUI.LabelField(removeButtonRect, new GUIContent("✘"), removeButtonStyle);
     }
-    private int GetNodeHeight(GraphNode node)
+
+    private int GetNodeHeight(GraphNode node, string[] fieldsToSkip)
     {
         int heigth = 0;
 
@@ -380,12 +402,13 @@ public class GraphEditorWindow : EditorWindow
 
         foreach (NodeElement element in node.Elements)
         {
-            heigth += GetElementHeight(element);
+            heigth += GetElementHeight(element, fieldsToSkip);
         }
 
         return heigth;
     }
-    private int GetElementHeight(NodeElement element)
+
+    private int GetElementHeight(NodeElement element, string[] fieldsToSkip)
     {
         int height = 1;
         SerializedObject serializedObject = new SerializedObject(element);
@@ -401,6 +424,7 @@ public class GraphEditorWindow : EditorWindow
         iterator.NextVisible(true);
         while (iterator.NextVisible(true))
         {
+            if (fieldsToSkip.Contains(iterator.name)) { continue; }
             height++;
         }
 
@@ -458,6 +482,7 @@ public class GraphEditorWindow : EditorWindow
     {
         warning = "";
         if (requiredComponentType == null) { return false; }
+        if (element.ReferencedObject == null) { return false; }
         if (element.ReferencedObject.GetComponent(requiredComponentType) == null)
         {
             warning = $"Selcted Object({element.ReferencedObject.name}) does not have {requiredComponentType.ToString()} attached!";
@@ -468,6 +493,31 @@ public class GraphEditorWindow : EditorWindow
     #endregion
 
     #region Node Handlers
+    private void HandleOutputSelectionButtons(GraphNode node, NodeElement element, Rect lineRect)
+    {
+        int totalButtonSpace = (int)(lineRect.width * 0.4f - PROPERTY_HEIGHT);
+        int individualButtonSpace = (int)(totalButtonSpace / (float)node.OutputCount);
+
+        Rect outputSelectionButtonRect = new Rect(lineRect);
+        outputSelectionButtonRect.x += outputSelectionButtonRect.width * 0.6f;
+        outputSelectionButtonRect.width = individualButtonSpace;
+
+        outputSelectionButtonRect.y += outputSelectionButtonRect.height * 0.1f;
+        outputSelectionButtonRect.height *= 0.8f;
+
+        for (int i = 0; i < node.OutputCount; i++)
+        {
+            DrawOutputSelectButton(outputSelectionButtonRect, (i+1).ToString(), element.ConnectedOutputIndex == i);
+
+            if (outputSelectionButtonRect.Contains(Event.current.mousePosition) && Event.current.type == EventType.MouseDown && Event.current.button == 0)
+            {
+                element.SetConnectedOutputIndex(i);
+            }
+
+            outputSelectionButtonRect.x += individualButtonSpace;
+        }
+    }
+    
     private void HandleSelectNode(GraphNode node, Rect rect)
     {
         if (Event.current.type == EventType.MouseDown && Event.current.button == 0 && rect.Contains(Event.current.mousePosition))
@@ -476,6 +526,7 @@ public class GraphEditorWindow : EditorWindow
             _selectedNodeId = node.Id;
         }
     }
+    
     private void HandleNodeDragged(GraphNode node, Rect rect)
     {
         //if not left mouse button return
@@ -498,34 +549,41 @@ public class GraphEditorWindow : EditorWindow
             node.ChangePosition(GetMouseDragChange());
         }
     }
-    private void HandleAddNodeConnection(GraphNode node, Rect controlRect, NodeConnectionType type)
+
+    private void HandleAddNodeConnection(GraphNode node, Rect controlRect, NodeConnectionType type, int nodeOutputIndex)
     {
+        DrawNodeConnectionPoints(controlRect, type, nodeOutputIndex);
+
         if (!controlRect.Contains(Event.current.mousePosition)) { return; }
 
         if (Event.current.type == EventType.MouseDown && Event.current.button == 0 && controlRect.Contains(Event.current.mousePosition))
         {
-            SetSourceOrTargetNode(node, type);
+            SetSourceOrTargetNode(node, type, nodeOutputIndex);
             return;
         }
 
         if (Event.current.type == EventType.MouseUp && Event.current.button == 0)
         {
-            SetSourceOrTargetNode(node, type);
+            SetSourceOrTargetNode(node, type, nodeOutputIndex);
 
             if (_graph.TryGetNodeFromId(_sourceNodeId, out GraphNode sourceNode) &&
                 _graph.TryGetNodeFromId(_targetNodeId, out GraphNode targetNode) &&
                 sourceNode != targetNode)
             {
-                sourceNode.SetNextNodeId(_targetNodeId);
+                Debug.Log(_sourceNodeOutputIndex);
+                sourceNode.SetNextNodeId(_targetNodeId, _sourceNodeOutputIndex);
                 HandleUtility.Repaint();
             }
             else
             {
                 _sourceNodeId = -1;
                 _targetNodeId = -1;
+                _sourceNodeOutputIndex = -1;
             }
         }
     }
+
+
     private void HandleObjectDraggedIn(GraphNode node, GameObject draggedInObject)
     {
         Type[] allNodeElementsTypes = _allnodeElementTypes;
@@ -542,7 +600,7 @@ public class GraphEditorWindow : EditorWindow
                 continue;
             }
 
-            if (attribute.ElementType == node.Type)
+            if (attribute.ElementTypes.Contains(node.Type))
             {
                 selectedNodeElementTypes.Add(allNodeElementsTypes[i]);
             }
@@ -553,6 +611,7 @@ public class GraphEditorWindow : EditorWindow
         _newElementSelectionMenu = new SelectionMenu<Type>(Event.current.mousePosition, selectedNodeElementTypes.ToArray());
         HandleUtility.Repaint();
     }
+    
     private bool HandleDeleteNode(GraphNode node)
     {
         if ((Event.current.keyCode == KeyCode.Delete || Event.current.keyCode == KeyCode.Backspace) && _selectedNodeId == node.Id)
@@ -579,9 +638,16 @@ public class GraphEditorWindow : EditorWindow
         return false;
     }
     #endregion
-    
+
     #region Helper
-    private void SetSourceOrTargetNode(GraphNode node, NodeConnectionType type)
+    private static string[] GetFieldsToSkip(GraphNode node)
+    {
+        string[] fieldsToSkip = new string[0];
+
+        return fieldsToSkip;
+    }
+
+    private void SetSourceOrTargetNode(GraphNode node, NodeConnectionType type, int nodeOutputIndex)
     {
         switch (type)
         {
@@ -590,9 +656,26 @@ public class GraphEditorWindow : EditorWindow
                 break;
             case NodeConnectionType.Out:
                 _sourceNodeId = node.Id;
+                _sourceNodeOutputIndex = nodeOutputIndex;
                 break;
         }
     }
+
+    private Color GetOutlineColor(GraphNode node)
+    {
+        Color _outlineColor = OUTLINE_COLOR;
+        if (_graph.CurrentNode == node)
+        {
+            _outlineColor = Color.yellow;
+        }
+        else if (node.Id == _selectedNodeId)
+        {
+            _outlineColor = SELECTED_COLOR;
+        }
+
+        return _outlineColor;
+    }
+    
     private bool OnObjectDraggedIn(Rect rect, out GameObject obj)
     {
         obj = null;

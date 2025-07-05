@@ -10,6 +10,7 @@ public class PlayerInteractor : MonoBehaviour
     [SerializeField] Transform equipWeaponPoint; // Point where the equipped item will be positioned
     [SerializeField] float equipDuration = 0.5f; // Duration for equipping the item
     private EquippedItem _equippedItem; // Reference to the currently equipped item, if any
+    public bool IsItemEquipped => _equippedItem != null; // Check if an item is currently equipped
 
     InputSystem_Actions _inputActions;
 
@@ -38,16 +39,13 @@ public class PlayerInteractor : MonoBehaviour
             {
                 print("Using equipped item...");
                 _equippedItem.UseItem(); // Use the currently equipped item
-                return; // Exit early if an item is used
             }
-            else
+
+            print("Trying to interact...");
+            Interactable interactable = GetInteractable();
+            if (interactable != null)
             {
-                print("Trying to interact...");
-                Interactable interactable = GetInteractable();
-                if (interactable != null)
-                {
-                    interactable.Interact();
-                }
+                interactable.TryInteract();
             }
         }
     }
@@ -71,19 +69,19 @@ public class PlayerInteractor : MonoBehaviour
 
     internal void EquipItem(EquippedItem item)
     {
+        if (_equippedItem != null)
+        {
+            Debug.LogWarning("Already equipped item");
+            return;
+        }
+
         StartCoroutine(EquipItemCoroutine(item));
     }
 
     private System.Collections.IEnumerator EquipItemCoroutine(EquippedItem item)
     {
-        if (_equippedItem != null)
-        {
-            // Optionally, you can add logic to unequip the current item
-            Debug.Log("Unequipping current item: " + _equippedItem.gameObject.name);
-            _equippedItem = null; // Clear the currently equipped item
-        }
-
         item.GetComponent<Collider>().enabled = false;
+        item.gameObject.layer = LayerMask.NameToLayer("Default"); // Ensure the item is on the default layer to avoid interaction issues
 
         for (float i = 0; i < equipDuration; i+= Time.deltaTime)
         {
@@ -101,6 +99,15 @@ public class PlayerInteractor : MonoBehaviour
         item.transform.parent = equipWeaponPoint; // Parent the item to the equip point for proper positioning
 
         _equippedItem = item; // Set the new equipped item
+
         Debug.Log("Equipped new item: " + _equippedItem.gameObject.name);
+    }
+
+    public void TakeAwayEquippedItem()
+    {
+        Destroy(_equippedItem.gameObject, 0.1f); // Destroy the equipped item
+        _equippedItem.SetIsEquipped(false);
+        _equippedItem.transform.parent = null; // Unparent the item
+        _equippedItem = null; // Clear the equipped item reference
     }
 }

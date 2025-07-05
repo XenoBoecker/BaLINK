@@ -1,22 +1,5 @@
 {
   "dependencies": {
-    "com.bouncypantaloons.better-attributes": {
-      "version": "https://github.com/Overworked-Collective/Better-Attributes.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {
-        "com.bouncypantaloons.editor-tooling": "1.0.0",
-        "com.unity.visualscripting": "1.0.0"
-      },
-      "hash": "65c443e4a926d161e12fcb635753e7f357544054"
-    },
-    "com.bouncypantaloons.editor-tooling": {
-      "version": "https://github.com/Overworked-Collective/Editor-Tooling.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "a401ff1538b63b51e266c234348eb41bc2025855"
-    },
     "com.github.homuler.mediapipe": {
       "version": "file:com.github.homuler.mediapipe",
       "depth": 0,
@@ -119,6 +102,18 @@
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
+    "com.unity.probuilder": {
+      "version": "6.0.5",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.shadergraph": "17.0.3",
+        "com.unity.modules.imgui": "1.0.0",
+        "com.unity.modules.physics": "1.0.0",
+        "com.unity.settings-manager": "1.0.3"
+      },
+      "url": "https://packages.unity.com"
+    },
     "com.unity.render-pipelines.core": {
       "version": "17.1.0",
       "depth": 1,
@@ -165,6 +160,13 @@
     "com.unity.searcher": {
       "version": "4.9.3",
       "depth": 2,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.settings-manager": {
+      "version": "2.1.0",
+      "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
@@ -217,6 +219,15 @@
       "dependencies": {
         "com.unity.modules.ui": "1.0.0",
         "com.unity.modules.imgui": "1.0.0"
+      }
+    },
+    "com.unity.visualeffectgraph": {
+      "version": "17.1.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.shadergraph": "17.1.0",
+        "com.unity.render-pipelines.core": "17.1.0"
       }
     },
     "com.unity.visualscripting": {

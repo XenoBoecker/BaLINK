@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEngine;
 
 [CustomEditor(typeof(ParallaxEffect))]
-public class ParallaxEffectEditor : OverrideInspector
+public class ParallaxEffectEditor : Editor
 {
     private bool _isPreviewing;
     private bool _wasPreviewing;

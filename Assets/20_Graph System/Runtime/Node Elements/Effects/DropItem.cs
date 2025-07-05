@@ -6,6 +6,10 @@ public class DropItem : Effect
 {
     public override void TriggerEffect()
     {
+        if (ReferencedObject.TryGetComponent(out EquippedItem item))
+        {
+            item.SetIsEquipped(false);
+        }
         Destroy(ReferencedObject);
     }
     

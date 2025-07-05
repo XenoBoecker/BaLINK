@@ -31,7 +31,7 @@ public class Sittable : Interactable
         _inputActions.Player.Disable();
     }
 
-    public override void Interact()
+    protected override void Interact()
     {
         base.Interact();
 
