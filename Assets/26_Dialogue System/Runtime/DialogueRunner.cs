@@ -8,7 +8,6 @@ public class DialogueRunner : MonoBehaviour
 {
     [SerializeField] private TMP_Text _text;
     private AudioSource _source;
-    public bool IsPlaying => _source.isPlaying;
 
     private void Awake()
     {
@@ -55,6 +54,7 @@ public class DialogueRunner : MonoBehaviour
         for (int i = 0; i < sequence.Lines.Length; i++)
         {
             PlayDialogueLine(sequence, i);
+            yield return new WaitUntil(() => { return !_source.isPlaying; });
             yield return new WaitForSeconds(sequence.DelayBetweenLines);
         }
     }
