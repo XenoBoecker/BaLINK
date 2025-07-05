@@ -83,6 +83,7 @@ public class Graph : MonoBehaviour
 
         if (_currentNode.ConditionElementConditionsMet(out int outputIndexTrue))
         {
+            ObjectEvents.GraphMadeBlinkChange();
             MoveToNextNode(outputIndexTrue);
         }
     }
