@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -30,6 +31,11 @@ public class DialogueRunner : MonoBehaviour
     {
         if (sequence.TryGetDialogueLine(dialogueLineIndex, out DialogueLine line))
         {
+            if (line.Segments == null || line.Segments.Length == 0)
+            {
+                throw new Exception($"Dialogue line number {dialogueLineIndex} of {sequence.name} does not have any text defined");
+            }
+
             ShowDialogueText(line, 0);
             StartCoroutine(ClearDialogueText(line.Clip.length));
             _source.clip = line.Clip;
