@@ -9,6 +9,10 @@ public class Hacks : MonoBehaviour
 
     [SerializeField] KeyCode blinkKey = KeyCode.Alpha1;
 
+    [SerializeField] private float teleportDistance = 1f; // Distance to teleport the player
+    [SerializeField] private float shiftTeleportMultiplier = 2f; // Multiplier for teleport distance when holding shift
+    float currentTeleportDistance = 1f; // Current teleport distance
+
     CharacterMovement _characterMovement;
     BaseFirstPersonController _baseFirstPersonController;
 
@@ -29,21 +33,30 @@ public class Hacks : MonoBehaviour
             InputEvents.PlayerBlinked();
         }
 
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            currentTeleportDistance = teleportDistance * shiftTeleportMultiplier;
+        }
+        else
+        {
+            currentTeleportDistance = teleportDistance;
+        }
+
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
-            TeleportPlayer(new Vector3(0, 0, -1)); // Teleport down
+            TeleportPlayer(new Vector3(0, 0, -1) * currentTeleportDistance); // Teleport down
         }
         else if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            TeleportPlayer(new Vector3(0, 0, 1)); // Teleport up
+            TeleportPlayer(new Vector3(0, 0, 1) * currentTeleportDistance); // Teleport up
         }
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            TeleportPlayer(new Vector3(-1, 0, 0)); // Teleport left
+            TeleportPlayer(new Vector3(-1, 0, 0) * currentTeleportDistance); // Teleport left
         }
         else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            TeleportPlayer(new Vector3(1, 0, 0)); // Teleport right
+            TeleportPlayer(new Vector3(1, 0, 0) * currentTeleportDistance); // Teleport right
         }
     }
 
