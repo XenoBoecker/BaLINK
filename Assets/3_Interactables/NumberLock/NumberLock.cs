@@ -7,6 +7,7 @@ public class NumberLock : MonoBehaviour
     [SerializeField] string correctNumber = "123"; // Example correct number
 
     [SerializeField] NumberSelector[] numberSelectors;
+    bool _isLocked = true; // Indicates if the lock is currently locked
 
     public event Action OnNumberLockOpened; // Event to notify when the lock is opened
 
@@ -28,6 +29,12 @@ public class NumberLock : MonoBehaviour
 
     public void CheckNumber()
     {
+        if(!_isLocked)
+        {
+            Debug.Log("NumberLock is already opened, no need to check again.");
+            return;
+        }
+
         if (numberSelectors.Length == 0)
         {
             Debug.LogError("No NumberSelectors assigned to the NumberLock.");
@@ -42,6 +49,7 @@ public class NumberLock : MonoBehaviour
 
         if (enteredNumber == correctNumber)
         {
+            _isLocked = false;
             OnNumberLockOpened?.Invoke();
 
             OpenDoor();
