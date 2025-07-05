@@ -45,7 +45,7 @@ Light:
   m_Type: 2
   m_Color: {r: 0.9981856, g: 1, b: 0.7877358, a: 1}
   m_Intensity: 1
-  m_Range: 5
+  m_Range: 1.5915861
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -145,10 +145,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_WallLamp
       objectReference: {fileID: 0}
+    - target: {fileID: 3570047452212809970, guid: b02f31635bf682544961725d17913d86, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7569933
+      objectReference: {fileID: 0}
+    - target: {fileID: 3570047452212809970, guid: b02f31635bf682544961725d17913d86, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7569933
+      objectReference: {fileID: 0}
+    - target: {fileID: 3570047452212809970, guid: b02f31635bf682544961725d17913d86, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.7569933
+      objectReference: {fileID: 0}
     - target: {fileID: 5928173999153272178, guid: b02f31635bf682544961725d17913d86, type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: -6327637463931616302, guid: ce1e1984daa630b42ae2820043725fa5, type: 3}
+    - target: {fileID: 6143730791746583328, guid: b02f31635bf682544961725d17913d86, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6143730791746583328, guid: b02f31635bf682544961725d17913d86, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6143730791746583328, guid: b02f31635bf682544961725d17913d86, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6143730791746583328, guid: b02f31635bf682544961725d17913d86, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
