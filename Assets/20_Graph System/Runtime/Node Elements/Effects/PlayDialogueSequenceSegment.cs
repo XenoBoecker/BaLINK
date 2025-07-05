@@ -1,14 +1,16 @@
 using UnityEngine;
 
 [NodeElement(NodeType.Effect)]
-public class PlayDialogueSequence : Effect
+public class PlayDialogueSequenceSegment : Effect
 {
     [SerializeField] private DialogueSequence _sequence;
+    [SerializeField] private int _firstLineIndex = -1;
+    [SerializeField] private int _lastLineIndex = -1;
     private DialogueRunner _runner;
 
     public override string GetName()
     {
-        return "Play Sequence";
+        return "Play Sequence Segment";
     }
 
     public override void TriggerEffect()
@@ -19,6 +21,9 @@ public class PlayDialogueSequence : Effect
             throw new System.Exception("There is no object tagged 'Dialogue Runner' in the scene");
         }
 
-        _runner.PlayDialogueSequenceSegment(_sequence, 0, _sequence.Lines.Length - 1);
+        int startingIndex = _firstLineIndex == -1 ? 0 : _firstLineIndex;
+        int lastLineIndex = _lastLineIndex == -1 ? _sequence.Lines.Length - 1 : _lastLineIndex;
+
+        _runner.PlayDialogueSequenceSegment(_sequence, startingIndex, lastLineIndex);
     }
 }

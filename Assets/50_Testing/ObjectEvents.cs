@@ -9,5 +9,11 @@ namespace GameEvents
         {
             OnGraphMadeBlinkChange?.Invoke();
         }
+
+        public static event Action OnPlayAudio;
+        public static void PlayAudio()
+        {
+            OnPlayAudio?.Invoke();
+        }
     }
 }

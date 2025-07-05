@@ -16,8 +16,7 @@ public class PlayDialogueLine : Effect
             throw new System.Exception("There is no object tagged 'Dialogue Runner' in the scene");
         }
 
-        _runner = ReferencedObject.GetComponent<DialogueRunner>();
-        _runner.PlayDialogueLine(_sequence, _lineIndex);
+        _runner.PlayDialogueSequenceSegment(_sequence, _lineIndex, _lineIndex);
     }
 
     public override string GetName()
