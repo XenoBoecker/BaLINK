@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 114854918141282102}
   - component: {fileID: 114272575589405250}
   - component: {fileID: 7322707358008542355}
+  - component: {fileID: 4815638396983421092}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -202,6 +203,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   respawnPoint: {fileID: 0}
   killPlayerHeight: -10
+--- !u!114 &4815638396983421092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1104601239848796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca51a85d5bf79f9489f1c9ddc28adb13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1389653564741890
 GameObject:
   m_ObjectHideFlags: 0
