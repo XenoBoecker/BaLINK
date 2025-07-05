@@ -28,4 +28,9 @@ public class EquippedItem : MonoBehaviour
 
         _usedCount++; // Mark as used
     }
+
+    public void RemoveCurrentryEquippedItem()
+    {
+        FindAnyObjectByType<PlayerInteractor>().TakeAwayEquippedItem();
+    }
 }
