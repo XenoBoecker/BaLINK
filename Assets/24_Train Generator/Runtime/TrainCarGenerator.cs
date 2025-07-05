@@ -33,6 +33,7 @@ public class TrainCarGenerator : MonoBehaviour
 
     public int RequiredSegmentCount { get { return Mathf.CeilToInt(TrainCarLength / MinimumSegementLength); } }
 
+#if UNITY_EDITOR
     public void RegenerateCar()
     {
         if (SegmentLayout == null)
@@ -136,7 +137,7 @@ public class TrainCarGenerator : MonoBehaviour
             _reflectionProbes[i].SetProbeBounds(this, i);
         }
     }
-
+#endif
     public void SetTrainCarLength(float newLength)
     {
         if (newLength < 1)
