@@ -55,7 +55,7 @@ public class DialogueRunner : MonoBehaviour
         {
             PlayDialogueLine(sequence, i);
             yield return new WaitUntil(() => { return !_source.isPlaying; });
-            yield return new WaitForSeconds(sequence.DelayBetweenLines);
+            yield return new WaitForSeconds(sequence.Lines[i].DelayAfterPlayingLine);
         }
     }
 }
