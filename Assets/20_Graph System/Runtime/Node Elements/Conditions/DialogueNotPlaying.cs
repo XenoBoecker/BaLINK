@@ -1,17 +1,12 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
-[NodeElement(NodeType.Effect)]
-public class PlayDialogueSequence : Effect
+[NodeElement(NodeType.Condition)]
+public class DialogueNotPlaying : Condition
 {
-    [SerializeField] private DialogueSequence _sequence;
     private DialogueRunner _runner;
 
-    public override string GetName()
-    {
-        return "Play Sequence";
-    }
-
-    public override void TriggerEffect()
+    public override bool ConditionIsMet()
     {
         GameObject foundObject = GameObject.FindGameObjectWithTag("Dialogue Runner");
         if (foundObject == null || !foundObject.TryGetComponent(out _runner))
@@ -19,6 +14,11 @@ public class PlayDialogueSequence : Effect
             throw new System.Exception("There is no object tagged 'Dialogue Runner' in the scene");
         }
 
-        _runner.PlayDialogueSequenceSegment(_sequence, 0, _sequence.Lines.Length - 1);
+        return _invertCondition != !_runner.IsPlaying;
+    }
+
+    public override string GetName()
+    {
+        return "Dialogue Not Playing";
     }
 }

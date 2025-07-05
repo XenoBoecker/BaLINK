@@ -9,12 +9,24 @@ public class DialogueRunner : MonoBehaviour
     [SerializeField] private TMP_Text _text;
     private AudioSource _source;
 
+    private bool _isPlaying;
+    public bool IsPlaying => _isPlaying;
+
     private void Awake()
     {
         _source = GetComponent<AudioSource>();
     }
 
-    public void PlayDialogueLine(DialogueSequence sequence, int dialogueLineIndex)
+    internal void PlayDialogueSequenceSegment(DialogueSequence sequence, int firstIndex, int lastIndex)
+    {
+        if (IsPlaying)
+        {
+            throw new Exception("Tried to play two dialogues at the same time");
+        }
+        StartCoroutine(PlaySequenceSegment(sequence, firstIndex, lastIndex));
+    }
+
+    private void PlayDialogueLine(DialogueSequence sequence, int dialogueLineIndex)
     {
         if (sequence.TryGetDialogueLine(dialogueLineIndex, out DialogueLine line))
         {
@@ -44,18 +56,18 @@ public class DialogueRunner : MonoBehaviour
         ShowDialogueText(line, currentIndex + 1);
     }
 
-    internal void PlayDialogueSequence(DialogueSequence sequence)
+    private IEnumerator PlaySequenceSegment(DialogueSequence sequence, int firstIndex, int lastIndex)
     {
-        StartCoroutine(PlayFullSequence(sequence));
-    }
-
-    private IEnumerator PlayFullSequence(DialogueSequence sequence)
-    {
-        for (int i = 0; i < sequence.Lines.Length; i++)
+        _isPlaying = true;
+        for (int i = firstIndex; i < lastIndex + 1; i++)
         {
             PlayDialogueLine(sequence, i);
             yield return new WaitUntil(() => { return !_source.isPlaying; });
-            yield return new WaitForSeconds(sequence.Lines[i].DelayAfterPlayingLine);
+            if (i != lastIndex)
+            {
+                yield return new WaitForSeconds(sequence.Lines[i].DelayAfterPlayingLine);
+            }
         }
+        _isPlaying = false;
     }
 }
