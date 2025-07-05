@@ -37,7 +37,7 @@ public class Target : MonoBehaviour
 
         if (targetManager.HoverRandomizeStartPosition)
         {
-            transform.Translate(Vector3.up * UnityEngine.Random.Range(-1f, 1f));
+            transform.Translate(Vector3.up * UnityEngine.Random.Range(-targetManager.MaxRandomSpawnDist, targetManager.MaxRandomSpawnDist));
         }
 
         if (pathParent != null)
@@ -100,7 +100,8 @@ public class Target : MonoBehaviour
             moveSpeed = 0.1f; // Ensure a minimum speed to avoid getting stuck
         }
         Vector3 moveDir = (noHeightCurrentPathPoint - noHeightPos).normalized;
-        transform.Translate(moveSpeed * Time.deltaTime * moveDir);
+
+        transform.Translate(moveSpeed * Time.deltaTime * moveDir, Space.World);
 
         if (distPercentage > 0.95f)
         {
@@ -165,7 +166,5 @@ public class Target : MonoBehaviour
         }
 
         currentHoverGoalHeight = newHoverGoalHeight;
-
-        Debug.Log("Next hover goal height: " + currentHoverGoalHeight, this);
     }
 }

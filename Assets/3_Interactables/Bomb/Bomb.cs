@@ -147,4 +147,9 @@ public class Bomb : MonoBehaviour
             wrongButtons[i].OnInteracted -= WrongButtonPressed;
         }
     }
+
+    internal float GetTimeScale()
+    {
+        return timeScale;
+    }
 }

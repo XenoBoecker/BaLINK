@@ -91,7 +91,7 @@ public class NumberLockCameraZoom : Interactable
         }
     }
 
-    override public void Interact()
+    override protected void Interact()
     {
         ZoomIn();
     }
@@ -186,5 +186,4 @@ public class NumberLockCameraZoom : Interactable
         isZoomedIn = false;
         isZooming = false;
     }
-
 }
