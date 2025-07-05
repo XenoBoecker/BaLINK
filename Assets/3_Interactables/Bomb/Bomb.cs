@@ -110,6 +110,11 @@ public class Bomb : MonoBehaviour
         timeLeft = newTimeLeft;
     }
 
+    public void AddTime(float additionalTime)
+    {
+        timeLeft += additionalTime;
+    }
+
     public float GetCurrentTimeLeft()
     {
         return timeLeft;
