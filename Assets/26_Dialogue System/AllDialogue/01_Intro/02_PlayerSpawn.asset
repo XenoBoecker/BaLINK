@@ -12,12 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3a9ef48355cb440936a05a37111157, type: 3}
   m_Name: 02_PlayerSpawn
   m_EditorClassIdentifier: 
+  _defaultDelayBetweenLines: 0.3
   _lines:
   - _clip: {fileID: 8300000, guid: 8e4ef5b3ea662bd43818635935dead4f, type: 3}
+    _delayAfterPlayingLine: 0.3
     _segments:
     - _text: "There we go, placed them into one of the old carts\r"
       _percentAlongAudioToShow: 0
   - _clip: {fileID: 8300000, guid: ac98b39c2c14f8d4082a58fb954b9ccf, type: 3}
+    _delayAfterPlayingLine: 0.3
     _segments:
     - _text: "Ahh, you\u2019re an Angel! \r\n"
       _percentAlongAudioToShow: 0
@@ -29,6 +32,7 @@ MonoBehaviour:
         without a proper intro?'
       _percentAlongAudioToShow: 0.5210481
   - _clip: {fileID: 8300000, guid: 60665dd0cfdf70b4093bdd637dc28370, type: 3}
+    _delayAfterPlayingLine: 0.3
     _segments:
     - _text: "Don\u2019t worry I got that covered already. "
       _percentAlongAudioToShow: 0
