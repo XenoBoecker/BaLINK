@@ -1,37 +1,49 @@
+using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 
 public class NumberSelector : MonoBehaviour
 {
-    [SerializeField] private Animator animator;
-    [SerializeField] private TMP_Text numberText;
+    [SerializeField] private GameObject _lockElement;
+    [SerializeField] private int _lockElementSides;
+    [SerializeField] private float _rotationSpeed;
 
-    int currentNumber = 0;
-    public int CurrentNumber => currentNumber; // Property to access the current number
+    public event Action OnNumberChanged;
+    private int _currentNumber = 0;
+    float _angle = 0;
+    bool _numberChanged;
+    
+    public int CurrentNumber => _currentNumber < 0 ? ((_currentNumber + (_lockElementSides * Mathf.CeilToInt((float)Mathf.Abs(_currentNumber) / _lockElementSides))) % _lockElementSides) : (_currentNumber % _lockElementSides);
 
     private void Start()
     {
-        if (numberText != null)
-        {
-            numberText.text = currentNumber.ToString(); // Initialize the displayed number
-        }
+        _lockElement.transform.rotation = Quaternion.identity;
     }
 
     public void IncrementNumber()
     {
-        currentNumber = (currentNumber + 1) % 10; // Cycle through 0-9
-        Debug.Log("Current Number: " + currentNumber);
-
-        if(animator != null) animator.SetTrigger("Increment"); // Trigger the increment animation
-        if (numberText != null) numberText.text = currentNumber.ToString(); // Update the displayed number
+        _currentNumber++;
+        _numberChanged = true;
     }
+
 
     public void DecrementNumber()
     {
-        currentNumber = (currentNumber - 1 + 10) % 10; // Cycle through 0-9
-        Debug.Log("Current Number: " + currentNumber);
+        _currentNumber--;
+        _numberChanged = true;
+    }
 
-        if (animator != null) animator.SetTrigger("Decrement"); // Trigger the decrement animation
-        if (numberText != null) numberText.text = currentNumber.ToString(); // Update the displayed number
+    private void Update()
+    {
+        float targetRotation = 360f * ((float)_currentNumber / _lockElementSides);
+
+        _angle = Mathf.Lerp(_angle, targetRotation, _rotationSpeed * Time.deltaTime);
+        _lockElement.transform.localEulerAngles = new Vector3(_angle, 0, 0);
+
+        if (_numberChanged && Mathf.Abs(targetRotation - _angle) < 1)
+        {
+            OnNumberChanged?.Invoke();
+        }
     }
 }

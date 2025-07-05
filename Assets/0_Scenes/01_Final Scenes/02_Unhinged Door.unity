@@ -185,6 +185,68 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0bb12ab2d0a1344d9dcdf2890432271, type: 3}
+--- !u!1001 &88254693
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 97900458}
+    m_Modifications:
+    - target: {fileID: 681382857943679686, guid: 472b4cbea79ab714fb4c7ccc50b12d2c, type: 3}
+      propertyPath: m_Name
+      value: Train Gangway
+      objectReference: {fileID: 0}
+    - target: {fileID: 8341662515751776398, guid: 472b4cbea79ab714fb4c7ccc50b12d2c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8341662515751776398, guid: 472b4cbea79ab714fb4c7ccc50b12d2c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8341662515751776398, guid: 472b4cbea79ab714fb4c7ccc50b12d2c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8341662515751776398, guid: 472b4cbea79ab714fb4c7ccc50b12d2c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8341662515751776398, guid: 472b4cbea79ab714fb4c7ccc50b12d2c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8341662515751776398, guid: 472b4cbea79ab714fb4c7ccc50b12d2c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8341662515751776398, guid: 472b4cbea79ab714fb4c7ccc50b12d2c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8341662515751776398, guid: 472b4cbea79ab714fb4c7ccc50b12d2c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8341662515751776398, guid: 472b4cbea79ab714fb4c7ccc50b12d2c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8341662515751776398, guid: 472b4cbea79ab714fb4c7ccc50b12d2c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 472b4cbea79ab714fb4c7ccc50b12d2c, type: 3}
+--- !u!4 &88254694 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8341662515751776398, guid: 472b4cbea79ab714fb4c7ccc50b12d2c, type: 3}
+  m_PrefabInstance: {fileID: 88254693}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &97900457
 GameObject:
   m_ObjectHideFlags: 0
@@ -218,6 +280,7 @@ Transform:
   - {fileID: 315692923}
   - {fileID: 2104211406}
   - {fileID: 1198723156}
+  - {fileID: 88254694}
   m_Father: {fileID: 1646470428}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &116423336
@@ -2656,6 +2719,17 @@ PrefabInstance:
       addedObject: {fileID: 1514878973}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52cfef8428a9a654b9d416f03026ae04, type: 3}
+--- !u!114 &1277699369 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9095664846751660808, guid: 52cfef8428a9a654b9d416f03026ae04, type: 3}
+  m_PrefabInstance: {fileID: 1277699368}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60f4abf2301d9be44ae55065286f79bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1291382466 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8805724484441469149, guid: 3248b51068bded047ba9bac92ad58042, type: 3}
@@ -3701,6 +3775,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1646470428}
+  - component: {fileID: 1646470429}
   m_Layer: 0
   m_Name: ROOT
   m_TagString: Untagged
@@ -3717,7 +3792,7 @@ Transform:
   m_GameObject: {fileID: 1646470427}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3725,6 +3800,19 @@ Transform:
   - {fileID: 1511621841}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1646470429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646470427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc7efb7b38f111c46b94ee1e45464563, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _trainCarGenerator: {fileID: 1277699369}
 --- !u!1 &1665772454
 GameObject:
   m_ObjectHideFlags: 0
