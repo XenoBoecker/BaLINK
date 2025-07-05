@@ -48,6 +48,7 @@ public class NumberLock : MonoBehaviour
         }
         else
         {
+            Debug.Log($"Entered number: {enteredNumber} does not match the correct number: {correctNumber}");
             // Optionally, trigger a failure response
             WrongCodeEntered();
         }
