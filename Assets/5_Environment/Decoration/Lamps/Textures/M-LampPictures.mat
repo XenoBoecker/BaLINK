@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-6840012201214697159
+--- !u!114 &-4474367923795584558
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M-Shaker
+  m_Name: M-LampPictures
   m_Shader: {fileID: -6465566751694194690, guid: fb5780ebcb7cffe448cde92e0ca95061, type: 3}
   m_Parent: {fileID: -876546973899608171, guid: fb5780ebcb7cffe448cde92e0ca95061, type: 3}
   m_ModifiedSerializedProperties: 16
@@ -39,22 +39,26 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseColor:
-        m_Texture: {fileID: 2800000, guid: 4a0814c8e632c704cb12c9b47783f500, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7ac69721ee299e642a826b6e4bb4c5cc, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Emission:
+        m_Texture: {fileID: 2800000, guid: f231ab1f16706e64d8695f8750f98679, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicSmoothness:
-        m_Texture: {fileID: 2800000, guid: 235c16f6d84530543b0d8e71a1e8b6ec, type: 3}
+        m_Texture: {fileID: 2800000, guid: eb6316b4eb86e264586d28196459294e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal:
-        m_Texture: {fileID: 2800000, guid: 1656a00a16e4dca4faf2e07cf2b65607, type: 3}
+        m_Texture: {fileID: 2800000, guid: fc183b54602188d4690191bfbd71db9d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
     - _AlphaClip: 0
     - _AlphaToMask: 0
-    - _QueueControl: 1
+    - _QueueControl: 0
     - _Smoothness: 0.5
     m_Colors: []
   m_BuildTextureStacks: []
