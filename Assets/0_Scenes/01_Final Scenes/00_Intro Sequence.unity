@@ -270,7 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14952869cb4066c4f8d5ece7c0ba5031, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneToLoad: 02_Testing - Scene Loading Main
+  _sceneToLoad: 01_Initial Scene
 --- !u!1 &411700350
 GameObject:
   m_ObjectHideFlags: 0
@@ -301,7 +301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _textsToShow:
-  - Before we begin we have to claibrate the webcam.
+  - Before we begin we have to claibrate the tracking.
   - Keep your eyes open and look at the center of your screen while holding the spacebar.
   _overrideTextColor: 0
   _textColor: {r: 0, g: 0, b: 0, a: 0}
@@ -2154,7 +2154,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _textsToShow:
   - Last things last, let's test to make sure the calibration is accurate!
-  - Blink and make sure the counter increases accuratley (it will never be perfect)..
+  - Blink and make sure the counter increases accuratley (slight inconsistencies
+    are acceptable)
   _overrideTextColor: 0
   _textColor: {r: 0, g: 0, b: 0, a: 0}
   _textObject: {fileID: 1655761753}
@@ -2209,7 +2210,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _textsToShow:
   - Awsome! Let's get started.
-  - We hope you enjoy
+  - 'Please try to ignore the eye tracking
+
+'
   _overrideTextColor: 0
   _textColor: {r: 0, g: 0, b: 0, a: 0}
   _textObject: {fileID: 1655761753}
@@ -2279,7 +2282,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _textsToShow:
   - Welcome to Dev Train!
-  - This game requires you to have a functional webcam.
+  - For testing purposes we access your webcam to track your eyes.
   - Please make sure you have one connected and functional.
   _overrideTextColor: 0
   _textColor: {r: 0, g: 0, b: 0, a: 0}

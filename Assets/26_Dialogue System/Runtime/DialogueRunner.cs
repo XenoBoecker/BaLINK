@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -9,15 +10,32 @@ public class DialogueRunner : MonoBehaviour
     [SerializeField] private TMP_Text _text;
     private AudioSource _source;
 
+    private bool _isPlaying;
+    public bool IsPlaying => _isPlaying;
+
     private void Awake()
     {
         _source = GetComponent<AudioSource>();
     }
 
-    public void PlayDialogueLine(DialogueSequence sequence, int dialogueLineIndex)
+    internal void PlayDialogueSequenceSegment(DialogueSequence sequence, int firstIndex, int lastIndex)
+    {
+        if (IsPlaying)
+        {
+            throw new Exception("Tried to play two dialogues at the same time");
+        }
+        StartCoroutine(PlaySequenceSegment(sequence, firstIndex, lastIndex));
+    }
+
+    private void PlayDialogueLine(DialogueSequence sequence, int dialogueLineIndex)
     {
         if (sequence.TryGetDialogueLine(dialogueLineIndex, out DialogueLine line))
         {
+            if (line.Segments == null || line.Segments.Length == 0)
+            {
+                throw new Exception($"Dialogue line number {dialogueLineIndex} of {sequence.name} does not have any text defined");
+            }
+
             ShowDialogueText(line, 0);
             StartCoroutine(ClearDialogueText(line.Clip.length));
             _source.clip = line.Clip;
@@ -42,5 +60,20 @@ public class DialogueRunner : MonoBehaviour
         if (currentIndex + 1 >= line.Segments.Length) { yield break; }
         yield return new WaitUntil(() => { return (_source.time/line.Clip.length >= line.Segments[currentIndex + 1].PercentAlongAudioToShow); });
         ShowDialogueText(line, currentIndex + 1);
+    }
+
+    private IEnumerator PlaySequenceSegment(DialogueSequence sequence, int firstIndex, int lastIndex)
+    {
+        _isPlaying = true;
+        for (int i = firstIndex; i < lastIndex + 1; i++)
+        {
+            PlayDialogueLine(sequence, i);
+            yield return new WaitUntil(() => { return !_source.isPlaying; });
+            if (i != lastIndex)
+            {
+                yield return new WaitForSeconds(sequence.Lines[i].DelayAfterPlayingLine);
+            }
+        }
+        _isPlaying = false;
     }
 }

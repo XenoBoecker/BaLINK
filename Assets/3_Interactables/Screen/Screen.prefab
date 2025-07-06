@@ -204,6 +204,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Screen
       objectReference: {fileID: 0}
+    - target: {fileID: 3455845720114481512, guid: b02f31635bf682544961725d17913d86, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5928173999153272178, guid: b02f31635bf682544961725d17913d86, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -248,16 +252,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6774550951662865641, guid: b02f31635bf682544961725d17913d86, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6143730791746583328, guid: b02f31635bf682544961725d17913d86, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8322967920918578812}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3455845720114481512, guid: b02f31635bf682544961725d17913d86, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2094672932937091149}
   m_SourcePrefab: {fileID: 100100000, guid: b02f31635bf682544961725d17913d86, type: 3}
 --- !u!4 &3491384387275308851 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6143730791746583328, guid: b02f31635bf682544961725d17913d86, type: 3}
   m_PrefabInstance: {fileID: 7291619169648018451}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5387616184205495675 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3455845720114481512, guid: b02f31635bf682544961725d17913d86, type: 3}
+  m_PrefabInstance: {fileID: 7291619169648018451}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2094672932937091149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5387616184205495675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5a2fd5edca754b4cb39feceb9f47982, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetsDestroyedText: {fileID: 7371492035550287712}

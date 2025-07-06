@@ -2,8 +2,12 @@
 
 public class BombLED : MonoBehaviour
 {
-    [SerializeField] private GameObject ledLight;
     [SerializeField] private Interactable interactable;
+
+    [SerializeField] private GameObject ledLight;
+    [SerializeField] private MeshRenderer ledMeshRenderer;
+    [SerializeField] private Material ledOnMaterial;
+
 
     private void Awake()
     {
@@ -24,5 +28,10 @@ public class BombLED : MonoBehaviour
     private void TurnOnLEDLight()
     {
         ledLight.SetActive(true);
+
+        if (ledMeshRenderer != null && ledOnMaterial != null)
+        {
+            ledMeshRenderer.material = ledOnMaterial; // Change the material to indicate the LED is on
+        }
     }
 }

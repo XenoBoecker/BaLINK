@@ -6,7 +6,8 @@ public class NumberSelectorInteractable : MonoBehaviour
     [SerializeField] bool isIncrementing = true; // Whether this selector increments or decrements the number
     public void Interact()
     {
-        if(isIncrementing)
+        Debug.Log($"Interacting with NumberSelector: {numberSelector.name}, Incrementing: {isIncrementing}");
+        if (isIncrementing)
         {
             numberSelector.IncrementNumber();
         }

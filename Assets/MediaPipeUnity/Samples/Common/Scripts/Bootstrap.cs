@@ -57,12 +57,16 @@ namespace Mediapipe.Unity.Sample
             AssetLoader.Provide(new LocalResourceManager());
             break;
 #else
-            Debug.LogError("LocalResourceManager is only supported on UnityEditor." +
-              "To avoid this error, consider switching to the StreamingAssetsResourceManager and copying the required resources under StreamingAssets, for example.");
-            yield break;
+
+            _appSettings.assetLoaderType = AppSettings.AssetLoaderType.StreamingAssets;
+            AssetLoader.Provide(new StreamingAssetsResourceManager());
+            Debug.LogWarning("This is probably not the right way to do this, but it works for now.");
+            //Debug.LogError("LocalResourceManager is only supported on UnityEditor." +
+            //  "To avoid this error, consider switching to the StreamingAssetsResourceManager and copying the required resources under StreamingAssets, for example.");
+            break;
 #endif
-          }
-        default:
+                    }
+                default:
           {
             Debug.LogError($"AssetLoaderType is unknown: {_appSettings.assetLoaderType}");
             yield break;

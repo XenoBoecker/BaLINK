@@ -4,12 +4,16 @@ using UnityEngine;
 public class Interactable : MonoBehaviour
 {
     [SerializeField] protected bool _interactionEnabled = true;
+    [SerializeField] protected bool _canBeInteractedWithMultipleTimes = false;
 
     protected int _interactedCount; // Tracks if the object has been interacted with in this game session
-    public int interactedCount => _interactedCount;
+    public int InteractedCount => _interactedCount;
     public bool HasBeenInteractedWithThisGame => _interactedCount > 0;
 
+    bool _canBeInteractedWith => _interactionEnabled && !(!_canBeInteractedWithMultipleTimes && HasBeenInteractedWithThisGame);
+
     public event Action OnInteracted;
+    public event Action<bool> OnTryInteract;
 
     protected virtual void Interact()
     {
@@ -18,7 +22,9 @@ public class Interactable : MonoBehaviour
 
     public bool TryInteract()
     {
-        if (!_interactionEnabled)
+        OnTryInteract?.Invoke(_canBeInteractedWith);
+
+        if (!_canBeInteractedWith)
         {
             return false;
         }
