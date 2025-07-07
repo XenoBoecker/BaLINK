@@ -12,13 +12,15 @@ public class CursorCanvas : MonoBehaviour
 
     PlayerInteractor playerInteractor;
     PauseMenu pauseMenu;
+    CrashScreen crashScreen;
 
     private void Start()
     {
         playerInteractor = FindAnyObjectByType<PlayerInteractor>();
         pauseMenu = FindAnyObjectByType<PauseMenu>();
+        crashScreen = FindAnyObjectByType<CrashScreen>();
 
-        if(playerInteractor == null)
+        if (playerInteractor == null)
         {
             Debug.LogError("PlayerInteractor not found in the scene. Please ensure it is present.", this);
             return;
@@ -38,15 +40,21 @@ public class CursorCanvas : MonoBehaviour
 
     void UpdateUI()
     {
-        if (ItemEquipped())
+        if (GameHasCrashed())
         {
-            Cursor.lockState = CursorLockMode.Locked;
-            cursorPanel.SetActive(false);
-            return;
-        }else if (pauseMenu.IsPaused)
+            Cursor.lockState = CursorLockMode.None;
+            movingCursor.SetCursor(FollowMouseCursor.CursorType.Crash);
+        }
+        else if (pauseMenu.IsPaused)
         {
             Cursor.lockState = CursorLockMode.None;
             movingCursor.SetCursor(FollowMouseCursor.CursorType.Pause);
+            cursorPanel.SetActive(false);
+            return;
+        }
+        else if (ItemEquipped())
+        {
+            Cursor.lockState = CursorLockMode.Locked;
             cursorPanel.SetActive(false);
             return;
         }
@@ -56,11 +64,6 @@ public class CursorCanvas : MonoBehaviour
             movingCursor.SetCursor(FollowMouseCursor.CursorType.NumberLock);
             cursorPanel.SetActive(false);
             return;
-        }
-        else if (GameHasCrashed())
-        {
-            Cursor.lockState = CursorLockMode.None;
-            movingCursor.SetCursor(FollowMouseCursor.CursorType.Crash);
         }
 
         Cursor.lockState = CursorLockMode.Locked;
@@ -95,7 +98,7 @@ public class CursorCanvas : MonoBehaviour
 
     private bool GameHasCrashed()
     {
-        // Replace with actual logic to determine if the game has crashed
-        return false; // Placeholder for demonstration purposes
+        if (crashScreen == null) return false;
+        return crashScreen.HasCrashed;
     }
 }

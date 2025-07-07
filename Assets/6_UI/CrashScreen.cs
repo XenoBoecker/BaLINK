@@ -5,10 +5,15 @@ public class CrashScreen : MonoBehaviour
     [SerializeField] private GameObject crashScreen;
     [SerializeField] private GameObject notRespondingWindow;
 
+    PlayerFreezeController _playerFreezeController;
+
     bool hasCrashed;
+    public bool HasCrashed => hasCrashed;
 
     void Start()
     {
+        _playerFreezeController = FindAnyObjectByType<PlayerFreezeController>();
+
         crashScreen.SetActive(false);
         notRespondingWindow.SetActive(false);
         hasCrashed = false;
@@ -27,14 +32,14 @@ public class CrashScreen : MonoBehaviour
 
     public void ShowCrashScreen()
     {
-        Time.timeScale = 0f;
+        _playerFreezeController.SetFreeze(true);
         hasCrashed = true;
         crashScreen.SetActive(true);
     }
 
     public void HideCrashScreen()
     {
-        Time.timeScale = 1f;
+        _playerFreezeController.SetFreeze(false);
         hasCrashed = false;
         crashScreen.SetActive(false);
         notRespondingWindow.SetActive(false);
