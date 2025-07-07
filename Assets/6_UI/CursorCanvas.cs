@@ -55,6 +55,7 @@ public class CursorCanvas : MonoBehaviour
         else if (ItemEquipped())
         {
             Cursor.lockState = CursorLockMode.Locked;
+            movingCursor.SetCursor(FollowMouseCursor.CursorType.None);
             cursorPanel.SetActive(false);
             return;
         }
