@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,7 +14,11 @@ public class CrossbowItem : EquippedItem
     [SerializeField] private GameObject _arrowPrefab;
     [SerializeField] private Transform _arrowSpawnPos;
 
-    [SerializeField] private float arrowSpawnDuration = 3f;
+
+    [SerializeField] private float _shootInputBufferTime = 0.3f;
+    float _shootInputBufferTimer = 0f;
+
+    private float arrowSpawnDuration = 3f;
 
     private bool _isReloading;
     private bool _readyToFire = false;
@@ -21,8 +26,19 @@ public class CrossbowItem : EquippedItem
 
     private void Update()
     {
-        if (!_isEquipped || _readyToFire || _isReloading || _clickToReload)
+        _shootInputBufferTimer -= Time.deltaTime;
+
+        if (!_isEquipped || _isReloading || _clickToReload)
         {
+            return;
+        }
+
+        if (_readyToFire)
+        {
+            if(_shootInputBufferTimer > 0f)
+            {
+                Release();
+            }
             return;
         }
 
@@ -47,6 +63,10 @@ public class CrossbowItem : EquippedItem
         {
             Reload();
             return;
+        }
+        else
+        {
+            _shootInputBufferTimer = _shootInputBufferTime;
         }
     }
 
@@ -85,6 +105,8 @@ public class CrossbowItem : EquippedItem
 
     private void Release()
     {
+        _shootInputBufferTimer = 0f;
+
         Debug.Log("Releasing Crossbow Arrow");
         if (!_isEquipped)
         {
