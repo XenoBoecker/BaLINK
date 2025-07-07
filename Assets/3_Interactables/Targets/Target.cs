@@ -72,6 +72,11 @@ public class Target : MonoBehaviour
             return;
         }
 
+        if(targetManager.IsFrozen)
+        {
+            return; // Do not move if the target manager is frozen
+        }
+
         if (path.Length == 0)
         {
             transform.Translate(targetManager.MoveDirection * targetManager.MoveSpeed * Time.deltaTime);
