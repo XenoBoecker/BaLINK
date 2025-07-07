@@ -53,7 +53,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.055, y: 0.13622129, z: 0.15}
-  m_Center: {x: 1.7763446e-17, y: -0.06353021, z: 0.030000001}
+  m_Center: {x: 1.7763446e-17, y: -0.06353021, z: 0.06}
 --- !u!114 &7080987580987409718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,7 +121,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.055, y: 0.14496237, z: 0.15}
-  m_Center: {x: 1.7763446e-17, y: 0.065013796, z: 0.030000001}
+  m_Center: {x: 1.7763446e-17, y: 0.065013796, z: 0.06}
 --- !u!114 &1361223866068479362
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,7 +189,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.055, y: 0.13884324, z: 0.15}
-  m_Center: {x: 1.7763446e-17, y: 0.06195423, z: 0.030000001}
+  m_Center: {x: 1.7763446e-17, y: 0.06195423, z: 0.06}
 --- !u!114 &1521984476490417134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,6 +214,7 @@ GameObject:
   m_Component:
   - component: {fileID: 345846316667476094}
   - component: {fileID: 7414530803880189634}
+  - component: {fileID: 1313116825009773634}
   m_Layer: 0
   m_Name: Selector Blue
   m_TagString: Untagged
@@ -253,6 +254,20 @@ MonoBehaviour:
   _lockElement: {fileID: 3752666864705954735}
   _lockElementSides: 10
   _rotationSpeed: 15
+--- !u!114 &1313116825009773634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950000453715103901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b22930c8af9364e4ab6cbd8be7149c22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _clip: {fileID: 11400000, guid: 6e4fa95474437784fb3e1eb1857aae30, type: 2}
+  _cooldown: 0
 --- !u!1 &2359510231668333694
 GameObject:
   m_ObjectHideFlags: 0
@@ -306,7 +321,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.055, y: 0.13564298, z: 0.15}
-  m_Center: {x: 1.7763446e-17, y: -0.06324105, z: 0.030000001}
+  m_Center: {x: 1.7763446e-17, y: -0.06324105, z: 0.06}
 --- !u!114 &5963421153208295180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -374,7 +389,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.055, y: 0.13355654, z: 0.15}
-  m_Center: {x: 1.7763446e-17, y: -0.062197834, z: 0.030000001}
+  m_Center: {x: 1.7763446e-17, y: -0.062197834, z: 0.06}
 --- !u!114 &6892052586238712286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -571,7 +586,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.055, y: 0.14223641, z: 0.15}
-  m_Center: {x: 1.7763446e-17, y: 0.06365082, z: 0.030000001}
+  m_Center: {x: 1.7763446e-17, y: 0.06365082, z: 0.06}
 --- !u!114 &8513158786457120600
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -733,6 +748,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5837908520150184874}
   - component: {fileID: 1900178451364035040}
+  - component: {fileID: 1354337337833981837}
   m_Layer: 0
   m_Name: Selector Yellow
   m_TagString: Untagged
@@ -772,6 +788,20 @@ MonoBehaviour:
   _lockElement: {fileID: 6502807202223560808}
   _lockElementSides: 10
   _rotationSpeed: 15
+--- !u!114 &1354337337833981837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6531027529133039792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b22930c8af9364e4ab6cbd8be7149c22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _clip: {fileID: 11400000, guid: 6e4fa95474437784fb3e1eb1857aae30, type: 2}
+  _cooldown: 0
 --- !u!1 &6803462506156310556
 GameObject:
   m_ObjectHideFlags: 0
@@ -782,6 +812,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2467772976045821574}
   - component: {fileID: 8065790239793839804}
+  - component: {fileID: 2031748832008122191}
   m_Layer: 0
   m_Name: Selector Green
   m_TagString: Untagged
@@ -821,6 +852,20 @@ MonoBehaviour:
   _lockElement: {fileID: 7535085120218760034}
   _lockElementSides: 10
   _rotationSpeed: 15
+--- !u!114 &2031748832008122191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6803462506156310556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b22930c8af9364e4ab6cbd8be7149c22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _clip: {fileID: 11400000, guid: 6e4fa95474437784fb3e1eb1857aae30, type: 2}
+  _cooldown: 0
 --- !u!1 &7260457240011447311
 GameObject:
   m_ObjectHideFlags: 0

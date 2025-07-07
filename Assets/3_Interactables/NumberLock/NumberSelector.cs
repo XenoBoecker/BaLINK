@@ -3,11 +3,14 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioOriginController))]
 public class NumberSelector : MonoBehaviour
 {
     [SerializeField] private GameObject _lockElement;
     [SerializeField] private int _lockElementSides;
     [SerializeField] private float _rotationSpeed;
+
+    private AudioOriginController _audioOrigin;
 
     public event Action OnNumberChanged;
     private int _currentNumber = 0;
@@ -15,6 +18,11 @@ public class NumberSelector : MonoBehaviour
     bool _numberChanged;
     
     public int CurrentNumber => _currentNumber < 0 ? ((_currentNumber + (_lockElementSides * Mathf.CeilToInt((float)Mathf.Abs(_currentNumber) / _lockElementSides))) % _lockElementSides) : (_currentNumber % _lockElementSides);
+
+    private void Awake()
+    {
+        _audioOrigin = GetComponent<AudioOriginController>();
+    }
 
     private void Start()
     {
@@ -25,6 +33,7 @@ public class NumberSelector : MonoBehaviour
     {
         _currentNumber++;
         _numberChanged = true;
+        _audioOrigin.PlayClip();
     }
 
 
@@ -32,6 +41,7 @@ public class NumberSelector : MonoBehaviour
     {
         _currentNumber--;
         _numberChanged = true;
+        _audioOrigin.PlayClip();
     }
 
     private void Update()
