@@ -20,14 +20,23 @@ public class WireGenerator : MonoBehaviour
 
     public Material Material;
 
+    private void OnValidate()
+    {
+        RegenerateMesh();
+    }
 
     private void Update()
     {
         if (_mesh == null)
         {
+            RegenerateMesh();
         }
-        _mesh = GenerateWireMesh(_controlPoints);
         Graphics.RenderMesh(new RenderParams(Material), _mesh, 0, transform.localToWorldMatrix);
+    }
+
+    public void RegenerateMesh()
+    {
+        _mesh = GenerateWireMesh(_controlPoints);
     }
 
     private Mesh GenerateWireMesh(ControlPoint[] controlPoints)
@@ -158,6 +167,8 @@ public class WireGenerator : MonoBehaviour
         tempControlPoints.Add(controlPoint);
         _controlPoints = tempControlPoints.ToArray();
 
+        RegenerateMesh();
+
         return controlPoint;
     }
 
@@ -166,5 +177,7 @@ public class WireGenerator : MonoBehaviour
         List<ControlPoint> tempControlPoints = new List<ControlPoint>(_controlPoints);
         tempControlPoints.Remove(controlPoint);
         _controlPoints = tempControlPoints.ToArray();
+
+        RegenerateMesh();
     }
 }
