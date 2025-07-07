@@ -15,6 +15,7 @@ public class AddTimerTime : Effect
 
     public override string GetName()
     {
-        return "Set Timer Current Time Left";
+        return "Add time to timer";
     }
 }
+
