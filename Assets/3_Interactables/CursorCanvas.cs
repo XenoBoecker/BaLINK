@@ -1,8 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class CursorCanvas : MonoBehaviour
 {
     [SerializeField] private GameObject cursorPanel;
+
+    [SerializeField] private Sprite normalSprite, canInteractSprite;
 
     PlayerInteractor playerInteractor;
 
@@ -29,6 +32,21 @@ public class CursorCanvas : MonoBehaviour
         }
 
         cursorPanel.SetActive(true);
+
+        if(normalSprite == null || canInteractSprite == null)
+        {
+            Debug.LogWarning("Cursor sprites are not assigned in the CursorCanvas script.");
+            return;
+        }
+
+        if (playerInteractor.IsMouseHoverOverInteractable())
+        {
+            cursorPanel.GetComponent<UnityEngine.UI.Image>().sprite = canInteractSprite;
+        }
+        else
+        {
+            cursorPanel.GetComponent<UnityEngine.UI.Image>().sprite = normalSprite;
+        }
     }
 
     private bool ItemEquipped()
