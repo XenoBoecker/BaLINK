@@ -16,17 +16,5 @@ namespace GameEvents
         {
             OnPlayAudio?.Invoke(clip, position);
         }
-
-        public static event Action OnDisableCursor;
-        public static void DisableCursor()
-        {
-            OnDisableCursor?.Invoke();
-        }
-
-        public static event Action OnEnableCursor;
-        public static void EnableCursor()
-        {
-            OnEnableCursor?.Invoke();
-        }
     }
 }
