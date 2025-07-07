@@ -91,8 +91,12 @@ public class NumberLockCameraZoom : Interactable
         }
     }
 
-    override public void Interact()
+    override protected void Interact()
     {
+        if(!numberLock.IsLocked) // Check if the number lock is not locked
+        {
+            return; // If the number lock is not locked, do nothing
+        }
         ZoomIn();
     }
     public void ZoomIn()
@@ -186,5 +190,4 @@ public class NumberLockCameraZoom : Interactable
         isZoomedIn = false;
         isZooming = false;
     }
-
 }

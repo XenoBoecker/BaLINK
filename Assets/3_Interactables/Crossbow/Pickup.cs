@@ -3,15 +3,18 @@ using UnityEngine;
 [RequireComponent(typeof(EquippedItem))]
 public class Pickup : Interactable
 {
-    public override void Interact()
+    protected override void Interact()
     {
         PlayerInteractor playerInteractor = FindAnyObjectByType<PlayerInteractor>();
         if (playerInteractor != null)
         {
-            playerInteractor.EquipItem(GetComponent<EquippedItem>());
-            this.enabled = false;
+            EquippedItem equippedItem = GetComponent<EquippedItem>();
+            playerInteractor.EquipItem(equippedItem);
+            equippedItem.SetIsEquipped(true);
 
             InteractedSuccessfully();
+            this.enabled = false;
+
         }
         else
         {

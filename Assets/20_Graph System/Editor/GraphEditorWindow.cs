@@ -93,8 +93,12 @@ public class GraphEditorWindow : EditorWindow
             if (_selectedNodeId != -1)
             {
                 //try add element to node
-                /*_newElementTargetNodeId = _selectedNodeId;
-                _newElementSelectionMenu = new SelectionMenu<Type>(Event.current.mousePosition);*/
+                _newElementTargetNodeId = _selectedNodeId;
+                if (_graph.TryGetNodeFromId(_selectedNodeId, out GraphNode node))
+                {
+                    List<Type> selectedNodeElementTypes = GetPotentialNodeElementsForNode(node);
+                    _newElementSelectionMenu = new SelectionMenu<Type>(Event.current.mousePosition, selectedNodeElementTypes.ToArray());
+                }
             }
             else
             {
@@ -175,7 +179,7 @@ public class GraphEditorWindow : EditorWindow
     void ElementSelectionMade(Type selectedType)
     {
         NodeElement condition = (NodeElement)CreateInstance(selectedType);
-        condition.Initialize(_draggedInObject, 0);
+        condition.Initialize((_draggedInObject == null ? _graph.gameObject : _draggedInObject), 0);
         
         if (_graph.TryGetNodeFromId(_newElementTargetNodeId ,out GraphNode node)) 
         {
@@ -298,7 +302,7 @@ public class GraphEditorWindow : EditorWindow
         Handles.DrawSolidRectangleWithOutline(elementRect, BODY_COLOR, _outlineColor);
 
         Rect foldoutRect = new Rect(elementRect.position, new Vector2(elementRect.width, PROPERTY_HEIGHT));
-        string name = $"({element.ReferencedObject.name}) {element.ToString()}";
+        string name = $"({(element.ReferencedObject == null ? "Null Obj" : element.ReferencedObject.name)}) {element.ToString()}";
         element.SetUnfolded(EditorGUI.Foldout(foldoutRect, element.IsUnfolded, new GUIContent(name)));
 
         if (node.OutputCount > 1)
@@ -490,6 +494,7 @@ public class GraphEditorWindow : EditorWindow
     {
         warning = "";
         if (requiredComponentType == null) { return false; }
+        if (element.ReferencedObject == null) { return false; }
         if (element.ReferencedObject.GetComponent(requiredComponentType) == null)
         {
             warning = $"Selcted Object({element.ReferencedObject.name}) does not have {requiredComponentType.ToString()} attached!";
@@ -593,6 +598,16 @@ public class GraphEditorWindow : EditorWindow
 
     private void HandleObjectDraggedIn(GraphNode node, GameObject draggedInObject)
     {
+        List<Type> selectedNodeElementTypes = GetPotentialNodeElementsForNode(node);
+
+        _draggedInObject = draggedInObject;
+        _newElementTargetNodeId = node.Id;
+        _newElementSelectionMenu = new SelectionMenu<Type>(Event.current.mousePosition, selectedNodeElementTypes.ToArray());
+        HandleUtility.Repaint();
+    }
+
+    private List<Type> GetPotentialNodeElementsForNode(GraphNode node)
+    {
         Type[] allNodeElementsTypes = _allnodeElementTypes;
         List<Type> selectedNodeElementTypes = new List<Type>();
         for (int i = 0; i < allNodeElementsTypes.Length; i++)
@@ -600,7 +615,7 @@ public class GraphEditorWindow : EditorWindow
             if (allNodeElementsTypes[i].IsAbstract) { continue; }
 
             NodeElementAttribute attribute = (NodeElementAttribute)Attribute.GetCustomAttribute(allNodeElementsTypes[i], typeof(NodeElementAttribute));
-            
+
             if (attribute == null)
             {
                 Debug.LogWarning($"Element({allNodeElementsTypes[i].Name}) does not have a NodeElementAttribute attached");
@@ -613,12 +628,9 @@ public class GraphEditorWindow : EditorWindow
             }
         }
 
-        _draggedInObject = draggedInObject;
-        _newElementTargetNodeId = node.Id;
-        _newElementSelectionMenu = new SelectionMenu<Type>(Event.current.mousePosition, selectedNodeElementTypes.ToArray());
-        HandleUtility.Repaint();
+        return selectedNodeElementTypes;
     }
-    
+
     private bool HandleDeleteNode(GraphNode node)
     {
         if ((Event.current.keyCode == KeyCode.Delete || Event.current.keyCode == KeyCode.Backspace) && _selectedNodeId == node.Id)

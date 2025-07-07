@@ -1,9 +1,11 @@
 using GameEvents;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [AddComponentMenu("Custom/Graph")]
+[System.Serializable]
 public class Graph : MonoBehaviour
 {
     [SerializeField, HideInInspector] private int _entryNodeId;
@@ -34,6 +36,8 @@ public class Graph : MonoBehaviour
 
     private void Update()
     {
+        if (!TryGetNodeFromId(_entryNodeId, out GraphNode entryNode)) { return; }
+
         if (!_usingWaitForBlink)
         {
             if (_currentNode.ConditionElementConditionsMet(out int outputIndexTrue))
@@ -46,7 +50,10 @@ public class Graph : MonoBehaviour
     private void EnterGraph()
     {
         //get the endtry node
-        if (!TryGetNodeFromId(_entryNodeId, out GraphNode entryNode)) { return; }
+        if (!TryGetNodeFromId(_entryNodeId, out GraphNode entryNode))
+        {
+            throw new Exception($"No entry node defined in the graph({name})");
+        }
         _currentNode = entryNode;
         _usingWaitForBlink = _currentNode.WaitForBlink;
     }
@@ -59,19 +66,6 @@ public class Graph : MonoBehaviour
             _currentNode = foundNode;
             _usingWaitForBlink = _currentNode.WaitForBlink;
             foundNode.TriggerAllEffectElements();
-/*
-            if (foundNode.Type == NodeType.Effect)
-            {
-                if (TryGetNodeFromId(_currentNode.NextNodeIds[0], out GraphNode nextNode))
-                {
-                    if (nextNode.Type != NodeType.Effect)
-                    {
-                        //to get here prev node must be Effect which means there is always only one output from it to the next node i.e. index 0
-                        MoveToNextNode(0);
-                        return;
-                    }
-                }
-            }*/
         }
     }
 
@@ -81,6 +75,7 @@ public class Graph : MonoBehaviour
 
         if (_currentNode.ConditionElementConditionsMet(out int outputIndexTrue))
         {
+            ObjectEvents.GraphMadeBlinkChange();
             MoveToNextNode(outputIndexTrue);
         }
     }
@@ -158,5 +153,11 @@ public class Graph : MonoBehaviour
     public void ChangeGraphCenter(Vector2 change)
     {
         _center += change;
+    }
+
+    public void SetData(Graph graph)
+    {
+        Debug.Log(graph.Nodes.Length);
+        _nodes = graph.Nodes;
     }
 }

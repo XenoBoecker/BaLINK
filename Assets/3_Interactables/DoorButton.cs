@@ -6,7 +6,7 @@ public class DoorButton : Interactable
 
     [SerializeField] private bool onlyInteractableOnce;
 
-    public override void Interact()
+    protected override void Interact()
     {
         if (door != null)
         {

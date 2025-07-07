@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a3a9ef48355cb440936a05a37111157, type: 3}
+  m_Name: 01_DoorSpotted
+  m_EditorClassIdentifier: 
+  _lines:
+  - _clip: {fileID: 8300000, guid: 440a2be189fedc74dac1306f8546c65a, type: 3}
+    _segments:
+    - _text: 'What happened to that door back there, '
+      _percentAlongAudioToShow: 0
+    - _text: 'why is it rotated?
+
+'
+      _percentAlongAudioToShow: 0.4984043
+  - _clip: {fileID: 8300000, guid: 0860090429e1759429d3c1b1e41b1253, type: 3}
+    _segments:
+    - _text: 'Ah damn, I was rotating some objects earlier, '
+      _percentAlongAudioToShow: 0
+    - _text: 'guess I selected the door by accident. '
+      _percentAlongAudioToShow: 0.3642847
+    - _text: "I\u2019ll fix it really quick"
+      _percentAlongAudioToShow: 0.6476175

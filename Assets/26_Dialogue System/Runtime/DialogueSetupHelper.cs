@@ -1,4 +1,3 @@
-using BetterAttributes;
 using System.Collections;
 using UnityEngine;
 

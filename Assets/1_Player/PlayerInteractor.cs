@@ -10,6 +10,7 @@ public class PlayerInteractor : MonoBehaviour
     [SerializeField] Transform equipWeaponPoint; // Point where the equipped item will be positioned
     [SerializeField] float equipDuration = 0.5f; // Duration for equipping the item
     private EquippedItem _equippedItem; // Reference to the currently equipped item, if any
+    public bool IsItemEquipped => _equippedItem != null; // Check if an item is currently equipped
 
     InputSystem_Actions _inputActions;
 
@@ -44,15 +45,13 @@ public class PlayerInteractor : MonoBehaviour
             Interactable interactable = GetInteractable();
             if (interactable != null)
             {
-                interactable.Interact();
+                interactable.TryInteract();
             }
         }
     }
     private Interactable GetInteractable()
     {
         Physics.SphereCast(transform.position, interactionRadius, transform.forward, out RaycastHit hit, interactionRange, interactionLayer);
-
-        print("Hit: " + hit.collider?.name);
 
         if (hit.collider != null)
         {
@@ -66,6 +65,11 @@ public class PlayerInteractor : MonoBehaviour
         return null;
     }
 
+    public bool IsMouseHoverOverInteractable()
+    {
+        return GetInteractable() != null;
+    }
+
     internal void EquipItem(EquippedItem item)
     {
         if (_equippedItem != null)
@@ -73,12 +77,12 @@ public class PlayerInteractor : MonoBehaviour
             Debug.LogWarning("Already equipped item");
             return;
         }
+
         StartCoroutine(EquipItemCoroutine(item));
     }
 
     private System.Collections.IEnumerator EquipItemCoroutine(EquippedItem item)
     {
-
         item.GetComponent<Collider>().enabled = false;
         item.gameObject.layer = LayerMask.NameToLayer("Default"); // Ensure the item is on the default layer to avoid interaction issues
 
@@ -98,12 +102,14 @@ public class PlayerInteractor : MonoBehaviour
         item.transform.parent = equipWeaponPoint; // Parent the item to the equip point for proper positioning
 
         _equippedItem = item; // Set the new equipped item
+
         Debug.Log("Equipped new item: " + _equippedItem.gameObject.name);
     }
 
     public void TakeAwayEquippedItem()
     {
         Destroy(_equippedItem.gameObject, 0.1f); // Destroy the equipped item
+        _equippedItem.SetIsEquipped(false);
         _equippedItem.transform.parent = null; // Unparent the item
         _equippedItem = null; // Clear the equipped item reference
     }

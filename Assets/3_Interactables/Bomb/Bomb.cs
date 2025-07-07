@@ -110,6 +110,11 @@ public class Bomb : MonoBehaviour
         timeLeft = newTimeLeft;
     }
 
+    public void AddTime(float additionalTime)
+    {
+        timeLeft += additionalTime;
+    }
+
     public float GetCurrentTimeLeft()
     {
         return timeLeft;
@@ -146,5 +151,10 @@ public class Bomb : MonoBehaviour
         {
             wrongButtons[i].OnInteracted -= WrongButtonPressed;
         }
+    }
+
+    internal float GetTimeScale()
+    {
+        return timeScale;
     }
 }
