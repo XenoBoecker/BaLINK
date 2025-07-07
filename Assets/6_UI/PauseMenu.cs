@@ -56,14 +56,14 @@ public class PauseMenu : MonoBehaviour
             _pauseMenuUI.SetActive(true); // Show the pause menu UI
 
             _playerFreezeController.SetFreeze(true); // Freeze the player
-            _targetManager.SetFreeze(true);
+            if(_targetManager != null) _targetManager.SetFreeze(true);
         }
         else
         {
             _pauseMenuUI.SetActive(false); // Hide the pause menu UI
 
             _playerFreezeController.SetFreeze(false); // Unfreeze the player
-            _targetManager.SetFreeze(false);
+            if (_targetManager != null) _targetManager.SetFreeze(false);
         }
 
         _isPaused = pause;

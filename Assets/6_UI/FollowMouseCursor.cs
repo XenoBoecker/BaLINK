@@ -34,8 +34,6 @@ public class FollowMouseCursor : MonoBehaviour
 
     public void SetCursor(CursorType cursorType)
     {
-        Debug.Log($"Setting cursor type: {cursorType}");
-
         switch (cursorType)
         {
             case CursorType.None:
