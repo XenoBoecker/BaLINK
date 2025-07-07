@@ -13,6 +13,8 @@ public class CrossbowItem : EquippedItem
     [SerializeField] private GameObject _arrowPrefab;
     [SerializeField] private Transform _arrowSpawnPos;
 
+    [SerializeField] private float arrowSpawnDuration = 3f;
+
     private bool _isReloading;
     private bool _readyToFire = false;
     private GameObject _spawnedArrow;
@@ -60,9 +62,10 @@ public class CrossbowItem : EquippedItem
         _isReloading = true;
         if (_spawnedArrow != null) { _readyToFire = true; }
 
-        yield return new WaitForSeconds(delay * 0.45f);
+        arrowSpawnDuration = delay * 0.5f;
 
-        _readyToFire = true;
+        //yield return new WaitForSeconds(delay * 0.45f - arrowSpawnDuration);
+
         
         _spawnedArrow = Instantiate(_arrowPrefab, _arrowSpawnPos);
         _spawnedArrow.transform.localPosition = Vector3.zero;
@@ -70,13 +73,13 @@ public class CrossbowItem : EquippedItem
 
         Material arrowMat = _spawnedArrow.GetComponentInChildren<MeshRenderer>().material;
         
-        float arrowSpawnDuration = 0.3f;
         for (float i = 0; i < arrowSpawnDuration; i += Time.deltaTime)
         {
-            arrowMat.SetFloat("_Cutoff_Height", 10 * (i / arrowSpawnDuration));
+            arrowMat.SetFloat("_Cutoff_Height", (i / arrowSpawnDuration));
             yield return null;
         }
 
+        _readyToFire = true;
         _isReloading = false;
     }
 
