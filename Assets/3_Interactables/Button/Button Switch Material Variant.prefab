@@ -48,6 +48,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 880502460170140237, guid: 71380cf0492727548b8c92f87198877f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8181321709605041837, guid: 71380cf0492727548b8c92f87198877f, type: 3}
       propertyPath: m_Name
       value: Button Switch Material Variant
@@ -89,9 +93,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd9f0d7e4f40f084aac8773a235c75a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _interactionEnabled: 1
+  _canBeInteractedWithMultipleTimes: 0
   targetObject: {fileID: 3709916024648533163}
   newMaterial: {fileID: 2100000, guid: cf464fff2cc55084ebed6fce7bc47826, type: 2}
-  switchBackAndForth: 1
 --- !u!65 &4038066126205120148
 BoxCollider:
   m_ObjectHideFlags: 0
