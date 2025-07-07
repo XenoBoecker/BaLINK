@@ -33,7 +33,7 @@ public class Hitable : MonoBehaviour
         }
     }
 
-    public void Hit(Transform projectile)
+    public virtual void Hit(Transform projectile)
     {
         currentHitPoints--; // Increment the hit points when hit by a crossbow bolt
         // Logic for when the object is hit by a crossbow bolt
