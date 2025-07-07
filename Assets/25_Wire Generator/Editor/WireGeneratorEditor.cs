@@ -68,10 +68,12 @@ public class WireGeneratorEditor : Editor
         {
             _mouseHit = GetMouseHit();
             Undo.RecordObject(generator, "Added Control Points");
+            
             _addedControlPoint = generator.AddControlPoint(_mouseHit.point, _mouseHit.normal, Vector3.zero, Vector3.zero);
             _previousMouseActionPoint = _mouseHit.point;
 
             _selectedControlIndex = generator.ControlPoints.Length - 1;
+
         }
 
         if (Event.current.type == EventType.MouseDrag && Event.current.button == 0)
@@ -92,6 +94,8 @@ public class WireGeneratorEditor : Editor
             //generator.AddControlPoint(_mouseHit.point, _mouseHit.normal, tangentFront, tangentBack);
             
             _previousMouseActionPoint = _mouseHit.point;
+
+            generator.RegenerateMesh();
         }
 
         if (Event.current.type == EventType.MouseUp && Event.current.button == 0)
@@ -131,6 +135,7 @@ public class WireGeneratorEditor : Editor
                 HandleUtility.Repaint();
                 _selectedControlIndex = i;
                 Undo.RecordObject(generator, "Control Edited");
+                generator.RegenerateMesh();
             }
 
             if (Event.current.shift)
