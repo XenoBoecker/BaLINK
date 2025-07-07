@@ -23,9 +23,8 @@ public class PlayerCameraWobble : MonoBehaviour
 
     private void Update()
     {
-        _dist += _rb.linearVelocity.magnitude;
+        _dist += _rb.linearVelocity.magnitude * Time.deltaTime;
 
-        Debug.Log(_dist);
         _playerCam.transform.localPosition = _initialCamPosition + new Vector3(0, Mathf.Cos(_dist * _bobFrequency) * _bobStrength, 0);
         _playerCam.transform.eulerAngles = new Vector3(_playerCam.transform.eulerAngles.x, _playerCam.transform.eulerAngles.y, Mathf.Cos(_dist * _tiltFrequency) * _tiltStrength);
     }
