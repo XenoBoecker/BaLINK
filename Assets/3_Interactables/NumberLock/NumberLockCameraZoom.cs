@@ -142,7 +142,7 @@ public class NumberLockCameraZoom : Interactable
         isZooming = false;
 
         Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        // Cursor.visible = true;
     }
 
     void ZoomOut()
