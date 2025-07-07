@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class FollowMouseCursor : MonoBehaviour
 {
-    [SerializeField] private GameObject _numberLockCursor;
-    [SerializeField] private GameObject _pauseCursor;
-    [SerializeField] private GameObject _crashCursor;
-    [SerializeField] private GameObject _cursorParent;
+    [SerializeField] private Sprite _numberLockCursor;
+    [SerializeField] private Sprite _pauseCursor;
+    [SerializeField] private Sprite _crashCursor;
+
+    private GameObject _cursorObject;
+    [SerializeField] private Image _cursorImage;
 
     public enum CursorType
     {
@@ -18,6 +21,7 @@ public class FollowMouseCursor : MonoBehaviour
 
     private void Start()
     {
+        _cursorObject = _cursorImage.gameObject;
         // Ensure the cursor starts as inactive
         SetCursor(CursorType.None);
     }
@@ -25,15 +29,33 @@ public class FollowMouseCursor : MonoBehaviour
     {
         Vector2 mousePosition = Input.mousePosition;
 
-        _cursorParent.transform.position = mousePosition;
+        _cursorObject.transform.position = mousePosition;
     }
 
     public void SetCursor(CursorType cursorType)
     {
         Debug.Log($"Setting cursor type: {cursorType}");
 
-        _numberLockCursor.SetActive(cursorType == CursorType.NumberLock);
-        _pauseCursor.SetActive(cursorType == CursorType.Pause);
-        _crashCursor.SetActive(cursorType == CursorType.Crash);
+        switch (cursorType)
+        {
+            case CursorType.None:
+                _cursorObject.SetActive(false); // Hide the cursor object
+                _cursorImage.sprite = null; // Set to no sprite
+                break;
+            case CursorType.NumberLock:
+                _cursorObject.SetActive(true); // Show the cursor object
+                _cursorImage.sprite = _numberLockCursor;
+                break;
+            case CursorType.Pause:
+                _cursorObject.SetActive(true); // Show the cursor object
+                _cursorImage.sprite = _pauseCursor;
+                break;
+            case CursorType.Crash:
+                _cursorObject.SetActive(true); // Show the cursor object
+                _cursorImage.sprite = _crashCursor;
+                break;
+            default:
+                break;
+        }
     }
 }
