@@ -1,5 +1,6 @@
 using ECM.Components;
 using ECM.Controllers;
+using GameEvents;
 using System.Collections;
 using UnityEngine;
 
@@ -108,6 +109,8 @@ public class NumberLockCameraZoom : Interactable
 
         InteractedSuccessfully();
 
+        ObjectEvents.DisableCursor();
+
         StartCoroutine(ZoomInRoutine());
     }
 
@@ -154,6 +157,7 @@ public class NumberLockCameraZoom : Interactable
 
         zoomOutBuffered = false;
 
+        ObjectEvents.EnableCursor();
         StartCoroutine(ZoomOutRoutine());
     }
 
