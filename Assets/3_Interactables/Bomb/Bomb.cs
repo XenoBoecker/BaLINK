@@ -28,6 +28,8 @@ public class Bomb : MonoBehaviour
 
     int wrongButtonPressedCount = 0;
 
+    public event Action OnWrongButtonPressed;
+    public event Action OnCorrectButtonPressed;
     public event Action OnBombDefused;
     public event Action OnBombExploded;
 
@@ -39,6 +41,7 @@ public class Bomb : MonoBehaviour
         for (int i = 0; i < correctButtons.Length; i++)
         {
             correctButtons[i].OnInteracted += CheckBombDefused;
+            correctButtons[i].OnInteracted += OnCorrectButtonPressed;
         }
 
         for (int i = 0;i < wrongButtons.Length; i++)
@@ -60,6 +63,8 @@ public class Bomb : MonoBehaviour
         {
             return;
         }
+
+        OnWrongButtonPressed?.Invoke();
 
         wrongButtonPressedCount = currentWrongButtonPressedCount;
 
