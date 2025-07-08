@@ -9,6 +9,14 @@ public class BombTimerObserver : MonoBehaviour
         bomb = FindAnyObjectByType<Bomb>();
     }
 
+    public void StartBombTimer()
+    {
+        if (bomb != null)
+        {
+            bomb.StartBombTimer();
+        }
+    }
+
     public void SetTimeLeft(float newTimeLeft)
     {
         if (bomb != null)

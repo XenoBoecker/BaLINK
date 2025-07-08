@@ -1,4 +1,5 @@
 using UnityEngine;
+
 [NodeElement(NodeType.Effect)]
 [RequireComponent(typeof(WireGenerator))]
 public class SwapMaterial : Effect
