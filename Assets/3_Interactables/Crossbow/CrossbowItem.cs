@@ -73,7 +73,6 @@ public class CrossbowItem : EquippedItem
 
     private void Reload()
     {
-        Debug.Log("Reloading Crossbow");
         _animator.SetTrigger("Reload");
         StartCoroutine(ReloadRoutine(_animator.GetCurrentAnimatorStateInfo(0).length));
     }
@@ -133,7 +132,7 @@ public class CrossbowItem : EquippedItem
     IEnumerator ReleaseRoutine(float delay)
     {
         _isReleasing = true;
-        Debug.Log("Release Delay: " + delay);
+
         _spawnedArrow.GetComponent<ProjectileController>().Shoot(_shootForce);
         yield return new WaitForSeconds(delay * 0.5f);
 
