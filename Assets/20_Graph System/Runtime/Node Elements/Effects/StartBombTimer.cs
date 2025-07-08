@@ -1,12 +1,12 @@
 using UnityEngine;
 
 [NodeElement(NodeType.Effect)]
-[RequireComponent(typeof(Bomb))]
+[RequireComponent(typeof(BombTimerObserver))]
 public class StartBombTimer : Effect
 {
     public override void TriggerEffect()
     {
-        if (ReferencedObject.TryGetComponent(out Bomb bomb))
+        if (ReferencedObject.TryGetComponent(out BombTimerObserver bomb))
         {
             bomb.StartBombTimer();
         }
