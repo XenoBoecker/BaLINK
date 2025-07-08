@@ -3,7 +3,17 @@ guid: 8ebbe059e37ac4443ada5172cf14221d
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M-Compartment
+    second: {fileID: 2100000, guid: 9fc0fec7807737c43ac70b33941367ff, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M-ShadowCaster
+    second: {fileID: 5708307643623298497, guid: e334dc7ca07702f4bb9acc89a205bbd4, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

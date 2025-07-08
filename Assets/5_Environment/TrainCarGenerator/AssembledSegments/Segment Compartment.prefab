@@ -1,16 +1,84 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1177874538952511110
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1913577332034654970}
+  m_Layer: 0
+  m_Name: Hallway Wall
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1913577332034654970
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1177874538952511110}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 799073992711096513}
+  - {fileID: 3450246570240244769}
+  - {fileID: 5300883133736395098}
+  m_Father: {fileID: 7030088263483492832}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2812640364075989830
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9215139461986811343}
+  m_Layer: 0
+  m_Name: Room Wall
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9215139461986811343
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2812640364075989830}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7075388801907349001}
+  - {fileID: 9087633232712020843}
+  - {fileID: 6300460639200443367}
+  m_Father: {fileID: 7030088263483492832}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &999319294053893093
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 7030088263483492832}
+    m_TransformParent: {fileID: 9215139461986811343}
     m_Modifications:
     - target: {fileID: 681382857943679686, guid: 013735968670e97438ab64cc8d9d99e9, type: 3}
       propertyPath: m_Name
-      value: Train Wall Half (1)
+      value: Train Wall Half
       objectReference: {fileID: 0}
     - target: {fileID: 8341662515751776398, guid: 013735968670e97438ab64cc8d9d99e9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18,7 +86,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8341662515751776398, guid: 013735968670e97438ab64cc8d9d99e9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8341662515751776398, guid: 013735968670e97438ab64cc8d9d99e9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -142,7 +210,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 7030088263483492832}
+    m_TransformParent: {fileID: 9215139461986811343}
     m_Modifications:
     - target: {fileID: 681382857943679686, guid: 013735968670e97438ab64cc8d9d99e9, type: 3}
       propertyPath: m_Name
@@ -154,7 +222,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8341662515751776398, guid: 013735968670e97438ab64cc8d9d99e9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8341662515751776398, guid: 013735968670e97438ab64cc8d9d99e9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -267,31 +335,19 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8591467237264770302, guid: 826285ebb59970b4198391233e4891ce, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6012081077648148663}
+      addedObject: {fileID: 1928747485388491019}
     - targetCorrespondingSourceObject: {fileID: 8591467237264770302, guid: 826285ebb59970b4198391233e4891ce, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6667544033265264222}
+      addedObject: {fileID: 674578430532656105}
     - targetCorrespondingSourceObject: {fileID: 8591467237264770302, guid: 826285ebb59970b4198391233e4891ce, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7075388801907349001}
+      addedObject: {fileID: 1913577332034654970}
     - targetCorrespondingSourceObject: {fileID: 8591467237264770302, guid: 826285ebb59970b4198391233e4891ce, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 799073992711096513}
-    - targetCorrespondingSourceObject: {fileID: 8591467237264770302, guid: 826285ebb59970b4198391233e4891ce, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3450246570240244769}
-    - targetCorrespondingSourceObject: {fileID: 8591467237264770302, guid: 826285ebb59970b4198391233e4891ce, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 9087633232712020843}
+      addedObject: {fileID: 9215139461986811343}
     - targetCorrespondingSourceObject: {fileID: 8591467237264770302, guid: 826285ebb59970b4198391233e4891ce, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4592842175799551495}
-    - targetCorrespondingSourceObject: {fileID: 8591467237264770302, guid: 826285ebb59970b4198391233e4891ce, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6300460639200443367}
-    - targetCorrespondingSourceObject: {fileID: 8591467237264770302, guid: 826285ebb59970b4198391233e4891ce, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5300883133736395098}
     - targetCorrespondingSourceObject: {fileID: 498580334730891310, guid: 826285ebb59970b4198391233e4891ce, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8111795939456071086}
@@ -330,58 +386,58 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7030088263483492832}
     m_Modifications:
-    - target: {fileID: 681382857943679686, guid: 3cbeb23c5b019ff4faba65ffaf501176, type: 3}
-      propertyPath: m_Name
-      value: Train Ceiling Full
-      objectReference: {fileID: 0}
-    - target: {fileID: 8341662515751776398, guid: 3cbeb23c5b019ff4faba65ffaf501176, type: 3}
+    - target: {fileID: 4208881728175075634, guid: 7166169bbeb0f4446a4e644e5677c562, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8341662515751776398, guid: 3cbeb23c5b019ff4faba65ffaf501176, type: 3}
+    - target: {fileID: 4208881728175075634, guid: 7166169bbeb0f4446a4e644e5677c562, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.45
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8341662515751776398, guid: 3cbeb23c5b019ff4faba65ffaf501176, type: 3}
+    - target: {fileID: 4208881728175075634, guid: 7166169bbeb0f4446a4e644e5677c562, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.5
+      value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8341662515751776398, guid: 3cbeb23c5b019ff4faba65ffaf501176, type: 3}
+    - target: {fileID: 4208881728175075634, guid: 7166169bbeb0f4446a4e644e5677c562, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8341662515751776398, guid: 3cbeb23c5b019ff4faba65ffaf501176, type: 3}
+    - target: {fileID: 4208881728175075634, guid: 7166169bbeb0f4446a4e644e5677c562, type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 8341662515751776398, guid: 3cbeb23c5b019ff4faba65ffaf501176, type: 3}
+    - target: {fileID: 4208881728175075634, guid: 7166169bbeb0f4446a4e644e5677c562, type: 3}
       propertyPath: m_LocalRotation.y
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 8341662515751776398, guid: 3cbeb23c5b019ff4faba65ffaf501176, type: 3}
+    - target: {fileID: 4208881728175075634, guid: 7166169bbeb0f4446a4e644e5677c562, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 8341662515751776398, guid: 3cbeb23c5b019ff4faba65ffaf501176, type: 3}
+    - target: {fileID: 4208881728175075634, guid: 7166169bbeb0f4446a4e644e5677c562, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8341662515751776398, guid: 3cbeb23c5b019ff4faba65ffaf501176, type: 3}
+    - target: {fileID: 4208881728175075634, guid: 7166169bbeb0f4446a4e644e5677c562, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8341662515751776398, guid: 3cbeb23c5b019ff4faba65ffaf501176, type: 3}
+    - target: {fileID: 4208881728175075634, guid: 7166169bbeb0f4446a4e644e5677c562, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4674657678303462266, guid: 7166169bbeb0f4446a4e644e5677c562, type: 3}
+      propertyPath: m_Name
+      value: Compartment Hallway Ceiling
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 3cbeb23c5b019ff4faba65ffaf501176, type: 3}
---- !u!4 &6012081077648148663 stripped
+  m_SourcePrefab: {fileID: 100100000, guid: 7166169bbeb0f4446a4e644e5677c562, type: 3}
+--- !u!4 &1928747485388491019 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 8341662515751776398, guid: 3cbeb23c5b019ff4faba65ffaf501176, type: 3}
+  m_CorrespondingSourceObject: {fileID: 4208881728175075634, guid: 7166169bbeb0f4446a4e644e5677c562, type: 3}
   m_PrefabInstance: {fileID: 2354461487864723513}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2642542389252328297
@@ -390,7 +446,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 7030088263483492832}
+    m_TransformParent: {fileID: 9215139461986811343}
     m_Modifications:
     - target: {fileID: 681382857943679686, guid: 1b80f01d4bea45c4a9b4da8625f953bc, type: 3}
       propertyPath: m_Name
@@ -520,7 +576,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4208881728175075634, guid: b2048586f55d39c42871185b5aba9fbe, type: 3}
   m_PrefabInstance: {fileID: 3074813897321797151}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &3405941932774282960
+--- !u!1001 &3689686299403086555
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -528,59 +584,59 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7030088263483492832}
     m_Modifications:
-    - target: {fileID: 681382857943679686, guid: 3cbeb23c5b019ff4faba65ffaf501176, type: 3}
-      propertyPath: m_Name
-      value: Train Ceiling Full (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 8341662515751776398, guid: 3cbeb23c5b019ff4faba65ffaf501176, type: 3}
+    - target: {fileID: 4208881728175075634, guid: 10a3dc91bced9824797340245121daee, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8341662515751776398, guid: 3cbeb23c5b019ff4faba65ffaf501176, type: 3}
+    - target: {fileID: 4208881728175075634, guid: 10a3dc91bced9824797340245121daee, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.45
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8341662515751776398, guid: 3cbeb23c5b019ff4faba65ffaf501176, type: 3}
+    - target: {fileID: 4208881728175075634, guid: 10a3dc91bced9824797340245121daee, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.5
+      value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8341662515751776398, guid: 3cbeb23c5b019ff4faba65ffaf501176, type: 3}
+    - target: {fileID: 4208881728175075634, guid: 10a3dc91bced9824797340245121daee, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8341662515751776398, guid: 3cbeb23c5b019ff4faba65ffaf501176, type: 3}
+    - target: {fileID: 4208881728175075634, guid: 10a3dc91bced9824797340245121daee, type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 8341662515751776398, guid: 3cbeb23c5b019ff4faba65ffaf501176, type: 3}
+    - target: {fileID: 4208881728175075634, guid: 10a3dc91bced9824797340245121daee, type: 3}
       propertyPath: m_LocalRotation.y
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 8341662515751776398, guid: 3cbeb23c5b019ff4faba65ffaf501176, type: 3}
+    - target: {fileID: 4208881728175075634, guid: 10a3dc91bced9824797340245121daee, type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 8341662515751776398, guid: 3cbeb23c5b019ff4faba65ffaf501176, type: 3}
+    - target: {fileID: 4208881728175075634, guid: 10a3dc91bced9824797340245121daee, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8341662515751776398, guid: 3cbeb23c5b019ff4faba65ffaf501176, type: 3}
+    - target: {fileID: 4208881728175075634, guid: 10a3dc91bced9824797340245121daee, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8341662515751776398, guid: 3cbeb23c5b019ff4faba65ffaf501176, type: 3}
+    - target: {fileID: 4208881728175075634, guid: 10a3dc91bced9824797340245121daee, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4674657678303462266, guid: 10a3dc91bced9824797340245121daee, type: 3}
+      propertyPath: m_Name
+      value: Compartment Room Ceiling
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 3cbeb23c5b019ff4faba65ffaf501176, type: 3}
---- !u!4 &6667544033265264222 stripped
+  m_SourcePrefab: {fileID: 100100000, guid: 10a3dc91bced9824797340245121daee, type: 3}
+--- !u!4 &674578430532656105 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 8341662515751776398, guid: 3cbeb23c5b019ff4faba65ffaf501176, type: 3}
-  m_PrefabInstance: {fileID: 3405941932774282960}
+  m_CorrespondingSourceObject: {fileID: 4208881728175075634, guid: 10a3dc91bced9824797340245121daee, type: 3}
+  m_PrefabInstance: {fileID: 3689686299403086555}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4033202762086026279
 PrefabInstance:
@@ -600,7 +656,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4208881728175075634, guid: e5517b749946a3c479d35ec19e4a41f8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.95
+      value: 1.94
       objectReference: {fileID: 0}
     - target: {fileID: 4208881728175075634, guid: e5517b749946a3c479d35ec19e4a41f8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -632,7 +688,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4674657678303462266, guid: e5517b749946a3c479d35ec19e4a41f8, type: 3}
       propertyPath: m_Name
-      value: Sleeping Seat (1)
+      value: Sleeping Seat
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -650,11 +706,11 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 7030088263483492832}
+    m_TransformParent: {fileID: 1913577332034654970}
     m_Modifications:
     - target: {fileID: 681382857943679686, guid: 1b80f01d4bea45c4a9b4da8625f953bc, type: 3}
       propertyPath: m_Name
-      value: Train Wall Window (1)
+      value: Train Wall Window
       objectReference: {fileID: 0}
     - target: {fileID: 777868476196781915, guid: 1b80f01d4bea45c4a9b4da8625f953bc, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -892,7 +948,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4674657678303462266, guid: b2048586f55d39c42871185b5aba9fbe, type: 3}
       propertyPath: m_Name
-      value: Compartment Divider Wall (1)
+      value: Compartment Divider Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -910,11 +966,11 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 7030088263483492832}
+    m_TransformParent: {fileID: 1913577332034654970}
     m_Modifications:
     - target: {fileID: 681382857943679686, guid: 013735968670e97438ab64cc8d9d99e9, type: 3}
       propertyPath: m_Name
-      value: Train Wall Half (3)
+      value: Train Wall Half
       objectReference: {fileID: 0}
     - target: {fileID: 8341662515751776398, guid: 013735968670e97438ab64cc8d9d99e9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -934,7 +990,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8341662515751776398, guid: 013735968670e97438ab64cc8d9d99e9, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8341662515751776398, guid: 013735968670e97438ab64cc8d9d99e9, type: 3}
       propertyPath: m_LocalRotation.y
@@ -942,7 +998,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8341662515751776398, guid: 013735968670e97438ab64cc8d9d99e9, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8341662515751776398, guid: 013735968670e97438ab64cc8d9d99e9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -972,11 +1028,11 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 7030088263483492832}
+    m_TransformParent: {fileID: 1913577332034654970}
     m_Modifications:
     - target: {fileID: 681382857943679686, guid: 013735968670e97438ab64cc8d9d99e9, type: 3}
       propertyPath: m_Name
-      value: Train Wall Half (2)
+      value: Train Wall Half
       objectReference: {fileID: 0}
     - target: {fileID: 8341662515751776398, guid: 013735968670e97438ab64cc8d9d99e9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -984,7 +1040,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8341662515751776398, guid: 013735968670e97438ab64cc8d9d99e9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8341662515751776398, guid: 013735968670e97438ab64cc8d9d99e9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -996,7 +1052,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8341662515751776398, guid: 013735968670e97438ab64cc8d9d99e9, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8341662515751776398, guid: 013735968670e97438ab64cc8d9d99e9, type: 3}
       propertyPath: m_LocalRotation.y
@@ -1004,7 +1060,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8341662515751776398, guid: 013735968670e97438ab64cc8d9d99e9, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8341662515751776398, guid: 013735968670e97438ab64cc8d9d99e9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1046,7 +1102,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4208881728175075634, guid: e5517b749946a3c479d35ec19e4a41f8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.95
+      value: -1.94
       objectReference: {fileID: 0}
     - target: {fileID: 4208881728175075634, guid: e5517b749946a3c479d35ec19e4a41f8, type: 3}
       propertyPath: m_LocalRotation.w
