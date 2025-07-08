@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class NumberLock : MonoBehaviour
 {
-    [SerializeField] Door door; // Reference to the door to open
+    [SerializeField] DoorController door; // Reference to the door to open
     [SerializeField] string correctNumber = "123"; // Example correct number
 
     [SerializeField] NumberSelector[] numberSelectors;
