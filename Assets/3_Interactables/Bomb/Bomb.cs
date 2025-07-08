@@ -25,6 +25,7 @@ public class Bomb : MonoBehaviour
     private float timeScale = 1;
 
     bool isDefused = false;
+    bool _bombTimerStarted = false;
 
     int wrongButtonPressedCount = 0;
 
@@ -91,8 +92,10 @@ public class Bomb : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(timeScale != 1) print("Time scale is not 1, current time scale: " + timeScale);
-        timeLeft -= Time.deltaTime * timeScale;
+        if (_bombTimerStarted)
+        {
+            timeLeft -= Time.deltaTime * timeScale;
+        }
 
         if (isDefused)
         {
@@ -103,6 +106,11 @@ public class Bomb : MonoBehaviour
         {
             Explode();
         }
+    }
+
+    public void StartBombTimer()
+    {
+        _bombTimerStarted = true;
     }
 
     public void SetTimeScale(float newTimeScale)
