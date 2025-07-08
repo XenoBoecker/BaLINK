@@ -8,6 +8,7 @@ public class NumberLock : MonoBehaviour
 
     [SerializeField] NumberSelector[] numberSelectors;
     bool _isLocked = true; // Indicates if the lock is currently locked
+    public bool IsLocked => _isLocked; // Expose the locked state of the lock
 
     public event Action OnNumberLockOpened; // Event to notify when the lock is opened
 

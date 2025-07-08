@@ -10,17 +10,21 @@ public class Hacks : MonoBehaviour
     [SerializeField] KeyCode blinkKey = KeyCode.Alpha1;
 
     [SerializeField] private float teleportDistance = 1f; // Distance to teleport the player
-    [SerializeField] private float shiftTeleportMultiplier = 2f; // Multiplier for teleport distance when holding shift
+    [SerializeField] private float teleportDistAdder = 0.5f; // Multiplier for teleport distance when holding shift
+    [SerializeField] private float teleportDistResetTime = 1f;
     float currentTeleportDistance = 1f; // Current teleport distance
+    float teleportDistResetTimer = 0f; // Timer to reset teleport distance
 
     CharacterMovement _characterMovement;
     BaseFirstPersonController _baseFirstPersonController;
+    PlayerFreezeController _playerFreezeController;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         _characterMovement = FindAnyObjectByType<CharacterMovement>();
         _baseFirstPersonController = _characterMovement.GetComponent<BaseFirstPersonController>();
+        _playerFreezeController = _characterMovement.GetComponent<PlayerFreezeController>();
     }
 
     // Update is called once per frame
@@ -33,14 +37,13 @@ public class Hacks : MonoBehaviour
             InputEvents.PlayerBlinked();
         }
 
-        if (Input.GetKey(KeyCode.LeftShift))
+        teleportDistResetTimer -= Time.deltaTime;
+        if(teleportDistResetTimer <= 0f)
         {
-            currentTeleportDistance = teleportDistance * shiftTeleportMultiplier;
+            currentTeleportDistance = teleportDistance; // Reset teleport distance
         }
-        else
-        {
-            currentTeleportDistance = teleportDistance;
-        }
+
+        if(Input.GetKeyDown(KeyCode.V)) TeleportPlayer(Vector3.up * currentTeleportDistance); // Teleport up (vertical)
 
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
@@ -62,15 +65,17 @@ public class Hacks : MonoBehaviour
 
     void TeleportPlayer(Vector3 teleportVector)
     {
-        _characterMovement.Pause(true);
-        _characterMovement.enabled = false; // Disable player movement
-        _baseFirstPersonController.enabled = false; // Disable the base first person controller
+        Debug.Log("Dist: " + currentTeleportDistance + " | Vector: " + teleportVector);
 
-        _characterMovement.transform.position += teleportVector; // Teleport the player
+        _playerFreezeController.SetFreeze(true);
+
+        //_characterMovement.transform.position += teleportVector; // Teleport the player
+        _characterMovement.transform.position = Vector3.zero;
+
+        _playerFreezeController.SetFreeze(false);
 
 
-        _characterMovement.Pause(false);
-        _characterMovement.enabled = true; // Disable player movement
-        _baseFirstPersonController.enabled = true; // Disable the base first person controller
+        currentTeleportDistance += teleportDistAdder;
+        teleportDistResetTimer = teleportDistResetTime; // Reset the timer
     }
 }

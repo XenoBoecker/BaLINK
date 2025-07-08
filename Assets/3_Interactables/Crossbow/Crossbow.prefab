@@ -225,6 +225,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9874f235c12bff041910cec1fbc974a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _interactionEnabled: 1
+  _canBeInteractedWithMultipleTimes: 0
 --- !u!114 &3769145417801892554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,10 +239,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2f987742b06185439c0e4b02408889f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shootForce: 1000
+  _clickToReload: 0
+  _shootForce: 2000
   _animator: {fileID: 4285648066812786086}
   _arrowPrefab: {fileID: 6044830888722993508, guid: 2f579e3ffc4c42241ac3fdc491f6ada1, type: 3}
   _arrowSpawnPos: {fileID: 1912966707795746364}
+  _shootInputBufferTime: 0.3
 --- !u!1 &5021862417014300852
 GameObject:
   m_ObjectHideFlags: 0

@@ -58,6 +58,13 @@ public class GraphEditorWindow : EditorWindow
 
         _window.Focus();
         _window.titleContent = new GUIContent($"({graph.gameObject.name}) Graph Editor");
+
+        Undo.undoRedoEvent += RepaintAfterUndo;
+    }
+
+    private static void RepaintAfterUndo(in UndoRedoInfo undo)
+    {
+        _window.Repaint();
     }
 
     private void OnGUI()
@@ -65,6 +72,7 @@ public class GraphEditorWindow : EditorWindow
         if (_graph == null) { return; }
 
         _nodeSelectedThisFrame = false;
+        Undo.RecordObject(_graph, "graph action");
 
         for (int i = 0; i < _graph.Nodes.Length; i++)
         {

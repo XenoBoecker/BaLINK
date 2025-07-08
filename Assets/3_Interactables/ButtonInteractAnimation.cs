@@ -3,16 +3,23 @@
 [RequireComponent(typeof(Animator), typeof(Interactable))]
 public class ButtonInteractAnimation : MonoBehaviour
 {
-    [SerializeField] private Animator _animator;
+    Animator _animator;
 
     Interactable _interactable;
 
     private void Awake()
     {
         _interactable = GetComponent<Interactable>();
+        _animator = GetComponent<Animator>();
+
         if (_interactable == null)
         {
             Debug.LogError("ButtonInteractAnimation requires an Interactable component.");
+        }
+
+        if (_animator == null)
+        {
+            Debug.LogError("ButtonInteractAnimation requires an animator component.");
         }
 
         _interactable.OnTryInteract += PlayInteractAnimation;

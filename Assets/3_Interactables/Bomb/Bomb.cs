@@ -25,9 +25,12 @@ public class Bomb : MonoBehaviour
     private float timeScale = 1;
 
     bool isDefused = false;
+    bool _bombTimerStarted = false;
 
     int wrongButtonPressedCount = 0;
 
+    public event Action OnWrongButtonPressed;
+    public event Action OnCorrectButtonPressed;
     public event Action OnBombDefused;
     public event Action OnBombExploded;
 
@@ -39,6 +42,7 @@ public class Bomb : MonoBehaviour
         for (int i = 0; i < correctButtons.Length; i++)
         {
             correctButtons[i].OnInteracted += CheckBombDefused;
+            correctButtons[i].OnInteracted += OnCorrectButtonPressed;
         }
 
         for (int i = 0;i < wrongButtons.Length; i++)
@@ -60,6 +64,8 @@ public class Bomb : MonoBehaviour
         {
             return;
         }
+
+        OnWrongButtonPressed?.Invoke();
 
         wrongButtonPressedCount = currentWrongButtonPressedCount;
 
@@ -86,8 +92,10 @@ public class Bomb : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(timeScale != 1) print("Time scale is not 1, current time scale: " + timeScale);
-        timeLeft -= Time.deltaTime * timeScale;
+        if (_bombTimerStarted)
+        {
+            timeLeft -= Time.deltaTime * timeScale;
+        }
 
         if (isDefused)
         {
@@ -98,6 +106,11 @@ public class Bomb : MonoBehaviour
         {
             Explode();
         }
+    }
+
+    public void StartBombTimer()
+    {
+        _bombTimerStarted = true;
     }
 
     public void SetTimeScale(float newTimeScale)

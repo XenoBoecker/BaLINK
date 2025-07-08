@@ -17,6 +17,8 @@ GameObject:
   - component: {fileID: 114272575589405250}
   - component: {fileID: 7322707358008542355}
   - component: {fileID: 4815638396983421092}
+  - component: {fileID: 4905903963818867187}
+  - component: {fileID: 6982840367828453888}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -215,6 +217,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca51a85d5bf79f9489f1c9ddc28adb13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4905903963818867187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1104601239848796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d31c3b2f92cc5741aba523facda9379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enableHacks: 1
+  blinkKey: 49
+  teleportDistance: 1
+  shiftTeleportMultiplier: 2
+--- !u!114 &6982840367828453888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1104601239848796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9832bfaed7bea09469c4f297945f012f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _bobStrength: 0.025
+  _bobFrequency: 0.075
+  _tiltStrength: 0.2
+  _tiltFrequency: 0.0375
 --- !u!1 &1389653564741890
 GameObject:
   m_ObjectHideFlags: 0
@@ -317,7 +351,7 @@ Camera:
     height: 1
   near clip plane: 0.15
   far clip plane: 1000
-  field of view: 60
+  field of view: 65
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -374,8 +408,8 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
-  m_Antialiasing: 0
+  m_RenderPostProcessing: 1
+  m_Antialiasing: 1
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0

@@ -53,8 +53,6 @@ public class PlayerInteractor : MonoBehaviour
     {
         Physics.SphereCast(transform.position, interactionRadius, transform.forward, out RaycastHit hit, interactionRange, interactionLayer);
 
-        print("Hit: " + hit.collider?.name);
-
         if (hit.collider != null)
         {
             Interactable interactable = hit.collider.GetComponent<Interactable>();
@@ -65,6 +63,11 @@ public class PlayerInteractor : MonoBehaviour
         }
 
         return null;
+    }
+
+    public bool IsMouseHoverOverInteractable()
+    {
+        return GetInteractable() != null;
     }
 
     internal void EquipItem(EquippedItem item)

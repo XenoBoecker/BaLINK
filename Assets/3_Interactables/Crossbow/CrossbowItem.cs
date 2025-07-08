@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Threading.Tasks;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,14 +14,32 @@ public class CrossbowItem : EquippedItem
     [SerializeField] private GameObject _arrowPrefab;
     [SerializeField] private Transform _arrowSpawnPos;
 
+
+    [SerializeField] private float _shootInputBufferTime = 0.3f;
+    float _shootInputBufferTimer = 0f;
+
+    private float arrowSpawnDuration = 3f;
+
     private bool _isReloading;
+    private bool _isReleasing;
     private bool _readyToFire = false;
     private GameObject _spawnedArrow;
 
     private void Update()
     {
-        if (!_isEquipped || _readyToFire || _isReloading || _clickToReload)
+        _shootInputBufferTimer -= Time.deltaTime;
+
+        if (!_isEquipped || _isReloading || _clickToReload)
         {
+            return;
+        }
+
+        if (_readyToFire)
+        {
+            if(_shootInputBufferTimer > 0f)
+            {
+                Release();
+            }
             return;
         }
 
@@ -46,11 +65,14 @@ public class CrossbowItem : EquippedItem
             Reload();
             return;
         }
+        else
+        {
+            _shootInputBufferTimer = _shootInputBufferTime;
+        }
     }
 
     private void Reload()
     {
-        Debug.Log("Reloading Crossbow");
         _animator.SetTrigger("Reload");
         StartCoroutine(ReloadRoutine(_animator.GetCurrentAnimatorStateInfo(0).length));
     }
@@ -60,9 +82,10 @@ public class CrossbowItem : EquippedItem
         _isReloading = true;
         if (_spawnedArrow != null) { _readyToFire = true; }
 
-        yield return new WaitForSeconds(delay * 0.45f);
+        arrowSpawnDuration = delay * 0.5f;
 
-        _readyToFire = true;
+        //yield return new WaitForSeconds(delay * 0.45f - arrowSpawnDuration);
+
         
         _spawnedArrow = Instantiate(_arrowPrefab, _arrowSpawnPos);
         _spawnedArrow.transform.localPosition = Vector3.zero;
@@ -70,25 +93,23 @@ public class CrossbowItem : EquippedItem
 
         Material arrowMat = _spawnedArrow.GetComponentInChildren<MeshRenderer>().material;
         
-        float arrowSpawnDuration = 0.3f;
         for (float i = 0; i < arrowSpawnDuration; i += Time.deltaTime)
         {
-            arrowMat.SetFloat("_Cutoff_Height", 10 * (i / arrowSpawnDuration));
+            arrowMat.SetFloat("_Cutoff_Height", (i / arrowSpawnDuration));
             yield return null;
         }
 
+        _readyToFire = true;
         _isReloading = false;
     }
 
     private void Release()
     {
-        Debug.Log("Releasing Crossbow Arrow");
         if (!_isEquipped)
         {
             return;
         }
 
-        _animator.SetTrigger("Fire");
         if (!_readyToFire)
         {
             StopAllCoroutines();
@@ -96,30 +117,27 @@ public class CrossbowItem : EquippedItem
             return;
         }
 
-        _spawnedArrow.GetComponent<ProjectileController>().Shoot(_shootForce);
-
-        _spawnedArrow = null;
-        _readyToFire = false;
-    }
-
-    private void Released(InputAction.CallbackContext context)
-    {
-        if (!_isEquipped)
+        if(_isReleasing)
         {
-            return;
+            return; // Already releasing, ignore further input
         }
+
+        _shootInputBufferTimer = 0f;
 
         _animator.SetTrigger("Fire");
-        if (!_readyToFire) 
-        {
-            StopAllCoroutines();
-            Destroy(_spawnedArrow);
-            return; 
-        }
+
+        StartCoroutine(ReleaseRoutine(_animator.GetCurrentAnimatorStateInfo(0).length));
+    }
+
+    IEnumerator ReleaseRoutine(float delay)
+    {
+        _isReleasing = true;
 
         _spawnedArrow.GetComponent<ProjectileController>().Shoot(_shootForce);
+        yield return new WaitForSeconds(delay * 0.5f);
 
         _spawnedArrow = null;
+        _isReleasing = false;
         _readyToFire = false;
     }
 }

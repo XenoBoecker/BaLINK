@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class TargetManager : MonoBehaviour
@@ -38,8 +39,8 @@ public class TargetManager : MonoBehaviour
     [SerializeField] private float fastHoverSpeed = 2f;
 
 
-    public float MoveSpeed => isMovingFast ? fastMoveSpeed : slowMoveSpeed;
-    public float HoverSpeed => isMovingFast ? fastHoverSpeed : slowHoverSpeed;
+    public float MoveSpeed => isFrozen ? 0 : isMovingFast ? fastMoveSpeed : slowMoveSpeed;
+    public float HoverSpeed => isFrozen ? 0 : isMovingFast ? fastHoverSpeed : slowHoverSpeed;
 
     [SerializeField] private Vector3 moveDirection = Vector3.right;
     public Vector3 MoveDirection => moveDirection; // Expose the move direction to other scripts
@@ -52,6 +53,8 @@ public class TargetManager : MonoBehaviour
 
     bool isSpawning;
     bool isMovingFast = true;
+    bool isFrozen = false;
+    public bool IsFrozen => isFrozen; // Expose the frozen state to other scripts
     public bool IsMovingFast => isMovingFast; // Expose the moving speed to other scripts
 
     private void Awake()
@@ -115,5 +118,10 @@ public class TargetManager : MonoBehaviour
     public void ToggleTargetMoveSpeed()
     {
         isMovingFast = !isMovingFast; // Toggle the moving speed between fast and slow
+    }
+
+    internal void SetFreeze(bool v)
+    {
+        isFrozen = v;
     }
 }

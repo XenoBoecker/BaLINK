@@ -1,5 +1,6 @@
 using ECM.Components;
 using ECM.Controllers;
+using GameEvents;
 using System.Collections;
 using UnityEngine;
 
@@ -93,6 +94,10 @@ public class NumberLockCameraZoom : Interactable
 
     override protected void Interact()
     {
+        if(!numberLock.IsLocked) // Check if the number lock is not locked
+        {
+            return; // If the number lock is not locked, do nothing
+        }
         ZoomIn();
     }
     public void ZoomIn()
@@ -138,7 +143,7 @@ public class NumberLockCameraZoom : Interactable
         isZooming = false;
 
         Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        // Cursor.visible = true;
     }
 
     void ZoomOut()
