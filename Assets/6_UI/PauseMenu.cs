@@ -12,6 +12,9 @@ public class PauseMenu : MonoBehaviour
 
     private bool _isPaused = false;
     public bool IsPaused => _isPaused; // Expose the paused state to other scripts
+
+    private bool _menuButtonWasPressed = false; // Track if the menu button was pressed
+    public bool MenuButtonWasPressed => _menuButtonWasPressed; // Expose the menu button state
     // Awake is called when the script instance is being loaded
     void Awake()
     {
@@ -74,7 +77,11 @@ public class PauseMenu : MonoBehaviour
         return Camera.main == null;
     }
 
-    // Update is called once per frame
+    public void MenuButtonPressed()
+    {
+        Debug.LogWarning("Pressing the menu button does not change the scene. It fulfills a condition for the graph. When fullfilled, the ChangeScene Effect should be called. For both Condition and Effect use the pause menu object", this);
+        _menuButtonWasPressed = true; // Set the menu button pressed state to true
+    }
 
     public void ChangeScene(string sceneName)
     {
