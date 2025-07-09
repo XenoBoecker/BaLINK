@@ -5,10 +5,16 @@ public class ProjectileController : MonoBehaviour
 {
     [SerializeField] private float _lifetime = 10f;
     [SerializeField] private Rigidbody _rb;
+    [SerializeField] private TrailRenderer _trailRenderer;
 
     private void Start()
     {
         _rb.isKinematic = true;
+
+        if (_trailRenderer != null)
+        {
+            _trailRenderer.enabled = false;
+        }
     }
     private void OnTriggerEnter(Collider collider)
     {
@@ -45,5 +51,10 @@ public class ProjectileController : MonoBehaviour
         _rb.AddForce(transform.forward * shootForce);
 
         gameObject.AddComponent<SelfDestruct>().Initialize(_lifetime);
+
+        if (_trailRenderer != null)
+        {
+            _trailRenderer.enabled = true;
+        }
     }
 }
