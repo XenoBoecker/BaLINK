@@ -22,6 +22,8 @@ public class BombUI : MonoBehaviour
         {
             Debug.LogError("Bomb is not found.", this);
         }
+
+        bomb.StartBombTimer();
     }
 
     void LateUpdate()
@@ -36,8 +38,6 @@ public class BombUI : MonoBehaviour
         }
         int minutes = Mathf.FloorToInt(timeLeft / 60);
         int seconds = Mathf.FloorToInt(timeLeft % 60);
-
-        Debug.Log(timeLeft);
 
         if (timerNegative)
         {
