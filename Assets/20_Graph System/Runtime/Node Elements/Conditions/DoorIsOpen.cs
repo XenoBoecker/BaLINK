@@ -1,16 +1,16 @@
 using UnityEngine;
 
 [NodeElement(NodeType.Condition, NodeType.IfElse)]
-[RequireComponent(typeof(Door))]
+[RequireComponent(typeof(DoorController))]
 public class DoorIsOpen : Condition
 {
-    private Door _door;
+    private DoorController _door;
 
     public override bool ConditionIsMet()
     {
         if (_door == null)
         {
-            _door = ReferencedObject.GetComponent<Door>();
+            _door = ReferencedObject.GetComponent<DoorController>();
         }
 
         return _invertCondition != _door.IsOpen;
