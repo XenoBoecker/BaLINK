@@ -3,6 +3,7 @@ using System.Collections;
 using System.Threading.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class CrossbowItem : EquippedItem
@@ -17,6 +18,9 @@ public class CrossbowItem : EquippedItem
 
     [SerializeField] private float _shootInputBufferTime = 0.3f;
     float _shootInputBufferTimer = 0f;
+
+    [SerializeField] private UnityEvent _onReload;
+    [SerializeField] private UnityEvent _onRelease;
 
     private float arrowSpawnDuration = 3f;
 
@@ -73,6 +77,8 @@ public class CrossbowItem : EquippedItem
 
     private void Reload()
     {
+        _onReload.Invoke();
+
         _animator.SetTrigger("Reload");
         StartCoroutine(ReloadRoutine(_animator.GetCurrentAnimatorStateInfo(0).length));
     }
@@ -124,6 +130,7 @@ public class CrossbowItem : EquippedItem
 
         _shootInputBufferTimer = 0f;
 
+        _onRelease.Invoke();
         _animator.SetTrigger("Fire");
 
         StartCoroutine(ReleaseRoutine(_animator.GetCurrentAnimatorStateInfo(0).length));
