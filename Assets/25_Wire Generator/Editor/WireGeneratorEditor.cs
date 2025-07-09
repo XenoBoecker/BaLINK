@@ -30,7 +30,7 @@ public class WireGeneratorEditor : Editor
             {
                 for (int i = 0; i < generator.ControlPoints.Length; i++)
                 {
-                    Vector3 controlPosition = generator.ControlPoints[i].GetOffsetPosition(generator.WireThickness);
+                    Vector3 controlPosition = generator.ControlPoints[i].GetOffsetPosition(generator.WireThickness) + generator.transform.position;
                     Vector3 tangentBackPosition = controlPosition + generator.ControlPoints[i].TangentBack;
                     Vector3 tangentFrontPosition = controlPosition + generator.ControlPoints[i].TangentFront;
 
@@ -69,7 +69,7 @@ public class WireGeneratorEditor : Editor
             _mouseHit = GetMouseHit();
             Undo.RecordObject(generator, "Added Control Points");
             
-            _addedControlPoint = generator.AddControlPoint(_mouseHit.point, _mouseHit.normal, Vector3.zero, Vector3.zero);
+            _addedControlPoint = generator.AddControlPoint(_mouseHit.point - generator.transform.position, _mouseHit.normal, Vector3.zero, Vector3.zero);
             _previousMouseActionPoint = _mouseHit.point;
 
             _selectedControlIndex = generator.ControlPoints.Length - 1;
@@ -83,7 +83,7 @@ public class WireGeneratorEditor : Editor
 
             //if (Vector3.Distance(_previousMouseActionPoint, _mouseHit.point) < generator.PaintingResolution) { return; }
 
-            Vector3 tangentFront = (_mouseHit.point - _addedControlPoint.Position);
+            Vector3 tangentFront = ((_mouseHit.point - generator.transform.position) - _addedControlPoint.Position);
             Vector3 tangentBack = tangentFront * -1;
 
             Undo.RecordObject(generator, "Modified Tangents");
@@ -111,7 +111,7 @@ public class WireGeneratorEditor : Editor
             Vector3 surfaceNormal = generator.ControlPoints[i].SurfaceNormal;
             Vector3 invertedSurfaceNormal = new Vector3(1 - surfaceNormal.x, 1 - surfaceNormal.y, 1 - surfaceNormal.z);
 
-            Vector3 controlPosition = generator.ControlPoints[i].GetOffsetPosition(generator.WireThickness);
+            Vector3 controlPosition = generator.ControlPoints[i].GetOffsetPosition(generator.WireThickness) + generator.transform.position;
             Vector3 tangentBackPosition = controlPosition + generator.ControlPoints[i].TangentBack;
             Vector3 tangentFrontPosition = controlPosition + generator.ControlPoints[i].TangentFront;
 
@@ -138,7 +138,7 @@ public class WireGeneratorEditor : Editor
                 generator.RegenerateMesh();
             }
 
-            if (Event.current.shift)
+            if (!Event.current.shift)
             {
                 if (tangentBackChange != Vector3.zero)
                 {

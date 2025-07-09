@@ -29,15 +29,15 @@ namespace Mediapipe.Unity.Sample.FaceLandmarkDetection
 
     protected override IEnumerator Run()
     {
-      Debug.Log($"Delegate = {config.Delegate}");
-      Debug.Log($"Image Read Mode = {config.ImageReadMode}");
-      Debug.Log($"Running Mode = {config.RunningMode}");
-      Debug.Log($"NumFaces = {config.NumFaces}");
-      Debug.Log($"MinFaceDetectionConfidence = {config.MinFaceDetectionConfidence}");
-      Debug.Log($"MinFacePresenceConfidence = {config.MinFacePresenceConfidence}");
-      Debug.Log($"MinTrackingConfidence = {config.MinTrackingConfidence}");
-      Debug.Log($"OutputFaceBlendshapes = {config.OutputFaceBlendshapes}");
-      Debug.Log($"OutputFacialTransformationMatrixes = {config.OutputFacialTransformationMatrixes}");
+      //Debug.Log($"Delegate = {config.Delegate}");
+      //Debug.Log($"Image Read Mode = {config.ImageReadMode}");
+      //Debug.Log($"Running Mode = {config.RunningMode}");
+      //Debug.Log($"NumFaces = {config.NumFaces}");
+      //Debug.Log($"MinFaceDetectionConfidence = {config.MinFaceDetectionConfidence}");
+      //Debug.Log($"MinFacePresenceConfidence = {config.MinFacePresenceConfidence}");
+      //Debug.Log($"MinTrackingConfidence = {config.MinTrackingConfidence}");
+      //Debug.Log($"OutputFaceBlendshapes = {config.OutputFaceBlendshapes}");
+      //Debug.Log($"OutputFacialTransformationMatrixes = {config.OutputFacialTransformationMatrixes}");
 
       yield return AssetLoader.PrepareAssetAsync(config.ModelPath);
 

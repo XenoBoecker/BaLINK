@@ -84,10 +84,10 @@ namespace Mediapipe
     [AOT.MonoPInvokeCallback(typeof(PathResolver))]
     private static string PathToResourceAsFile(string assetPath)
     {
-      UnityEngine.Debug.Log($"{assetPath} is requested");
+      //UnityEngine.Debug.Log($"{assetPath} is requested");
       try
       {
-        Logger.LogDebug(_TAG, $"{assetPath} is requested");
+        //Logger.LogDebug(_TAG, $"{assetPath} is requested");
         if (TryGetFilePath(assetPath, out var filePath))
         {
           return filePath;
