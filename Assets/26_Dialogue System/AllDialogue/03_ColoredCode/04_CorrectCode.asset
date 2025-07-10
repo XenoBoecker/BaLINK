@@ -12,10 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3a9ef48355cb440936a05a37111157, type: 3}
   m_Name: 04_CorrectCode
   m_EditorClassIdentifier: 
+  _defaultDelayBetweenLines: 0
   _lines:
-  - _clip: {fileID: 8300000, guid: 2b65f0507ad2ca443a01754d0dcb9474, type: 3}
+  - _clip: {fileID: 8300000, guid: f4fcf38300c9eec4cab61302cd3144c2, type: 3}
+    _delayAfterPlayingLine: 0
     _segments:
-    - _text: 'Ah wait, I forgot to check something else in the greybox
-
-'
+    - _text: "Nice they\u2019ve got it!"
       _percentAlongAudioToShow: 0
+    - _text: "Wait!\r"
+      _percentAlongAudioToShow: 0.15141095
+    - _text: "Dave, is that my phone pin?!?\r"
+      _percentAlongAudioToShow: 0.2463636
+    - _text: Well, I had to come up with something, right?
+      _percentAlongAudioToShow: 0.4875946
+    - _text: "\rBesides, no one will know!"
+      _percentAlongAudioToShow: 0.7698862
