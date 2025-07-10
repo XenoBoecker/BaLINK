@@ -12,120 +12,73 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3a9ef48355cb440936a05a37111157, type: 3}
   m_Name: 03_ColorChanges
   m_EditorClassIdentifier: 
+  _defaultDelayBetweenLines: 0
   _lines:
-  - _clip: {fileID: 8300000, guid: d7848c8dc4c34be43af9244ff126750b, type: 3}
+  - _clip: {fileID: 8300000, guid: 3ca7d1e9d2a548c4c961c62057f45141, type: 3}
+    _delayAfterPlayingLine: 0
     _segments:
-    - _text: 'Wait, did you change anything else? '
+    - _text: Wait...
       _percentAlongAudioToShow: 0
-    - _text: "The wire colors seem wrong\u2026 \r"
-      _percentAlongAudioToShow: 0.4450825
-  - _clip: {fileID: 8300000, guid: 73126c94077ea1441bac0a3bb6a1476e, type: 3}
+    - _text: Did you change anything else?
+      _percentAlongAudioToShow: 0.22543415
+    - _text: "The colors of the diffuse wires seem wrong\u2026 "
+      _percentAlongAudioToShow: 0.60260284
+  - _clip: {fileID: 8300000, guid: 1cc714734fa63c74f842af89f0ff71ac, type: 3}
+    _delayAfterPlayingLine: 0
     _segments:
-    - _text: "No, they are all green like they were supposed to be, right?\r"
+    - _text: "No, it\u2019s exactly what we\u2019ve said.\r\r"
       _percentAlongAudioToShow: 0
-  - _clip: {fileID: 8300000, guid: 5cb49da32e0a45e46bbdbcbd4785bb81, type: 3}
+    - _text: No no noo!
+      _percentAlongAudioToShow: 0.45715657
+    - _text: We said that they should have different colors.
+      _percentAlongAudioToShow: 0.59161437
+  - _clip: {fileID: 8300000, guid: 344bb2e6dc91dd64d88045988ce17d71, type: 3}
+    _delayAfterPlayingLine: 0
     _segments:
-    - _text: 'No no noo, we said that they should be red, blue and green '
+    - _text: No, I'm sure we said all get the same color.
       _percentAlongAudioToShow: 0
-    - _text: 'so the player can tell them better apart. '
-      _percentAlongAudioToShow: 0.33128875
-    - _text: Scoot over and let me fix that.
-      _percentAlongAudioToShow: 0.6189181
-  - _clip: {fileID: 8300000, guid: 7fd4cf9a316e0c94581eea9cf70a2fce, type: 3}
+  - _clip: {fileID: 8300000, guid: b459fa050dd1f044a9a47fa54db48c9f, type: 3}
+    _delayAfterPlayingLine: 0
     _segments:
-    - _text: "I\u2019m pretty sure we agreed on all being one color "
+    - _text: "No we definitely...\r"
       _percentAlongAudioToShow: 0
-    - _text: 'because it would be too easy with 3 colors. '
-      _percentAlongAudioToShow: 0.28506207
-    - _text: "If you don\u2019t like blue we can go with red, "
-      _percentAlongAudioToShow: 0.54893667
-    - _text: that's fine with me.
-      _percentAlongAudioToShow: 0.80510926
-  - _clip: {fileID: 8300000, guid: 7ad07d6e6545242469e7d25d1f9e8887, type: 3}
+    - _text: "whatever...\r"
+      _percentAlongAudioToShow: 0.24778372
+    - _text: But then not this color!
+      _percentAlongAudioToShow: 0.49556744
+    - _text: "Fine let's pick something else.\r"
+      _percentAlongAudioToShow: 0.6982996
+  - _clip: {fileID: 8300000, guid: dc1fcceec0724f645abd3374fec60a4b, type: 3}
+    _delayAfterPlayingLine: 0
     _segments:
-    - _text: 'Ahhh but what bomb has blue wires? '
+    - _text: Oooh nope...
       _percentAlongAudioToShow: 0
-    - _text: "It\u2019s always red or green\r"
-      _percentAlongAudioToShow: 0.4019188
-  - _clip: {fileID: 8300000, guid: b05b1e3db0bb98744a8ab68a43572b3f, type: 3}
+    - _text: That one is awful!
+      _percentAlongAudioToShow: 0.37004775
+    - _text: Then how about this one?
+      _percentAlongAudioToShow: 0.7011431
+  - _clip: {fileID: 8300000, guid: b6d8fa8812507064b9026ca2c34f3e60, type: 3}
+    _delayAfterPlayingLine: 0
     _segments:
-    - _text: "Fine let's take red then\r"
+    - _text: Hmm... nah...
       _percentAlongAudioToShow: 0
-  - _clip: {fileID: 8300000, guid: 52e4510065b946947abf5d200cb455df, type: 3}
+    - _text: Too confusing!
+      _percentAlongAudioToShow: 0.32838404
+    - _text: 'What? '
+      _percentAlongAudioToShow: 0.5035222
+    - _text: "Ok, you\u2019re the designer"
+      _percentAlongAudioToShow: 0.6859578
+  - _clip: {fileID: 8300000, guid: 1f078fe8ec70c7547894e6342aeb9b99, type: 3}
+    _delayAfterPlayingLine: 0
     _segments:
-    - _text: 'Oh wait, red was a bad call. '
+    - _text: 'Uh... '
       _percentAlongAudioToShow: 0
-    - _text: 'We already have so much red in the environment, it''s too hard to see
-
-'
-      _percentAlongAudioToShow: 0.30515707
-  - _clip: {fileID: 8300000, guid: 1609dbfadab5ebd49834bd46399960b5, type: 3}
+    - _text: How about this one?
+      _percentAlongAudioToShow: 0.36355892
+  - _clip: {fileID: 8300000, guid: ea52704d52edb84429fb6a67595d137d, type: 3}
+    _delayAfterPlayingLine: 0
     _segments:
-    - _text: "So we are back to all green then?\r"
+    - _text: 'Ouh I... I take that back, that is horrendous! '
       _percentAlongAudioToShow: 0
-  - _clip: {fileID: 8300000, guid: e4a210c54468b4c4ebd85bf3c4ff4801, type: 3}
-    _segments:
-    - _text: 'Oh no! What if the player is Colorblind? '
-      _percentAlongAudioToShow: 0
-    - _text: Then the green cables and red floor will look indifferent!
-      _percentAlongAudioToShow: 0.4441981
-  - _clip: {fileID: 8300000, guid: 497ee86f1afb91a469e7c384ab63a332, type: 3}
-    _segments:
-    - _text: First of all that is incredibly ableist of you
-      _percentAlongAudioToShow: 0
-    - _text: ' but if it worries you that much we can go back to all blue'
-      _percentAlongAudioToShow: 0.43217444
-  - _clip: {fileID: 8300000, guid: 6c19c6e5505ffad428ea19aa502eebed, type: 3}
-    _segments:
-    - _text: "Hmmmmmmm I really don\u2019t like the blue. "
-      _percentAlongAudioToShow: 0
-    - _text: Can we please try different colors for the wires?
-      _percentAlongAudioToShow: 0.354748
-  - _clip: {fileID: 8300000, guid: b1e6894bcd1dfd642b8cdca89faff3bb, type: 3}
-    _segments:
-    - _text: "Ok sure, what do you want to start with?\r"
-      _percentAlongAudioToShow: 0
-  - _clip: {fileID: 8300000, guid: 2c8d489b61841084f9dba927a8f28411, type: 3}
-    _segments:
-    - _text: "Let\u2019s start with one of each color\r"
-      _percentAlongAudioToShow: 0
-  - _clip: {fileID: 8300000, guid: d000b373bcfcca845b6a0f1201f3d1e3, type: 3}
-    _segments:
-    - _text: 'Ughh that is so boring though.
-
-'
-      _percentAlongAudioToShow: 0
-    - _text: How about 2 blue ones and a red one?
-      _percentAlongAudioToShow: 0.32738313
-  - _clip: {fileID: 8300000, guid: 9bf11c4371f0d84419427e9d0ce6a921, type: 3}
-    _segments:
-    - _text: 'Nooo still too much blue, '
-      _percentAlongAudioToShow: 0
-    - _text: 'what about 2 green ones instead?
-
-'
-      _percentAlongAudioToShow: 0.43807486
-  - _clip: {fileID: 8300000, guid: ddd9d018f8e68664c81d8630a18b39ef, type: 3}
-    _segments:
-    - _text: "Still not it\u2026\r"
-      _percentAlongAudioToShow: 0
-  - _clip: {fileID: 8300000, guid: 45e86bebb105bb24fb62a4e98e91a898, type: 3}
-    _segments:
-    - _text: "Yeah, but we should lock something in soon\r"
-      _percentAlongAudioToShow: 0
-  - _clip: {fileID: 8300000, guid: f34ad9d065eb1b84eb761db9978880f8, type: 3}
-    _segments:
-    - _text: "You\u2019re absolutely right. "
-      _percentAlongAudioToShow: 0
-    - _text: 'How about we just take the next combination, '
-      _percentAlongAudioToShow: 0.24532005
-    - _text: no matter how good it is?
-      _percentAlongAudioToShow: 0.67463696
-  - _clip: {fileID: 8300000, guid: d5ecc7cefed8fbf42bf0bee256694cb8, type: 3}
-    _segments:
-    - _text: "I take that back, \r"
-      _percentAlongAudioToShow: 0
-    - _text: 'this is horrendous! '
-      _percentAlongAudioToShow: 0.23033744
-    - _text: We need something else...
-      _percentAlongAudioToShow: 0.4523059
+    - _text: "We need something else\u2026"
+      _percentAlongAudioToShow: 0.66370267

@@ -12,20 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3a9ef48355cb440936a05a37111157, type: 3}
   m_Name: 01_DoorSpotted
   m_EditorClassIdentifier: 
+  _defaultDelayBetweenLines: 0
   _lines:
-  - _clip: {fileID: 8300000, guid: 440a2be189fedc74dac1306f8546c65a, type: 3}
+  - _clip: {fileID: 8300000, guid: ddaee8f9eca59094582545b7b4a4e828, type: 3}
+    _delayAfterPlayingLine: 0
     _segments:
-    - _text: 'What happened to that door back there, '
+    - _text: "What\u2019s with that door?"
       _percentAlongAudioToShow: 0
-    - _text: 'why is it rotated?
-
-'
-      _percentAlongAudioToShow: 0.4984043
-  - _clip: {fileID: 8300000, guid: 0860090429e1759429d3c1b1e41b1253, type: 3}
-    _segments:
-    - _text: 'Ah damn, I was rotating some objects earlier, '
-      _percentAlongAudioToShow: 0
-    - _text: 'guess I selected the door by accident. '
-      _percentAlongAudioToShow: 0.3642847
-    - _text: "I\u2019ll fix it really quick"
-      _percentAlongAudioToShow: 0.6476175
+    - _text: "Why\u2019s it rotated?"
+      _percentAlongAudioToShow: 0.18339866
+    - _text: "I must\u2019ve selected it by accident when editing stuff earlier.
+        \r"
+      _percentAlongAudioToShow: 0.3198814
+    - _text: "\rI\u2019ll fix it real quick."
+      _percentAlongAudioToShow: 0.82742655
