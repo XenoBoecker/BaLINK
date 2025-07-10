@@ -22,8 +22,6 @@ public class BombUI : MonoBehaviour
         {
             Debug.LogError("Bomb is not found.", this);
         }
-
-        bomb.StartBombTimer();
     }
 
     void LateUpdate()
