@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2868880518840402745}
   - component: {fileID: 6711374504536280296}
   - component: {fileID: 2849169139593411084}
+  - component: {fileID: 4087039653460754925}
   m_Layer: 0
   m_Name: Swinging Door
   m_TagString: Untagged
@@ -68,6 +69,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 025ae34aed5e56c4f8ae48f4d1ac7dd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnDoorOpen:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4087039653460754925}
+        m_TargetAssemblyTypeName: AudioOriginController, Assembly-CSharp
+        m_MethodName: PlayClip
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 941d72274d1702d49955c9e53983a033, type: 2}
+          m_ObjectArgumentAssemblyTypeName: AudioSystemClip, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnDoorClose:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4087039653460754925}
+        m_TargetAssemblyTypeName: AudioOriginController, Assembly-CSharp
+        m_MethodName: PlayClip
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: 03afd44dd8e267e479442d33e77e7584, type: 2}
+          m_ObjectArgumentAssemblyTypeName: AudioSystemClip, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &4087039653460754925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1396480748163410017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b22930c8af9364e4ab6cbd8be7149c22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cooldown: 0
 --- !u!1001 &5609752867693948137
 PrefabInstance:
   m_ObjectHideFlags: 0

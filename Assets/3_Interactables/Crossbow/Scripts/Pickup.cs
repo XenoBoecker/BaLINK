@@ -1,8 +1,11 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(EquippedItem))]
 public class Pickup : Interactable
 {
+    [SerializeField] private UnityEvent OnPickedUp;
+
     protected override void Interact()
     {
         PlayerInteractor playerInteractor = FindAnyObjectByType<PlayerInteractor>();
@@ -14,7 +17,7 @@ public class Pickup : Interactable
 
             InteractedSuccessfully();
             this.enabled = false;
-
+            OnPickedUp?.Invoke();
         }
         else
         {
