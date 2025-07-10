@@ -7,6 +7,8 @@ public class ProjectileController : MonoBehaviour
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private TrailRenderer _trailRenderer;
 
+    [SerializeField] private bool _doCustomContinousCollisionDetection = true;
+    private Vector3 _previousPosition;
     private bool _hasBeenShot;
 
     private void Start()
@@ -26,7 +28,31 @@ public class ProjectileController : MonoBehaviour
         {
             return;
         }
+
+        OnHit(collider);
+    }
+
+    private void LateUpdate()
+    {
+        if (!_doCustomContinousCollisionDetection || !_hasBeenShot)
+        {
+            return;
+        }
         
+        Vector3 lastUpdatedMovement = transform.position - _previousPosition;
+
+        bool hit = Physics.Raycast(_previousPosition, lastUpdatedMovement, out RaycastHit hitInfo, 20*lastUpdatedMovement.magnitude);
+
+        if (hit)
+        {
+            OnHit(hitInfo.collider);
+        }
+        
+        _previousPosition = transform.position;
+    }
+
+    void OnHit(Collider collider)
+    {
         Hitable hitable = collider.gameObject.GetComponent<Hitable>();
 
         if (hitable == null)
@@ -60,6 +86,8 @@ public class ProjectileController : MonoBehaviour
         transform.SetParent(null);
         _rb.isKinematic = false;
         _rb.AddForce(transform.forward * shootForce);
+
+        _previousPosition = transform.position;
 
         gameObject.AddComponent<SelfDestruct>().Initialize(_lifetime);
 
