@@ -6,6 +6,7 @@ public class ProjectileController : MonoBehaviour
     [SerializeField] private float _lifetime = 10f;
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private TrailRenderer _trailRenderer;
+    [SerializeField] private bool _destroyOnImpact = true;
 
     [SerializeField] private bool _doCustomContinousCollisionDetection = true;
     private Vector3 _previousPosition;
@@ -72,10 +73,17 @@ public class ProjectileController : MonoBehaviour
         Rigidbody rb = GetComponent<Rigidbody>();
         if (rb != null)
         {
-            rb.isKinematic = true; // Make the Rigidbody kinematic to stop further movement
-            rb.linearVelocity = Vector3.zero; // Stop the bolt's movement
-            rb.angularVelocity = Vector3.zero;
-            rb.useGravity = false; // Disable gravity to prevent falling
+            if (_destroyOnImpact)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                rb.isKinematic = true; // Make the Rigidbody kinematic to stop further movement
+                rb.linearVelocity = Vector3.zero; // Stop the bolt's movement
+                rb.angularVelocity = Vector3.zero;
+                rb.useGravity = false; // Disable gravity to prevent falling
+            }
         }
     }
 
