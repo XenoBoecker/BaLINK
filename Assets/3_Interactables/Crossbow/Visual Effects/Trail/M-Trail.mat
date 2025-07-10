@@ -22,10 +22,12 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: M-Trail
   m_Shader: {fileID: -6465566751694194690, guid: f70f4ddb66a83ed4682cfe8588e5e45d, type: 3}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
+  m_Parent: {fileID: -876546973899608171, guid: f70f4ddb66a83ed4682cfe8588e5e45d, type: 3}
+  m_ModifiedSerializedProperties: 2
   m_ValidKeywords: []
-  m_InvalidKeywords: []
+  m_InvalidKeywords:
+  - _ALPHAPREMULTIPLY_ON
+  - _SURFACE_TYPE_TRANSPARENT
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -36,31 +38,11 @@ Material:
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs:
-    - _SampleTexture2D_80995a7dd875450ba93303a7e6bb5081_Texture_1_Texture2D:
-        m_Texture: {fileID: 2800000, guid: d91440ec74b48584bb847bcced2d2325, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _SampleTexture2D_ca5b244d6fe54f37b266b2574341068a_Texture_1_Texture2D:
-        m_Texture: {fileID: 2800000, guid: 9885acd04c691774ea963d8cb2d4ef03, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_Lightmaps:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_LightmapsInd:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - unity_ShadowMasks:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+    m_TexEnvs: []
     m_Ints: []
     m_Floats:
+    - _DstBlend: 10
     - _QueueControl: 0
-    - _QueueOffset: 0
     m_Colors:
     - _Color: {r: 72.243484, g: 9.200822, b: 60.640537, a: 1}
     - _Speed: {r: 0.6, g: 0, b: 0, a: 0}
