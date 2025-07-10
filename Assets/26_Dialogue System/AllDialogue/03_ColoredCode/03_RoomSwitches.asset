@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a3a9ef48355cb440936a05a37111157, type: 3}
+  m_Name: 03_RoomSwitches
+  m_EditorClassIdentifier: 
+  _defaultDelayBetweenLines: 0
+  _lines:
+  - _clip: {fileID: 8300000, guid: 26ecfd21fb292154f8a96881ba1bbca4, type: 3}
+    _delayAfterPlayingLine: 0
+    _segments:
+    - _text: "Okay, let's see where the clues are\u2026"
+      _percentAlongAudioToShow: 0
+    - _text: Boooring...
+      _percentAlongAudioToShow: 0.38954312
+    - _text: Let's just watch the player figure it out!
+      _percentAlongAudioToShow: 0.69486064
+  - _clip: {fileID: 8300000, guid: 645bd1dbf25ddc44eb5ce5c815c137c4, type: 3}
+    _delayAfterPlayingLine: 0
+    _segments:
+    - _text: "Ahhh I see what I did there! \r"
+      _percentAlongAudioToShow: 0
+    - _text: Nice one!
+      _percentAlongAudioToShow: 0.62562126
+  - _clip: {fileID: 8300000, guid: fe78a436ea707c645a014e57b665bbae, type: 3}
+    _delayAfterPlayingLine: 0
+    _segments:
+    - _text: Ah wait!
+      _percentAlongAudioToShow: 0
+    - _text: I wanted to check something else in the greybox.
+      _percentAlongAudioToShow: 0.3304602
+  - _clip: {fileID: 8300000, guid: dfad10ca06dcaeb4898b5026443b5ffc, type: 3}
+    _delayAfterPlayingLine: 0
+    _segments:
+    - _text: "Ah so that\u2019s how we did it!\r"
+      _percentAlongAudioToShow: 0
+    - _text: "Got it!\r"
+      _percentAlongAudioToShow: 0.7570511
+  - _clip: {fileID: 8300000, guid: 74b66d77e6dad544596a8d18ba8c3d0b, type: 3}
+    _delayAfterPlayingLine: 0
+    _segments:
+    - _text: "Did you get it?\r"
+      _percentAlongAudioToShow: 0
+    - _text: "Uhmmm... noo...\r"
+      _percentAlongAudioToShow: 0.19301684
+    - _text: Can you pull up the greybox again?
+      _percentAlongAudioToShow: 0.5088626

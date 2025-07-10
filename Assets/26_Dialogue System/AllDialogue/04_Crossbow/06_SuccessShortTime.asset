@@ -12,8 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3a9ef48355cb440936a05a37111157, type: 3}
   m_Name: 06_SuccessShortTime
   m_EditorClassIdentifier: 
+  _defaultDelayBetweenLines: 0
   _lines:
-  - _clip: {fileID: 8300000, guid: b6c022fcb4d4e6b489880c7b14250ce1, type: 3}
+  - _clip: {fileID: 8300000, guid: ca2bc20795fede843ba279620981a609, type: 3}
+    _delayAfterPlayingLine: 0
     _segments:
-    - _text: "See it's super fun! They are doing amazing!\r"
+    - _text: See!
       _percentAlongAudioToShow: 0
+    - _text: 'It''s super fun, Dave! '
+      _percentAlongAudioToShow: 0.24616173
+    - _text: "They\u2019re doing amazing!"
+      _percentAlongAudioToShow: 0.7494257

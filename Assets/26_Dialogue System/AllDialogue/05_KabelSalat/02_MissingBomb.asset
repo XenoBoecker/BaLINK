@@ -12,18 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3a9ef48355cb440936a05a37111157, type: 3}
   m_Name: 02_MissingBomb
   m_EditorClassIdentifier: 
+  _defaultDelayBetweenLines: 0
   _lines:
-  - _clip: {fileID: 8300000, guid: d21bfbf44ea19c94b99d98694118edb9, type: 3}
+  - _clip: {fileID: 8300000, guid: acc4ce371bc40a940ade771edb45603c, type: 3}
+    _delayAfterPlayingLine: 0
     _segments:
-    - _text: "What happened to the bomb? Is it just gone or what?\r"
+    - _text: 'Uh wait, what happened to the bomb? '
       _percentAlongAudioToShow: 0
-  - _clip: {fileID: 8300000, guid: 7067a8108c7502945a36005027c94179, type: 3}
-    _segments:
+    - _text: Is it just gone or what?
+      _percentAlongAudioToShow: 0.18555735
     - _text: "I don't know\u2026 "
-      _percentAlongAudioToShow: 0
-    - _text: 'Ah it seems someone deactivated the GameObject. '
-      _percentAlongAudioToShow: 0
-    - _text: "Let me just\u2026 "
-      _percentAlongAudioToShow: 0
-    - _text: There we go! They should have a new version available.
-      _percentAlongAudioToShow: 0
+      _percentAlongAudioToShow: 0.30060288
+    - _text: It seems someone deactivated the GameObject...
+      _percentAlongAudioToShow: 0.5288384
+    - _text: "Let me just\u2026"
+      _percentAlongAudioToShow: 0.7867631
+    - _text: ' There we go!'
+      _percentAlongAudioToShow: 0.8813973
