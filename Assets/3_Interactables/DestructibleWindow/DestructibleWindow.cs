@@ -8,11 +8,10 @@ public class DestructibleWindow : Hitable
 
     public override void Hit(Transform projectile)
     {
-        Debug.Log("Hit Position: " + projectile.position + "; my position: " + transform.position);
+        base.Hit(projectile);
 
         Vector3 calculatedHitPosition = CalculateHitPosition(projectile);
 
-        Debug.Log("Window has been hit!");
         _meshRenderer.enabled = false;
         _visualEffect.enabled = true;
         _visualEffect.SetVector3("Impact Position (World Space)", calculatedHitPosition);
