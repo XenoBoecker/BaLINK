@@ -7,9 +7,13 @@ public class ProjectileController : MonoBehaviour
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private TrailRenderer _trailRenderer;
 
+    private bool _hasBeenShot;
+
     private void Start()
     {
         _rb.isKinematic = true;
+
+        _hasBeenShot = false;
 
         if (_trailRenderer != null)
         {
@@ -18,6 +22,11 @@ public class ProjectileController : MonoBehaviour
     }
     private void OnTriggerEnter(Collider collider)
     {
+        if (!_hasBeenShot)
+        {
+            return;
+        }
+        
         Hitable hitable = collider.gameObject.GetComponent<Hitable>();
 
         if (hitable == null)
@@ -46,6 +55,8 @@ public class ProjectileController : MonoBehaviour
 
     internal void Shoot(float shootForce)
     {
+        _hasBeenShot = true;
+
         transform.SetParent(null);
         _rb.isKinematic = false;
         _rb.AddForce(transform.forward * shootForce);

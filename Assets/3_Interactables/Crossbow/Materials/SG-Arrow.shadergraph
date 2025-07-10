@@ -140,6 +140,9 @@
         },
         {
             "m_Id": "0c9b9469085f4eae91eb254f4b7c1805"
+        },
+        {
+            "m_Id": "b762a559e02941bf9afe01691032fec7"
         }
     ],
     "m_GroupDatas": [
@@ -834,8 +837,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -2778.000244140625,
-            "y": 1371.0,
+            "x": -2687.0,
+            "y": 1422.0,
             "width": 146.0,
             "height": 34.0
         }
@@ -922,7 +925,7 @@
     "m_Title": "World Space Cutoff",
     "m_Position": {
         "x": -1851.0,
-        "y": 372.0
+        "y": 372.00006103515627
     }
 }
 
@@ -1733,7 +1736,7 @@
     "m_ShaderOutputName": "A",
     "m_StageCapability": 3,
     "m_Value": {
-        "x": -2.200000047683716,
+        "x": -1.0,
         "y": 0.0,
         "z": 0.0,
         "w": 0.0
@@ -1920,7 +1923,7 @@
     "m_ShaderOutputName": "B",
     "m_StageCapability": 3,
     "m_Value": {
-        "x": 2.5999999046325685,
+        "x": 0.5,
         "y": 1.0,
         "z": 1.0,
         "w": 1.0
@@ -2234,10 +2237,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -2590.000244140625,
-            "y": 1263.0001220703125,
+            "x": -2473.0,
+            "y": 1250.9998779296875,
             "width": 126.0,
-            "height": 141.9998779296875
+            "height": 142.0001220703125
         }
     },
     "m_Slots": [
@@ -3046,6 +3049,44 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.SubGraphNode",
+    "m_ObjectId": "b762a559e02941bf9afe01691032fec7",
+    "m_Group": {
+        "m_Id": "cc5e14eac1c746eca512c8bd443f1d31"
+    },
+    "m_Name": "Two Sided Normal Vector WS",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": -1643.9998779296875,
+            "y": -294.9999694824219,
+            "width": 213.0,
+            "height": 94.99998474121094
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "d64fbce2bfad4335a0e041e014aecf98"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": false,
+    "m_DismissedVersion": 0,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_SerializedSubGraph": "{\n    \"subGraph\": {\n        \"fileID\": -5475051401550479605,\n        \"guid\": \"c08739b7fd500774890268fc7e2cbbb1\",\n        \"type\": 3\n    }\n}",
+    "m_PropertyGuids": [],
+    "m_PropertyIds": [],
+    "m_Dropdowns": [],
+    "m_DropdownSelectedEntries": []
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "b7c0aa2a99af41e58b0404f63b7a5aae",
     "m_Id": 0,
@@ -3277,7 +3318,7 @@
     "m_ObjectId": "cc5e14eac1c746eca512c8bd443f1d31",
     "m_Title": "Base Color",
     "m_Position": {
-        "x": -1433.0,
+        "x": -1669.0,
         "y": -460.0
     }
 }
@@ -3376,6 +3417,29 @@
 }
 
 {
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector3MaterialSlot",
+    "m_ObjectId": "d64fbce2bfad4335a0e041e014aecf98",
+    "m_Id": 1,
+    "m_DisplayName": "Normal",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Normal",
+    "m_StageCapability": 2,
+    "m_Value": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+    },
+    "m_Labels": []
+}
+
+{
     "m_SGVersion": 1,
     "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
     "m_ObjectId": "d69a41393ffb456e89caf0948a5894d1",
@@ -3434,8 +3498,8 @@
     "m_ObjectId": "d9340431b6604bcd85d97b5cb90bab19",
     "m_Title": "Texture",
     "m_Position": {
-        "x": -3398.999755859375,
-        "y": 827.0
+        "x": -3399.0,
+        "y": 827.0001831054688
     }
 }
 
