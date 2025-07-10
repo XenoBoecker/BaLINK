@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3a9ef48355cb440936a05a37111157, type: 3}
   m_Name: 03_Statistics
   m_EditorClassIdentifier: 
+  _defaultDelayBetweenLines: 0
   _lines:
-  - _clip: {fileID: 8300000, guid: ae46d348f8786ca4e8c7402c9060a548, type: 3}
+  - _clip: {fileID: 8300000, guid: f4cb1b2c64c9a0c458417035190c5e1c, type: 3}
+    _delayAfterPlayingLine: 0
     _segments:
     - _text: 'YOU MADE STATISTICS FOR THE CROSSBOW??!!? '
       _percentAlongAudioToShow: 0

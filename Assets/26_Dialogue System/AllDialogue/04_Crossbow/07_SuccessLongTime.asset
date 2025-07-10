@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3a9ef48355cb440936a05a37111157, type: 3}
   m_Name: 07_SuccessLongTime
   m_EditorClassIdentifier: 
+  _defaultDelayBetweenLines: 0
   _lines:
-  - _clip: {fileID: 8300000, guid: 4e862847d9a15fe4093d698e5ea003fc, type: 3}
+  - _clip: {fileID: 8300000, guid: 921421b2dc8e7bd4ba390d1d75d42071, type: 3}
+    _delayAfterPlayingLine: 0
     _segments:
     - _text: "As I\u2019ve told you. "
       _percentAlongAudioToShow: 0

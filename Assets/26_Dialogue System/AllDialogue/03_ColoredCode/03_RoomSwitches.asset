@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a3a9ef48355cb440936a05a37111157, type: 3}
+  m_Name: 03_RoomSwitches
+  m_EditorClassIdentifier: 
+  _lines:
+  - _clip: {fileID: 8300000, guid: 6f195589d3252eb428155ae8d68196bb, type: 3}
+    _segments:
+    - _text: 'Tada! There we go, '
+      _percentAlongAudioToShow: 0
+    - _text: "let's see where the clues are\u2026"
+      _percentAlongAudioToShow: 0.28881902
+    - _text: '
+
+        Hmm hmm, yes yes, ahh I see what I did there! '
+      _percentAlongAudioToShow: 0.44568038
+    - _text: Nice one
+      _percentAlongAudioToShow: 0.7419705
+  - _clip: {fileID: 8300000, guid: 6566c6dd3a7809b49b0d74ebb305565c, type: 3}
+    _segments:
+    - _text: 'Hey, enough,
+
+'
+      _percentAlongAudioToShow: 0
+    - _text: 'let''s go back to watching the player
+
+'
+      _percentAlongAudioToShow: 0.31612343

@@ -12,17 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3a9ef48355cb440936a05a37111157, type: 3}
   m_Name: 01_TimeWarning
   m_EditorClassIdentifier: 
+  _defaultDelayBetweenLines: 0
   _lines:
-  - _clip: {fileID: 8300000, guid: 4606d7e077d47b545a90d5b811410588, type: 3}
+  - _clip: {fileID: 8300000, guid: 1c6cbae95751949499ca5fd5e4a27058, type: 3}
+    _delayAfterPlayingLine: 0
     _segments:
     - _text: Uugh I get the feeling that they need to hurry up or they won't make
         it in time.
       _percentAlongAudioToShow: 0
-  - _clip: {fileID: 8300000, guid: ea94d5711ac718147972aeaad63510f3, type: 3}
+  - _clip: {fileID: 8300000, guid: 61730f46d5dd2ea4499c9b13122cc461, type: 3}
+    _delayAfterPlayingLine: 0
     _segments:
     - _text: "Oh now it\u2019s getting really close.\r"
       _percentAlongAudioToShow: 0
-  - _clip: {fileID: 8300000, guid: 2df21955f4633a04c9fc73de8047edaa, type: 3}
+  - _clip: {fileID: 8300000, guid: 24a8bc87afbd6ce42bc8c3bd12afab13, type: 3}
+    _delayAfterPlayingLine: 0
     _segments:
     - _text: "Ohhh 10 seconds left!\r"
       _percentAlongAudioToShow: 0

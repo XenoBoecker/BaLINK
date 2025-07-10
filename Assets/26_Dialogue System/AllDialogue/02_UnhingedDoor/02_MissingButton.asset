@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a3a9ef48355cb440936a05a37111157, type: 3}
+  m_Name: 02_MissingButton
+  m_EditorClassIdentifier: 
+  _defaultDelayBetweenLines: 0
+  _lines:
+  - _clip: {fileID: 8300000, guid: 3dc4780f161b0544587947f553b4113e, type: 3}
+    _delayAfterPlayingLine: 0
+    _segments:
+    - _text: "Uhm Trish, where\u2019d the doorknob go?\r\n"
+      _percentAlongAudioToShow: 0
+  - _clip: {fileID: 8300000, guid: b7e80001d8d161f429bb2b7ebd867305, type: 3}
+    _delayAfterPlayingLine: 0
+    _segments:
+    - _text: What do you mean, is it gone?
+      _percentAlongAudioToShow: 0
+    - _text: " Wait you\u2019re right it\u2019s not there, that's weird\u2026"
+      _percentAlongAudioToShow: 0.34699497
+  - _clip: {fileID: 8300000, guid: 12dfe266917636048b46bcb937fe69b9, type: 3}
+    _delayAfterPlayingLine: 0
+    _segments:
+    - _text: Anyway, lets just place a new knob and hope
+      _percentAlongAudioToShow: 0
+    - _text: ' the change gets pulled before they notice its missing'
+      _percentAlongAudioToShow: 0.445117

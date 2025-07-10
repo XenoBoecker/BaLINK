@@ -12,28 +12,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3a9ef48355cb440936a05a37111157, type: 3}
   m_Name: 01_EnterWagon
   m_EditorClassIdentifier: 
+  _defaultDelayBetweenLines: 0
   _lines:
-  - _clip: {fileID: 8300000, guid: 29cf1d1703984b94296003e619fb9ea5, type: 3}
+  - _clip: {fileID: 8300000, guid: dd5837fd4fc0f19408a7b18d1eac549e, type: 3}
+    _delayAfterPlayingLine: 0
     _segments:
     - _text: "Wait, I don't recognize this wagon\u2026"
       _percentAlongAudioToShow: 0
   - _clip: {fileID: 8300000, guid: b7ae0c9ce10f6af47a2985e17a9015ce, type: 3}
+    _delayAfterPlayingLine: 0
     _segments:
     - _text: "OH! I\u2019ve been waiting for this one!"
       _percentAlongAudioToShow: 0
   - _clip: {fileID: 8300000, guid: 8cfefd6f576ed6b4ead7c369220919a0, type: 3}
+    _delayAfterPlayingLine: 0
     _segments:
     - _text: Why?
       _percentAlongAudioToShow: 0
   - _clip: {fileID: 8300000, guid: 7cc4a75338ad9df4b907957a5ef52b2c, type: 3}
+    _delayAfterPlayingLine: 0
     _segments:
     - _text: "I made it to see how Players react to the new Crossbow feature\r"
       _percentAlongAudioToShow: 0
   - _clip: {fileID: 8300000, guid: 74418daeaf03ae04781c2bfa185eaeed, type: 3}
+    _delayAfterPlayingLine: 0
     _segments:
     - _text: THE WHAT?
       _percentAlongAudioToShow: 0
   - _clip: {fileID: 8300000, guid: e0ee98f6499309045966cc628567657d, type: 3}
+    _delayAfterPlayingLine: 0
     _segments:
     - _text: 'The awesome Sci-Fi Crossbow. '
       _percentAlongAudioToShow: 0
@@ -44,10 +51,12 @@ MonoBehaviour:
     - _text: What could be better than that!?
       _percentAlongAudioToShow: 0
   - _clip: {fileID: 8300000, guid: 5efd8b224ee1aba43bca0e1ab03653e9, type: 3}
+    _delayAfterPlayingLine: 0
     _segments:
     - _text: But how does a damn SciFi crossbow fit into our game?
       _percentAlongAudioToShow: 0
   - _clip: {fileID: 8300000, guid: 0995b36ca3e310e42b79cfb9ceb86e7e, type: 3}
+    _delayAfterPlayingLine: 0
     _segments:
     - _text: 'Well the train is being attacked by time traveling Sci-Fi drones. '
       _percentAlongAudioToShow: 0
@@ -56,6 +65,7 @@ MonoBehaviour:
     - _text: Simple as that
       _percentAlongAudioToShow: 0
   - _clip: {fileID: 8300000, guid: dc89a8344b9318b45af99e713ac7135b, type: 3}
+    _delayAfterPlayingLine: 0
     _segments:
     - _text: That sounds awfully far-fetched but okeey.
       _percentAlongAudioToShow: 0

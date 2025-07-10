@@ -12,18 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3a9ef48355cb440936a05a37111157, type: 3}
   m_Name: 04_PickedUpNoShoot
   m_EditorClassIdentifier: 
+  _defaultDelayBetweenLines: 0
   _lines:
-  - _clip: {fileID: 8300000, guid: 210aa3295a3ce164c984c44bf0078acd, type: 3}
+  - _clip: {fileID: 8300000, guid: d2437348b431e7840a9739efb20799bc, type: 3}
+    _delayAfterPlayingLine: 0
     _segments:
     - _text: "What? Why are they not shooting?\r"
       _percentAlongAudioToShow: 0
     - _text: 'Do they not know how to?
 
 '
-      _percentAlongAudioToShow: 0
-  - _clip: {fileID: 8300000, guid: 0f5be02a12097d44ba846809d0b3678b, type: 3}
-    _segments:
-    - _text: "Or they just don\u2019t want to, "
-      _percentAlongAudioToShow: 0
-    - _text: "maybe a crossbow isn\u2019t as fun as you\u2019ve thought"
       _percentAlongAudioToShow: 0

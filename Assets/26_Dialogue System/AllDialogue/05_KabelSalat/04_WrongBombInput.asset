@@ -12,12 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3a9ef48355cb440936a05a37111157, type: 3}
   m_Name: 04_WrongBombInput
   m_EditorClassIdentifier: 
+  _defaultDelayBetweenLines: 0
   _lines:
-  - _clip: {fileID: 8300000, guid: b3c6318e3b89893439dd05da845092a5, type: 3}
+  - _clip: {fileID: 8300000, guid: 707224baca1a3104d8ae2715fbeaaf15, type: 3}
+    _delayAfterPlayingLine: 0
     _segments:
     - _text: "Whoopsies that was not the right one\r"
       _percentAlongAudioToShow: 0
-  - _clip: {fileID: 8300000, guid: 89d9eac5519269c43abc0af69922295d, type: 3}
+  - _clip: {fileID: 8300000, guid: 57fde42b996c80f42a9017ef4e1e34e1, type: 3}
+    _delayAfterPlayingLine: 0
     _segments:
     - _text: "Oh god, they are so dead\r"
       _percentAlongAudioToShow: 0
