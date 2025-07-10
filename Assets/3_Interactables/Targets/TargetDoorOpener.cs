@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class TargetDoorOpener : MonoBehaviour
 {
-    [SerializeField] private Door door;
+    [SerializeField] private DoorController door;
 
     TargetManager targetManager;
 

@@ -21,6 +21,8 @@ public class AudioSystemManager : MonoBehaviour
 
     private IEnumerator CreateSourceAndPlay(AudioSystemClip clip, Vector3 position)
     {
+        Debug.Log("Spawning object");
+
         GameObject obj = Instantiate(clip.AudioSourcePrefab, transform);
         obj.transform.position = position;
         obj.transform.rotation = Quaternion.identity;

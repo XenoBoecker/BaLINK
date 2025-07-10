@@ -145,7 +145,7 @@ Transform:
   m_GameObject: {fileID: 33770919}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.6959811, z: 0, w: 0.71806014}
-  m_LocalPosition: {x: -0.008, y: 0.201, z: 1.538}
+  m_LocalPosition: {x: -0.008, y: 0.224, z: 1.538}
   m_LocalScale: {x: 2.256572, y: 2.256572, z: 2.256572}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -200,12 +200,12 @@ TrailRenderer:
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.1
+    widthMultiplier: 2
     widthCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
+        time: 0.005153656
         value: 1
         inSlope: 0
         outSlope: 0
@@ -2388,7 +2388,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bc35f75abc528094abb7a4f8f22f244d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -17.917
+      value: -42.06
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bc35f75abc528094abb7a4f8f22f244d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2396,7 +2396,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bc35f75abc528094abb7a4f8f22f244d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.816
+      value: 2.56
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bc35f75abc528094abb7a4f8f22f244d, type: 3}
       propertyPath: m_LocalRotation.w
