@@ -1,11 +1,13 @@
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Hitable : MonoBehaviour
 {
     [SerializeField] private bool shootThroughObject;
     public bool ShootThroughObject => shootThroughObject; // Expose the property to other scripts
+    [SerializeField] private bool hideOnDestruction = false; // Option to hide this object on destruction. Used when playing VFX via UnityEvents instead.
     [SerializeField] private GameObject objectBeforeExplosion;
     [SerializeField] private Rigidbody[] destructionParts;
     [SerializeField] private float destructionForce = 200f; // Force applied to destruction parts when hit
@@ -15,8 +17,10 @@ public class Hitable : MonoBehaviour
     Rigidbody rb;
 
     public event Action OnHit; // Event to notify when the object is hit
+    [SerializeField] private UnityEvent _onHit;
 
     public event Action<Hitable> OnDestroyed;
+    [SerializeField] private UnityEvent _onDestroyed;
 
     private void Start()
     {
@@ -40,6 +44,7 @@ public class Hitable : MonoBehaviour
         Debug.Log($"{gameObject.name} has been hit!");
 
         OnHit?.Invoke(); // Invoke the OnHit event to notify subscribers
+        _onHit.Invoke();
 
         if (currentHitPoints <= 0)
         {
@@ -49,19 +54,20 @@ public class Hitable : MonoBehaviour
 
     private void DestroyObject(Transform projectile)
     {
-        if(destructionParts != null && destructionParts.Length > 0)
+        if(!hideOnDestruction && destructionParts != null && destructionParts.Length > 0)
         {
             objectBeforeExplosion.SetActive(false); // Deactivate the original object before explosion
             GetComponent<Collider>().enabled = false; // Disable the collider to prevent further interactions
+
             for (int i = 0; i < destructionParts.Length; i++)
             {
                 destructionParts[i].gameObject.SetActive(true); // Activate the destruction parts
-                //destructionParts[i].AddExplosionForce(destructionForce, transform.position, 5f); // Apply explosion force to each part
+                                                                //destructionParts[i].AddExplosionForce(destructionForce, transform.position, 5f); // Apply explosion force to each part
                 Vector3 forceDir = (transform.position - FindAnyObjectByType<PlayerInteractor>().transform.position).normalized;
                 destructionParts[i].AddForce(destructionForce * forceDir, ForceMode.Impulse);
             }
         }
-        else
+        else if (!hideOnDestruction)
         {
             if (rb != null)
             {
@@ -71,9 +77,15 @@ public class Hitable : MonoBehaviour
                 rb.AddForce(destructionForce * forceDir, ForceMode.Impulse);
             }
         }
+        else
+        {
+            objectBeforeExplosion.SetActive(false); // Deactivate the original object before explosion
+            GetComponent<Collider>().enabled = false; // Disable the collider to prevent further interactions
+        }
 
         Debug.Log($"{gameObject.name} has been destroyed!");
 
         OnDestroyed?.Invoke(this);
+        _onDestroyed.Invoke();
     }
 }
