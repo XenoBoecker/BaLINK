@@ -31,6 +31,7 @@ public class AudioSystemManager : MonoBehaviour
         source.clip = clip.Clip;
         source.Play();
         source.volume = clip.VolumeMultiplier;
+        source.pitch = source.pitch + Random.Range(-clip.PitchVariation, clip.PitchVariation);
 
         yield return new WaitUntil(() => { return !source.isPlaying; });
 

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.VFX;
 
 public class DestructibleWindow : Hitable
@@ -6,9 +7,18 @@ public class DestructibleWindow : Hitable
     [SerializeField] MeshRenderer _meshRenderer;
     [SerializeField] VisualEffect _visualEffect;
 
+    [SerializeField] private UnityEvent _onWindowBreak;
+    private bool _hasBeenHit;
+
     public override void Hit(Transform projectile)
     {
         base.Hit(projectile);
+
+        if (!_hasBeenHit)
+        {
+            _hasBeenHit = true;
+            _onWindowBreak?.Invoke();
+        }
 
         Vector3 calculatedHitPosition = CalculateHitPosition(projectile);
 

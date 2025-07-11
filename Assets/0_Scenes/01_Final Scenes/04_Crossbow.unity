@@ -2137,7 +2137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7638681943483178625, guid: a300c34a8b5fbc14e8efdfb223cfcc27, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14597,6 +14597,38 @@ PrefabInstance:
     - target: {fileID: 3769145417801892554, guid: 608c46a903746634685e999b49397aba, type: 3}
       propertyPath: _clickToReload
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3769145417801892554, guid: 608c46a903746634685e999b49397aba, type: 3}
+      propertyPath: _onRelease.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3769145417801892554, guid: 608c46a903746634685e999b49397aba, type: 3}
+      propertyPath: _onRelease.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3769145417801892554, guid: 608c46a903746634685e999b49397aba, type: 3}
+      propertyPath: _onRelease.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1850271911}
+    - target: {fileID: 3769145417801892554, guid: 608c46a903746634685e999b49397aba, type: 3}
+      propertyPath: _onRelease.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3769145417801892554, guid: 608c46a903746634685e999b49397aba, type: 3}
+      propertyPath: _onRelease.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlayClip
+      objectReference: {fileID: 0}
+    - target: {fileID: 3769145417801892554, guid: 608c46a903746634685e999b49397aba, type: 3}
+      propertyPath: _onRelease.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: AudioOriginController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3769145417801892554, guid: 608c46a903746634685e999b49397aba, type: 3}
+      propertyPath: _onRelease.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 11400000, guid: 3c30a99a526c1e649b31e105b893811a, type: 2}
+    - target: {fileID: 3769145417801892554, guid: 608c46a903746634685e999b49397aba, type: 3}
+      propertyPath: _onRelease.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: AudioSystemClip, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4500153276714971184, guid: 608c46a903746634685e999b49397aba, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
