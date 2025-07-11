@@ -47,9 +47,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Height_Texture_Scale: 1
+    - _Normal_from_Height_Strength: -0.001
+    - _Pattern_Base_Height: 0
+    - _Pattern_Height_Scale: 5
     - _QueueControl: 0
     - _Stripe_Smoothness: 0.1
     m_Colors:
+    - _Height_Map_Scale: {r: 3, g: 3, b: 0, a: 0}
     - _Noise_Scale: {r: 0.3, g: 0.3, b: 0, a: 0}
     - _Pattern_Scale: {r: 2, g: 2, b: 0, a: 0}
     - _Scale: {r: 2, g: 2, b: 0, a: 0}

@@ -7,50 +7,52 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M-PosterCutlery
-  m_Shader: {fileID: -6465566751694194690, guid: fb5780ebcb7cffe448cde92e0ca95061, type: 3}
-  m_Parent: {fileID: -876546973899608171, guid: fb5780ebcb7cffe448cde92e0ca95061, type: 3}
+  m_Name: M-PosterSleepingDecor 2
+  m_Shader: {fileID: -6465566751694194690, guid: be93b3848c2541443934d00d3949a2d5, type: 3}
+  m_Parent: {fileID: 2100000, guid: 88603e9a6424058489425bf6126eb737, type: 2}
   m_ModifiedSerializedProperties: 16
   m_ValidKeywords:
-  - _OVERWRITE_METALLIC_SMOOTHNESS_TEXTURE
+  - _ALPHATEST_ON
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 2000
+  m_CustomRenderQueue: 2450
   stringTagMap:
-    RenderType: Opaque
+    RenderType: TransparentCutout
   disabledShaderPasses:
   - MOTIONVECTORS
+  - SHADOWCASTER
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseColor:
-        m_Texture: {fileID: 2800000, guid: eb407e9cffbf89d4ea1da0d596356f3d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 814ee37bce6ffb44f8e620f9714e40d1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicSmoothness:
-        m_Texture: {fileID: 2800000, guid: 385a4dc8e46dba648af845f413ca3fb6, type: 3}
+        m_Texture: {fileID: 2800000, guid: dc86ce2c39f193f4c99429e5e4a3e332, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal:
-        m_Texture: {fileID: 2800000, guid: 5ee02e7fb52ecda469e004879826fb4b, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9be1f177a003f324eb2e240b8e20ee5b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AlphaClip: 0
-    - _AlphaToMask: 0
-    - _Metallic: 1
-    - _OVERWRITE_METALLIC_SMOOTHNESS_TEXTURE: 1
+    - _AlphaToMask: 1
+    - _CastShadows: 0
     - _QueueControl: 0
-    - _Smoothness: 0.611
+    - _Shell_Height: 0.0066
+    - _Shell_Masking_Threshold: 0.263
+    - _Smoothness: 0.5
     m_Colors:
-    - _Albedo_Tint: {r: 4, g: 4, b: 4, a: 1}
+    - _Albedo_Tint: {r: 1.1486983, g: 1.1486983, b: 1.1486983, a: 1}
+    - _Shell_Noise_Scale: {r: 0.5, g: 0.5, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &2281052942317776532
+--- !u!114 &5315086163596548582
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
