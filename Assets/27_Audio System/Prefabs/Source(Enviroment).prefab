@@ -50,15 +50,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4454182508869575362, guid: a8ee0fe0511abe94b9b774e80eab5715, type: 3}
       propertyPath: m_Name
-      value: Source(Close)
+      value: Source(Enviroment)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6066511152313830446, guid: a8ee0fe0511abe94b9b774e80eab5715, type: 3}
+      propertyPath: Loop
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6066511152313830446, guid: a8ee0fe0511abe94b9b774e80eab5715, type: 3}
       propertyPath: MaxDistance
-      value: 10
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 6066511152313830446, guid: a8ee0fe0511abe94b9b774e80eab5715, type: 3}
+      propertyPath: DopplerLevel
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6066511152313830446, guid: a8ee0fe0511abe94b9b774e80eab5715, type: 3}
       propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
