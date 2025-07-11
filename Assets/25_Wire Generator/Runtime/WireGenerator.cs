@@ -13,12 +13,24 @@ public class WireGenerator : MonoBehaviour
     [SerializeField, Range(0.001f, 0.5f)] private float _wireThickness;
 
     private Mesh _mesh;
+    private RenderParams _renderParams;
 
     public float WireThickness => _wireThickness;
     public int WireResolution => _wireResolution;
     public ControlPoint[] ControlPoints => _controlPoints;
 
     public Material Material;
+
+    private void Awake()
+    {
+        CreateRenderParams();
+    }
+
+    private void CreateRenderParams()
+    {
+        _renderParams = new RenderParams(Material);
+        _renderParams.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
+    }
 
     private void OnValidate()
     {
@@ -31,11 +43,13 @@ public class WireGenerator : MonoBehaviour
         {
             RegenerateMesh();
         }
-        Graphics.RenderMesh(new RenderParams(Material), _mesh, 0, transform.localToWorldMatrix);
+        Graphics.RenderMesh(_renderParams, _mesh, 0, transform.localToWorldMatrix);
     }
 
     public void RegenerateMesh()
     {
+        CreateRenderParams();
+
         _mesh = GenerateWireMesh(_controlPoints);
     }
 
