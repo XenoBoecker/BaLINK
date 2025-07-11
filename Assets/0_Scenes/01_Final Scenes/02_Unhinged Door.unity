@@ -377,6 +377,7 @@ Transform:
   - {fileID: 2104211406}
   - {fileID: 1198723156}
   - {fileID: 88254694}
+  - {fileID: 1101031760}
   m_Father: {fileID: 1646470428}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &116423336
@@ -1534,7 +1535,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7638681943483178625, guid: a300c34a8b5fbc14e8efdfb223cfcc27, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4518,7 +4519,7 @@ Transform:
   - {fileID: 1401015095}
   - {fileID: 1385308125}
   - {fileID: 1178837107}
-  m_Father: {fileID: 1646470428}
+  m_Father: {fileID: 97900458}
   m_LocalEulerAnglesHint: {x: 0, y: -165, z: 0}
 --- !u!114 &1111727166
 MonoBehaviour:
@@ -6756,7 +6757,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 97900458}
-  - {fileID: 1101031760}
   - {fileID: 1511621841}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
