@@ -170,4 +170,30 @@ public class Bomb : MonoBehaviour
     {
         return timeScale;
     }
+
+    public int GetNumberOfCorrectButtonsPressed()
+    {
+        int count = 0;
+        foreach (Interactable button in correctButtons)
+        {
+            if (button.HasBeenInteractedWithThisGame)
+            {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public int GetNumberOfWrongButtonsPressed()
+    {
+        int count = 0;
+        foreach (Interactable button in wrongButtons)
+        {
+            if (button.HasBeenInteractedWithThisGame)
+            {
+                count++;
+            }
+        }
+        return count;
+    }
 }
