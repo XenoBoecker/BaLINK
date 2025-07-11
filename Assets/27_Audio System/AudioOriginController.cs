@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class AudioOriginController : MonoBehaviour
 {
-    [SerializeField] private AudioSystemClip _clip;
     [SerializeField] private float _cooldown = 0;
 
     bool _isOnCooldown;
 
-    public void PlayClip()
+    public void PlayClip(AudioSystemClip clip)
     {
         if (_isOnCooldown) { return; }
-        ObjectEvents.PlayAudio(_clip, transform.position);
+        ObjectEvents.PlayAudio(clip, transform.position);
         StartCoroutine(DoCooldown());
     }
 

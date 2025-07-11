@@ -21,7 +21,7 @@ public class AudioSystemManager : MonoBehaviour
 
     private IEnumerator CreateSourceAndPlay(AudioSystemClip clip, Vector3 position)
     {
-        Debug.Log("Spawning object");
+        if (clip.Clip == null || clip.AudioSourcePrefab == null) { yield break; }
 
         GameObject obj = Instantiate(clip.AudioSourcePrefab, transform);
         obj.transform.position = position;
@@ -30,6 +30,8 @@ public class AudioSystemManager : MonoBehaviour
         AudioSource source = obj.GetComponent<AudioSource>();
         source.clip = clip.Clip;
         source.Play();
+        source.volume = clip.VolumeMultiplier;
+        source.pitch = source.pitch + Random.Range(-clip.PitchVariation, clip.PitchVariation);
 
         yield return new WaitUntil(() => { return !source.isPlaying; });
 

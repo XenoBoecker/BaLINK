@@ -12,16 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3a9ef48355cb440936a05a37111157, type: 3}
   m_Name: 01_EnterWagon
   m_EditorClassIdentifier: 
+  _defaultDelayBetweenLines: 0
   _lines:
-  - _clip: {fileID: 8300000, guid: b908aa4f34c33754b8850a6d18803ac0, type: 3}
+  - _clip: {fileID: 8300000, guid: c96f7d271aab59b4baf05c76d08478ee, type: 3}
+    _delayAfterPlayingLine: 0
     _segments:
     - _text: 'Time for the Grand Finale! '
       _percentAlongAudioToShow: 0
-    - _text: 'All they need to do now '
-      _percentAlongAudioToShow: 0.2701501
-    - _text: is find the Bomb and activate the diffuse buttons.
-      _percentAlongAudioToShow: 0.53409183
-  - _clip: {fileID: 8300000, guid: 96e0dd646f41b24438ded0c918df78b7, type: 3}
-    _segments:
-    - _text: "Hell yeah, I\u2019m so excited to see if they\u2019ll make it in time!\r"
-      _percentAlongAudioToShow: 0
+    - _text: Oh I hope they can figure out which buttons are the right ones.
+      _percentAlongAudioToShow: 0.22054513
+    - _text: "Hell yeah, I\u2019m so excited to see if they\u2019ll make it in time!"
+      _percentAlongAudioToShow: 0.5871269
