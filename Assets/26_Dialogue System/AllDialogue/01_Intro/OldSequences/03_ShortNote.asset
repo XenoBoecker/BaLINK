@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a3a9ef48355cb440936a05a37111157, type: 3}
+  m_Name: 03_ShortNote
+  m_EditorClassIdentifier: 
+  _lines:
+  - _clip: {fileID: 8300000, guid: b51f5b5c42903b149913e90f0463f62b, type: 3}
+    _segments:
+    - _text: 'Come on Trish! '
+      _percentAlongAudioToShow: 0
+    - _text: 'Did you really have to do my story dirty like that? '
+      _percentAlongAudioToShow: 0.09909272
+    - _text: 'This is not at all getting the correct mood across. '
+      _percentAlongAudioToShow: 0.35536885
+    - _text: "Where are the stakes in that? Where is the urgency\u2026"
+      _percentAlongAudioToShow: 0.61164504
+  - _clip: {fileID: 8300000, guid: 8fc390a066c72e84087a4fa8c0ff7e94, type: 3}
+    _segments:
+    - _text: "I\u2019m sorry Dave, "
+      _percentAlongAudioToShow: 0
+    - _text: 'I had to do something to get them started with. '
+      _percentAlongAudioToShow: 0.18825532
+    - _text: If it's that important to you I can change it
+      _percentAlongAudioToShow: 0.5382564
+  - _clip: {fileID: 8300000, guid: 6c91141a7dc4b104cb5dd544e81e8206, type: 3}
+    _segments:
+    - _text: 'There you go, as soon as their attention slips for a moment '
+      _percentAlongAudioToShow: 0
+    - _text: 'I can push a better version onto their branch. '
+      _percentAlongAudioToShow: 0.31707934
+    - _text: "I\u2019ve also replaced some of the greyboxing, "
+      _percentAlongAudioToShow: 0.5548893
+    - _text: that should help with the vibe.
+      _percentAlongAudioToShow: 0.78716964

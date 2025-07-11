@@ -22,7 +22,7 @@ public class RespawnPlayer : MonoBehaviour
         if (respawnPoint == null)
         {
             respawnPosition = transform.position; // Use current position if no respawn point is set
-            Debug.LogError("Respawn point is not set!");
+            Debug.LogWarning("Respawn point is not set!");
         }
         else
         {

@@ -39,6 +39,11 @@ public class WireGenerator : MonoBehaviour
         _mesh = GenerateWireMesh(_controlPoints);
     }
 
+    public Mesh GetMesh()
+    {
+        return _mesh;
+    }
+
     private Mesh GenerateWireMesh(ControlPoint[] controlPoints)
     {
         Mesh mesh = new Mesh();

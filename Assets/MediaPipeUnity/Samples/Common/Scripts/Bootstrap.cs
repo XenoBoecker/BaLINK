@@ -24,7 +24,7 @@ namespace Mediapipe.Unity.Sample
 
     private IEnumerator Init()
     {
-      Debug.Log("The configuration for the sample app can be modified using AppSettings.asset.");
+      //Debug.Log("The configuration for the sample app can be modified using AppSettings.asset.");
 #if !DEBUG && !DEVELOPMENT_BUILD
       Debug.LogWarning("Logging for the MediaPipeUnityPlugin will be suppressed. To enable logging, please check the 'Development Build' option and build.");
 #endif
@@ -33,12 +33,12 @@ namespace Mediapipe.Unity.Sample
 
       Protobuf.SetLogHandler(Protobuf.DefaultLogHandler);
 
-      Debug.Log("Setting global flags...");
+      //Debug.Log("Setting global flags...");
       _appSettings.ResetGlogFlags();
       Glog.Initialize("MediaPipeUnityPlugin");
       _isGlogInitialized = true;
 
-      Debug.Log("Initializing AssetLoader...");
+      //Debug.Log("Initializing AssetLoader...");
       switch (_appSettings.assetLoaderType)
       {
         case AppSettings.AssetLoaderType.AssetBundle:
@@ -76,7 +76,7 @@ namespace Mediapipe.Unity.Sample
       DecideInferenceMode();
       if (inferenceMode == InferenceMode.GPU)
       {
-        Debug.Log("Initializing GPU resources...");
+        //Debug.Log("Initializing GPU resources...");
         yield return GpuManager.Initialize();
 
         if (!GpuManager.IsInitialized)
@@ -85,7 +85,7 @@ namespace Mediapipe.Unity.Sample
         }
       }
 
-      Debug.Log("Preparing ImageSource...");
+      //Debug.Log("Preparing ImageSource...");
       ImageSourceProvider.Initialize(
         _appSettings.BuildWebCamSource(), _appSettings.BuildStaticImageSource(), _appSettings.BuildVideoSource());
       ImageSourceProvider.Switch(_appSettings.defaultImageSource);
@@ -97,7 +97,7 @@ namespace Mediapipe.Unity.Sample
     {
 #if UNITY_EDITOR_OSX || UNITY_EDITOR_WIN
       if (_appSettings.preferableInferenceMode == InferenceMode.GPU) {
-        Debug.LogWarning("Current platform does not support GPU inference mode, so falling back to CPU mode");
+        //Debug.LogWarning("Current platform does not support GPU inference mode, so falling back to CPU mode");
       }
       inferenceMode = InferenceMode.CPU;
 #else

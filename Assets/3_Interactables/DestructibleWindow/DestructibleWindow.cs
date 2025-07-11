@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.VFX;
 
 public class DestructibleWindow : Hitable
@@ -6,13 +7,21 @@ public class DestructibleWindow : Hitable
     [SerializeField] MeshRenderer _meshRenderer;
     [SerializeField] VisualEffect _visualEffect;
 
+    [SerializeField] private UnityEvent _onWindowBreak;
+    private bool _hasBeenHit;
+
     public override void Hit(Transform projectile)
     {
-        Debug.Log("Hit Position: " + projectile.position + "; my position: " + transform.position);
+        base.Hit(projectile);
+
+        if (!_hasBeenHit)
+        {
+            _hasBeenHit = true;
+            _onWindowBreak?.Invoke();
+        }
 
         Vector3 calculatedHitPosition = CalculateHitPosition(projectile);
 
-        Debug.Log("Window has been hit!");
         _meshRenderer.enabled = false;
         _visualEffect.enabled = true;
         _visualEffect.SetVector3("Impact Position (World Space)", calculatedHitPosition);
@@ -21,16 +30,14 @@ public class DestructibleWindow : Hitable
 
     private Vector3 CalculateHitPosition(Transform projectile)
     {
-        Vector3 projectileDir = projectile.transform.forward;
+        // Solving according to algebraic form on (https://en.wikipedia.org/wiki/Line%E2%80%93plane_intersection)
+        /* p0 */ Vector3 windowPos = transform.position;
+        /* l0 */ Vector3 projectilePos = projectile.transform.position;
+        /* l  */ Vector3 projectileDir = projectile.transform.forward;
+        /* n  */ Vector3 windowNormal = transform.localToWorldMatrix * new Vector3(0, 0, 1);
 
-        float xDistance = Mathf.Abs(projectile.transform.position.x - transform.position.x);
+        float d = Vector3.Dot(windowPos - projectilePos, windowNormal) / Vector3.Dot(projectileDir, windowNormal);
 
-        Vector3 impactpoint = projectile.transform.position - (xDistance / projectileDir.x * projectileDir);
-
-        float x = transform.position.x;
-        float y = projectile.transform.position.y;
-        float z = projectile.transform.position.z;
-
-        return new Vector3(x, y, z);
+        return projectilePos + projectileDir * d;
     }
 }

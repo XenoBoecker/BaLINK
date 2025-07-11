@@ -37,8 +37,6 @@ public class BombUI : MonoBehaviour
         int minutes = Mathf.FloorToInt(timeLeft / 60);
         int seconds = Mathf.FloorToInt(timeLeft % 60);
 
-        Debug.Log(timeLeft);
-
         if (timerNegative)
         {
             timerText.text = $"-{minutes:00}:{seconds:00}";

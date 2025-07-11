@@ -45,8 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f2737d5c1d37204991f8b1c24c59622, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ledLight: {fileID: 9187583548100063014}
   interactable: {fileID: 0}
+  ledLight: {fileID: 9187583548100063014}
+  ledMeshRenderer: {fileID: 0}
+  ledOnMaterial: {fileID: 0}
 --- !u!1 &9187583548100063014
 GameObject:
   m_ObjectHideFlags: 0
@@ -74,7 +76,7 @@ Transform:
   m_GameObject: {fileID: 9187583548100063014}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.027, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -91,8 +93,8 @@ Light:
   serializedVersion: 11
   m_Type: 2
   m_Color: {r: 0.10650885, g: 1, b: 0, a: 1}
-  m_Intensity: 1
-  m_Range: 0.1
+  m_Intensity: 0.7
+  m_Range: 0.06
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -133,7 +135,7 @@ Light:
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}

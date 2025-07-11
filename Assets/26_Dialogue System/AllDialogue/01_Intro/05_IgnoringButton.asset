@@ -12,20 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3a9ef48355cb440936a05a37111157, type: 3}
   m_Name: 05_IgnoringButton
   m_EditorClassIdentifier: 
+  _defaultDelayBetweenLines: 0
   _lines:
-  - _clip: {fileID: 8300000, guid: fb38af80e3f485e41ac52a2ea085ae17, type: 3}
+  - _clip: {fileID: 8300000, guid: ba094cb5a53edd04cbb263958453d5e8, type: 3}
+    _delayAfterPlayingLine: 0
     _segments:
-    - _text: 'Great, because SOMEONE forgot the tutorial, '
+    - _text: 'Oh great, it seems they don''t know how buttons work. '
       _percentAlongAudioToShow: 0
-    - _text: 'the player does not know about buttons. '
-      _percentAlongAudioToShow: 0.24779896
-    - _text: 'Could we do something there? '
-      _percentAlongAudioToShow: 0.44819608
-    - _text: Like place another note or something?
-      _percentAlongAudioToShow: 0.66798365
-  - _clip: {fileID: 8300000, guid: ef247a9ab5723fa4b992a7e15530ca23, type: 3}
-    _segments:
-    - _text: 'Sure thing '
-      _percentAlongAudioToShow: 0
-    - _text: Should be live any second now
-      _percentAlongAudioToShow: 0.31789476
+    - _text: Can we place another note there or something?
+      _percentAlongAudioToShow: 0.27823043
+    - _text: Yeah sure thing!
+      _percentAlongAudioToShow: 0.5236142
+    - _text: Should be live any second now.
+      _percentAlongAudioToShow: 0.64534
