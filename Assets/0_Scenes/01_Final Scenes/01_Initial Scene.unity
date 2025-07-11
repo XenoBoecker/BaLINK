@@ -1647,6 +1647,37 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
+--- !u!1 &1581250064
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1581250065}
+  m_Layer: 0
+  m_Name: Respawn point reference
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1581250065
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581250064}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.5, y: 0.21, z: 7.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1768638394
 GameObject:
   m_ObjectHideFlags: 0
@@ -2019,6 +2050,10 @@ PrefabInstance:
       propertyPath: _footstepFrequency
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7322707358008542355, guid: a6ddd1131deea9949932e1e75ba86d8f, type: 3}
+      propertyPath: respawnPoint
+      value: 
+      objectReference: {fileID: 1581250065}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -2040,3 +2075,4 @@ SceneRoots:
   - {fileID: 140444426}
   - {fileID: 1978555467}
   - {fileID: 642117276}
+  - {fileID: 1581250065}
