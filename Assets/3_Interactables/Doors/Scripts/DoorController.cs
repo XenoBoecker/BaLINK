@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DoorController : MonoBehaviour
 {
@@ -6,6 +7,9 @@ public class DoorController : MonoBehaviour
 
     bool _isOpen;
     public bool IsOpen => _isOpen; // Expose the open state of the door
+
+    [SerializeField] private UnityEvent OnDoorOpen;
+    [SerializeField] private UnityEvent OnDoorClose;
 
     private void Awake()
     {
@@ -20,6 +24,7 @@ public class DoorController : MonoBehaviour
     {
         _isOpen = true; // Set the door state to open
         _animator.SetTrigger("Open");
+        OnDoorOpen?.Invoke();
     }
 
     public void DoorIsLockedAnimation()
@@ -31,6 +36,7 @@ public class DoorController : MonoBehaviour
     {
         _isOpen = false; // Set the door state to closed
         _animator.SetTrigger("Close");
+        OnDoorClose?.Invoke();
     }
 
     public void ToggleDoor()

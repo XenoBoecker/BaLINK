@@ -12,30 +12,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3a9ef48355cb440936a05a37111157, type: 3}
   m_Name: 02_SpeedChanges
   m_EditorClassIdentifier: 
+  _defaultDelayBetweenLines: 0
   _lines:
-  - _clip: {fileID: 8300000, guid: 5bf83f0f4075c2343bd32386cd16956a, type: 3}
+  - _clip: {fileID: 8300000, guid: 666901723f736ef4485cce3593ba4e26, type: 3}
+    _delayAfterPlayingLine: 0
     _segments:
-    - _text: "Trish, I know I\u2019ve said we roll with it "
+    - _text: 'Trish, those targets seriously need to slow down. '
       _percentAlongAudioToShow: 0
-    - _text: 'but those targets seriously need to slow down. '
-      _percentAlongAudioToShow: 0
-    - _text: With that difficulty players will get stuck here.
-      _percentAlongAudioToShow: 0
-  - _clip: {fileID: 8300000, guid: e15d7ba5f712b0f468329d81a5b23456, type: 3}
+    - _text: "They\u2019re way too fast."
+      _percentAlongAudioToShow: 0.74693745
+  - _clip: {fileID: 8300000, guid: 15b1981c614cca7489308575eb160cb4, type: 3}
+    _delayAfterPlayingLine: 0
     _segments:
-    - _text: 'But fast paced Gameplay is way more fun and challenging!
-
-'
+    - _text: But we need intense, fast-paced action!
       _percentAlongAudioToShow: 0
-  - _clip: {fileID: 8300000, guid: 7e7c4c3bfefc2c4489b431c34f572135, type: 3}
+  - _clip: {fileID: 8300000, guid: 2c5a25ae756fdac43942f18416cce57c, type: 3}
+    _delayAfterPlayingLine: 0
     _segments:
-    - _text: "I don\u2019t care. "
+    - _text: "I don\u2019t care!"
       _percentAlongAudioToShow: 0
-    - _text: 'This is a puzzle game for puzzle gamers. '
-      _percentAlongAudioToShow: 0
-    - _text: They will get overwhelmed by this speed
-      _percentAlongAudioToShow: 0
-  - _clip: {fileID: 8300000, guid: 7e332f4272fea424ca75cdf133dfeb14, type: 3}
+    - _text: This speed is way too overwhelming for a puzzle game.
+      _percentAlongAudioToShow: 0.28785968
+  - _clip: {fileID: 8300000, guid: 62bdc9b307836ae4ea4b457e4d7051b7, type: 3}
+    _delayAfterPlayingLine: 0
     _segments:
-    - _text: "But it's too easy if it's that slow\r"
+    - _text: "But it's too easy if they're that slow...\r"
       _percentAlongAudioToShow: 0

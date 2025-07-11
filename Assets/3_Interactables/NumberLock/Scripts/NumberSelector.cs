@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(AudioOriginController))]
 public class NumberSelector : MonoBehaviour
@@ -13,6 +14,7 @@ public class NumberSelector : MonoBehaviour
     private AudioOriginController _audioOrigin;
 
     public event Action OnNumberChanged;
+    public UnityEvent OnNumberChangedUnityEvent;
     private int _currentNumber = 0;
     float _angle = 0;
     bool _numberChanged;
@@ -33,7 +35,7 @@ public class NumberSelector : MonoBehaviour
     {
         _currentNumber++;
         _numberChanged = true;
-        _audioOrigin.PlayClip();
+        OnNumberChangedUnityEvent?.Invoke();
     }
 
 
@@ -41,7 +43,7 @@ public class NumberSelector : MonoBehaviour
     {
         _currentNumber--;
         _numberChanged = true;
-        _audioOrigin.PlayClip();
+        OnNumberChangedUnityEvent?.Invoke();
     }
 
     private void Update()
@@ -53,6 +55,7 @@ public class NumberSelector : MonoBehaviour
 
         if (_numberChanged && Mathf.Abs(targetRotation - _angle) < 1)
         {
+            _numberChanged = false;
             OnNumberChanged?.Invoke();
         }
     }

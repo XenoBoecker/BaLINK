@@ -12,18 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3a9ef48355cb440936a05a37111157, type: 3}
   m_Name: 05_FirstTargetHit
   m_EditorClassIdentifier: 
+  _defaultDelayBetweenLines: 0
   _lines:
-  - _clip: {fileID: 8300000, guid: 1737aa05f08b23c45b8fd7de36961a1b, type: 3}
+  - _clip: {fileID: 8300000, guid: c812958f1b0efb749b604e9640f353fd, type: 3}
+    _delayAfterPlayingLine: 0
     _segments:
     - _text: 'YES!
 
 '
       _percentAlongAudioToShow: 0
-    - _text: 'GIVE IT TO THEM!!
+    - _text: 'GIVE EM HELL!!!
 
 '
-      _percentAlongAudioToShow: 0
-  - _clip: {fileID: 8300000, guid: ef8c07edbc89fa6438d0e271060f7c60, type: 3}
-    _segments:
-    - _text: urrghh
-      _percentAlongAudioToShow: 0
+      _percentAlongAudioToShow: 0.36355892
