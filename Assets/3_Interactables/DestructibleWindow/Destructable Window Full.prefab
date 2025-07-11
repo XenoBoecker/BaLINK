@@ -230,11 +230,16 @@ MonoBehaviour:
   objectBeforeExplosion: {fileID: 0}
   destructionParts: []
   destructionForce: 200
-  hitPoints: 200
+  hitPoints: 1
   _onHit:
     m_PersistentCalls:
       m_Calls: []
   _onDestroyed:
+    m_PersistentCalls:
+      m_Calls: []
+  _meshRenderer: {fileID: 8692496610288475656}
+  _visualEffect: {fileID: 6285513720203317898}
+  _onWindowBreak:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5523384654086792693}
@@ -249,8 +254,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  _meshRenderer: {fileID: 8692496610288475656}
-  _visualEffect: {fileID: 6285513720203317898}
 --- !u!65 &2826572574095697144
 BoxCollider:
   m_ObjectHideFlags: 0
