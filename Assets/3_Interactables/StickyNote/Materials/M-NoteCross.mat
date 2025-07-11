@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-2695294131368803388
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 9
 --- !u!21 &2100000
 Material:
   serializedVersion: 8
@@ -7,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M-ButtonGrey
+  m_Name: M-NoteCross
   m_Shader: {fileID: -6465566751694194690, guid: fb5780ebcb7cffe448cde92e0ca95061, type: 3}
   m_Parent: {fileID: -876546973899608171, guid: fb5780ebcb7cffe448cde92e0ca95061, type: 3}
   m_ModifiedSerializedProperties: 16
@@ -26,19 +39,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseColor:
-        m_Texture: {fileID: 2800000, guid: 77fed9b80799b704d912dde927442d07, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Emission:
-        m_Texture: {fileID: 2800000, guid: 1083f567e688a0f4fbf8853a3cdfc4ad, type: 3}
+        m_Texture: {fileID: 2800000, guid: c161404a8a5d9394988b82866ef597c2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicSmoothness:
-        m_Texture: {fileID: 2800000, guid: bdf6a4dfc7a710a459b804b8ad4d6868, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Normal:
-        m_Texture: {fileID: 2800000, guid: 25feccf2f92ea2742b8b32d5a600ba8c, type: 3}
+        m_Texture: {fileID: 2800000, guid: a50a0c885fb47a84fabac8d326bd5912, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
@@ -47,21 +52,6 @@ Material:
     - _AlphaToMask: 0
     - _QueueControl: 1
     - _Smoothness: 0.5
-    m_Colors:
-    - _Albedo_Tint: {r: 0.3584906, g: 0.2658426, b: 0.2292987, a: 1}
-    - _Emission_Tint: {r: 0.20754719, g: 0.18619144, b: 0.18503028, a: 1}
+    m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1
---- !u!114 &5133812321505362425
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 9
