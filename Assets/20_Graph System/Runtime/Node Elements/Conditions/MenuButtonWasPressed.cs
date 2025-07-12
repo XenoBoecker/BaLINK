@@ -8,6 +8,7 @@ public class MenuButtonWasPressed : Condition
 
     public override bool ConditionIsMet()
     {
+        return true;
         if (_pauseMenu == null)
         {
             _pauseMenu = ReferencedObject.GetComponent<PauseMenu>();
