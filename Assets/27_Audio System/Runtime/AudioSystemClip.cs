@@ -15,4 +15,11 @@ public class AudioSystemClip : ScriptableObject
     public float VolumeMultiplier => _volumeMultiplier;
     public float PitchVariation => _pitchVariation;
     public AudioSystemClipType ClipType => _clipType;
+
+    internal void Initialize(AudioSystemClipType clipType, AudioClip clip, GameObject audioSourcePrefab)
+    {
+        _clipType = clipType;
+        _clip = clip;
+        _audioSourcePrefab = audioSourcePrefab;
+    }
 }
