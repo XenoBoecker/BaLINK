@@ -2514,7 +2514,7 @@ MonoBehaviour:
   _isUnfolded: 1
   _connectedOutputIndex: 0
   _invertCondition: 0
-  _distance: 5
+  _distance: 8
 --- !u!1001 &280543297
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3108,8 +3108,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 415420005}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.818}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3336,14 +3336,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Press Button to Open the door
+  m_text: 'Press the button to open the door
+
 
     |
 
     V'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: edd39d77ec013604d8fcaf413c5e74a7, type: 2}
+  m_sharedMaterial: {fileID: 3478944872273652986, guid: edd39d77ec013604d8fcaf413c5e74a7, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3367,8 +3368,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.03
-  m_fontSizeBase: 0.03
+  m_fontSize: 0.02
+  m_fontSizeBase: 0.02
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3865,7 +3866,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7638681943483178625, guid: a300c34a8b5fbc14e8efdfb223cfcc27, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4041,11 +4042,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9105517075508343059, guid: a04fbd15f508ba44e8adc6184b793ea9, type: 3}
       propertyPath: _center.x
-      value: -196.86597
+      value: -104.19934
       objectReference: {fileID: 0}
     - target: {fileID: 9105517075508343059, guid: a04fbd15f508ba44e8adc6184b793ea9, type: 3}
       propertyPath: _center.y
-      value: -195.26695
+      value: -68.60028
       objectReference: {fileID: 0}
     - target: {fileID: 9105517075508343059, guid: a04fbd15f508ba44e8adc6184b793ea9, type: 3}
       propertyPath: _entryNodeId
@@ -5459,6 +5460,10 @@ PrefabInstance:
     - target: {fileID: 681382857943679686, guid: 52d25c593c5caa24195b5e7111d26b6e, type: 3}
       propertyPath: m_Name
       value: Rotated Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 681382857943679686, guid: 52d25c593c5caa24195b5e7111d26b6e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 681382857943679686, guid: 52d25c593c5caa24195b5e7111d26b6e, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -7115,11 +7120,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9105517075508343059, guid: a04fbd15f508ba44e8adc6184b793ea9, type: 3}
       propertyPath: _center.x
-      value: -220.59906
+      value: -218.59906
       objectReference: {fileID: 0}
     - target: {fileID: 9105517075508343059, guid: a04fbd15f508ba44e8adc6184b793ea9, type: 3}
       propertyPath: _center.y
-      value: -18.999924
+      value: -160.33327
       objectReference: {fileID: 0}
     - target: {fileID: 9105517075508343059, guid: a04fbd15f508ba44e8adc6184b793ea9, type: 3}
       propertyPath: _entryNodeId
@@ -7975,7 +7980,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2868880518840402745, guid: be00d13559e85e949b69ae3be80ecfb6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.5800018
+      value: -0.6
       objectReference: {fileID: 0}
     - target: {fileID: 2868880518840402745, guid: be00d13559e85e949b69ae3be80ecfb6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -8727,7 +8732,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2427441236201830489, guid: 7700e9bac19dd6b4689d6a15f8feadb9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.976
+      value: -0.98
       objectReference: {fileID: 0}
     - target: {fileID: 2427441236201830489, guid: 7700e9bac19dd6b4689d6a15f8feadb9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -8735,7 +8740,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2427441236201830489, guid: 7700e9bac19dd6b4689d6a15f8feadb9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 32.114
+      value: 32.052
       objectReference: {fileID: 0}
     - target: {fileID: 2427441236201830489, guid: 7700e9bac19dd6b4689d6a15f8feadb9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -12550,8 +12555,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1634368120}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.25, y: 0, z: 32.75}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.159, y: 0, z: 31.784}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14681,7 +14686,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 810277923010790629, guid: f62c07299ee63ee488eff629a7fbc788, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.97
+      value: -0.97400004
       objectReference: {fileID: 0}
     - target: {fileID: 810277923010790629, guid: f62c07299ee63ee488eff629a7fbc788, type: 3}
       propertyPath: m_LocalPosition.y
@@ -14689,7 +14694,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 810277923010790629, guid: f62c07299ee63ee488eff629a7fbc788, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 32.11
+      value: 32.048
       objectReference: {fileID: 0}
     - target: {fileID: 810277923010790629, guid: f62c07299ee63ee488eff629a7fbc788, type: 3}
       propertyPath: m_LocalRotation.w
