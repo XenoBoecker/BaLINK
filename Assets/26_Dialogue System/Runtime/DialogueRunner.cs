@@ -39,6 +39,7 @@ public class DialogueRunner : MonoBehaviour
             ShowDialogueText(line, 0);
             StartCoroutine(ClearDialogueText(line.Clip.length));
             _source.clip = line.Clip;
+            _source.volume *= SaveSystem.Data.DialogueVolume;
             _source.Play();
         }
     }
