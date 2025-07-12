@@ -63,7 +63,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 49
   m_TargetDisplay: 0
 --- !u!114 &1209253638669698610
 MonoBehaviour:
@@ -118,6 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursorPanel: {fileID: 4712880424763912026}
+  _defaultCursor: {fileID: 2800000, guid: aeb03546033e3eb4da335d0f3a9e839c, type: 3}
   normalSprite: {fileID: 21300000, guid: c1f8b314e45496d4583136970e2ec71a, type: 3}
   canInteractSprite: {fileID: 21300000, guid: eb206377ea888f74ea8c4a8b07ed823b, type: 3}
   movingCursor: {fileID: 6823586042273360640}
@@ -154,7 +155,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3366966895312544081
 RectTransform:
   m_ObjectHideFlags: 0
@@ -202,7 +203,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: c1f8b314e45496d4583136970e2ec71a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -229,7 +230,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7448040382417663648
 RectTransform:
   m_ObjectHideFlags: 0
@@ -277,7 +278,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: eb206377ea888f74ea8c4a8b07ed823b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

@@ -5,19 +5,21 @@ using UnityEngine.ProBuilder.MeshOperations;
 public class CursorCanvas : MonoBehaviour
 {
     [SerializeField] private GameObject cursorPanel;
-
+    [SerializeField] private Texture2D _defaultCursor;
     [SerializeField] private Sprite normalSprite, canInteractSprite;
 
     [SerializeField] FollowMouseCursor movingCursor;
 
     PlayerInteractor playerInteractor;
-    PauseMenu pauseMenu;
+    PauseMenuController pauseMenu;
     CrashScreen crashScreen;
 
     private void Start()
     {
+        Cursor.SetCursor(_defaultCursor, new Vector2(8, 8), CursorMode.ForceSoftware);
+
         playerInteractor = FindAnyObjectByType<PlayerInteractor>();
-        pauseMenu = FindAnyObjectByType<PauseMenu>();
+        pauseMenu = FindAnyObjectByType<PauseMenuController>();
         crashScreen = FindAnyObjectByType<CrashScreen>();
 
         if (playerInteractor == null)
@@ -55,6 +57,8 @@ public class CursorCanvas : MonoBehaviour
         else if (ItemEquipped())
         {
             Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+
             movingCursor.SetCursor(FollowMouseCursor.CursorType.None);
             cursorPanel.SetActive(false);
             return;
@@ -68,6 +72,8 @@ public class CursorCanvas : MonoBehaviour
         }
 
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
         movingCursor.SetCursor(FollowMouseCursor.CursorType.None);
         cursorPanel.SetActive(true);
 
