@@ -1932,6 +1932,108 @@ MonoBehaviour:
     _isUnfolded: 1
     _outputCount: 1
   _center: {x: 0, y: 0}
+--- !u!1001 &351211687
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 672173960}
+    m_Modifications:
+    - target: {fileID: 796186563787361150, guid: b2100887821874e49bc54588ee2dac07, type: 3}
+      propertyPath: m_Name
+      value: Win Screen Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941133575181597136, guid: b2100887821874e49bc54588ee2dac07, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941133575181597136, guid: b2100887821874e49bc54588ee2dac07, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941133575181597136, guid: b2100887821874e49bc54588ee2dac07, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941133575181597136, guid: b2100887821874e49bc54588ee2dac07, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941133575181597136, guid: b2100887821874e49bc54588ee2dac07, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941133575181597136, guid: b2100887821874e49bc54588ee2dac07, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941133575181597136, guid: b2100887821874e49bc54588ee2dac07, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941133575181597136, guid: b2100887821874e49bc54588ee2dac07, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941133575181597136, guid: b2100887821874e49bc54588ee2dac07, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941133575181597136, guid: b2100887821874e49bc54588ee2dac07, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941133575181597136, guid: b2100887821874e49bc54588ee2dac07, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941133575181597136, guid: b2100887821874e49bc54588ee2dac07, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941133575181597136, guid: b2100887821874e49bc54588ee2dac07, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941133575181597136, guid: b2100887821874e49bc54588ee2dac07, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941133575181597136, guid: b2100887821874e49bc54588ee2dac07, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941133575181597136, guid: b2100887821874e49bc54588ee2dac07, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941133575181597136, guid: b2100887821874e49bc54588ee2dac07, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941133575181597136, guid: b2100887821874e49bc54588ee2dac07, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941133575181597136, guid: b2100887821874e49bc54588ee2dac07, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6941133575181597136, guid: b2100887821874e49bc54588ee2dac07, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b2100887821874e49bc54588ee2dac07, type: 3}
+--- !u!224 &351211688 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6941133575181597136, guid: b2100887821874e49bc54588ee2dac07, type: 3}
+  m_PrefabInstance: {fileID: 351211687}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &351317636
 GameObject:
   m_ObjectHideFlags: 0
@@ -4518,6 +4620,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 694092120}
+  - {fileID: 351211688}
   - {fileID: 2043942989}
   - {fileID: 1138155061}
   - {fileID: 1990254653}
@@ -13371,10 +13474,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 672173960}
     m_Modifications:
-    - target: {fileID: 409439980041003895, guid: 720395a3da413164798934060f9d6742, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1657294845560079875, guid: 720395a3da413164798934060f9d6742, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -13458,10 +13557,6 @@ PrefabInstance:
     - target: {fileID: 7689417963185767423, guid: 720395a3da413164798934060f9d6742, type: 3}
       propertyPath: m_Name
       value: CrashScreen Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 8382341569801834842, guid: 720395a3da413164798934060f9d6742, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -19613,6 +19708,10 @@ PrefabInstance:
     - target: {fileID: 5641919704511890177, guid: d8eb4efc49c6999408046ff8f36a9693, type: 3}
       propertyPath: m_Name
       value: WinScreenCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5641919704511890177, guid: d8eb4efc49c6999408046ff8f36a9693, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
