@@ -9,7 +9,6 @@ using UnityEngine;
 public class DialogueRunner : MonoBehaviour
 {
     [SerializeField] private TMP_Text _text;
-    [SerializeField] private GameObject _dialogueSource;
     private AudioSource _source;
 
     private bool _isPlaying;
@@ -41,15 +40,11 @@ public class DialogueRunner : MonoBehaviour
                 throw new Exception($"Dialogue line number {dialogueLineIndex} of {sequence.name} does not have any text defined");
             }
 
-            AudioSystemClip clip = ScriptableObject.CreateInstance<AudioSystemClip>();
-            clip.Initialize(AudioSystemClipType.Dialogue, line.Clip, _dialogueSource);
-            ObjectEvents.PlayAudio(clip, Vector3.zero);
-
             ShowDialogueText(line, 0);
             StartCoroutine(ClearDialogueText(line.Clip.length));
- /*           _source.clip = line.Clip;
+            _source.clip = line.Clip;
             _source.volume *= SaveSystem.Data.DialogueVolume;
-            _source.Play();*/
+            _source.Play();
         }
     }
 
