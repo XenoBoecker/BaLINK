@@ -30,7 +30,22 @@ public class AudioSystemManager : MonoBehaviour
         AudioSource source = obj.GetComponent<AudioSource>();
         source.clip = clip.Clip;
         source.Play();
-        source.volume = clip.VolumeMultiplier;
+
+        float volume = clip.VolumeMultiplier;
+        switch (clip.ClipType)
+        {
+            case AudioSystemClipType.SFX:
+                volume *= SaveSystem.Data.SfxVolume;
+                break;
+            case AudioSystemClipType.Music:
+                volume *= SaveSystem.Data.MusicVolume;
+                break;
+            case AudioSystemClipType.Dialogue:
+                volume *= SaveSystem.Data.DialogueVolume;
+                break;
+        }
+
+        source.volume = volume;
         source.pitch = source.pitch + Random.Range(-clip.PitchVariation, clip.PitchVariation);
 
         yield return new WaitUntil(() => { return !source.isPlaying; });
