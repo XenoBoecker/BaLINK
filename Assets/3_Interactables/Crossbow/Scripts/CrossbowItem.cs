@@ -16,8 +16,8 @@ public class CrossbowItem : EquippedItem
     [SerializeField] private Transform _arrowSpawnPos;
 
 
-    [SerializeField] private float _shootInputBufferTime = 0.3f;
-    float _shootInputBufferTimer = 0f;
+    [SerializeField] private float _inputBufferTime = 0.3f;
+    float _inputBufferTimer = 0f;
 
     [SerializeField] private UnityEvent _onReload;
     [SerializeField] private UnityEvent _onRelease;
@@ -31,18 +31,27 @@ public class CrossbowItem : EquippedItem
 
     private void Update()
     {
-        _shootInputBufferTimer -= Time.deltaTime;
+        _inputBufferTimer -= Time.deltaTime;
 
-        if (!_isEquipped || _isReloading || _clickToReload)
+        if (!_isEquipped || _isReloading)
         {
             return;
         }
 
         if (_readyToFire)
         {
-            if(_shootInputBufferTimer > 0f)
+            if(_inputBufferTimer > 0f)
             {
                 Release();
+            }
+            return;
+        }
+
+        if (_clickToReload)
+        {
+            if (!_isReloading && _inputBufferTimer > 0f)
+            {
+                Reload();
             }
             return;
         }
@@ -59,24 +68,28 @@ public class CrossbowItem : EquippedItem
             return;
         }
 
-        if (_readyToFire)
+        if (_readyToFire && !_isReleasing)
         {
             Release();
             return;
         }
-        else if (_clickToReload && !_isReloading)
+        else if (_clickToReload && !_isReloading && !_isReleasing)
         {
+            Debug.Log("Reloading on click");
             Reload();
             return;
         }
         else
         {
-            _shootInputBufferTimer = _shootInputBufferTime;
+            Debug.Log("Buffer");
+            _inputBufferTimer = _inputBufferTime;
         }
     }
 
     private void Reload()
     {
+        _inputBufferTimer = 0f;
+
         _onReload.Invoke();
 
         _animator.SetTrigger("Reload");
@@ -128,7 +141,7 @@ public class CrossbowItem : EquippedItem
             return; // Already releasing, ignore further input
         }
 
-        _shootInputBufferTimer = 0f;
+        _inputBufferTimer = 0f;
 
         _onRelease.Invoke();
         _animator.SetTrigger("Fire");
