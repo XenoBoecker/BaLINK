@@ -1,6 +1,4 @@
-﻿using System;
-using UnityEngine;
-using UnityEngine.ProBuilder.MeshOperations;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class CursorCanvas : MonoBehaviour
@@ -13,7 +11,7 @@ public class CursorCanvas : MonoBehaviour
 
     PlayerInteractor playerInteractor;
     PauseMenuController pauseMenu;
-    CrashScreen crashScreen;
+    CrashScreenController crashScreen;
 
     private void Start()
     {
@@ -21,7 +19,7 @@ public class CursorCanvas : MonoBehaviour
 
         playerInteractor = FindAnyObjectByType<PlayerInteractor>();
         pauseMenu = FindAnyObjectByType<PauseMenuController>();
-        crashScreen = FindAnyObjectByType<CrashScreen>();
+        crashScreen = FindAnyObjectByType<CrashScreenController>();
     }
 
     private void Update()
@@ -35,6 +33,7 @@ public class CursorCanvas : MonoBehaviour
 
         if (GameHasCrashed())
         {
+            Debug.Log("Game has crashed, showing crash cursor.");
             SetMovingCursor(FollowMouseCursor.CursorType.Crash);
             return;
         }
@@ -83,8 +82,16 @@ public class CursorCanvas : MonoBehaviour
             Debug.LogError("Moving cursor is not assigned in the CursorCanvas script.");
             return;
         }
+        if(cursorType == FollowMouseCursor.CursorType.Crash)
+        {
+            movingCursorImage.rectTransform.Rotate(new Vector3(0,0,-1), crashScreen.CursorRotateSpeed * Time.deltaTime);
+        }
+        else
+        {
+            movingCursorImage.rectTransform.rotation = Quaternion.identity; // Reset rotation for other cursor types
+        }
 
-        if(cursorType == FollowMouseCursor.CursorType.None)
+        if (cursorType == FollowMouseCursor.CursorType.None)
         {
             Cursor.lockState = CursorLockMode.Locked;
             movingCursorImage.gameObject.SetActive(false);
@@ -134,6 +141,6 @@ public class CursorCanvas : MonoBehaviour
     private bool GameHasCrashed()
     {
         if (crashScreen == null) return false;
-        return crashScreen.HasCrashed;
+        return crashScreen.MenuIsVisible;
     }
 }

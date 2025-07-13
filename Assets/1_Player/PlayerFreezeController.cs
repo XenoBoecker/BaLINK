@@ -7,8 +7,8 @@ public class PlayerFreezeController : MonoBehaviour
     private CharacterMovement _characterMovement;
     private BaseFirstPersonController _baseFirstPersonController;
 
-    private bool _isFrozen;
-    public bool IsFrozen => _isFrozen;
+    private int _freezeCounter;
+    public bool IsFrozen => _freezeCounter > 0;
 
     void Awake()
     {
@@ -18,9 +18,23 @@ public class PlayerFreezeController : MonoBehaviour
 
     public void SetFreeze(bool isFrozen)
     {
-        _isFrozen = isFrozen;
-        _characterMovement.Pause(isFrozen);
-        _characterMovement.enabled = !isFrozen; // Disable player movement
-        _baseFirstPersonController.enabled = !isFrozen; // Disable the base first person controller
+        bool wasFrozen = IsFrozen;
+        if (isFrozen)
+        {
+            _freezeCounter++;
+        }
+        else
+        {
+            _freezeCounter--;
+        }
+
+        if(wasFrozen == IsFrozen)
+        {
+            return;
+        }
+
+        _characterMovement.Pause(IsFrozen);
+        _characterMovement.enabled = !IsFrozen; // Disable player movement
+        _baseFirstPersonController.enabled = !IsFrozen; // Disable the base first person controller
     }
 }

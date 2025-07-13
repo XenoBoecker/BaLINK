@@ -13,7 +13,6 @@ public class FreezePlayer : Effect
 
     public override void TriggerEffect()
     {
-        Debug.Log($"Setting player freeze state to {_targetState}");
         if (ReferencedObject.TryGetComponent(out PlayerObserver playerObserver))
         {
             playerObserver.SetFreeze(_targetState);

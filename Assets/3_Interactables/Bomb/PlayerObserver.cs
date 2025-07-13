@@ -11,13 +11,6 @@ public class PlayerObserver : MonoBehaviour
 
     public void SetFreeze(bool freeze)
     {
-        if (freeze)
-        {
-            playerFreezeController.SetFreeze(true);
-        }
-        else
-        {
-            playerFreezeController.SetFreeze(false);
-        }
+        playerFreezeController.SetFreeze(freeze);
     }
 }
