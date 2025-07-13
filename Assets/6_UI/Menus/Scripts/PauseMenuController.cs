@@ -42,7 +42,6 @@ public class PauseMenuController : MenuController
             Cursor.lockState = CursorLockMode.Locked;
             MenuManager.Instance.TryHideMenu(this);
         }*/
-        SetPauseState();
     }
 
     public override void ShowMenu()
