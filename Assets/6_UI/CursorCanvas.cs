@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Canvas))]
 public class CursorCanvas : MonoBehaviour
 {
     [SerializeField] private Image fixedCursorImage, movingCursorImage;
@@ -9,9 +10,18 @@ public class CursorCanvas : MonoBehaviour
 
     [SerializeField] FollowMouseCursor movingCursor;
 
+    Canvas cursorCanvas;
     PlayerInteractor playerInteractor;
     PauseMenuController pauseMenu;
     CrashScreenController crashScreen;
+
+    int startCanvasSortingOrder;
+
+    private void Awake()
+    {
+        cursorCanvas = GetComponent<Canvas>();
+        startCanvasSortingOrder = cursorCanvas.sortingOrder;
+    }
 
     private void Start()
     {
@@ -85,10 +95,12 @@ public class CursorCanvas : MonoBehaviour
         if(cursorType == FollowMouseCursor.CursorType.Crash)
         {
             movingCursorImage.rectTransform.Rotate(new Vector3(0,0,-1), crashScreen.CursorRotateSpeed * Time.deltaTime);
+            cursorCanvas.sortingOrder = 200;
         }
         else
         {
             movingCursorImage.rectTransform.rotation = Quaternion.identity; // Reset rotation for other cursor types
+            cursorCanvas.sortingOrder = startCanvasSortingOrder;
         }
 
         if (cursorType == FollowMouseCursor.CursorType.None)
