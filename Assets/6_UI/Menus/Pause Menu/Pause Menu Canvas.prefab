@@ -120,7 +120,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2876350530886613504}
+      - m_Target: {fileID: 583238586104193370}
         m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
         m_MethodName: ShowPanel
         m_Mode: 2
@@ -327,16 +327,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4713945903179588479}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: MenuButtonPressed
-        m_Mode: 1
+      - m_Target: {fileID: 3957731137184397024}
+        m_TargetAssemblyTypeName: SceneLoaderController, Assembly-CSharp
+        m_MethodName: LoadSceneByString
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Menu
+          m_StringArgument: MainMenu
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &3865823374210895556
@@ -411,8 +411,8 @@ GameObject:
   - component: {fileID: 130980811419716273}
   - component: {fileID: 4860344875390329129}
   - component: {fileID: 4390747976969962027}
-  - component: {fileID: 4713945903179588479}
-  - component: {fileID: 2876350530886613504}
+  - component: {fileID: 583238586104193370}
+  - component: {fileID: 3957731137184397024}
   m_Layer: 5
   m_Name: Pause Menu Canvas
   m_TagString: Untagged
@@ -461,7 +461,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 20
   m_TargetDisplay: 0
 --- !u!114 &4860344875390329129
 MonoBehaviour:
@@ -503,7 +503,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &4713945903179588479
+--- !u!114 &583238586104193370
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -512,11 +512,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 5437581529088708092}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 229fa76ba49504041a2a01bd1468bb37, type: 3}
+  m_Script: {fileID: 11500000, guid: 33f0ced39de90b84c907a4d17759d726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pauseMenuUI: {fileID: 7495720305937764751}
---- !u!114 &2876350530886613504
+  _menuType: 1
+  _menuContents: {fileID: 7495720305937764751}
+  _blockerMenus:
+  - {fileID: 0}
+  _onMenuShown:
+    m_PersistentCalls:
+      m_Calls: []
+  _onMenuHidden:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &3957731137184397024
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -525,7 +534,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5437581529088708092}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: affa96488e8d0af46b8ba23efad6565b, type: 3}
+  m_Script: {fileID: 11500000, guid: ea5f0f49fb9bacf47b9098b84655f462, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5736565922574760976
@@ -733,7 +742,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8181079495739904487}
   m_Layer: 5
-  m_Name: Menus
+  m_Name: Menu Contents
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -881,10 +890,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4713945903179588479}
-        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
-        m_MethodName: PauseGame
-        m_Mode: 6
+      - m_Target: {fileID: 583238586104193370}
+        m_TargetAssemblyTypeName: PauseMenuController, Assembly-CSharp
+        m_MethodName: HideMenu
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -904,7 +913,7 @@ PrefabInstance:
     - target: {fileID: 1040253150440077792, guid: 086abd8441375be4e841bd893e2a61da, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 2876350530886613504}
+      objectReference: {fileID: 583238586104193370}
     - target: {fileID: 1040253150440077792, guid: 086abd8441375be4e841bd893e2a61da, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ShowPanel

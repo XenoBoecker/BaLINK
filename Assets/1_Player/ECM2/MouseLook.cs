@@ -212,7 +212,7 @@ namespace ECM.Components
                     cameraTransform.localRotation = ClampPitch(cameraTransform.localRotation);
             }
 
-            UpdateCursorLock();
+            //UpdateCursorLock();
         }
 
         public virtual void SetCursorLock(bool value)
