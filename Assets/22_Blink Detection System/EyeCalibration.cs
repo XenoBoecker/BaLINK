@@ -18,6 +18,8 @@ public class EyeCalibration : MonoBehaviour
     List<EyeData> _closedData;
 
     public event Action OnFailedToCalibrate;
+    public event Action OnStaredCalibratingEyePosition;
+
     public bool FinishedCalibrating => _finishedCalibrating;
 
     private void Awake()
@@ -47,6 +49,7 @@ public class EyeCalibration : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 Debug.Log("Eyes Opened Calibration Started");
+                OnStaredCalibratingEyePosition?.Invoke();
             }
 
             _openedData.Add(_eyeDataCollector.GetEyeData());
@@ -60,6 +63,7 @@ public class EyeCalibration : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                OnStaredCalibratingEyePosition?.Invoke();
                 Debug.Log("Eyes Closed Calibration Started");
             }
 

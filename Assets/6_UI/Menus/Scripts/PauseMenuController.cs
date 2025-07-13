@@ -8,20 +8,23 @@ public class PauseMenuController : MenuController
     private PlayerFreezeController _playerFreezeController;
     public bool IsPaused => MenuIsVisible;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         _inputActions = new InputSystem_Actions();
         _playerFreezeController = FindAnyObjectByType<PlayerFreezeController>();
     }
 
-    void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         _inputActions.Enable();
         _inputActions.Player.Pause.performed += PausePerformed;
     }
 
-    void OnDisable()
+    protected override void OnDisable()
     {
+        base.OnDisable();
         _inputActions.Disable();
         _inputActions.Player.Pause.performed -= PausePerformed;
     }
