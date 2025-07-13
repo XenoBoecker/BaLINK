@@ -37,11 +37,11 @@ public class PauseMenuController : MenuController
         {
             MenuManager.Instance.TryShowMenu(this);
         } 
-/*        else
+        else
         {
             Cursor.lockState = CursorLockMode.Locked;
             MenuManager.Instance.TryHideMenu(this);
-        }*/
+        }
     }
 
     public override void ShowMenu()
