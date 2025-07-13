@@ -51,7 +51,7 @@ public class PlayerInteractor : MonoBehaviour
     }
     private Interactable GetInteractable()
     {
-        Physics.SphereCast(transform.position, interactionRadius, transform.forward, out RaycastHit hit, interactionRange, interactionLayer);
+        Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, interactionRange, interactionLayer);
 
         if (hit.collider != null)
         {
