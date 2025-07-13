@@ -12,7 +12,8 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
-  m_InvalidKeywords: []
+  m_InvalidKeywords:
+  - IsActive
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -23,6 +24,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_3837ee7cb3874cea8977db3cf3b0af01_Texture_1_Texture2D:
         m_Texture: {fileID: 2800000, guid: b5d6a51fc1fb41f49a4b9760a9c3c4f8, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -45,7 +50,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _IsActive: 1
+    - _IsActive: 0
     - _Vignette_Power: 4.12
     - _Vignette_Strneght: 1.11
     m_Colors:
