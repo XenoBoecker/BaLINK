@@ -1003,6 +1003,25 @@ MonoBehaviour:
   blendDistance: 0
   weight: 1
   sharedProfile: {fileID: 11400000, guid: ab09877e2e707104187f6f83e2f62510, type: 2}
+--- !u!114 &566236354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 982b965c48dd7044d85d055d30b3fdb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _referencedObject: {fileID: 1930113567}
+  _player: {fileID: 0}
+  _isUnfolded: 1
+  _connectedOutputIndex: 0
+  _fadeMode: 0
+  _fadeSpeed: 10
+  _track: {fileID: 8300000, guid: 5ac32ae9b9eea044a8b3e71f99c94482, type: 3}
 --- !u!114 &567920773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1684,6 +1703,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 642117276}
     m_Modifications:
+    - target: {fileID: 2151517164187551481, guid: 8affbf27b3b192a40a58500e40a3a007, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 8934394301027404899, guid: 6c5c0a1f9614f7e448bc2d8c8f8ad57c, type: 2}
     - target: {fileID: 2548047624386680699, guid: 8affbf27b3b192a40a58500e40a3a007, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1576.5851
@@ -1962,13 +1985,14 @@ MonoBehaviour:
     _outputCount: 1
   - _id: 8976
     _type: 1
-    _position: {x: 168, y: 218}
+    _position: {x: 166, y: 207}
     _nextNodeIds: 451d0000
     _waitForBlink: 0
     _elements:
     - {fileID: 778765647}
     - {fileID: 1023801206}
     - {fileID: 1247669617}
+    - {fileID: 566236354}
     _isUnfolded: 1
     _outputCount: 1
   - _id: 7493
@@ -1984,13 +2008,13 @@ MonoBehaviour:
     _type: 1
     _position: {x: 646, y: 323}
     _nextNodeIds: ffffffff
-    _waitForBlink: 1
+    _waitForBlink: 0
     _elements:
     - {fileID: 1152605448}
     - {fileID: 1935736594}
     _isUnfolded: 1
     _outputCount: 1
-  _center: {x: -133.99991, y: -23.666718}
+  _center: {x: -83.99991, y: -16.666718}
 --- !u!114 &1935736594
 MonoBehaviour:
   m_ObjectHideFlags: 0
