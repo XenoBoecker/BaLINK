@@ -1,6 +1,4 @@
-﻿using System;
-using UnityEngine;
-using UnityEngine.ProBuilder.MeshOperations;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class CursorCanvas : MonoBehaviour
@@ -84,8 +82,16 @@ public class CursorCanvas : MonoBehaviour
             Debug.LogError("Moving cursor is not assigned in the CursorCanvas script.");
             return;
         }
+        if(cursorType == FollowMouseCursor.CursorType.Crash)
+        {
+            movingCursorImage.rectTransform.Rotate(new Vector3(0,0,-1), crashScreen.CursorRotateSpeed * Time.deltaTime);
+        }
+        else
+        {
+            movingCursorImage.rectTransform.rotation = Quaternion.identity; // Reset rotation for other cursor types
+        }
 
-        if(cursorType == FollowMouseCursor.CursorType.None)
+        if (cursorType == FollowMouseCursor.CursorType.None)
         {
             Cursor.lockState = CursorLockMode.Locked;
             movingCursorImage.gameObject.SetActive(false);
