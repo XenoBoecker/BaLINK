@@ -9,7 +9,7 @@ using UnityEngine;
 public class Graph : MonoBehaviour
 {
     [SerializeField, HideInInspector] private int _entryNodeId;
-    [SerializeField, HideInInspector] private GraphNode[] _nodes = new GraphNode[0];
+    [SerializeField] private GraphNode[] _nodes = new GraphNode[0];
     [SerializeField, HideInInspector] private Vector2 _center;
 
     public Vector2 Center => _center;

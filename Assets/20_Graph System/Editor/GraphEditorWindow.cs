@@ -76,6 +76,7 @@ public class GraphEditorWindow : EditorWindow
 
         for (int i = 0; i < _graph.Nodes.Length; i++)
         {
+            _graph.Nodes[i].RemoveNoneElements();
             DrawNode(_graph.Nodes[i]);
         }
 

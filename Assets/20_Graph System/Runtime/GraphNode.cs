@@ -135,4 +135,19 @@ public class GraphNode
             element.OnExitNode();
         }
     }
+
+    public void RemoveNoneElements()
+    {
+        List<NodeElement> tempElements = new List<NodeElement>(_elements);
+
+        for (int i = _elements.Length - 1; i >= 0; i --)
+        {
+            if (tempElements[i] == null)
+            {
+                tempElements.RemoveAt(i);
+            }
+        }
+
+        _elements = tempElements.ToArray();
+    }
 }
