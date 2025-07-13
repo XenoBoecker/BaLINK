@@ -86,6 +86,8 @@ public class PlayerInteractor : MonoBehaviour
         item.GetComponent<Collider>().enabled = false;
         item.gameObject.layer = LayerMask.NameToLayer("Default"); // Ensure the item is on the default layer to avoid interaction issues
 
+        _equippedItem = item; // Set the new equipped item
+
         for (float i = 0; i < equipDuration; i+= Time.deltaTime)
         {
             // Simulate equipping animation or logic here
@@ -100,8 +102,6 @@ public class PlayerInteractor : MonoBehaviour
         item.transform.rotation = equipWeaponPoint.rotation; // Ensure the item is oriented correctly
 
         item.transform.parent = equipWeaponPoint; // Parent the item to the equip point for proper positioning
-
-        _equippedItem = item; // Set the new equipped item
 
         Debug.Log("Equipped new item: " + _equippedItem.gameObject.name);
     }

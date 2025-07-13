@@ -16,6 +16,7 @@ public class MusicSystemManager : MonoBehaviour
         if (Instance != null)
         {
             Debug.LogError("Too many instance");
+            Destroy(gameObject);
         } 
         else
         {
