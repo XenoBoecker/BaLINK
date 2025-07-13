@@ -14,7 +14,7 @@ public class TimerBelowValue : Condition
             _bombTimerObserver = ReferencedObject.GetComponent<BombTimerObserver>();
         }
 
-        Debug.Log($"Checking if timer is below {_checkValue} with current value: {_bombTimerObserver.GetTimeLeft()}");
+        // Debug.Log($"Checking if timer is below {_checkValue} with current value: {_bombTimerObserver.GetTimeLeft()}");
 
         if (_bombTimerObserver.GetTimeLeft() < _checkValue != _invertCondition)
         {
