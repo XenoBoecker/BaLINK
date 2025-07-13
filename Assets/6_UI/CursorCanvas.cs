@@ -1,13 +1,13 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.ProBuilder.MeshOperations;
+using UnityEngine.UI;
 
 public class CursorCanvas : MonoBehaviour
 {
-    [SerializeField] private GameObject cursorPanel;
+    [SerializeField] private Image fixedCursorImage, movingCursorImage;
     [SerializeField] private Texture2D _defaultCursor;
     [SerializeField] private Sprite normalSprite, canInteractSprite;
-    [SerializeField] private GameObject canInteractObject;
 
     [SerializeField] FollowMouseCursor movingCursor;
 
@@ -22,18 +22,6 @@ public class CursorCanvas : MonoBehaviour
         playerInteractor = FindAnyObjectByType<PlayerInteractor>();
         pauseMenu = FindAnyObjectByType<PauseMenuController>();
         crashScreen = FindAnyObjectByType<CrashScreen>();
-
-        if (playerInteractor == null)
-        {
-            Debug.LogError("PlayerInteractor not found in the scene. Please ensure it is present.", this);
-            return;
-        }
-
-        if(pauseMenu == null)
-        {
-            Debug.LogError("PauseMenu not found in the scene. Please ensure it is present.", this);
-            return;
-        }
     }
 
     private void Update()
@@ -43,40 +31,29 @@ public class CursorCanvas : MonoBehaviour
 
     void UpdateUI()
     {
+        Cursor.visible = false;
+
         if (GameHasCrashed())
         {
-            Cursor.lockState = CursorLockMode.None;
-            movingCursor.SetCursor(FollowMouseCursor.CursorType.Crash);
+            SetMovingCursor(FollowMouseCursor.CursorType.Crash);
+            return;
         }
-        else if (pauseMenu.IsPaused)
+        else if (pauseMenu != null && pauseMenu.IsPaused)
         {
-            Cursor.lockState = CursorLockMode.None;
-            movingCursor.SetCursor(FollowMouseCursor.CursorType.Pause);
-            cursorPanel.SetActive(false);
+            SetMovingCursor(FollowMouseCursor.CursorType.Pause);
             return;
         }
         else if (ItemEquipped())
         {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-
-            movingCursor.SetCursor(FollowMouseCursor.CursorType.None);
-            cursorPanel.SetActive(false);
+            SetMovingCursor(FollowMouseCursor.CursorType.None);
+            fixedCursorImage.gameObject.SetActive(false);
             return;
         }
         else if (PlayerIsInMinigame())
         {
-            Cursor.lockState = CursorLockMode.None;
-            movingCursor.SetCursor(FollowMouseCursor.CursorType.NumberLock);
-            cursorPanel.SetActive(false);
+            SetMovingCursor(FollowMouseCursor.CursorType.NumberLock);
             return;
         }
-
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-
-        movingCursor.SetCursor(FollowMouseCursor.CursorType.None);
-        cursorPanel.SetActive(true);
 
         if(normalSprite == null || canInteractSprite == null)
         {
@@ -84,26 +61,74 @@ public class CursorCanvas : MonoBehaviour
             return;
         }
 
-        if (playerInteractor.IsMouseHoverOverInteractable())
+        if (playerInteractor == null) // player in main menu
         {
-            canInteractObject.SetActive(true);
-            cursorPanel.GetComponent<UnityEngine.UI.Image>().sprite = canInteractSprite;
+            SetMovingCursor(FollowMouseCursor.CursorType.Pause);
+
+            ShowHoverInteractUI(IsMouseOverUIButton());
         }
         else
         {
-            canInteractObject.SetActive(false);
-            cursorPanel.GetComponent<UnityEngine.UI.Image>().sprite = normalSprite;
+            SetMovingCursor(FollowMouseCursor.CursorType.None);
+
+            ShowHoverInteractUI(playerInteractor.IsMouseHoverOverInteractable());
+        }
+
+    }
+
+    void SetMovingCursor(FollowMouseCursor.CursorType cursorType)
+    {
+        if (movingCursor == null)
+        {
+            Debug.LogError("Moving cursor is not assigned in the CursorCanvas script.");
+            return;
+        }
+
+        if(cursorType == FollowMouseCursor.CursorType.None)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            movingCursorImage.gameObject.SetActive(false);
+            fixedCursorImage.gameObject.SetActive(true);
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+            movingCursorImage.gameObject.SetActive(true);
+            fixedCursorImage.gameObject.SetActive(false);
+        }
+
+        movingCursor.SetCursor(cursorType);
+    }
+
+    void ShowHoverInteractUI(bool v)
+    {
+        if (v)
+        {
+            fixedCursorImage.sprite = canInteractSprite;
+            movingCursorImage.sprite = canInteractSprite;
+        }
+        else
+        {
+            fixedCursorImage.sprite = normalSprite;
+            movingCursorImage.sprite = normalSprite;
         }
     }
 
     private bool ItemEquipped()
     {
+        if (playerInteractor == null) return false;
         return playerInteractor.IsItemEquipped;
     }
 
     private bool PlayerIsInMinigame()
     {
         return Camera.main == null || !Camera.main.enabled;
+    }
+
+    bool IsMouseOverUIButton()
+    {
+        return UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject() || UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject(-1);
+
     }
 
     private bool GameHasCrashed()
