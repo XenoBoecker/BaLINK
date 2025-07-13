@@ -63,6 +63,10 @@ public class PauseMenuController : MenuController
 
     private void SetPauseState()
     {
+        bool wasPaused = Time.timeScale == 0.0f;
+
+        if (wasPaused == IsPaused) { return; }
+
         Time.timeScale = IsPaused ? 0.0f : 1.0f;
         _playerFreezeController.SetFreeze(IsPaused);
     }
