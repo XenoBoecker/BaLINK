@@ -473,6 +473,8 @@ MonoBehaviour:
   _onFailedCalibrationEvent: {fileID: 1790284443}
   _circleFillSequence: {fileID: 999933977}
   _eyesClosedTextSequence: {fileID: 1458010894}
+  _calibrationFinishedSoundQueue: {fileID: 11400000, guid: 1abdcf3af3f628949a0b02ea31c449bd, type: 2}
+  _calibrationDurationPerEyePosition: 1
 --- !u!4 &417338050
 Transform:
   m_ObjectHideFlags: 0
@@ -1373,7 +1375,7 @@ MonoBehaviour:
   m_text: Retry Calibration
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7f49093d9d18a664580363173710ec0e, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 7f49093d9d18a664580363173710ec0e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1438,7 +1440,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1463969116
@@ -1640,14 +1642,14 @@ MonoBehaviour:
   m_text: or
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7f49093d9d18a664580363173710ec0e, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 7f49093d9d18a664580363173710ec0e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4285624689
+  m_fontColor: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1705,7 +1707,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1645696515
@@ -1921,6 +1923,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _counterText: {fileID: 1171063447}
   _isAccurateControls: {fileID: 1666505334}
+  _onBlinkSoundEffect: {fileID: 11400000, guid: 5e6a1f74dc1672042ba548ddfaf2b3fe, type: 2}
 --- !u!4 &1776264315
 Transform:
   m_ObjectHideFlags: 0
@@ -2107,7 +2110,7 @@ MonoBehaviour:
   m_text: Continue
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7f49093d9d18a664580363173710ec0e, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 7f49093d9d18a664580363173710ec0e, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2172,7 +2175,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1873049019

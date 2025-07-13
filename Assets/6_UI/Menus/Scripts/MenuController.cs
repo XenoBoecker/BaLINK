@@ -22,19 +22,19 @@ public class MenuController : MonoBehaviour
     public MenuController[] BlockerMenus => _blockerMenus;
     public MenuType MenuType => _menuType;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         _inputActions = new InputSystem_Actions();
         GetAllMenuPanels();
     }
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         _inputActions.Enable();
         _inputActions.Player.Cancel.performed += OnCanceled;
     }
 
-    private void OnDisable()
+    protected virtual void OnDisable()
     {
         _inputActions.Disable();
         _inputActions.Player.Cancel.performed -= OnCanceled;
