@@ -1,3 +1,4 @@
+using GameEvents;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -14,6 +15,7 @@ public class ShowTextSequenceEvent : IntroSequenceEvent
     [SerializeField] private float _textFadeSpeed;
     [SerializeField] private float _delayBetweenLines;
     [SerializeField] private float _delayBeforeEffectEnd;
+    [SerializeField] private AudioSystemClip[] _typingSounds;
     bool _sequenceOver = false;
     int _textIndex = 0;
     Color _originalTextColor;
@@ -41,10 +43,18 @@ public class ShowTextSequenceEvent : IntroSequenceEvent
         string text = "";
         _textObject.color = _originalTextColor;
 
+        int counter = 0;
         foreach (char c in _textsToShow[_textIndex])
         {
             text += c;
             SetText(text);
+            
+            if (counter % 2 == 0 && !char.IsWhiteSpace(c) && _typingSounds != null && _typingSounds.Length != 0)
+            {
+                ObjectEvents.PlayAudio(_typingSounds[Random.Range(0, _typingSounds.Length)], Vector3.zero);
+            }
+
+            counter++;
             yield return new WaitForSeconds(1f / _textRevealSpeed);
         }
 
