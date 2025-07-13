@@ -13,7 +13,7 @@ public class CursorCanvas : MonoBehaviour
 
     PlayerInteractor playerInteractor;
     PauseMenuController pauseMenu;
-    CrashScreen crashScreen;
+    CrashScreenController crashScreen;
 
     private void Start()
     {
@@ -21,7 +21,7 @@ public class CursorCanvas : MonoBehaviour
 
         playerInteractor = FindAnyObjectByType<PlayerInteractor>();
         pauseMenu = FindAnyObjectByType<PauseMenuController>();
-        crashScreen = FindAnyObjectByType<CrashScreen>();
+        crashScreen = FindAnyObjectByType<CrashScreenController>();
     }
 
     private void Update()
@@ -35,6 +35,7 @@ public class CursorCanvas : MonoBehaviour
 
         if (GameHasCrashed())
         {
+            Debug.Log("Game has crashed, showing crash cursor.");
             SetMovingCursor(FollowMouseCursor.CursorType.Crash);
             return;
         }
@@ -134,6 +135,6 @@ public class CursorCanvas : MonoBehaviour
     private bool GameHasCrashed()
     {
         if (crashScreen == null) return false;
-        return crashScreen.HasCrashed;
+        return crashScreen.MenuIsVisible;
     }
 }
