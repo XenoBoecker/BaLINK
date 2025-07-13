@@ -7,6 +7,7 @@ public class CursorCanvas : MonoBehaviour
     [SerializeField] private GameObject cursorPanel;
     [SerializeField] private Texture2D _defaultCursor;
     [SerializeField] private Sprite normalSprite, canInteractSprite;
+    [SerializeField] private GameObject canInteractObject;
 
     [SerializeField] FollowMouseCursor movingCursor;
 
@@ -85,10 +86,12 @@ public class CursorCanvas : MonoBehaviour
 
         if (playerInteractor.IsMouseHoverOverInteractable())
         {
+            canInteractObject.SetActive(true);
             cursorPanel.GetComponent<UnityEngine.UI.Image>().sprite = canInteractSprite;
         }
         else
         {
+            canInteractObject.SetActive(false);
             cursorPanel.GetComponent<UnityEngine.UI.Image>().sprite = normalSprite;
         }
     }
