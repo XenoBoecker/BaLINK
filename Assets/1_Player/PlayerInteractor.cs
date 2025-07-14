@@ -11,7 +11,7 @@ public class PlayerInteractor : MonoBehaviour
     [SerializeField] private Transform equipNotePoint;
     [SerializeField] float equipDuration = 0.5f; // Duration for equipping the item
     private EquippedItem _equippedItem; // Reference to the currently equipped item, if any
-    public bool IsItemEquipped => _equippedItem != null; // Check if an item is currently equipped
+    public bool IsItemEquipped(EquippedItem.ItemType type) => _equippedItem != null && _equippedItem.Type == type; // Check if an item is currently equipped
 
     InputSystem_Actions _inputActions;
 

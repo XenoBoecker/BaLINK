@@ -52,7 +52,7 @@ public class CursorCanvas : MonoBehaviour
             SetMovingCursor(FollowMouseCursor.CursorType.Pause);
             return;
         }
-        else if (ItemEquipped())
+        else if (WeaponEquipped())
         {
             SetMovingCursor(FollowMouseCursor.CursorType.None);
             fixedCursorImage.gameObject.SetActive(false);
@@ -133,10 +133,10 @@ public class CursorCanvas : MonoBehaviour
         }
     }
 
-    private bool ItemEquipped()
+    private bool WeaponEquipped()
     {
         if (playerInteractor == null) return false;
-        return playerInteractor.IsItemEquipped;
+        return playerInteractor.IsItemEquipped(EquippedItem.ItemType.Weapon);
     }
 
     private bool PlayerIsInMinigame()
