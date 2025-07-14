@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M-PosterSleepingDecor
+  m_Name: M-PosterSleepingDecor 6
   m_Shader: {fileID: -6465566751694194690, guid: be93b3848c2541443934d00d3949a2d5, type: 3}
-  m_Parent: {fileID: -876546973899608171, guid: be93b3848c2541443934d00d3949a2d5, type: 3}
+  m_Parent: {fileID: 2100000, guid: 88603e9a6424058489425bf6126eb737, type: 2}
   m_ModifiedSerializedProperties: 16
   m_ValidKeywords:
   - _ALPHATEST_ON
@@ -22,35 +22,27 @@ Material:
     RenderType: TransparentCutout
   disabledShaderPasses:
   - MOTIONVECTORS
+  - SHADOWCASTER
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _BaseColor:
-        m_Texture: {fileID: 2800000, guid: 86d1394888bf7b54bb64d126db5efa3d, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MetallicSmoothness:
-        m_Texture: {fileID: 2800000, guid: b51fecacd80113248afd075590ae7777, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Normal:
-        m_Texture: {fileID: 2800000, guid: 492668a7d7446704992e3c3c3f01d982, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _Shell_Noise_Texture:
-        m_Texture: {fileID: 2800000, guid: ac0fd2c62bb03c540b9c26ed4a2f6a2b, type: 3}
+        m_Texture: {fileID: 2800000, guid: 17880d340650050428e04b78dd5b144c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AlphaClip: 1
     - _AlphaToMask: 1
+    - _CastShadows: 0
     - _QueueControl: 0
-    - _Shell_Masking_Threshold: 0
+    - _Shell_Height: 0.0054
+    - _Shell_Masking_Threshold: 0.269
     - _Smoothness: 0.5
     m_Colors:
-    - _Shell_Noise_Scale: {r: 3, g: 3, b: 0, a: 0}
+    - _Albedo_Tint: {r: 0.745283, g: 0.745283, b: 0.745283, a: 1}
+    - _Shell_Noise_Scale: {r: 1, g: 1, b: 0, a: 0}
+    - _Shell_Noise_Size: {r: 5, g: 5, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &5315086163596548582

@@ -27,16 +27,8 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _BaseColor:
-        m_Texture: {fileID: 2800000, guid: 814ee37bce6ffb44f8e620f9714e40d1, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MetallicSmoothness:
-        m_Texture: {fileID: 2800000, guid: dc86ce2c39f193f4c99429e5e4a3e332, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _Normal:
-        m_Texture: {fileID: 2800000, guid: 9be1f177a003f324eb2e240b8e20ee5b, type: 3}
+    - _Shell_Noise_Texture:
+        m_Texture: {fileID: 2800000, guid: 17880d340650050428e04b78dd5b144c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
@@ -44,12 +36,13 @@ Material:
     - _AlphaToMask: 1
     - _CastShadows: 0
     - _QueueControl: 0
-    - _Shell_Height: 0.0066
-    - _Shell_Masking_Threshold: 0.263
+    - _Shell_Height: 0.0027
+    - _Shell_Masking_Threshold: 0.102
     - _Smoothness: 0.5
     m_Colors:
-    - _Albedo_Tint: {r: 1.1486983, g: 1.1486983, b: 1.1486983, a: 1}
-    - _Shell_Noise_Scale: {r: 0.5, g: 0.5, b: 0, a: 0}
+    - _Albedo_Tint: {r: 0.9433962, g: 0.9433962, b: 0.9433962, a: 1}
+    - _Shell_Noise_Scale: {r: 1, g: 1, b: 0, a: 0}
+    - _Shell_Noise_Size: {r: 5, g: 5, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &5315086163596548582
