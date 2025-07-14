@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Timeline;
 
@@ -63,6 +64,8 @@ public class Target : MonoBehaviour
         spawnHeight = transform.position.y; // Store the initial height of the target
         lastHoverGoalHeight = spawnHeight;
         GetNextHoverPoint();
+
+        StartCoroutine(SpawnFlyIn());
     }
 
     private void Update()
@@ -87,6 +90,28 @@ public class Target : MonoBehaviour
         }
 
         HoverUpAndDown();
+    }
+
+    IEnumerator SpawnFlyIn()
+    {
+        int extraHeight = 5;
+        float spawnDuration = 1.0f; // Duration for the fly-in effect
+
+        transform.Translate(Vector3.up * extraHeight);
+
+        for (float i = 0; i < spawnDuration; i+= Time.deltaTime)
+        {
+            float t = i / spawnDuration;
+
+            float height = Mathf.Lerp(extraHeight, 0, t); // Lerp from extraHeight to 0
+
+            transform.position = new Vector3(transform.position.x, spawnHeight + height, transform.position.z);
+
+            yield return null;
+        }
+
+        transform.position = new Vector3(transform.position.x, spawnHeight, transform.position.z); // Ensure final position is exactly at spawn height
+
     }
 
     private void MoveAlongPath()
