@@ -8,6 +8,7 @@ public class PlayerInteractor : MonoBehaviour
     [SerializeField] private LayerMask interactionLayer;
 
     [SerializeField] Transform equipWeaponPoint; // Point where the equipped item will be positioned
+    [SerializeField] private Transform equipNotePoint;
     [SerializeField] float equipDuration = 0.5f; // Duration for equipping the item
     private EquippedItem _equippedItem; // Reference to the currently equipped item, if any
     public bool IsItemEquipped => _equippedItem != null; // Check if an item is currently equipped
@@ -83,6 +84,13 @@ public class PlayerInteractor : MonoBehaviour
 
     private System.Collections.IEnumerator EquipItemCoroutine(EquippedItem item)
     {
+        Transform equipPoint = equipWeaponPoint;
+
+        if(item.Type == EquippedItem.ItemType.Note)
+        {
+            equipPoint = equipNotePoint;
+        }
+
         item.GetComponent<Collider>().enabled = false;
         item.gameObject.layer = LayerMask.NameToLayer("Default"); // Ensure the item is on the default layer to avoid interaction issues
 
@@ -91,17 +99,17 @@ public class PlayerInteractor : MonoBehaviour
         for (float i = 0; i < equipDuration; i+= Time.deltaTime)
         {
             // Simulate equipping animation or logic here
-            item.transform.position = Vector3.Lerp(item.transform.position, equipWeaponPoint.position, i / equipDuration);
+            item.transform.position = Vector3.Lerp(item.transform.position, equipPoint.position, i / equipDuration);
 
-            item.transform.rotation = Quaternion.Lerp(item.transform.rotation, equipWeaponPoint.rotation, i / equipDuration);
+            item.transform.rotation = Quaternion.Lerp(item.transform.rotation, equipPoint.rotation, i / equipDuration);
 
             yield return null;
         }
 
-        item.transform.position = equipWeaponPoint.position; // Ensure the item is positioned correctly
-        item.transform.rotation = equipWeaponPoint.rotation; // Ensure the item is oriented correctly
+        item.transform.position = equipPoint.position; // Ensure the item is positioned correctly
+        item.transform.rotation = equipPoint.rotation; // Ensure the item is oriented correctly
 
-        item.transform.parent = equipWeaponPoint; // Parent the item to the equip point for proper positioning
+        item.transform.parent = equipPoint; // Parent the item to the equip point for proper positioning
 
         Debug.Log("Equipped new item: " + _equippedItem.gameObject.name);
     }
