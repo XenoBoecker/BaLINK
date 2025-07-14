@@ -103,6 +103,8 @@ public class PlayerInteractor : MonoBehaviour
 
             item.transform.rotation = Quaternion.Lerp(item.transform.rotation, equipPoint.rotation, i / equipDuration);
 
+            item.transform.localScale = Vector3.Lerp(item.transform.localScale, equipPoint.localScale, i / equipDuration);
+
             yield return null;
         }
 
