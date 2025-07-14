@@ -322,6 +322,7 @@ Transform:
   m_Children:
   - {fileID: 3261740494500134418}
   - {fileID: 7732778752928188748}
+  - {fileID: 422751315363438362}
   - {fileID: 4983206654861611094}
   m_Father: {fileID: 4798498294483970}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -409,7 +410,7 @@ MonoBehaviour:
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
   m_Cameras: []
-  m_RendererIndex: -1
+  m_RendererIndex: 1
   m_VolumeLayerMask:
     serializedVersion: 2
     m_Bits: 1
@@ -436,6 +437,37 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!1 &438071477255934166
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 422751315363438362}
+  m_Layer: 0
+  m_Name: NoteEquipPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &422751315363438362
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438071477255934166}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.68977785, y: 0.06692119, z: 0.06428629, w: 0.71804965}
+  m_LocalPosition: {x: 0.135, y: -0.071, z: 0.168}
+  m_LocalScale: {x: 0.38906696, y: 0.38906696, z: 0.38906696}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 4604844861165778}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2253869670485175296
 GameObject:
   m_ObjectHideFlags: 0
@@ -1063,6 +1095,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2049
   equipWeaponPoint: {fileID: 7732778752928188748}
+  equipNotePoint: {fileID: 422751315363438362}
   equipDuration: 0.5
 --- !u!1 &8398909189482118274
 GameObject:
