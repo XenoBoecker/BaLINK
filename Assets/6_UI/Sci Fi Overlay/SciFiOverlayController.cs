@@ -6,6 +6,7 @@ public class SciFiOverlayController : MonoBehaviour
 {
     [SerializeField] Material _effectMaterial;
     [SerializeField] string _effectKeyword = "_IsActive";
+    [SerializeField] bool _enableOnUpdate = false;
 
     private EquippedItem _equippedItem;
 
@@ -29,6 +30,18 @@ public class SciFiOverlayController : MonoBehaviour
             {
                 ActivateEffect();
             }
+        }
+    }
+
+    private void Update()
+    {
+        if (_enableOnUpdate)
+        {
+            _effectMaterial.SetFloat(_effectKeyword, 1.0f);
+        }
+        else
+        {
+            _effectMaterial.SetFloat(_effectKeyword, 0.0f);
         }
     }
 

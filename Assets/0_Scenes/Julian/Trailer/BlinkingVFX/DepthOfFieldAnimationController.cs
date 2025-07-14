@@ -6,6 +6,7 @@ using UnityEngine.Rendering.Universal;
 public class DepthOfFieldAnimationController : MonoBehaviour
 {
     [SerializeField] bool _active;
+    [SerializeField] bool _overwriteFocusDistance = false;
     [SerializeField] float _focusDistance = 1;
     [SerializeField] Transform _focusObject;
     [SerializeField] Volume _volume;
@@ -23,6 +24,7 @@ public class DepthOfFieldAnimationController : MonoBehaviour
             _toggle = true;
             _volume.profile.TryGet(out _dof);
             _dof.focusDistance.value = GetFocusDistance();
+            Debug.Log("DOF is running " + GetFocusDistance());
             return;
         }
 
@@ -34,6 +36,11 @@ public class DepthOfFieldAnimationController : MonoBehaviour
         }
     }
 
+    private void FixedUpdate()
+    {
+        Update();
+    }
+
     private void OnDisable()
     {
         _volume.profile.TryGet(out _dof);
@@ -42,13 +49,13 @@ public class DepthOfFieldAnimationController : MonoBehaviour
 
     private float GetFocusDistance()
     {
-        if (_focusObject == null)
+        if (_focusObject == null || _overwriteFocusDistance)
         {
             return _focusDistance;
         }
         else
         {
-            return Vector3.Distance(transform.position, _focusObject.transform.position);
+            return Vector3.Distance(transform.position, _focusObject.transform.position); //new Vector3(0, 1.452f, 52.229f));
         }
     }
 }

@@ -1,6 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer))]
+[ExecuteInEditMode] 
 public class LineRendererPointController : MonoBehaviour
 {
     [SerializeField] private Transform[] _linePointTargets;
