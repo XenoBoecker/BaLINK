@@ -3,6 +3,14 @@ using UnityEngine;
 
 public class EquippedItem : MonoBehaviour
 {
+    public enum ItemType
+    {
+        Weapon,
+        Note
+    }
+    [SerializeField] ItemType type;
+    public ItemType Type => type;
+
     private int _usedCount; // Tracks if the item has been used in this game session
     public int usedCount => _usedCount;
     public bool HasBeenUsedThisGame => _usedCount != 0;
@@ -32,5 +40,22 @@ public class EquippedItem : MonoBehaviour
     public void RemoveCurrentryEquippedItem()
     {
         FindAnyObjectByType<PlayerInteractor>().TakeAwayEquippedItem();
+    }
+
+    private void OnDestroy()
+    {
+        // Ensure the item is removed from the player interactor when destroyed
+        if (IsEquipped)
+        {
+            RemoveCurrentryEquippedItem();
+        }
+    }
+
+    private void OnDisable()
+    {
+        if(IsEquipped)
+        {
+            RemoveCurrentryEquippedItem();
+        }
     }
 }
