@@ -1589,6 +1589,7 @@ Transform:
   m_Children:
   - {fileID: 496330779}
   - {fileID: 1570991967}
+  - {fileID: 1841297323}
   - {fileID: 2007259956}
   - {fileID: 1647382734}
   m_Father: {fileID: 96611965}
@@ -21793,7 +21794,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 2007259956}
+    m_TransformParent: {fileID: 140207848}
     m_Modifications:
     - target: {fileID: 6417487773191270398, guid: a04fbd15f508ba44e8adc6184b793ea9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -21813,15 +21814,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6417487773191270398, guid: a04fbd15f508ba44e8adc6184b793ea9, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6417487773191270398, guid: a04fbd15f508ba44e8adc6184b793ea9, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6417487773191270398, guid: a04fbd15f508ba44e8adc6184b793ea9, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 6417487773191270398, guid: a04fbd15f508ba44e8adc6184b793ea9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -21841,11 +21842,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9105517075508343059, guid: a04fbd15f508ba44e8adc6184b793ea9, type: 3}
       propertyPath: _center.x
-      value: -166.40007
+      value: 367.19992
       objectReference: {fileID: 0}
     - target: {fileID: 9105517075508343059, guid: a04fbd15f508ba44e8adc6184b793ea9, type: 3}
       propertyPath: _center.y
-      value: -527.19995
+      value: 176.80006
       objectReference: {fileID: 0}
     - target: {fileID: 9105517075508343059, guid: a04fbd15f508ba44e8adc6184b793ea9, type: 3}
       propertyPath: _entryNodeId
@@ -22017,11 +22018,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9105517075508343059, guid: a04fbd15f508ba44e8adc6184b793ea9, type: 3}
       propertyPath: _nodes.Array.data[0]._position.x
-      value: -18.399994
+      value: -23.199997
       objectReference: {fileID: 0}
     - target: {fileID: 9105517075508343059, guid: a04fbd15f508ba44e8adc6184b793ea9, type: 3}
       propertyPath: _nodes.Array.data[0]._position.y
-      value: -24.800018
+      value: 9.599983
       objectReference: {fileID: 0}
     - target: {fileID: 9105517075508343059, guid: a04fbd15f508ba44e8adc6184b793ea9, type: 3}
       propertyPath: _nodes.Array.data[1]._isUnfolded
@@ -22041,11 +22042,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9105517075508343059, guid: a04fbd15f508ba44e8adc6184b793ea9, type: 3}
       propertyPath: _nodes.Array.data[2]._position.x
-      value: 250.4
+      value: 236.79999
       objectReference: {fileID: 0}
     - target: {fileID: 9105517075508343059, guid: a04fbd15f508ba44e8adc6184b793ea9, type: 3}
       propertyPath: _nodes.Array.data[2]._position.y
-      value: 255.2
+      value: 249.59999
       objectReference: {fileID: 0}
     - target: {fileID: 9105517075508343059, guid: a04fbd15f508ba44e8adc6184b793ea9, type: 3}
       propertyPath: _nodes.Array.data[3]._isUnfolded
@@ -22645,7 +22646,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9105517075508343059, guid: a04fbd15f508ba44e8adc6184b793ea9, type: 3}
       propertyPath: '_nodes.Array.data[0]._nextNodeIds.Array.data[0]'
-      value: 6500
+      value: 4053
       objectReference: {fileID: 0}
     - target: {fileID: 9105517075508343059, guid: a04fbd15f508ba44e8adc6184b793ea9, type: 3}
       propertyPath: '_nodes.Array.data[1]._nextNodeIds.Array.data[0]'
@@ -22713,7 +22714,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9105517075508343059, guid: a04fbd15f508ba44e8adc6184b793ea9, type: 3}
       propertyPath: '_nodes.Array.data[17]._nextNodeIds.Array.data[0]'
-      value: -1
+      value: 6500
       objectReference: {fileID: 0}
     - target: {fileID: 9105517075508343059, guid: a04fbd15f508ba44e8adc6184b793ea9, type: 3}
       propertyPath: '_nodes.Array.data[18]._nextNodeIds.Array.data[0]'
@@ -26115,7 +26116,6 @@ Transform:
   - {fileID: 1926578451}
   - {fileID: 1977677322}
   - {fileID: 2033388296}
-  - {fileID: 1841297323}
   m_Father: {fileID: 140207848}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2015179704 stripped
