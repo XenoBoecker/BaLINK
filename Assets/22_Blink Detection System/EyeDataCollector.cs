@@ -34,18 +34,25 @@ public class EyeDataCollector : MonoBehaviour
     {
         if (landmarks.Count < 468) return float.NaN;
 
-        Vector2 insideCorner = NormalizedLandmarkToVector2(landmarks[lookupTable[0]]);
-        Vector2 outsideCorner = NormalizedLandmarkToVector2(landmarks[lookupTable[1]]);
-        Vector2 insideUp = NormalizedLandmarkToVector2(landmarks[lookupTable[2]]);
-        Vector2 insideDown = NormalizedLandmarkToVector2(landmarks[lookupTable[3]]);
-        Vector2 outsideUp = NormalizedLandmarkToVector2(landmarks[lookupTable[4]]);
-        Vector2 outsideDown = NormalizedLandmarkToVector2(landmarks[lookupTable[5]]);
+        try
+        {
+            Vector2 insideCorner = NormalizedLandmarkToVector2(landmarks[lookupTable[0]]);
+            Vector2 outsideCorner = NormalizedLandmarkToVector2(landmarks[lookupTable[1]]);
+            Vector2 insideUp = NormalizedLandmarkToVector2(landmarks[lookupTable[2]]);
+            Vector2 insideDown = NormalizedLandmarkToVector2(landmarks[lookupTable[3]]);
+            Vector2 outsideUp = NormalizedLandmarkToVector2(landmarks[lookupTable[4]]);
+            Vector2 outsideDown = NormalizedLandmarkToVector2(landmarks[lookupTable[5]]);
 
-        float innerHeight = (insideUp - insideDown).magnitude;
-        float outerHeight = (outsideUp - outsideDown).magnitude;
-        float length = (insideCorner - outsideCorner).magnitude;
+            float innerHeight = (insideUp - insideDown).magnitude;
+            float outerHeight = (outsideUp - outsideDown).magnitude;
+            float length = (insideCorner - outsideCorner).magnitude;
 
-        return (innerHeight + outerHeight) / (2 * length);
+            return (innerHeight + outerHeight) / (2 * length);
+        } 
+        catch
+        {
+            return float.NaN;
+        }
     }
 
     private static Vector2 NormalizedLandmarkToVector2(NormalizedLandmark inLandmark)

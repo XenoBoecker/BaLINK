@@ -1,6 +1,7 @@
 using UnityEngine;
 
 [NodeElement(NodeType.Effect)]
+[RequireComponent(typeof(PlayerObserver))]
 public class FreezePlayer : Effect
 {
     [SerializeField] private bool _targetState;
@@ -12,13 +13,13 @@ public class FreezePlayer : Effect
 
     public override void TriggerEffect()
     {
-        if (Player.TryGetComponent(out PlayerFreezeController controller))
+        if (ReferencedObject.TryGetComponent(out PlayerObserver playerObserver))
         {
-            controller.SetFreeze(_targetState);
+            playerObserver.SetFreeze(_targetState);
         } 
         else
         {
-            throw new System.Exception("Could not find a FreezePlayerController component attached to the player");
+            throw new System.Exception("Could not find a PlayerObserver component");
         }
     }
 }

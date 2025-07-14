@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4288888328552598909}
   - component: {fileID: 8246296217048274936}
   - component: {fileID: 8864957447272505942}
+  - component: {fileID: 18889895168115441}
   m_Layer: 5
   m_Name: CrossbowTargetCounter Canvas
   m_TagString: Untagged
@@ -75,12 +76,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -122,7 +123,21 @@ MonoBehaviour:
   - {fileID: 2461316751518007936}
   - {fileID: 4471286474565184062}
   - {fileID: 1669702288690306922}
-  targetDestroyedAlphaValue: 0.1
+  targetDestroyedAlphaValue: 0.05
+--- !u!114 &18889895168115441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399446661697451251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4869f85af7654b54595c94c893c6c929, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _equippedItem: {fileID: 0}
+  _ui: {fileID: 7769207944423580884}
 --- !u!1 &1959164805517683777
 GameObject:
   m_ObjectHideFlags: 0
@@ -464,8 +479,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 10.650024, y: -353.15002}
-  m_SizeDelta: {x: -1196.8999, y: -980.89996}
+  m_AnchoredPosition: {x: 0, y: 350.22498}
+  m_SizeDelta: {x: -1196.8999, y: -980.44995}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8123498957590288772
 CanvasRenderer:

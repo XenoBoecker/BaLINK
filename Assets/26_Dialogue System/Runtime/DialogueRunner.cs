@@ -1,6 +1,7 @@
+using GameEvents;
 using System;
 using System.Collections;
-using System.Linq;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -13,6 +14,8 @@ public class DialogueRunner : MonoBehaviour
     private bool _isPlaying;
     public bool IsPlaying => _isPlaying;
 
+    private List<QueuedDialogue> _queuedDialogues = new List<QueuedDialogue>();
+
     private void Awake()
     {
         _source = GetComponent<AudioSource>();
@@ -22,7 +25,8 @@ public class DialogueRunner : MonoBehaviour
     {
         if (IsPlaying)
         {
-            throw new Exception("Tried to play two dialogues at the same time");
+            //_queuedDialogues.Add(new QueuedDialogue(sequence, firstIndex, lastIndex));
+            return;
         }
         StartCoroutine(PlaySequenceSegment(sequence, firstIndex, lastIndex));
     }
@@ -39,6 +43,7 @@ public class DialogueRunner : MonoBehaviour
             ShowDialogueText(line, 0);
             StartCoroutine(ClearDialogueText(line.Clip.length));
             _source.clip = line.Clip;
+            _source.volume = SaveSystem.Data.DialogueVolume;
             _source.Play();
         }
     }
@@ -74,6 +79,14 @@ public class DialogueRunner : MonoBehaviour
                 yield return new WaitForSeconds(sequence.Lines[i].DelayAfterPlayingLine);
             }
         }
+
+        if (_queuedDialogues.Count > 0)
+        {
+            StartCoroutine(PlaySequenceSegment(_queuedDialogues[0].Sequence, _queuedDialogues[0].FirstIndex, _queuedDialogues[0].LastIndex));
+            _queuedDialogues.RemoveAt(0);
+            yield break;
+        }
+
         _isPlaying = false;
     }
 }

@@ -9,11 +9,22 @@ public class GraphEditor : Editor
 
     public override void OnInspectorGUI()
     {
+        Graph graph = (target as Graph);
+
         if (GUILayout.Button("Edit"))
         {
-            GraphEditorWindow.CreateWindow((target as Graph));
+            GraphEditorWindow.CreateWindow(graph);
         }
 
+
+        if (GUILayout.Button("Repair"))
+        {
+            for (int i = 0; i < graph.Nodes.Length; i++)
+            {
+                graph.Nodes[i].RemoveNoneElements();
+            }
+        }
+        
         base.OnInspectorGUI();
 /*
         Graph graph = target as Graph;

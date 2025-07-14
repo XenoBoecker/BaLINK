@@ -14,12 +14,15 @@ public class TimerBelowValue : Condition
             _bombTimerObserver = ReferencedObject.GetComponent<BombTimerObserver>();
         }
 
-        if(_bombTimerObserver.GetTimeLeft() < _checkValue != _invertCondition)
+        // Debug.Log($"Checking if timer is below {_checkValue} with current value: {_bombTimerObserver.GetTimeLeft()}");
+
+        if (_bombTimerObserver.GetTimeLeft() < _checkValue != _invertCondition)
         {
-            return _invertCondition != false;
+            Debug.Log($"Timer is below {_checkValue}: {_bombTimerObserver.GetTimeLeft()}");
+            return true;
         }
 
-        return _invertCondition != true;
+        return false;
     }
 
     public override string GetName()

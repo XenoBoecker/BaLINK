@@ -10,7 +10,6 @@ public class DropItem : Effect
         {
             item.SetIsEquipped(false);
         }
-        Destroy(ReferencedObject);
     }
     
     public override string GetName()
