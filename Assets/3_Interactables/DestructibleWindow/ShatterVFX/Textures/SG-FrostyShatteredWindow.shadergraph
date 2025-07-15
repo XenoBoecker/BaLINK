@@ -348,6 +348,9 @@
         },
         {
             "m_Id": "98f201f08d5f4815913f898dfe7a92cf"
+        },
+        {
+            "m_Id": "ac8d1a5ee0c54d15a0fad469f7999cad"
         }
     ],
     "m_GroupDatas": [
@@ -943,7 +946,7 @@
             },
             "m_InputSlot": {
                 "m_Node": {
-                    "m_Id": "e33039029edd4bffb07d3da6b14f0d71"
+                    "m_Id": "ac8d1a5ee0c54d15a0fad469f7999cad"
                 },
                 "m_SlotId": 0
             }
@@ -1238,6 +1241,20 @@
             "m_InputSlot": {
                 "m_Node": {
                     "m_Id": "21675cb96cef48e4bd3375ecf2e8daa7"
+                },
+                "m_SlotId": 0
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "ac8d1a5ee0c54d15a0fad469f7999cad"
+                },
+                "m_SlotId": 1
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "e33039029edd4bffb07d3da6b14f0d71"
                 },
                 "m_SlotId": 0
             }
@@ -1692,8 +1709,8 @@
     "m_ObjectId": "008f94f1eb4e4fdcab194ca310358283",
     "m_Title": "Ice Mask",
     "m_Position": {
-        "x": -6556.66650390625,
-        "y": -26.66650390625
+        "x": -6555.99951171875,
+        "y": -26.999998092651368
     }
 }
 
@@ -4036,7 +4053,7 @@
     "m_ShaderOutputName": "A",
     "m_StageCapability": 3,
     "m_Value": {
-        "e00": 0.0,
+        "e00": 1.0,
         "e01": 0.0,
         "e02": 0.0,
         "e03": 0.0,
@@ -5893,7 +5910,7 @@
     "m_Hidden": false,
     "m_ShaderOutputName": "Smoothness",
     "m_StageCapability": 2,
-    "m_Value": 1.0,
+    "m_Value": 0.0,
     "m_DefaultValue": 0.5,
     "m_Labels": []
 }
@@ -6484,6 +6501,30 @@
         "m_SerializableColors": []
     },
     "m_SerializedDescriptor": "SurfaceDescription.BaseColor"
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.DynamicVectorMaterialSlot",
+    "m_ObjectId": "7589d9cee01f4afcadc874572d65a5ad",
+    "m_Id": 0,
+    "m_DisplayName": "",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "",
+    "m_StageCapability": 3,
+    "m_Value": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+    }
 }
 
 {
@@ -8123,9 +8164,9 @@
     "m_ShaderOutputName": "Emission",
     "m_StageCapability": 2,
     "m_Value": {
-        "x": 0.0,
-        "y": 0.0,
-        "z": 0.0
+        "x": 0.5,
+        "y": 0.5,
+        "z": 0.5
     },
     "m_DefaultValue": {
         "x": 0.0,
@@ -8369,6 +8410,42 @@
         "y": 0.0,
         "z": 0.0,
         "w": 0.0
+    }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.RedirectNodeData",
+    "m_ObjectId": "ac8d1a5ee0c54d15a0fad469f7999cad",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "Redirect Node",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": 801.083740234375,
+            "y": 458.7774963378906,
+            "width": 0.0,
+            "height": 0.0
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "7589d9cee01f4afcadc874572d65a5ad"
+        },
+        {
+            "m_Id": "e384823c598d441f968242307924bc83"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_DismissedVersion": 0,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
     }
 }
 
@@ -10347,6 +10424,30 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.DynamicVectorMaterialSlot",
+    "m_ObjectId": "e384823c598d441f968242307924bc83",
+    "m_Id": 1,
+    "m_DisplayName": "",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "",
+    "m_StageCapability": 3,
+    "m_Value": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "e5caa2499a844ed2a43a722fcc81b8e9",
     "m_Id": 6,
@@ -10798,7 +10899,7 @@
     "m_ObjectId": "edb11b4e24f94ed8b1ddcffe588803d9",
     "m_Title": "Shard Selection Mask",
     "m_Position": {
-        "x": -520.6666870117188,
+        "x": -520.0000610351563,
         "y": -3123.999755859375
     }
 }
