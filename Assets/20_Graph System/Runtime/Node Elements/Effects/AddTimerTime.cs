@@ -18,4 +18,3 @@ public class AddTimerTime : Effect
         return "Add time to timer";
     }
 }
-
