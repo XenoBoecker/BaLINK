@@ -32,7 +32,6 @@ public class Bomb : MonoBehaviour
     public event Action OnWrongButtonPressed;
     public event Action OnCorrectButtonPressed;
     public event Action OnBombDefused;
-    public event Action OnBombExploded;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -101,11 +100,6 @@ public class Bomb : MonoBehaviour
         {
             return;
         }
-
-        if (timeLeft <= 0)
-        {
-            Explode();
-        }
     }
 
     public void StartBombTimer()
@@ -146,18 +140,12 @@ public class Bomb : MonoBehaviour
         OnBombDefused?.Invoke();
     }
 
-    private void Explode()
-    {
-        Debug.Log("Bomb exploded: " + gameObject.name);
-
-        OnBombExploded?.Invoke();
-    }
-
     private void OnDestroy()
     {
         for (int i = 0; i < correctButtons.Length; i++)
         {
             correctButtons[i].OnInteracted -= CheckBombDefused;
+            correctButtons[i].OnInteracted -= OnCorrectButtonPressed;
         }
 
         for (int i = 0; i < wrongButtons.Length; i++)
