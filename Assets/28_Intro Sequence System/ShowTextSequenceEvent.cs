@@ -19,6 +19,7 @@ public class ShowTextSequenceEvent : IntroSequenceEvent
     bool _sequenceOver = false;
     int _textIndex = 0;
     Color _originalTextColor;
+    bool _isShowingText = false;
 
     public override void TriggerSequenceEvent()
     {
@@ -40,15 +41,24 @@ public class ShowTextSequenceEvent : IntroSequenceEvent
 
     private IEnumerator ShowText()
     {
+        if(_isShowingText)
+        {
+            Debug.LogError("ShowTextSequenceEvent is already showing text. Skipping this call. This should not happen I think. Sometimes the Coroutine is started multiple times, causing it to increase the _textIndex to a too high value", this);
+            yield break;
+        }
+
+        _isShowingText = true;
+
         string text = "";
         _textObject.color = _originalTextColor;
 
         int counter = 0;
+
         foreach (char c in _textsToShow[_textIndex])
         {
             text += c;
             SetText(text);
-            
+
             if (counter % 2 == 0 && !char.IsWhiteSpace(c) && _typingSounds != null && _typingSounds.Length != 0)
             {
                 ObjectEvents.PlayAudio(_typingSounds[Random.Range(0, _typingSounds.Length)], Vector3.zero);
@@ -68,14 +78,18 @@ public class ShowTextSequenceEvent : IntroSequenceEvent
         _textObject.color = new Color(_originalTextColor.r, _originalTextColor.g, _originalTextColor.b, 0);
 
         _textIndex++;
+
         if (_textIndex == _textsToShow.Length)
         {
             yield return new WaitForSeconds(_delayBeforeEffectEnd);
             _sequenceOver = true;
+            _isShowingText = false;
             yield break;
         }
 
         yield return new WaitForSeconds(_delayBetweenLines);
+
+        _isShowingText = false;
 
         StartCoroutine(ShowText());
     }
