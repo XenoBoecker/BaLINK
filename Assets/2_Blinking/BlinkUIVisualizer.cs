@@ -44,4 +44,9 @@ public class BlinkUIVisualizer : MonoBehaviour
             audioSource.PlayOneShot(blinkSound);
         }
     }
+
+    private void OnDestroy()
+    {
+        InputEvents.onPlayerBlinked -= OnPlayerBlinked;
+    }
 }

@@ -34,4 +34,12 @@ public class BombLED : MonoBehaviour
             ledMeshRenderer.material = ledOnMaterial; // Change the material to indicate the LED is on
         }
     }
+
+    private void OnDestroy()
+    {
+        if (interactable != null)
+        {
+            interactable.OnInteracted -= TurnOnLEDLight; // Unsubscribe to avoid memory leaks
+        }
+    }
 }
