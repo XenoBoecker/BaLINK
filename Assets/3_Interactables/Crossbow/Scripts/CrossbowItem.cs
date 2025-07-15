@@ -29,6 +29,11 @@ public class CrossbowItem : EquippedItem
     private bool _readyToFire = false;
     private GameObject _spawnedArrow;
 
+    private void Start()
+    {
+        Reload();
+    }
+
     private void Update()
     {
         _inputBufferTimer -= Time.deltaTime;
