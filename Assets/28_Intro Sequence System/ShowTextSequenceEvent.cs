@@ -15,6 +15,7 @@ public class ShowTextSequenceEvent : IntroSequenceEvent
     [SerializeField] private float _textFadeSpeed;
     [SerializeField] private float _delayBetweenLines;
     [SerializeField] private float _delayBeforeEffectEnd;
+    [SerializeField] private bool _fadeOutText = true;
     [SerializeField] private AudioSystemClip[] _typingSounds;
     bool _sequenceOver = false;
     int _textIndex = 0;
@@ -65,29 +66,32 @@ public class ShowTextSequenceEvent : IntroSequenceEvent
             }
 
             counter++;
-            yield return new WaitForSeconds(1f / _textRevealSpeed);
+            yield return new WaitForSecondsRealtime(1f / _textRevealSpeed);
         }
 
-        yield return new WaitForSeconds(_delayBeforeFade);
+        yield return new WaitForSecondsRealtime(_delayBeforeFade);
 
-        for (float i = 0; i < _textFadeSpeed; i+= Time.deltaTime)
+        if (_fadeOutText)
         {
-            _textObject.color = new Color(_originalTextColor.r, _originalTextColor.g, _originalTextColor.b, 1-(i / _textFadeSpeed));
-            yield return null;
+            for (float i = 0; i < _textFadeSpeed; i+= Time.unscaledDeltaTime)
+            {
+                _textObject.color = new Color(_originalTextColor.r, _originalTextColor.g, _originalTextColor.b, 1-(i / _textFadeSpeed));
+                yield return null;
+            }
+            _textObject.color = new Color(_originalTextColor.r, _originalTextColor.g, _originalTextColor.b, 0);
         }
-        _textObject.color = new Color(_originalTextColor.r, _originalTextColor.g, _originalTextColor.b, 0);
 
         _textIndex++;
 
         if (_textIndex == _textsToShow.Length)
         {
-            yield return new WaitForSeconds(_delayBeforeEffectEnd);
+            yield return new WaitForSecondsRealtime(_delayBeforeEffectEnd);
             _sequenceOver = true;
             _isShowingText = false;
             yield break;
         }
 
-        yield return new WaitForSeconds(_delayBetweenLines);
+        yield return new WaitForSecondsRealtime(_delayBetweenLines);
 
         _isShowingText = false;
 

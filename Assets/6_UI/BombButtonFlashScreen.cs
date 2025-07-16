@@ -17,15 +17,16 @@ public class BombButtonFlashScreen : MonoBehaviour
 
     private void Awake()
     {
-        _bomb = FindAnyObjectByType<Bomb>();
-        _bombTimerTextUI = FindAnyObjectByType<BombUI>();
     }
+
     private void Start()
     {
+        _bomb = FindAnyObjectByType<Bomb>();
+        _bombTimerTextUI = FindAnyObjectByType<BombUI>();
         _bomb.OnWrongButtonPressed += WrongButtonPressed;
         _bomb.OnCorrectButtonPressed += CorrectButtonPressed;
 
-        correctButtonPanel.alpha = 0f; // Ensure the panel starts hidden
+        //correctButtonPanel.alpha = 0f; // Ensure the panel starts hidden
         wrongButtonPanel.alpha = 0f; // Ensure the panel starts hidden
     }
 
