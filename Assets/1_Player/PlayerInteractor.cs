@@ -75,8 +75,8 @@ public class PlayerInteractor : MonoBehaviour
     {
         if (_equippedItem != null)
         {
+            TakeAwayEquippedItem();
             Debug.LogWarning("Already equipped item");
-            return;
         }
 
         StartCoroutine(EquipItemCoroutine(item));
