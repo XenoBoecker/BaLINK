@@ -197,4 +197,12 @@ public class Target : MonoBehaviour
 
         currentHoverGoalHeight = newHoverGoalHeight;
     }
+
+    private void OnDestroy()
+    {
+        if (hitable != null)
+        {
+            hitable.OnHit -= DisableMovement;
+        }
+    }
 }

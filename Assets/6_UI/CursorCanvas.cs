@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Canvas))]
@@ -50,9 +52,10 @@ public class CursorCanvas : MonoBehaviour
         else if (pauseMenu != null && pauseMenu.IsPaused)
         {
             SetMovingCursor(FollowMouseCursor.CursorType.Pause);
+            ShowHoverInteractUI(IsMouseOverUIButton());
             return;
         }
-        else if (ItemEquipped())
+        else if (WeaponEquipped())
         {
             SetMovingCursor(FollowMouseCursor.CursorType.None);
             fixedCursorImage.gameObject.SetActive(false);
@@ -133,10 +136,10 @@ public class CursorCanvas : MonoBehaviour
         }
     }
 
-    private bool ItemEquipped()
+    private bool WeaponEquipped()
     {
         if (playerInteractor == null) return false;
-        return playerInteractor.IsItemEquipped;
+        return playerInteractor.IsItemEquipped(EquippedItem.ItemType.Weapon);
     }
 
     private bool PlayerIsInMinigame()
@@ -146,8 +149,28 @@ public class CursorCanvas : MonoBehaviour
 
     bool IsMouseOverUIButton()
     {
-        return UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject() || UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject(-1);
+        PointerEventData pointerData = new PointerEventData(EventSystem.current)
+        {
+            position = Input.mousePosition
+        };
 
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointerData, results);
+
+        foreach (var result in results)
+        {
+            if (result.gameObject.GetComponent<Button>() != null)
+            {
+                return true;
+            }
+            else
+            {
+                Debug.Log($"Raycast hit: {result.gameObject.name} but it is not a Button.");
+            }
+        }
+
+        return false;
+        // UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject() || UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject(-1);
     }
 
     private bool GameHasCrashed()

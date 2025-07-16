@@ -1,6 +1,7 @@
 using ECM.Components;
 using ECM.Controllers;
 using GameEvents;
+using System.Collections;
 using UnityEngine;
 
 public class Hacks : MonoBehaviour
@@ -67,15 +68,19 @@ public class Hacks : MonoBehaviour
     {
         Debug.Log("Dist: " + currentTeleportDistance + " | Vector: " + teleportVector);
 
-        _playerFreezeController.SetFreeze(true);
-
-        //_characterMovement.transform.position += teleportVector; // Teleport the player
-        _characterMovement.transform.position = Vector3.zero;
-
-        _playerFreezeController.SetFreeze(false);
+        
+        StartCoroutine(TeleportRoutine(teleportVector));
 
 
         currentTeleportDistance += teleportDistAdder;
         teleportDistResetTimer = teleportDistResetTime; // Reset the timer
+    }
+
+    IEnumerator TeleportRoutine(Vector3 teleportVector)
+    {
+        _playerFreezeController.SetFreeze(true);
+        _characterMovement.transform.position += teleportVector; // Teleport the player
+        yield return new WaitForSeconds(0.1f); // Small delay to ensure the teleport is processed
+        _playerFreezeController.SetFreeze(false);
     }
 }

@@ -191,4 +191,9 @@ public class NumberLockCameraZoom : Interactable
         isZoomedIn = false;
         isZooming = false;
     }
+
+    private void OnDestroy()
+    {
+        numberLock.OnNumberLockOpened -= ZoomOut; // Unsubscribe from the NumberLock opened event
+    }
 }

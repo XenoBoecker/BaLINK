@@ -19,4 +19,12 @@ public class WinScreen : MonoBehaviour
     {
         winScreen.SetActive(true);
     }
+
+    private void OnDestroy()
+    {
+        if (bomb != null)
+        {
+            bomb.OnBombDefused -= ShowWinScreen;
+        }
+    }
 }

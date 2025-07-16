@@ -115,4 +115,8 @@ public class UIVersionNumber : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        InputEvents.onPlayerBlinked -= OnPlayerBlinked;
+    }
 }
