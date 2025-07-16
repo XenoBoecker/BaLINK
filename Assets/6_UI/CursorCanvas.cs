@@ -21,7 +21,6 @@ public class CursorCanvas : MonoBehaviour
     int startCanvasSortingOrder;
 
     bool gameHasCrashed = false;
-    bool isInThanksScreen = false;
 
     private void Awake()
     {
@@ -46,10 +45,11 @@ public class CursorCanvas : MonoBehaviour
     void UpdateUI()
     {
         Cursor.visible = false;
-        if (isInThanksScreen)
+        if (IsInThanksScreen())
         {
             SetMovingCursor(FollowMouseCursor.CursorType.Menu);
             ShowHoverInteractUI(IsMouseOverUIButton());
+            return;
         }
         else if (GameHasCrashed())
         {
@@ -110,12 +110,15 @@ public class CursorCanvas : MonoBehaviour
         }
         else
         {
-            if (isInThanksScreen)
+            if (IsInThanksScreen())
             {
                 cursorCanvas.sortingOrder = 200;
             }
+            else
+            {
+                cursorCanvas.sortingOrder = startCanvasSortingOrder;
+            }
             movingCursorImage.rectTransform.rotation = Quaternion.identity; // Reset rotation for other cursor types
-            cursorCanvas.sortingOrder = startCanvasSortingOrder;
         }
 
         if (cursorType == FollowMouseCursor.CursorType.None)
@@ -175,10 +178,6 @@ public class CursorCanvas : MonoBehaviour
             {
                 return true;
             }
-            else
-            {
-                Debug.Log($"Raycast hit: {result.gameObject.name} but it is not a Button.");
-            }
         }
 
         return false;
@@ -193,14 +192,12 @@ public class CursorCanvas : MonoBehaviour
         {
             gameHasCrashed = true;
         }
-        else
-        {
-            if (gameHasCrashed)
-            {
-                isInThanksScreen = true;
-            }
-        }
 
         return gameHasCrashed;
+    }
+
+    bool IsInThanksScreen()
+    {
+        return gameHasCrashed && (crashScreen == null || !crashScreen.MenuIsVisible);
     }
 }
