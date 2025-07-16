@@ -53,7 +53,7 @@ public class NumberLockCameraZoom : Interactable
 
     private void Update()
     {
-        if (_inputActions.Player.Cancel.WasPressedThisFrame())
+        if (_inputActions.Player.ExitNumberLock.WasPressedThisFrame())
         {
             if (isZoomedIn)
             {
