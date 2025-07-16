@@ -14,7 +14,7 @@ public class FollowMouseCursor : MonoBehaviour
     {
         None,
         NumberLock,
-        Pause,
+        Menu,
         Crash
     }
 
@@ -44,7 +44,7 @@ public class FollowMouseCursor : MonoBehaviour
                 _cursorObject.SetActive(true); // Show the cursor object
                 _cursorImage.sprite = _numberLockCursor;
                 break;
-            case CursorType.Pause:
+            case CursorType.Menu:
                 _cursorObject.SetActive(true); // Show the cursor object
                 _cursorImage.sprite = _pauseCursor;
                 break;
