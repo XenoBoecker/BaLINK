@@ -457,6 +457,7 @@ MonoBehaviour:
   _textFadeSpeed: 0.3
   _delayBetweenLines: 0.2
   _delayBeforeEffectEnd: 0
+  _fadeOutText: 1
   _typingSounds:
   - {fileID: 11400000, guid: 5e6a1f74dc1672042ba548ddfaf2b3fe, type: 2}
   - {fileID: 11400000, guid: 53ae02193c84fa1409dc744118b49000, type: 2}
@@ -1090,6 +1091,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &979157970
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2948805750166696446, guid: b6e06005d97e6f0458b4d185d0a56f11, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.24622
+      objectReference: {fileID: 0}
+    - target: {fileID: 2948805750166696446, guid: b6e06005d97e6f0458b4d185d0a56f11, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2948805750166696446, guid: b6e06005d97e6f0458b4d185d0a56f11, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.21039
+      objectReference: {fileID: 0}
+    - target: {fileID: 2948805750166696446, guid: b6e06005d97e6f0458b4d185d0a56f11, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2948805750166696446, guid: b6e06005d97e6f0458b4d185d0a56f11, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2948805750166696446, guid: b6e06005d97e6f0458b4d185d0a56f11, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2948805750166696446, guid: b6e06005d97e6f0458b4d185d0a56f11, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2948805750166696446, guid: b6e06005d97e6f0458b4d185d0a56f11, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2948805750166696446, guid: b6e06005d97e6f0458b4d185d0a56f11, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2948805750166696446, guid: b6e06005d97e6f0458b4d185d0a56f11, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8103326158640339798, guid: b6e06005d97e6f0458b4d185d0a56f11, type: 3}
+      propertyPath: m_Name
+      value: UI Sound Manager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b6e06005d97e6f0458b4d185d0a56f11, type: 3}
 --- !u!1 &999933975
 GameObject:
   m_ObjectHideFlags: 0
@@ -1424,6 +1482,7 @@ MonoBehaviour:
   _textFadeSpeed: 0.3
   _delayBetweenLines: 0.2
   _delayBeforeEffectEnd: 0
+  _fadeOutText: 1
   _typingSounds:
   - {fileID: 11400000, guid: 5e6a1f74dc1672042ba548ddfaf2b3fe, type: 2}
   - {fileID: 11400000, guid: 53ae02193c84fa1409dc744118b49000, type: 2}
@@ -2212,6 +2271,7 @@ MonoBehaviour:
   _textFadeSpeed: 0.3
   _delayBetweenLines: 0.2
   _delayBeforeEffectEnd: 0
+  _fadeOutText: 1
   _typingSounds:
   - {fileID: 11400000, guid: 5e6a1f74dc1672042ba548ddfaf2b3fe, type: 2}
   - {fileID: 11400000, guid: 53ae02193c84fa1409dc744118b49000, type: 2}
@@ -2602,6 +2662,7 @@ MonoBehaviour:
   _textFadeSpeed: 0.3
   _delayBetweenLines: 0.2
   _delayBeforeEffectEnd: 0
+  _fadeOutText: 1
   _typingSounds:
   - {fileID: 11400000, guid: 5e6a1f74dc1672042ba548ddfaf2b3fe, type: 2}
   - {fileID: 11400000, guid: 53ae02193c84fa1409dc744118b49000, type: 2}
@@ -2664,6 +2725,7 @@ MonoBehaviour:
   _textFadeSpeed: 0.3
   _delayBetweenLines: 0.2
   _delayBeforeEffectEnd: 0
+  _fadeOutText: 1
   _typingSounds:
   - {fileID: 11400000, guid: 5e6a1f74dc1672042ba548ddfaf2b3fe, type: 2}
   - {fileID: 11400000, guid: 53ae02193c84fa1409dc744118b49000, type: 2}
@@ -2743,6 +2805,7 @@ MonoBehaviour:
   _textFadeSpeed: 0.3
   _delayBetweenLines: 0.2
   _delayBeforeEffectEnd: 0.5
+  _fadeOutText: 1
   _typingSounds:
   - {fileID: 11400000, guid: 5e6a1f74dc1672042ba548ddfaf2b3fe, type: 2}
   - {fileID: 11400000, guid: 53ae02193c84fa1409dc744118b49000, type: 2}
@@ -3139,5 +3202,6 @@ SceneRoots:
   - {fileID: 160561222}
   - {fileID: 2085954430}
   - {fileID: 191379825}
+  - {fileID: 979157970}
   - {fileID: 1038746928}
   - {fileID: 2113296727}
