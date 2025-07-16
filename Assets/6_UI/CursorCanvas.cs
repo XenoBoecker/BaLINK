@@ -46,17 +46,16 @@ public class CursorCanvas : MonoBehaviour
     void UpdateUI()
     {
         Cursor.visible = false;
-
-        if (GameHasCrashed())
+        if (isInThanksScreen)
+        {
+            SetMovingCursor(FollowMouseCursor.CursorType.Menu);
+            ShowHoverInteractUI(IsMouseOverUIButton());
+        }
+        else if (GameHasCrashed())
         {
             Debug.Log("Game has crashed, showing crash cursor.");
             SetMovingCursor(FollowMouseCursor.CursorType.Crash);
             return;
-        }
-        else if (isInThanksScreen)
-        {
-            SetMovingCursor(FollowMouseCursor.CursorType.Menu);
-            ShowHoverInteractUI(IsMouseOverUIButton());
         }
         else if (pauseMenu != null && pauseMenu.IsPaused)
         {
