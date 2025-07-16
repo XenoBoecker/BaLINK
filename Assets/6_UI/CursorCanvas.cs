@@ -110,6 +110,10 @@ public class CursorCanvas : MonoBehaviour
         }
         else
         {
+            if (isInThanksScreen)
+            {
+                cursorCanvas.sortingOrder = 200;
+            }
             movingCursorImage.rectTransform.rotation = Quaternion.identity; // Reset rotation for other cursor types
             cursorCanvas.sortingOrder = startCanvasSortingOrder;
         }
