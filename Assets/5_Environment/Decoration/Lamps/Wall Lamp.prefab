@@ -143,7 +143,7 @@ PrefabInstance:
       objectReference: {fileID: -6327637463931616302, guid: ce1e1984daa630b42ae2820043725fa5, type: 3}
     - target: {fileID: 3455845720114481512, guid: b02f31635bf682544961725d17913d86, type: 3}
       propertyPath: m_Name
-      value: SM_WallLamp
+      value: Wall Lamp
       objectReference: {fileID: 0}
     - target: {fileID: 3570047452212809970, guid: b02f31635bf682544961725d17913d86, type: 3}
       propertyPath: m_LocalScale.x
@@ -219,10 +219,34 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6143730791746583328, guid: b02f31635bf682544961725d17913d86, type: 3}
       insertIndex: 0
       addedObject: {fileID: 7986793979710683259}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3455845720114481512, guid: b02f31635bf682544961725d17913d86, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8777989896748127415}
   m_SourcePrefab: {fileID: 100100000, guid: b02f31635bf682544961725d17913d86, type: 3}
 --- !u!4 &2098735053971414207 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6143730791746583328, guid: b02f31635bf682544961725d17913d86, type: 3}
   m_PrefabInstance: {fileID: 5215976457264654239}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7464575287153733367 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3455845720114481512, guid: b02f31635bf682544961725d17913d86, type: 3}
+  m_PrefabInstance: {fileID: 5215976457264654239}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8777989896748127415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7464575287153733367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51562e4c801ef274ba4c91f63ba280d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameObjects:
+  - {fileID: 5768078934634617612}
+  _maxCameraDistance: 25
+  _updateTime: 0.5
