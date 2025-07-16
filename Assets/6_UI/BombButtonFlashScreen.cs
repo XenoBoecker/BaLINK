@@ -47,6 +47,11 @@ public class BombButtonFlashScreen : MonoBehaviour
 
     private System.Collections.IEnumerator FadeInAndOutRoutine(CanvasGroup panel)
     {
+        if(panel == null)
+        {
+            yield break;
+        }
+
         float elapsedTime = 0f;
 
         Color originalColor = timerTextMaterial.GetColor("_FaceColor");
