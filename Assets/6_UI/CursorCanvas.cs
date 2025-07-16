@@ -16,10 +16,12 @@ public class CursorCanvas : MonoBehaviour
     PlayerInteractor playerInteractor;
     PauseMenuController pauseMenu;
     CrashScreenController crashScreen;
+    
 
     int startCanvasSortingOrder;
 
     bool gameHasCrashed = false;
+    bool isInThanksScreen = false;
 
     private void Awake()
     {
@@ -44,8 +46,12 @@ public class CursorCanvas : MonoBehaviour
     void UpdateUI()
     {
         Cursor.visible = false;
-
-        if (GameHasCrashed())
+        if (isInThanksScreen)
+        {
+            SetMovingCursor(FollowMouseCursor.CursorType.Menu);
+            ShowHoverInteractUI(IsMouseOverUIButton());
+        }
+        else if (GameHasCrashed())
         {
             Debug.Log("Game has crashed, showing crash cursor.");
             SetMovingCursor(FollowMouseCursor.CursorType.Crash);
@@ -53,7 +59,7 @@ public class CursorCanvas : MonoBehaviour
         }
         else if (pauseMenu != null && pauseMenu.IsPaused)
         {
-            SetMovingCursor(FollowMouseCursor.CursorType.Pause);
+            SetMovingCursor(FollowMouseCursor.CursorType.Menu);
             ShowHoverInteractUI(IsMouseOverUIButton());
             return;
         }
@@ -77,7 +83,7 @@ public class CursorCanvas : MonoBehaviour
 
         if (playerInteractor == null) // player in main menu
         {
-            SetMovingCursor(FollowMouseCursor.CursorType.Pause);
+            SetMovingCursor(FollowMouseCursor.CursorType.Menu);
 
             ShowHoverInteractUI(IsMouseOverUIButton());
         }
@@ -104,6 +110,10 @@ public class CursorCanvas : MonoBehaviour
         }
         else
         {
+            if (isInThanksScreen)
+            {
+                cursorCanvas.sortingOrder = 200;
+            }
             movingCursorImage.rectTransform.rotation = Quaternion.identity; // Reset rotation for other cursor types
             cursorCanvas.sortingOrder = startCanvasSortingOrder;
         }
@@ -182,6 +192,13 @@ public class CursorCanvas : MonoBehaviour
         if (crashScreen.MenuIsVisible)
         {
             gameHasCrashed = true;
+        }
+        else
+        {
+            if (gameHasCrashed)
+            {
+                isInThanksScreen = true;
+            }
         }
 
         return gameHasCrashed;

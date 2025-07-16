@@ -3,8 +3,12 @@ using UnityEngine;
 public class BombTimerObserver : MonoBehaviour
 {
     Bomb bomb;
-
+    
     private void Awake()
+    {
+    }
+
+    private void Start()
     {
         bomb = FindAnyObjectByType<Bomb>();
     }

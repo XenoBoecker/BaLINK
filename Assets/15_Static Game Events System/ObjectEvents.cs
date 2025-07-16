@@ -16,5 +16,11 @@ namespace GameEvents
         {
             OnPlayAudio?.Invoke(clip, position);
         }
+
+        public static event Action OnWrongButtonPressed;
+        public static void WrongButtonPressed()
+        {
+            OnWrongButtonPressed?.Invoke();
+        }
     }
 }
