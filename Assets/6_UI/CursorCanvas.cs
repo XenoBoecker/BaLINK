@@ -19,6 +19,8 @@ public class CursorCanvas : MonoBehaviour
 
     int startCanvasSortingOrder;
 
+    bool gameHasCrashed = false;
+
     private void Awake()
     {
         cursorCanvas = GetComponent<Canvas>();
@@ -176,6 +178,12 @@ public class CursorCanvas : MonoBehaviour
     private bool GameHasCrashed()
     {
         if (crashScreen == null) return false;
-        return crashScreen.MenuIsVisible;
+
+        if (crashScreen.MenuIsVisible)
+        {
+            gameHasCrashed = true;
+        }
+
+        return gameHasCrashed;
     }
 }
