@@ -16,10 +16,12 @@ public class CursorCanvas : MonoBehaviour
     PlayerInteractor playerInteractor;
     PauseMenuController pauseMenu;
     CrashScreenController crashScreen;
+    
 
     int startCanvasSortingOrder;
 
     bool gameHasCrashed = false;
+    bool isInThanksScreen = false;
 
     private void Awake()
     {
@@ -51,9 +53,14 @@ public class CursorCanvas : MonoBehaviour
             SetMovingCursor(FollowMouseCursor.CursorType.Crash);
             return;
         }
+        else if (isInThanksScreen)
+        {
+            SetMovingCursor(FollowMouseCursor.CursorType.Menu);
+            ShowHoverInteractUI(IsMouseOverUIButton());
+        }
         else if (pauseMenu != null && pauseMenu.IsPaused)
         {
-            SetMovingCursor(FollowMouseCursor.CursorType.Pause);
+            SetMovingCursor(FollowMouseCursor.CursorType.Menu);
             ShowHoverInteractUI(IsMouseOverUIButton());
             return;
         }
@@ -77,7 +84,7 @@ public class CursorCanvas : MonoBehaviour
 
         if (playerInteractor == null) // player in main menu
         {
-            SetMovingCursor(FollowMouseCursor.CursorType.Pause);
+            SetMovingCursor(FollowMouseCursor.CursorType.Menu);
 
             ShowHoverInteractUI(IsMouseOverUIButton());
         }
@@ -182,6 +189,13 @@ public class CursorCanvas : MonoBehaviour
         if (crashScreen.MenuIsVisible)
         {
             gameHasCrashed = true;
+        }
+        else
+        {
+            if (gameHasCrashed)
+            {
+                isInThanksScreen = true;
+            }
         }
 
         return gameHasCrashed;
