@@ -143,7 +143,7 @@ PrefabInstance:
       objectReference: {fileID: -5605446020509194904, guid: 9f6d4dcb01a2d314080c5bd0c5e80b6a, type: 3}
     - target: {fileID: 3455845720114481512, guid: b02f31635bf682544961725d17913d86, type: 3}
       propertyPath: m_Name
-      value: CeilingLamp
+      value: Ceiling Lamp
       objectReference: {fileID: 0}
     - target: {fileID: 5928173999153272178, guid: b02f31635bf682544961725d17913d86, type: 3}
       propertyPath: m_Mesh
@@ -211,10 +211,34 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6143730791746583328, guid: b02f31635bf682544961725d17913d86, type: 3}
       insertIndex: 0
       addedObject: {fileID: 4418204609910940925}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3455845720114481512, guid: b02f31635bf682544961725d17913d86, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3521818649790136075}
   m_SourcePrefab: {fileID: 100100000, guid: b02f31635bf682544961725d17913d86, type: 3}
 --- !u!4 &1629756384960157702 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6143730791746583328, guid: b02f31635bf682544961725d17913d86, type: 3}
   m_PrefabInstance: {fileID: 4890034356494967590}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7793836538716809806 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3455845720114481512, guid: b02f31635bf682544961725d17913d86, type: 3}
+  m_PrefabInstance: {fileID: 4890034356494967590}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3521818649790136075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7793836538716809806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51562e4c801ef274ba4c91f63ba280d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gameObjects:
+  - {fileID: 7074159837533440568}
+  _maxCameraDistance: 20
+  _updateTime: 0.5
