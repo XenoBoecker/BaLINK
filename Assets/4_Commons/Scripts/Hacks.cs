@@ -44,24 +44,28 @@ public class Hacks : MonoBehaviour
             currentTeleportDistance = teleportDistance; // Reset teleport distance
         }
 
-        if(Input.GetKeyDown(KeyCode.V)) TeleportPlayer(Vector3.up * currentTeleportDistance); // Teleport up (vertical)
+        if (Input.GetKey(KeyCode.F1))
+        {
+            if (Input.GetKeyDown(KeyCode.V)) TeleportPlayer(Vector3.up * currentTeleportDistance); // Teleport up (vertical)
 
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            TeleportPlayer(new Vector3(0, 0, -1) * currentTeleportDistance); // Teleport down
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                TeleportPlayer(new Vector3(0, 0, -1) * currentTeleportDistance); // Teleport down
+            }
+            else if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                TeleportPlayer(new Vector3(0, 0, 1) * currentTeleportDistance); // Teleport up
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                TeleportPlayer(new Vector3(-1, 0, 0) * currentTeleportDistance); // Teleport left
+            }
+            else if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                TeleportPlayer(new Vector3(1, 0, 0) * currentTeleportDistance); // Teleport right
+            }
         }
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            TeleportPlayer(new Vector3(0, 0, 1) * currentTeleportDistance); // Teleport up
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            TeleportPlayer(new Vector3(-1, 0, 0) * currentTeleportDistance); // Teleport left
-        }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            TeleportPlayer(new Vector3(1, 0, 0) * currentTeleportDistance); // Teleport right
-        }
+        
     }
 
     void TeleportPlayer(Vector3 teleportVector)
