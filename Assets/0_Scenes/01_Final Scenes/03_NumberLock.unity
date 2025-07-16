@@ -16894,6 +16894,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5516768872512495083, guid: a0963950b71a8b94a99d68850e41ecf6, type: 3}
   m_PrefabInstance: {fileID: 441061913}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &450235419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 982b965c48dd7044d85d055d30b3fdb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _referencedObject: {fileID: 1878436898}
+  _player: {fileID: 0}
+  _isUnfolded: 0
+  _connectedOutputIndex: 0
+  _fadeMode: 1
+  _fadeSpeed: 3
+  _track: {fileID: 8300000, guid: 30fb18523e175dd49802364e36868cbd, type: 3}
 --- !u!1001 &450977675
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30249,6 +30268,25 @@ Transform:
   - {fileID: 890815683}
   m_Father: {fileID: 770540327}
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
+--- !u!114 &820594980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 982b965c48dd7044d85d055d30b3fdb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _referencedObject: {fileID: 1878436898}
+  _player: {fileID: 0}
+  _isUnfolded: 1
+  _connectedOutputIndex: 0
+  _fadeMode: 0
+  _fadeSpeed: 4
+  _track: {fileID: 8300000, guid: 30fb18523e175dd49802364e36868cbd, type: 3}
 --- !u!1 &821685168
 GameObject:
   m_ObjectHideFlags: 0
@@ -74152,8 +74190,8 @@ MonoBehaviour:
     _outputCount: 1
   - _id: 6267
     _type: 2
-    _position: {x: -845.7333, y: 86.00042}
-    _nextNodeIds: be080000
+    _position: {x: -848.1333, y: -83.59958}
+    _nextNodeIds: a5160000
     _waitForBlink: 0
     _elements:
     - {fileID: 2139700885}
@@ -74162,7 +74200,7 @@ MonoBehaviour:
     _outputCount: 1
   - _id: 6816
     _type: 0
-    _position: {x: -848.3999, y: 40.667084}
+    _position: {x: -853.1998, y: -140.13293}
     _nextNodeIds: 7b180000
     _waitForBlink: 0
     _elements: []
@@ -74277,12 +74315,22 @@ MonoBehaviour:
     _type: 3
     _position: {x: -845.0668, y: 437.33386}
     _nextNodeIds: fffffffffd190000
-    _waitForBlink: 1
+    _waitForBlink: 0
     _elements:
     - {fileID: 1482133733}
     _isUnfolded: 1
     _outputCount: 2
-  _center: {x: -267.60034, y: -166.66713}
+  - _id: 5797
+    _type: 1
+    _position: {x: -846.6665, y: 7.467041}
+    _nextNodeIds: be080000
+    _waitForBlink: 0
+    _elements:
+    - {fileID: 820594980}
+    - {fileID: 450235419}
+    _isUnfolded: 1
+    _outputCount: 1
+  _center: {x: 896.26636, y: 261.333}
 --- !u!1 &1883091715
 GameObject:
   m_ObjectHideFlags: 0
